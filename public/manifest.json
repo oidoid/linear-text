@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "//": "[strings]",
+  "short_name": "Perf Mem",
+  "name": "Perfect Memory",
   "icons": [
     {
       "src": "favicon.ico",
