@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Perfect Memory
+
+## [Changelog](docs/changelog.md)
 
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
