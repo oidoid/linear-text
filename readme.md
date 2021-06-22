@@ -62,6 +62,12 @@ You can learn more in the
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Internationalization
+
+Translations for each locale are extracted and compiled to src/locales by
+running `npx lingui extract && npx lingui compile`. See
+[Lingui](https://lingui.js.org).
+
 ## License
 
 © Stephen Niedzielski.
