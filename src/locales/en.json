@@ -1,0 +1,22 @@
+{
+  "title-long": {
+    "translation": "Perfect Memory",
+    "origin": [
+      [
+        "src/App.tsx",
+        12
+      ]
+    ],
+    "extractedComments": []
+  },
+  "title-with-{version}": {
+    "translation": "Perfect Memory v{version}",
+    "origin": [
+      [
+        "src/index.tsx",
+        46
+      ]
+    ],
+    "extractedComments": []
+  }
+}

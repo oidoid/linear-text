@@ -30,6 +30,10 @@
     "npm": "7.5.3"
   },
   "devDependencies": {
+    "@lingui/cli": "3.10.2",
+    "@lingui/detect-locale": "3.10.4",
+    "@lingui/macro": "3.10.2",
+    "@lingui/react": "3.10.2",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",
     "@testing-library/user-event": "13.1.9",

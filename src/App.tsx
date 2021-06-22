@@ -1,5 +1,6 @@
 import logo from './logo.svg'
 import './App.css'
+import {Trans} from '@lingui/react'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <img src={logo} className='App-logo' alt='logo' />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
+          <Trans id='title-long' />
         </p>
         <a
           className='App-link'

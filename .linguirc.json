@@ -1,0 +1,7 @@
+{
+  "locales": ["en", "es"],
+  "sourceLocale": "en",
+  "catalogs": [{"path": "src/locales/{locale}", "include": ["src"]}],
+  "format": "lingui",
+  "compileNamespace": "ts"
+}

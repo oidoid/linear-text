@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages={"title-long":"Perfect Memory","title-with-{version}":["Perfect Memory v",["version"]]};

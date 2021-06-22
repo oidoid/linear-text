@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages={"title-long":"title-long","title-with-{version}":["title-with-",["version"]]};
