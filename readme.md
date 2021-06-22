@@ -1,4 +1,4 @@
-# Perfect Memory
+# 📝 Perfect Memory
 
 ## [Changelog](docs/changelog.md)
 

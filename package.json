@@ -1,15 +1,33 @@
 {
   "name": "perfect-memory",
+  "author": "oidoid",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-3.0-only",
+  "description": "📝 Notetaking and keeping.",
+  "keywords": [
+    "notes"
+  ],
+  "homepage": "https://git.io/pmem",
+  "repository": "github:oidoid/perfect-memory",
+  "bugs": "https://github.com/oidoid/perfect-memory/issues",
+  "type": "module",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false && npm run formatter -- -l",
+    "test": "npm run test:unit && npm run test:format && npm run build",
+    "test:unit": "react-scripts test --watchAll=false",
+    "test:format": "npm run formatter -- -l",
     "eject": "react-scripts eject",
     "format": "npm run formatter -- -w",
-    "formatter": "prettier './**/*.{css,html,json,md,ts,tsx}'"
+    "formatter": "prettier './**/*.{css,html,json,md,ts,tsx}'",
+    "preversion": "[ -z \"$(git status -z)\" ]",
+    "version": "npm ci && npm t",
+    "prepublishOnly": "git push origin \"$(git tag --points-at @)\""
   },
+  "engines": {
+    "node": "15.10.0",
+    "npm": "7.5.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.14.1",
