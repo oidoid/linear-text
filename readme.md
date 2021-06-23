@@ -66,7 +66,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Translations for each locale are extracted and compiled to src/locales by
 running `npx lingui extract && npx lingui compile`. See
-[Lingui](https://lingui.js.org).
+[Lingui](https://lingui.js.org) and [the config](.linguirc.json).
 
 ## License
 
