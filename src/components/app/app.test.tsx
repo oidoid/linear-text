@@ -1,5 +1,5 @@
 import {render, screen} from '@testing-library/react'
-import App from './App'
+import {App} from './app'
 import {messages as stringsEn} from '../../locales/en'
 import {en} from 'make-plural/plurals'
 import {i18n} from '@lingui/core'
