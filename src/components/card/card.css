@@ -1,0 +1,5 @@
+.card {
+  background-color: var(--card-background-color, var(--color-white));
+  border-radius: var(--border-radius);
+  padding: var(--spacing-8);
+}

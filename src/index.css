@@ -1,5 +1,9 @@
 :root {
   --color-light-grey: #f2f5f5;
+  --color-white: #fff;
+
+  --border-radius: 2px;
+  --spacing-8: 8px;
 }
 
 body {
