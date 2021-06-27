@@ -31,8 +31,8 @@ Finalize name and thing / row / record terminology.
 Customize button icons.
 Add icon.
 Add modified state text and icon badge to title bar.
-Document, add help, and update changelog.
-Polish and test.
+Document, add help, and update changelog. Note assumptions, Firefox support, and roadmap.
+Polish and test. Also test mobile support.
 Create website.
 Publish source code.
 Create git.io link.
