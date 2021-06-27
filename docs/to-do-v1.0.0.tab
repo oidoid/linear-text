@@ -29,9 +29,10 @@ Copy lessons from other projects and references.
 Revise button styles to my old UI styles.
 Finalize name and thing / row / record terminology.
 Customize button icons.
-Add icon.
+Add icon and update index.html and manifest.
 Add modified state text and icon badge to title bar.
-Document, add help, and update changelog. Note assumptions, Firefox support, and roadmap.
+Document, add help, and update changelog. Note assumptions, Firefox support, readme, bug reporting, and roadmap.
+Update NPM and index.html description and keywords.
 Polish and test. Also test mobile support.
 Create website.
 Publish source code.
