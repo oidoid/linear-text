@@ -1,4 +1,3 @@
-import logo from './logo.svg'
 import './app.css'
 import {Trans} from '@lingui/react'
 
@@ -6,11 +5,7 @@ export function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-          <Trans id='title-long' />
-        </p>
+        <Trans id='title-long' />
         <a
           className='App-link'
           href='https://reactjs.org'

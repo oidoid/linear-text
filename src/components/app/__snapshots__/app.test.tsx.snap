@@ -8,19 +8,7 @@ exports[`matches snapshot 1`] = `
     <header
       class="App-header"
     >
-      <img
-        alt="logo"
-        class="App-logo"
-        src="logo.svg"
-      />
-      <p>
-        Edit 
-        <code>
-          src/App.tsx
-        </code>
-         and save to reload.
-        Perfect Memory
-      </p>
+      Perfect Memory
       <a
         class="App-link"
         href="https://reactjs.org"
