@@ -1,0 +1,39 @@
+# Publish Perfect Memory v1.0.0
+
+Add menu fob with drop-down menu, new + row record thing, and trash row / thing buttons.
+Add drop-down menu with open / new / save file, undo / redo, and help buttons.
+Delete wizard UI.
+Add error card.
+Add locale picker.
+Add CSV import with tests.
+Add ungrouped export to CSV with tests.
+Add CSV import/export heuristics and outstanding defaults and some meta state information for tracking file mode.
+Add file board.
+Add note thing.
+Add thing dragging support.
+
+Add trashcan support.
+Add scroll with card dragging behavior or use fixed board size.
+Add undo / redo system.
+Add auto-backup with undo history.
+Prompt to save unsaved work.
+
+Add DOM reordering and grouping so tab works sort of sensibly.
+Press enter to create card, tab to go to next, and keyboard shortcuts.
+Add lasso group select.
+
+Add arrange support for grid and sorting/arrangement/line-up columnar support.
+Load unstructured files as grid arrangements.
+Decide on default position on enter or new button.
+Copy lessons from other projects and references.
+Revise button styles to my old UI styles.
+Finalize name and thing / row / record terminology.
+Customize button icons.
+Add icon.
+Add modified state text and icon badge to title bar.
+Document, add help, and update changelog.
+Polish and test.
+Create website.
+Publish source code.
+Create git.io link.
+Publish v1.0.0.
