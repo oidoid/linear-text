@@ -1,10 +1,14 @@
 :root {
   /* [theme] */
   --color-light-grey: #f2f5f5;
+  --color-dark-grey: #d0d0d0;
   --color-white: #fff;
 
   --border-radius: 2px;
   --spacing-8: 8px;
+
+  /* Require interactive elements large enough to be easily pressed. */
+  --min-press-size: 32px;
 }
 
 body {
