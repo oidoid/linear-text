@@ -1,5 +1,23 @@
 .card {
+  /* Dimensions include border and padding. */
+  box-sizing: border-box;
+
+  border-width: 0.5px;
+  border-style: outset;
+  border-color: var(--shade-shadow);
+
+  padding-top: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+
+  margin-top: 4px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  margin-left: 4px;
+
   background-color: var(--card-background-color, var(--color-white));
   border-radius: var(--border-radius);
-  padding: var(--spacing-8);
+
+  box-shadow: var(--box-shadow);
 }
