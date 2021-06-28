@@ -6,8 +6,8 @@ export type ButtonProps = Readonly<{
   accessKey?: string
   children: ReactNode
   'data-testid'?: string
-  deactivated?: boolean
-  onClick?: MouseEventHandler<HTMLButtonElement>
+  disabled?: boolean
+  onClick: MouseEventHandler<HTMLButtonElement>
   title: string
 }>
 
@@ -15,7 +15,7 @@ export function Button({
   accessKey,
   children,
   'data-testid': testID,
-  deactivated,
+  disabled,
   onClick,
   title
 }: ButtonProps) {
@@ -23,7 +23,7 @@ export function Button({
     <button
       accessKey={accessKey}
       data-testid={testID}
-      disabled={deactivated}
+      disabled={disabled}
       onClick={onClick}
       title={title}
       className='button'

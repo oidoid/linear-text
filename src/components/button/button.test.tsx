@@ -3,7 +3,7 @@ import {render, fireEvent, screen} from '@testing-library/react'
 
 test('matches snapshot', () => {
   render(
-    <Button data-testid='button' title='Title'>
+    <Button data-testid='button' onClick={() => {}} title='Title'>
       Label
     </Button>
   )
@@ -13,7 +13,7 @@ test('matches snapshot', () => {
 
 test('renders children and title', () => {
   render(
-    <Button data-testid='button' title='Title'>
+    <Button data-testid='button' onClick={() => {}} title='Title'>
       Label
     </Button>
   )
@@ -25,7 +25,7 @@ test('renders children and title', () => {
 test('reports clicks', () => {
   const onClick = jest.fn()
   render(
-    <Button data-testid='button' title='Title' onClick={onClick}>
+    <Button data-testid='button' onClick={onClick} title='Title'>
       Label
     </Button>
   )

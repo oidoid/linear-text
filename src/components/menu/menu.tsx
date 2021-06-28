@@ -29,17 +29,17 @@ export function MenuList() {
   return (
     <UnorderedList horizontal>
       <ListItem>
-        <Button title={t`button-toggle-menu__title`}>
+        <Button onClick={() => {}} title={t`button-toggle-menu__title`}>
           <Trans id='button-toggle-menu__label' />
         </Button>
       </ListItem>
       <ListItem>
-        <Button title={t`button-new-row__title`}>
+        <Button onClick={() => {}} title={t`button-new-row__title`}>
           <Trans id='button-new-row__label' />
         </Button>
       </ListItem>
       <ListItem>
-        <Button title={t`button-remove-row__title`}>
+        <Button onClick={() => {}} title={t`button-remove-row__title`}>
           <Trans id='button-remove-row__label' />
         </Button>
       </ListItem>
