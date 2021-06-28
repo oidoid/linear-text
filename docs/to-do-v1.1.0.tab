@@ -8,3 +8,9 @@ Create large print photo thing with resizing.
 Use image URLs for imports.
 Change thing type when a thing is selected and picker changes.
 Consider bundling a better handwriting font.
+Implement better cross-platform access keys.
+Forbid ESLint warnings, enable caching, and the usual.
+Fix button title hover styles.
+Review React component library references.
+Consider showing navigation labels on wide screens.
+

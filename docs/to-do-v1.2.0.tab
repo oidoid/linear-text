@@ -1,3 +1,14 @@
 # Publish Perfect Memory v1.2.0
 
 Add cartridge things.
+
+## Research
+Review web.dev.
+Review Twitter share cards.
+Investigate why Create React App / Webpack can't detect file renames.
+Review robots.txt.
+Verify browserstest is running.
+
+## Reasons to Eject
+- setupTests.ts naming.
+- Snapshot colocating.

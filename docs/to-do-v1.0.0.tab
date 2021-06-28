@@ -1,8 +1,7 @@
 # Publish Perfect Memory v1.0.0
 
-Add menu fob with drop-down menu, new + row record thing, and trash row / thing buttons.
+Add drop-down menu, new + row record thing, and trash row / thing buttons.
 Add drop-down menu with open / new / save file, undo / redo, and help buttons.
-Delete wizard UI.
 Add error card.
 Add locale picker.
 Add CSV import with tests.
@@ -11,13 +10,15 @@ Add CSV import/export heuristics and outstanding defaults and some meta state in
 Add file board.
 Add note thing.
 Add thing dragging support.
+Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 
-Add trashcan support.
+Add trashcan dragging and focus support.
 Add scroll with card dragging behavior or use fixed board size.
 Add undo / redo system.
 Add auto-backup with undo history.
 Prompt to save unsaved work.
 
+Decide how to do grouping and reordering on the fly and at export time.
 Add DOM reordering and grouping so tab works sort of sensibly.
 Press enter to create card, tab to go to next, and keyboard shortcuts.
 Add lasso group select.
@@ -31,7 +32,8 @@ Finalize name and thing / row / record terminology.
 Customize button icons.
 Add icon and update index.html and manifest.
 Add modified state text and icon badge to title bar.
-Document, add help, and update changelog. Note assumptions, Firefox support, readme, bug reporting, and roadmap.
+Validate HTML.
+Document, add help, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
 Update NPM and index.html description and keywords.
 Polish and test. Also test mobile support.
 Create website.
