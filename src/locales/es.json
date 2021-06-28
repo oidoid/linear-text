@@ -1,20 +1,114 @@
 {
+  "button-menu__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        33
+      ]
+    ],
+    "extractedComments": [],
+    "obsolete": true
+  },
+  "button-menu__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        32
+      ]
+    ],
+    "extractedComments": [],
+    "obsolete": true
+  },
+  "button-new-row__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        38
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-new-row__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        37
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-remove-row__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        43
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-remove-row__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        42
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-toggle-menu__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        33
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-toggle-menu__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        32
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-trash__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/nav/nav.tsx",
+        21
+      ]
+    ],
+    "extractedComments": [],
+    "obsolete": true
+  },
   "title-long": {
     "translation": "",
     "origin": [
       [
-        "src/App.tsx",
-        12
+        "src/components/app/app.tsx",
+        13
       ]
     ],
-    "extractedComments": []
+    "extractedComments": [],
+    "obsolete": true
   },
   "title-with-{version}": {
     "translation": "",
     "origin": [
       [
         "src/index.tsx",
-        46
+        28
       ]
     ],
     "extractedComments": []

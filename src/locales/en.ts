@@ -1,1 +1,1 @@
-/*eslint-disable*/export const messages={"title-long":"Perfect Memory","title-with-{version}":["Perfect Memory v",["version"]]};
+/*eslint-disable*/export const messages={"button-new-row__label":"+","button-new-row__title":"New Row","button-remove-row__label":"-","button-remove-row__title":"Remove Row","button-toggle-menu__label":"…","button-toggle-menu__title":"Toggle Menu","title-with-{version}":["Perfect Memory v",["version"]]};

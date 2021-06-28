@@ -1,26 +1,30 @@
 :root {
   /* [theme] */
   --color-light-grey: #f2f5f5;
+  --color-mid-grey: #f0f2f0;
   --color-dark-grey: #d0d0d0;
   --color-white: #fff;
+  --shade-shadow: rgba(0, 0, 0, 0.1);
 
   --border-radius: 2px;
   --spacing-8: 8px;
 
   /* Require interactive elements large enough to be easily pressed. */
   --min-press-size: 32px;
+
+  --box-shadow: 1px 1px 1px 0.5px var(--shade-shadow);
 }
 
 body {
-  margin: 0;
+  /* Clear the default margins. */
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

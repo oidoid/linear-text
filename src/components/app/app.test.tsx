@@ -1,9 +1,9 @@
-import {render, screen} from '@testing-library/react'
 import {App} from './app'
-import {messages as stringsEn} from '../../locales/en'
 import {en} from 'make-plural/plurals'
+import {messages as stringsEn} from '../../locales/en'
 import {i18n} from '@lingui/core'
 import {I18nProvider} from '@lingui/react'
+import {render, screen} from '@testing-library/react'
 
 beforeEach(() => {
   i18n.loadLocaleData('en', {plurals: en})
@@ -22,10 +22,10 @@ test('renders learn react link', () => {
 })
 
 test('matches snapshot', () => {
-  const app = render(
+  render(
     <I18nProvider i18n={i18n}>
-      <App />
+      <App data-testid='app' />
     </I18nProvider>
   )
-  expect(app.container).toMatchSnapshot()
+  expect(screen.getByTestId('app')).toMatchSnapshot()
 })
