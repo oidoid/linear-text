@@ -18,10 +18,10 @@ exports[`matches snapshot 1`] = `
           class="nav"
         >
           <ul
-            class="nav__button-list"
+            class="ul ul--horizontal"
           >
             <li
-              class="nav__button-item"
+              class="list-item"
             >
               <button
                 class="button"
@@ -30,7 +30,9 @@ exports[`matches snapshot 1`] = `
                 …
               </button>
             </li>
-            <li>
+            <li
+              class="list-item"
+            >
               <button
                 class="button"
                 title="New Row"
@@ -38,7 +40,9 @@ exports[`matches snapshot 1`] = `
                 +
               </button>
             </li>
-            <li>
+            <li
+              class="list-item"
+            >
               <button
                 class="button"
                 title="Remove Row"

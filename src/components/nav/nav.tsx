@@ -1,7 +1,9 @@
 import {Button} from '../button/button'
 import {Card} from '../card/card'
+import {ListItem} from '../list-item/list-item'
 import {t} from '@lingui/macro'
 import {Trans} from '@lingui/react'
+import {UnorderedList} from '../unordered-list/unordered-list'
 
 import './nav.css'
 
@@ -25,22 +27,22 @@ export function Nav() {
 
 export function NavList() {
   return (
-    <ul className='nav__button-list'>
-      <li className='nav__button-item'>
+    <UnorderedList horizontal>
+      <ListItem>
         <Button title={t`button-toggle-menu__title`}>
           <Trans id='button-toggle-menu__label' />
         </Button>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Button title={t`button-new-row__title`}>
           <Trans id='button-new-row__label' />
         </Button>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Button title={t`button-remove-row__title`}>
           <Trans id='button-remove-row__label' />
         </Button>
-      </li>
-    </ul>
+      </ListItem>
+    </UnorderedList>
   )
 }
