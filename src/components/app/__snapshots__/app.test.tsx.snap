@@ -9,14 +9,12 @@ exports[`matches snapshot 1`] = `
     class="app__header"
   >
     <div
-      class="nav-card"
+      class="menu-card"
     >
       <div
         class="card"
       >
-        <nav
-          class="nav"
-        >
+        <nav>
           <ul
             class="ul ul--horizontal"
           >
@@ -35,7 +33,7 @@ exports[`matches snapshot 1`] = `
             >
               <button
                 class="button"
-                title="New Row"
+                title="New Record"
               >
                 +
               </button>
@@ -45,7 +43,7 @@ exports[`matches snapshot 1`] = `
             >
               <button
                 class="button"
-                title="Remove Row"
+                title="Remove Record"
               >
                 -
               </button>

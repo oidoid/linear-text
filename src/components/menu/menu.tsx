@@ -5,27 +5,27 @@ import {t} from '@lingui/macro'
 import {Trans} from '@lingui/react'
 import {UnorderedList} from '../unordered-list/unordered-list'
 
-import './nav.css'
+import './menu.css'
 
-export function NavCard() {
+export function MenuCard() {
   return (
-    <div className='nav-card'>
+    <div className='menu-card'>
       <Card>
-        <Nav />
+        <Menu />
       </Card>
     </div>
   )
 }
 
-export function Nav() {
+export function Menu() {
   return (
-    <nav className='nav'>
-      <NavList />
+    <nav>
+      <MenuList />
     </nav>
   )
 }
 
-export function NavList() {
+export function MenuList() {
   return (
     <UnorderedList horizontal>
       <ListItem>

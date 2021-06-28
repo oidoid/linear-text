@@ -25,7 +25,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         38
       ]
     ],
@@ -35,7 +35,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         37
       ]
     ],
@@ -45,7 +45,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         43
       ]
     ],
@@ -55,7 +55,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         42
       ]
     ],
@@ -65,7 +65,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         33
       ]
     ],
@@ -75,7 +75,7 @@
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         32
       ]
     ],

@@ -3,17 +3,17 @@
     "translation": "+",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         38
       ]
     ],
     "extractedComments": []
   },
   "button-new-row__title": {
-    "translation": "New Row",
+    "translation": "New Record",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         37
       ]
     ],
@@ -23,17 +23,17 @@
     "translation": "-",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         43
       ]
     ],
     "extractedComments": []
   },
   "button-remove-row__title": {
-    "translation": "Remove Row",
+    "translation": "Remove Record",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         42
       ]
     ],
@@ -43,7 +43,7 @@
     "translation": "…",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         33
       ]
     ],
@@ -53,7 +53,7 @@
     "translation": "Toggle Menu",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
+        "src/components/menu/menu.tsx",
         32
       ]
     ],
