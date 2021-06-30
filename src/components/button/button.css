@@ -31,3 +31,7 @@
   /* Don't allow content highlights. */
   user-select: none;
 }
+
+.button--active {
+  border-style: inset;
+}

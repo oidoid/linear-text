@@ -1,5 +1,5 @@
 import {Button} from './button'
-import {render, fireEvent, screen} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 
 test('matches snapshot', () => {
   render(
@@ -29,6 +29,6 @@ test('reports clicks', () => {
       Label
     </Button>
   )
-  fireEvent.click(screen.getByTestId('button'))
+  screen.getByTestId('button').click()
   expect(onClick).toHaveBeenCalledTimes(1)
 })

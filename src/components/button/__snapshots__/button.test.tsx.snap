@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <button
-  class="button"
+  class="button "
   data-testid="button"
   title="Title"
 >

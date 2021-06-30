@@ -1,9 +1,10 @@
-import type {MouseEventHandler, ReactNode} from 'react'
+import {MouseEventHandler, ReactNode, useMemo} from 'react'
 
 import './button.css'
 
 export type ButtonProps = Readonly<{
   accessKey?: string
+  active?: boolean
   children: ReactNode
   'data-testid'?: string
   disabled?: boolean
@@ -16,9 +17,14 @@ export function Button({
   children,
   'data-testid': testID,
   disabled,
+  active,
   onClick,
   title
 }: ButtonProps) {
+  const className = useMemo(
+    () => `button ${active ? 'button--active' : ''}`,
+    [active]
+  )
   return (
     <button
       accessKey={accessKey}
@@ -26,7 +32,7 @@ export function Button({
       disabled={disabled}
       onClick={onClick}
       title={title}
-      className='button'
+      className={className}
     >
       {children}
     </button>
