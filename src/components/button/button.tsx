@@ -27,9 +27,9 @@ export function Button({
   )
   return (
     <button
-      accessKey={accessKey}
+      {...(accessKey === undefined ? undefined : {accessKey: accessKey})}
       data-testid={testID}
-      disabled={disabled}
+      {...(disabled === undefined ? undefined : {disabled: disabled})}
       onClick={onClick}
       title={title}
       className={className}
