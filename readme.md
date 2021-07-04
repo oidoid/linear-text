@@ -70,7 +70,7 @@ running `npx lingui extract && npx lingui compile`. See
 
 ## License
 
-© Stephen Niedzielski.
+© oidoid.
 
 ### GPL-3.0-only
 
