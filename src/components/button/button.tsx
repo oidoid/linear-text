@@ -1,4 +1,6 @@
-import {MouseEventHandler, ReactNode, useMemo} from 'react'
+import type {MouseEventHandler, ReactNode} from 'react'
+
+import {useMemo} from 'react'
 
 import './button.css'
 
