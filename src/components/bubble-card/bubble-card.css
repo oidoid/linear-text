@@ -1,0 +1,42 @@
+.bubble-card {
+  --pointer-size: 6px;
+  --pointer-shadow-size: calc(var(--pointer-size) + 1px);
+  --pointer-top: calc(1px - var(--pointer-size));
+  --pointer-shadow-top: calc(var(--pointer-top) - 2px);
+  --pointer-shadow-left: calc(var(--pointer-left) - 1px);
+  --pointer-left: 16px;
+
+  /* Position triangle and triangle shadow relative the card. */
+  position: relative;
+
+  /* Space for the triangle and triangle shadow. */
+  padding-top: calc(var(--pointer-top) - var(--pointer-shadow-top));
+}
+
+.bubble-card::before,
+.bubble-card::after {
+  position: absolute;
+  border-style: solid;
+  border-color: #0000;
+  content: '';
+
+  /* The triangle's hidden border does not block the button it hovers near. */
+  pointer-events: none;
+}
+
+/* The bubble triangle shadow. */
+.bubble-card::before {
+  top: var(--pointer-shadow-top);
+  left: var(--pointer-shadow-left);
+  border-width: var(--pointer-shadow-size);
+  border-bottom: var(--pointer-shadow-size) solid var(--shade-shadow);
+}
+
+/* The bubble triangle. */
+.bubble-card::after {
+  top: var(--pointer-top);
+  left: var(--pointer-left);
+  border-width: var(--pointer-size);
+  border-bottom: var(--pointer-size) solid
+    var(--card-background-color, var(--color-white));
+}
