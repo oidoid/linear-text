@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<details
+  class="disclosure"
+  data-testid="disclosure"
+>
+  <summary
+    class="disclosure__summary buttonish "
+    role="button"
+  >
+    Summary
+  </summary>
+  Children
+</details>
+`;
