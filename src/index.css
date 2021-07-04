@@ -2,12 +2,21 @@
   /* [theme] */
   --color-light-grey: #f2f5f5;
   --color-mid-grey: #f0f2f0;
-  --color-dark-grey: #d0d0d0;
+  --color-grey: #efefef;
+  --color-dark-grey: #ddd;
+  --color-darkest-grey: #333;
   --color-white: #fff;
   --shade-shadow: rgba(0, 0, 0, 0.1);
 
+  --card-border-width: 0.5px;
+  --card-padding: 4px;
+  --card-margin: 4px;
   --border-radius: 2px;
   --spacing-8: 8px;
+
+  --font-size-tooltip: 12px;
+
+  --z-index-tooltip: 99999;
 
   /* Require interactive elements large enough to be easily pressed. */
   --min-press-size: 32px;

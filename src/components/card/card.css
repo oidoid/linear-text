@@ -2,19 +2,19 @@
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
-  border-width: 0.5px;
+  border-width: var(--card-border-width);
   border-style: outset;
   border-color: var(--shade-shadow);
 
-  padding-top: 6px;
-  padding-right: 6px;
-  padding-bottom: 6px;
-  padding-left: 6px;
+  padding-top: var(--card-padding);
+  padding-right: var(--card-padding);
+  padding-bottom: var(--card-padding);
+  padding-left: var(--card-padding);
 
-  margin-top: 4px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  margin-left: 4px;
+  margin-top: var(--card-margin);
+  margin-right: var(--card-margin);
+  margin-bottom: var(--card-margin);
+  margin-left: var(--card-margin);
 
   background-color: var(--card-background-color, var(--color-white));
   border-radius: var(--border-radius);
