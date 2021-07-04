@@ -19,7 +19,7 @@ test('renders children and title', () => {
   )
   const button = screen.getByTestId('button')
   expect(button).toHaveTextContent('Label')
-  expect(button).toHaveAttribute('title', 'Title')
+  expect(button).toHaveAttribute('data-title', 'Title')
 })
 
 test('reports clicks', () => {

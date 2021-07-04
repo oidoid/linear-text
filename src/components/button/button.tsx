@@ -22,17 +22,17 @@ export function Button({
   title
 }: ButtonProps) {
   const className = useMemo(
-    () => `button ${active ? 'button--active' : ''}`,
+    () => `buttonish ${active ? 'buttonish--active' : ''}`,
     [active]
   )
   return (
     <button
-      {...(accessKey === undefined ? undefined : {accessKey: accessKey})}
-      data-testid={testID}
-      {...(disabled === undefined ? undefined : {disabled: disabled})}
-      onClick={onClick}
-      title={title}
+      accessKey={accessKey ?? ''}
       className={className}
+      data-testid={testID}
+      data-title={title}
+      disabled={disabled ?? false}
+      onClick={onClick}
     >
       {children}
     </button>

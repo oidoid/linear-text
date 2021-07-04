@@ -22,8 +22,9 @@ exports[`matches snapshot 1`] = `
               class="list-item"
             >
               <button
-                class="button "
-                title="Toggle Menu"
+                accesskey=""
+                class="buttonish "
+                data-title="Toggle Menu"
               >
                 …
               </button>
@@ -32,8 +33,9 @@ exports[`matches snapshot 1`] = `
               class="list-item"
             >
               <button
-                class="button "
-                title="New Record"
+                accesskey=""
+                class="buttonish "
+                data-title="New Record"
               >
                 +
               </button>
@@ -42,8 +44,9 @@ exports[`matches snapshot 1`] = `
               class="list-item"
             >
               <button
-                class="button "
-                title="Remove Record"
+                accesskey=""
+                class="buttonish "
+                data-title="Remove Record"
               >
                 -
               </button>

@@ -2,9 +2,10 @@
 
 exports[`matches snapshot 1`] = `
 <button
-  class="button "
+  accesskey=""
+  class="buttonish "
   data-testid="button"
-  title="Title"
+  data-title="Title"
 >
   Label
 </button>

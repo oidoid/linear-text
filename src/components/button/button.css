@@ -1,4 +1,5 @@
-.button {
+/* Buttonish classes are shared by other button-like components. */
+.buttonish {
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
@@ -7,31 +8,107 @@
 
   /* Require buttons to be spaced apart so that misses don't interact with
      something else. */
-  margin-top: var(--spacing-8);
-  margin-right: var(--spacing-8);
-  margin-bottom: var(--spacing-8);
-  margin-left: var(--spacing-8);
+  margin-top: var(--button-margin, 2px);
+  margin-right: var(--button-margin, 2px);
+  margin-bottom: var(--button-margin, 2px);
+  margin-left: var(--button-margin, 2px);
 
-  /* Add some spacing between the button content and the perimeter. */
-  padding-top: 6px;
-  padding-right: 6px;
-  padding-bottom: 6px;
-  padding-left: 6px;
+  /* Add some spacing between the button content and the perimeter but account
+     for border-width's contribution to --min-press-size. */
+  padding-top: 5.5px;
+  padding-right: 5.5px;
+  padding-bottom: 5.5px;
+  padding-left: 5.5px;
 
   /* Indicate button interactivity with a hand icon. */
   cursor: pointer;
 
   /* Buttons slightly extrude. */
   border-width: 0.5px;
+  border-style: outset;
   border-color: var(--color-dark-grey);
+
+  /* Specify the background. */
+  background-color: var(--color-grey);
+
+  /* Inherit font. */
+  font-family: inherit;
+  font-size: inherit;
+  font-stretch: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 
   /* Round corners. */
   border-radius: var(--border-radius);
 
   /* Don't allow content highlights. */
   user-select: none;
+
+  /* Center the content. */
+  text-align: center;
+
+  /* For pseudo-element positioning. */
+  position: relative;
+
+  /* Button-likes may specify different display types. */
+  display: inline-flex;
 }
 
-.button--active {
+.buttonish:active,
+/* --active state can be held too. */
+.buttonish--active {
   border-style: inset;
+}
+
+/* Tooltip. */
+.buttonish[data-title]::after {
+  /* Set the child to the value of the data-title attribute. */
+  content: attr(data-title);
+
+  font-size: var(--font-size-tooltip);
+
+  /* Position to the bottom-left of the buttonish and remove from layout
+     flow. */
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  /* Don't wrap the text. Width defaults to buttonish. */
+  white-space: nowrap;
+
+  /* Raise. */
+  z-index: var(--z-index-tooltip);
+
+  /* Use a dark theme for tooltips so they contrast from the base UI. */
+  background-color: var(--color-darkest-grey);
+  color: var(--color-white);
+
+  /* Make card-like. */
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  margin-top: var(--card-margin);
+  margin-right: var(--card-margin);
+  margin-bottom: var(--card-margin);
+  margin-left: var(--card-margin);
+  padding-top: var(--card-padding);
+  padding-right: var(--card-padding);
+  padding-bottom: var(--card-padding);
+  padding-left: var(--card-padding);
+
+  /* Hide by default. */
+  visibility: hidden;
+
+  /* Reset the tooltip show delay promptly. */
+  transition-delay: 50ms;
+
+  /* Ignore interactions. */
+  pointer-events: none;
+}
+
+.buttonish[data-title]:hover::after {
+  /* Show after a long delay. */
+  visibility: visible;
+  transition-delay: 2s;
 }
