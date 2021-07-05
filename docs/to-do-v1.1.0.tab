@@ -1,5 +1,6 @@
 # Publish Perfect Memory v1.1.0: Images and Refinements
 
+Consider CSS Modules.
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
 Add locale picker.
 Combine new row thing with row thing selector widget

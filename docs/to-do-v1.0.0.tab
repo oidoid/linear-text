@@ -1,5 +1,6 @@
 # Publish Perfect Memory v1.0.0: Notes and Foundations
 
+Add undo / redo system and data model store.
 Add error card.
 Add CSV import with tests.
 Add ungrouped export to CSV with tests.
@@ -11,7 +12,6 @@ Review HTML structure with references and semnatics with MDN. If this is really 
 
 Add trashcan dragging and focus support.
 Add scroll with card dragging behavior or use fixed board size.
-Add undo / redo system.
 Add auto-backup with undo history.
 Prompt to save unsaved work.
 
@@ -23,7 +23,7 @@ Add lasso group select by clicking an empty space and dragging.
 Add arrange support for grid and sorting/arrangement/line-up columnar support.
 Load unstructured files as grid arrangements.
 Decide on default position on enter or new button.
-Copy lessons from other projects and references.
+Copy lessons and notes from other projects and references.
 Revise button styles to my old UI styles.
 Finalize name and thing / row / record terminology.
 Finalize button icons.
@@ -39,4 +39,3 @@ Create website.
 Publish source code.
 Create git.io link, reference in readme, and revise package.json to use https://perfectmem.com.
 Publish v1.0.0.
-
