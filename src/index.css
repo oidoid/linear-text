@@ -10,10 +10,12 @@
 
   --buttonish-size: calc(var(--min-press-size) + var(--button-margin) * 2);
   --card-border-width: 0.5px;
-  --card-padding: 4px;
+  --card-padding: 2px;
   --card-margin: 4px;
   --border-radius: 2px;
   --spacing-8: 8px;
+
+  --button-margin: 2px;
 
   --font-size-small: 8px;
   --font-size-tooltip: 12px;

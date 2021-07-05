@@ -6,18 +6,17 @@ import {Icon} from '../icon/icon'
 import './icon-button.css'
 
 export type IconButtonProps = Readonly<{
-  alt: string
   label: string
   onClick: MouseEventHandler<HTMLButtonElement>
   src: string
   title: string
 }>
 
-export function IconButton({alt, label, onClick, src, title}: IconButtonProps) {
+export function IconButton({label, onClick, src, title}: IconButtonProps) {
   return (
-    <div>
+    <div className='icon-button'>
       <Button onClick={onClick} title={title}>
-        <Icon alt={alt} src={src} />
+        <Icon alt='' src={src} />
       </Button>
       <label className='icon-buttonish__label'>{label}</label>
     </div>

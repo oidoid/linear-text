@@ -1,62 +1,160 @@
 {
-  "button-menu__label": {
+  "button-add-record__label": {
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
-        33
-      ]
-    ],
-    "extractedComments": [],
-    "obsolete": true
-  },
-  "button-menu__title": {
-    "translation": "",
-    "origin": [
-      [
-        "src/components/nav/nav.tsx",
-        32
-      ]
-    ],
-    "extractedComments": [],
-    "obsolete": true
-  },
-  "button-new-row__label": {
-    "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        38
+        "src/components/navigation/navigation.tsx",
+        62
       ]
     ],
     "extractedComments": []
   },
-  "button-new-row__title": {
+  "button-add-record__title": {
     "translation": "",
     "origin": [
       [
-        "src/components/menu/menu.tsx",
-        37
+        "src/components/navigation/navigation.tsx",
+        65
       ]
     ],
     "extractedComments": []
   },
-  "button-remove-row__label": {
+  "button-help__label": {
     "translation": "",
     "origin": [
       [
         "src/components/menu/menu.tsx",
-        43
+        88
       ]
     ],
     "extractedComments": []
   },
-  "button-remove-row__title": {
+  "button-help__title": {
     "translation": "",
     "origin": [
       [
         "src/components/menu/menu.tsx",
-        42
+        91
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-load-file__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        70
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-load-file__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        73
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-new-file__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        77
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-new-file__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        80
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-redo__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        41
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-redo__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        44
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-remove-record__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/navigation/navigation.tsx",
+        53
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-remove-record__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/navigation/navigation.tsx",
+        56
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-save-file-as__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        59
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-save-file-as__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        62
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-save-file__label": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        52
+      ]
+    ],
+    "extractedComments": []
+  },
+  "button-save-file__title": {
+    "translation": "",
+    "origin": [
+      [
+        "src/components/menu/menu.tsx",
+        55
       ]
     ],
     "extractedComments": []
@@ -65,8 +163,8 @@
     "translation": "",
     "origin": [
       [
-        "src/components/menu/menu.tsx",
-        33
+        "src/components/navigation/navigation.tsx",
+        47
       ]
     ],
     "extractedComments": []
@@ -75,33 +173,31 @@
     "translation": "",
     "origin": [
       [
-        "src/components/menu/menu.tsx",
-        32
+        "src/components/navigation/navigation.tsx",
+        42
       ]
     ],
     "extractedComments": []
   },
-  "button-trash__label": {
+  "button-undo__label": {
     "translation": "",
     "origin": [
       [
-        "src/components/nav/nav.tsx",
-        21
+        "src/components/menu/menu.tsx",
+        34
       ]
     ],
-    "extractedComments": [],
-    "obsolete": true
+    "extractedComments": []
   },
-  "title-long": {
+  "button-undo__title": {
     "translation": "",
     "origin": [
       [
-        "src/components/app/app.tsx",
-        13
+        "src/components/menu/menu.tsx",
+        37
       ]
     ],
-    "extractedComments": [],
-    "obsolete": true
+    "extractedComments": []
   },
   "title-with-{version}": {
     "translation": "",

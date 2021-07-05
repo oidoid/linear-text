@@ -8,10 +8,10 @@
 
   /* Require buttons to be spaced apart so that misses don't interact with
      something else. */
-  margin-top: var(--button-margin, 2px);
-  margin-right: var(--button-margin, 2px);
-  margin-bottom: var(--button-margin, 2px);
-  margin-left: var(--button-margin, 2px);
+  margin-top: var(--button-margin);
+  margin-right: var(--button-margin);
+  margin-bottom: var(--button-margin);
+  margin-left: var(--button-margin);
 
   /* Add some spacing between the button content and the perimeter but account
      for border-width's contribution to --min-press-size. */

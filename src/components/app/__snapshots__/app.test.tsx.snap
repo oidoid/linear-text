@@ -9,49 +9,322 @@ exports[`matches snapshot 1`] = `
     class="app__header"
   >
     <div
-      class="menu-card"
+      class="navigation-card"
     >
       <div
         class="card"
       >
-        <nav>
-          <ul
-            class="ul ul--horizontal"
+        <nav
+          class="navigation"
+        >
+          <div
+            class="navigation-list"
           >
-            <li
-              class="list-item"
+            <ul
+              class="ul ul--horizontal"
             >
-              <button
-                accesskey=""
-                class="buttonish "
-                data-title="Toggle Menu"
+              <li
+                class="list-item"
               >
-                …
-              </button>
-            </li>
-            <li
-              class="list-item"
-            >
-              <button
-                accesskey=""
-                class="buttonish "
-                data-title="New Record"
+                <details
+                  class="disclosure"
+                >
+                  <summary
+                    class="disclosure__summary buttonish "
+                    data-title="Toggle menu."
+                    role="button"
+                  >
+                    <img
+                      alt=""
+                      class="icon"
+                      decoding="sync"
+                      height="20"
+                      loading="eager"
+                      src="navigation-icon-toggle-menu.svg"
+                      width="20"
+                    />
+                  </summary>
+                  <div
+                    class="menu-card"
+                  >
+                    <div
+                      class="bubble-card"
+                    >
+                      <div
+                        class="card"
+                      >
+                        <ul
+                          class="ul "
+                        >
+                          <li
+                            class="list-item"
+                          >
+                            <div
+                              class="menu__button-group"
+                            >
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Restore the previous state [alt-shift-z]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-undo.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Undo
+                                </label>
+                              </div>
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Reapply the undone action [alt-shift-y]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-redo.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Redo
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            class="list-item"
+                          >
+                            <div
+                              class="menu__button-group"
+                            >
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Download file [alt-shift-s]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-save-file.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Save
+                                </label>
+                              </div>
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Open save dialog."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-save-file-as.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Save As
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            class="list-item"
+                          >
+                            <div
+                              class="menu__button-group"
+                            >
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Load an existing file [alt-shift-o]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-load-file.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Open
+                                </label>
+                              </div>
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Create an empty file [alt-shift-n]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-new-file.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  New
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            class="list-item"
+                          >
+                            <div
+                              class="menu__button-group"
+                            >
+                              <div
+                                class="icon-button"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish "
+                                  data-title="Open documentation [alt-shift-f1]."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="menu-icon-help.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish__label"
+                                >
+                                  Help
+                                </label>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+                <label
+                  class="icon-buttonish__label"
+                >
+                  Menu
+                </label>
+              </li>
+              <li
+                class="list-item"
               >
-                +
-              </button>
-            </li>
-            <li
-              class="list-item"
-            >
-              <button
-                accesskey=""
-                class="buttonish "
-                data-title="Remove Record"
+                <div
+                  class="icon-button"
+                >
+                  <button
+                    accesskey=""
+                    class="buttonish "
+                    data-title="Remove selected record(s) [alt-shift-delete]."
+                  >
+                    <img
+                      alt=""
+                      class="icon"
+                      decoding="sync"
+                      height="20"
+                      loading="eager"
+                      src="navigation-icon-remove-record.svg"
+                      width="20"
+                    />
+                  </button>
+                  <label
+                    class="icon-buttonish__label"
+                  >
+                    Discard
+                  </label>
+                </div>
+              </li>
+              <li
+                class="list-item"
               >
-                -
-              </button>
-            </li>
-          </ul>
+                <div
+                  class="icon-button"
+                >
+                  <button
+                    accesskey=""
+                    class="buttonish "
+                    data-title="Create new record [alt-shift-enter]."
+                  >
+                    <img
+                      alt=""
+                      class="icon"
+                      decoding="sync"
+                      height="20"
+                      loading="eager"
+                      src="navigation-icon-add-record.svg"
+                      width="20"
+                    />
+                  </button>
+                  <label
+                    class="icon-buttonish__label"
+                  >
+                    Add
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
@@ -59,21 +332,6 @@ exports[`matches snapshot 1`] = `
   <main
     class="app__body"
   >
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
     <a
       class="App-link"
       href="https://reactjs.org"
