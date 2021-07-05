@@ -8,12 +8,14 @@
   --color-white: #fff;
   --shade-shadow: rgba(0, 0, 0, 0.1);
 
+  --buttonish-size: calc(var(--min-press-size) + var(--button-margin) * 2);
   --card-border-width: 0.5px;
   --card-padding: 4px;
   --card-margin: 4px;
   --border-radius: 2px;
   --spacing-8: 8px;
 
+  --font-size-small: 8px;
   --font-size-tooltip: 12px;
 
   --z-index-tooltip: 99999;
