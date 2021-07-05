@@ -4,7 +4,7 @@ import {i18n} from '@lingui/core'
 import {I18nProvider} from '@lingui/react'
 import {Provider} from 'react-redux'
 import {render, screen} from '@testing-library/react'
-import {store} from './store'
+import {store} from '../../store/store'
 import {messages as stringsEn} from '../../locales/en'
 
 beforeEach(() => {

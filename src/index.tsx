@@ -8,7 +8,7 @@ import {i18n} from '@lingui/core'
 import {t} from '@lingui/macro'
 import {I18nProvider} from '@lingui/react'
 import {loadLocales} from './locale-loader'
-import {store} from './components/app/store'
+import {store} from './store/store'
 import {Provider} from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 
