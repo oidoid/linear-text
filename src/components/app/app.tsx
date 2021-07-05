@@ -1,4 +1,4 @@
-import {Counter} from '../../features/counter/Counter'
+import {Counter} from '../../features/counter/counter'
 import {NavigationCard} from '../navigation/navigation'
 
 import './app.css'
