@@ -1,212 +1,86 @@
 {
   "button-add-record__label": {
     "translation": "Add",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        62
-      ]
-    ],
     "extractedComments": []
   },
   "button-add-record__title": {
     "translation": "Create new record [alt-shift-enter].",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        65
-      ]
-    ],
     "extractedComments": []
   },
   "button-help__label": {
     "translation": "Help",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        88
-      ]
-    ],
     "extractedComments": []
   },
   "button-help__title": {
     "translation": "Open documentation [alt-shift-f1].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        91
-      ]
-    ],
     "extractedComments": []
   },
   "button-load-file__label": {
     "translation": "Open",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        70
-      ]
-    ],
     "extractedComments": []
   },
   "button-load-file__title": {
     "translation": "Load an existing file [alt-shift-o].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        73
-      ]
-    ],
     "extractedComments": []
   },
   "button-new-file__label": {
     "translation": "New",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        77
-      ]
-    ],
     "extractedComments": []
   },
   "button-new-file__title": {
     "translation": "Create an empty file [alt-shift-n].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        80
-      ]
-    ],
     "extractedComments": []
   },
   "button-redo__label": {
     "translation": "Redo",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        41
-      ]
-    ],
     "extractedComments": []
   },
   "button-redo__title": {
     "translation": "Reapply the undone action [alt-shift-y].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        44
-      ]
-    ],
     "extractedComments": []
   },
   "button-remove-record__label": {
     "translation": "Discard",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        53
-      ]
-    ],
     "extractedComments": []
   },
   "button-remove-record__title": {
     "translation": "Remove selected record(s) [alt-shift-delete].",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        56
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file-as__label": {
     "translation": "Save As",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        59
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file-as__title": {
     "translation": "Open save dialog.",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        62
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file__label": {
     "translation": "Save",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        52
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file__title": {
     "translation": "Download file [alt-shift-s].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        55
-      ]
-    ],
     "extractedComments": []
   },
   "button-toggle-menu__label": {
     "translation": "Menu",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        47
-      ]
-    ],
     "extractedComments": []
   },
   "button-toggle-menu__title": {
     "translation": "Toggle menu.",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        42
-      ]
-    ],
     "extractedComments": []
   },
   "button-undo__label": {
     "translation": "Undo",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        34
-      ]
-    ],
     "extractedComments": []
   },
   "button-undo__title": {
     "translation": "Restore the previous state [alt-shift-z].",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        37
-      ]
-    ],
     "extractedComments": []
   },
   "title-with-{version}": {
     "translation": "Perfect Memory v{version}",
-    "origin": [
-      [
-        "src/index.tsx",
-        28
-      ]
-    ],
     "extractedComments": []
   }
 }

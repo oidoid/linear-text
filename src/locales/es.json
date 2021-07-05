@@ -1,212 +1,86 @@
 {
   "button-add-record__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        62
-      ]
-    ],
     "extractedComments": []
   },
   "button-add-record__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        65
-      ]
-    ],
     "extractedComments": []
   },
   "button-help__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        88
-      ]
-    ],
     "extractedComments": []
   },
   "button-help__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        91
-      ]
-    ],
     "extractedComments": []
   },
   "button-load-file__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        70
-      ]
-    ],
     "extractedComments": []
   },
   "button-load-file__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        73
-      ]
-    ],
     "extractedComments": []
   },
   "button-new-file__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        77
-      ]
-    ],
     "extractedComments": []
   },
   "button-new-file__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        80
-      ]
-    ],
     "extractedComments": []
   },
   "button-redo__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        41
-      ]
-    ],
     "extractedComments": []
   },
   "button-redo__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        44
-      ]
-    ],
     "extractedComments": []
   },
   "button-remove-record__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        53
-      ]
-    ],
     "extractedComments": []
   },
   "button-remove-record__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        56
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file-as__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        59
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file-as__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        62
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        52
-      ]
-    ],
     "extractedComments": []
   },
   "button-save-file__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        55
-      ]
-    ],
     "extractedComments": []
   },
   "button-toggle-menu__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        47
-      ]
-    ],
     "extractedComments": []
   },
   "button-toggle-menu__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/navigation/navigation.tsx",
-        42
-      ]
-    ],
     "extractedComments": []
   },
   "button-undo__label": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        34
-      ]
-    ],
     "extractedComments": []
   },
   "button-undo__title": {
     "translation": "",
-    "origin": [
-      [
-        "src/components/menu/menu.tsx",
-        37
-      ]
-    ],
     "extractedComments": []
   },
   "title-with-{version}": {
     "translation": "",
-    "origin": [
-      [
-        "src/index.tsx",
-        28
-      ]
-    ],
     "extractedComments": []
   }
 }
