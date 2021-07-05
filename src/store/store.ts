@@ -1,11 +1,7 @@
 import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit'
-import counterReducer from './counter/counter-slice'
+import recordsReducer from './records/records-slice'
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer
-  }
-})
+export const store = configureStore({reducer: {records: recordsReducer}})
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

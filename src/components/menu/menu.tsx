@@ -5,8 +5,8 @@ import {
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
-  selectCount
-} from '../../store/counter/counter-slice'
+  selectRecords
+} from '../../store/records/records-slice'
 import {IconButton} from '../icon-button/icon-button'
 import {ListItem} from '../list-item/list-item'
 import {t} from '@lingui/macro'
@@ -35,10 +35,10 @@ export function MenuCard() {
 }
 
 export function Menu() {
-  const count = useAppSelector(selectCount)
+  const records = useAppSelector(selectRecords)
   const dispatch = useAppDispatch()
 
-  useEffect(() => console.log(count), [count])
+  useEffect(() => console.log(records), [records])
 
   return (
     <UnorderedList>
