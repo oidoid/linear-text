@@ -1,14 +1,11 @@
-# Publish Perfect Memory v1.0.0
+# Publish Perfect Memory v1.0.0: Notes and Foundations
 
-Add drop-down menu, new + row record thing, and trash row / thing buttons.
-Add drop-down menu with open / new / save file, undo / redo, and help buttons.
 Add error card.
-Add locale picker.
 Add CSV import with tests.
 Add ungrouped export to CSV with tests.
-Add CSV import/export heuristics and outstanding defaults and some meta state information for tracking file mode.
+Add CSV import/export heuristics and outstanding defaults (.tab extension, tabs) and some meta state information for tracking file mode.
 Add file board.
-Add note thing.
+Add note thing / record.
 Add thing dragging support.
 Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 
@@ -20,8 +17,8 @@ Prompt to save unsaved work.
 
 Decide how to do grouping and reordering on the fly and at export time.
 Add DOM reordering and grouping so tab works sort of sensibly.
-Press enter to create card, tab to go to next, and keyboard shortcuts.
-Add lasso group select.
+Press enter to create card below current card or default location and focus it, tab to go to next card, escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
+Add lasso group select by clicking an empty space and dragging.
 
 Add arrange support for grid and sorting/arrangement/line-up columnar support.
 Load unstructured files as grid arrangements.
@@ -29,14 +26,17 @@ Decide on default position on enter or new button.
 Copy lessons from other projects and references.
 Revise button styles to my old UI styles.
 Finalize name and thing / row / record terminology.
-Customize button icons.
-Add icon and update index.html and manifest.
+Finalize button icons.
+Add icon/favicon and update index.html and manifest.
 Add modified state text and icon badge to title bar.
 Validate HTML.
+Add help screen.
 Document, add help, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
 Update NPM and index.html description and keywords.
 Polish and test. Also test mobile support.
+Move to oidoid folder.
 Create website.
 Publish source code.
 Create git.io link.
 Publish v1.0.0.
+

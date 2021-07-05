@@ -1,5 +1,6 @@
-# Publish Perfect Memory v1.1.0
+# Publish Perfect Memory v1.1.0: Images and Refinements
 
+Add locale picker.
 Combine new row thing with row thing selector widget
 Add mini-Markdown support: unordered list items, h1, h2, ...?
 Add Electron builds.
