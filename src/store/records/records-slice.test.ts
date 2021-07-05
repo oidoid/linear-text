@@ -1,32 +1,15 @@
-import recordsReducer, {
-  RecordsState,
-  increment,
-  decrement,
-  incrementByAmount
-} from './records-slice'
+import recordsReducer, {addRecord, RecordsState} from './records-slice'
 
-const initialState: RecordsState = {
-  value: 3,
-  status: 'idle'
-}
-test('should handle initial state', () => {
-  expect(recordsReducer(undefined, {type: 'unknown'})).toEqual({
-    value: 0,
+const initialState: RecordsState = Object.freeze({records: [], status: 'idle'})
+
+test('an invalid action produces the initial state', () => {
+  expect(recordsReducer(undefined, {type: 'invalid'})).toEqual({
+    records: [],
     status: 'idle'
   })
 })
 
-test('should handle increment', () => {
-  const actual = recordsReducer(initialState, increment())
-  expect(actual.value).toEqual(4)
-})
-
-test('should handle decrement', () => {
-  const actual = recordsReducer(initialState, decrement())
-  expect(actual.value).toEqual(2)
-})
-
-test('should handle incrementByAmount', () => {
-  const actual = recordsReducer(initialState, incrementByAmount(2))
-  expect(actual.value).toEqual(5)
+test('addRecord() stores a record', () => {
+  const actual = recordsReducer(initialState, addRecord('record'))
+  expect(actual.records).toEqual(['record'])
 })

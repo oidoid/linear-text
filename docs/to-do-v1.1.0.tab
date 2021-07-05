@@ -3,6 +3,7 @@
 Consider CSS Modules.
 Consider structuring by feature more. E.g., feature/counter/* instead of components/counter and reducers/counter.
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
+Consider grid for menu since we probably shouldn't show save for Firefox.
 Add locale picker.
 Combine new row thing with row thing selector widget
 Add mini-Markdown support: unordered list items, h1, h2, ...?

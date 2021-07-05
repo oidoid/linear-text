@@ -44,6 +44,7 @@
     "@types/react": "17.0.13",
     "@types/react-dom": "17.0.8",
     "@types/react-redux": "7.1.16",
+    "browser-fs-access": "0.18.0",
     "pre-commit": "1.2.2",
     "prettier": "2.3.2",
     "react": "17.0.2",
@@ -52,5 +53,10 @@
     "react-scripts": "4.0.3",
     "typescript": "4.4.0-beta",
     "web-vitals": "2.1.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!browser-fs-access)"
+    ]
   }
 }
