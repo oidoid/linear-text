@@ -340,6 +340,53 @@ exports[`matches snapshot 1`] = `
     >
       Learn React
     </a>
+    <div>
+      <div
+        class="row"
+      >
+        <button
+          aria-label="Decrement value"
+          class="button"
+        >
+          -
+        </button>
+        <span
+          class="value"
+        >
+          0
+        </span>
+        <button
+          aria-label="Increment value"
+          class="button"
+        >
+          +
+        </button>
+      </div>
+      <div
+        class="row"
+      >
+        <input
+          aria-label="Set increment amount"
+          class="textbox"
+          value="2"
+        />
+        <button
+          class="button"
+        >
+          Add Amount
+        </button>
+        <button
+          class="asyncButton"
+        >
+          Add Async
+        </button>
+        <button
+          class="button"
+        >
+          Add If Odd
+        </button>
+      </div>
+    </div>
   </main>
 </div>
 `;
