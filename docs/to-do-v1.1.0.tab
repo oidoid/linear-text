@@ -1,5 +1,6 @@
 # Publish Perfect Memory v1.1.0: Images and Refinements
 
+Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
 Add locale picker.
 Combine new row thing with row thing selector widget
 Add mini-Markdown support: unordered list items, h1, h2, ...?

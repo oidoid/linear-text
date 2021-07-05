@@ -37,6 +37,6 @@ Polish and test. Also test mobile support.
 Move to oidoid folder.
 Create website.
 Publish source code.
-Create git.io link.
+Create git.io link, reference in readme, and revise package.json to use https://perfectmem.com.
 Publish v1.0.0.
 
