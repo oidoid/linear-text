@@ -1,22 +1,13 @@
-# Publish Perfect Memory v1.0.0: Notes and Foundations
+# Publish Perfect Memory v1.0.0: Dragging and Grouping
 
-Add undo / redo system and data model store.
-Add error card.
-Add CSV import with tests.
-Add ungrouped export to CSV with tests.
-Add CSV import/export heuristics and outstanding defaults (.tab extension, tabs) and some meta state information for tracking file mode.
-Add file board.
-Add note thing / record.
 Add thing dragging support.
-Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 
-Add trashcan dragging and focus support.
+Add error card.
 Add scroll with card dragging behavior or use fixed board size.
 Add auto-backup with undo history.
 Prompt to save unsaved work.
 
 Decide how to do grouping and reordering on the fly and at export time.
-Add DOM reordering and grouping so tab works sort of sensibly.
 Press enter to create card below current card or default location and focus it, tab to go to next card, escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
 Add lasso group select by clicking an empty space and dragging.
 
