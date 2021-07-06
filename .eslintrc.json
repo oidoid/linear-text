@@ -3,6 +3,8 @@
   "rules": {
     // Access keys may be inconsistent but a better cross-platform solution will
     // take time.
-    "jsx-a11y/no-access-key": "off"
+    "jsx-a11y/no-access-key": "off",
+    // Types and functions can share the same name.
+    "@typescript-eslint/no-redeclare": "off"
   }
 }

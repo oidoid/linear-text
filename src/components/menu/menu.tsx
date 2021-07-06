@@ -2,7 +2,6 @@ import {BubbleCard} from '../bubble-card/bubble-card'
 import {
   addRecord,
   loadRecordsAsync,
-  incrementIfOdd,
   selectRecords
 } from '../../store/records/records-slice'
 import {IconButton} from '../icon-button/icon-button'
@@ -23,6 +22,7 @@ import menuIconUndo from './menu-icon-undo.svg'
 
 import './menu.css'
 import type {FileWithHandle} from 'browser-fs-access'
+import {TabRecord} from '../../tab-record'
 
 export function MenuCard() {
   return (
@@ -64,7 +64,7 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-save-file__label`}
-            onClick={() => dispatch(addRecord('3'))}
+            onClick={() => dispatch(addRecord(TabRecord('foo')))}
             src={menuIconSaveFile}
             title={t`button-save-file__title`}
           />
@@ -80,7 +80,7 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-load-file__label`}
-            onClick={() => dispatch(addRecord('5'))}
+            onClick={() => dispatch(addRecord(TabRecord('bar')))}
             src={menuIconLoadFile}
             title={t`button-load-file__title`}
           />
@@ -100,7 +100,7 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-help__label`}
-            onClick={() => dispatch(incrementIfOdd('7'))}
+            onClick={() => {}}
             src={menuIconHelp}
             title={t`button-help__title`}
           />

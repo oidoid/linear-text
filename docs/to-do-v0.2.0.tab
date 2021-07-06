@@ -1,5 +1,6 @@
 # Publish Perfect Memory v0.2.0: Notes and Foundations
 
+Add return types.
 Add undo / redo system and data model store.
 Add CSV import with tests for open.
 Add ungrouped export to CSV with tests for save and save as.

@@ -1,5 +1,7 @@
 import type {FileWithHandle} from 'browser-fs-access'
+import {TabRecord} from '../tab-record'
 
-export function parseFile(file: FileWithHandle) {
-  return file.text()
+export async function parseFile(file: FileWithHandle): Promise<TabRecord[]> {
+  const text = await file.text()
+  return [TabRecord(text)]
 }

@@ -9,18 +9,18 @@ import {t} from '@lingui/macro'
 import {I18nProvider} from '@lingui/react'
 import {loadLocales} from './locale-loader'
 import {store} from './store/store'
-import {Provider} from 'react-redux'
+import {Provider as StoreProvider} from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 
 loadLocales()
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <StoreProvider store={store}>
       <I18nProvider i18n={i18n}>
         <App />
       </I18nProvider>
-    </Provider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
