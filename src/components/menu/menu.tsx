@@ -1,8 +1,9 @@
 import {BubbleCard} from '../bubble-card/bubble-card'
 import {
-  addRecord,
   loadRecordsAsync,
-  selectRecords
+  newFile,
+  selectRecords,
+  setFocus
 } from '../../store/records/records-slice'
 import {IconButton} from '../icon-button/icon-button'
 import {ListItem} from '../list-item/list-item'
@@ -22,7 +23,6 @@ import menuIconUndo from './menu-icon-undo.svg'
 
 import './menu.css'
 import type {FileWithHandle} from 'browser-fs-access'
-import {TabRecord} from '../../tab-record'
 
 export function MenuCard() {
   return (
@@ -48,13 +48,17 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-undo__label`}
-            onClick={() => {}}
+            onClick={() => {
+              throw Error('Undo unimplemented.')
+            }}
             src={menuIconUndo}
             title={t`button-undo__title`}
           />
           <IconButton
             label={t`button-redo__label`}
-            onClick={() => {}}
+            onClick={() => {
+              throw Error('Redo unimplemented.')
+            }}
             src={menuIconRedo}
             title={t`button-redo__title`}
           />
@@ -64,13 +68,17 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-save-file__label`}
-            onClick={() => dispatch(addRecord(TabRecord('foo')))}
+            onClick={() => {
+              throw Error('Save unimplemented.')
+            }}
             src={menuIconSaveFile}
             title={t`button-save-file__title`}
           />
           <IconButton
             label={t`button-save-file-as__label`}
-            onClick={() => {}}
+            onClick={() => {
+              throw Error('Save as unimplemented.')
+            }}
             src={menuIconSaveFileAs}
             title={t`button-save-file-as__title`}
           />
@@ -80,17 +88,17 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-load-file__label`}
-            onClick={() => dispatch(addRecord(TabRecord('bar')))}
-            src={menuIconLoadFile}
-            title={t`button-load-file__title`}
-          />
-          <IconButton
-            label={t`button-new-file__label`}
             onClick={async () => {
               const result = await openFile('Pick records file')
               setFile(result)
               dispatch(loadRecordsAsync(result))
             }}
+            src={menuIconLoadFile}
+            title={t`button-load-file__title`}
+          />
+          <IconButton
+            label={t`button-new-file__label`}
+            onClick={() => dispatch(newFile())}
             src={menuIconNewFile}
             title={t`button-new-file__title`}
           />
@@ -100,7 +108,12 @@ export function Menu() {
         <div className='menu__button-group'>
           <IconButton
             label={t`button-help__label`}
-            onClick={() => {}}
+            onClick={() => {
+              if (records.records.length === 0) return
+              const index = Math.trunc(Math.random() * records.records.length)
+              dispatch(setFocus(records.records[index]))
+              // throw Error('Help unimplemented.')
+            }}
             src={menuIconHelp}
             title={t`button-help__title`}
           />

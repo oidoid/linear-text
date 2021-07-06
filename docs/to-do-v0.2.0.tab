@@ -7,6 +7,6 @@ Add ungrouped export to CSV with tests for save and save as.
 Add CSV import/export heuristics and outstanding defaults (.tab extension, tabs) and some meta state information for tracking file mode.
 Add file board with some kind of default grid or column ordering.
 Add note thing / record.
-Add add note, new file, and discard note support.
+Add add note and new file support.
 Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 Add DOM reordering and grouping so tab works sort of sensibly.

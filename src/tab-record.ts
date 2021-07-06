@@ -1,5 +1,7 @@
 /** A table row and its application state modeling. */
 export type TabRecord = {
+  id: number
+
   /** The modeled text to be shown, possibly mini-Markdown or empty. */
   text: string | undefined
 
@@ -37,13 +39,17 @@ export type TabRow = (string | undefined)[]
  */
 export type TabHeader = Record<TabColumn, number>
 
+let uid: number = 0
+
 export function TabRecord(text?: string | undefined): TabRecord {
-  return {text, invalidated: true, row: []}
+  uid++
+  return {id: uid, text, invalidated: true, row: []}
 }
 
 export namespace TabRecord {
   export function fromRow(row: TabRow, header: TabHeader): TabRecord {
-    return {text: row[header.text], invalidated: false, row}
+    uid++
+    return {id: uid, text: row[header.text], invalidated: false, row}
   }
 
   export function setText(record: TabRecord, text: string): void {
