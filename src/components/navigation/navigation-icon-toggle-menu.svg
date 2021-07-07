@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="22.295263"
-     inkscape:cy="12.993086"
+     inkscape:zoom="19.103756"
+     inkscape:cx="5.2280535"
+     inkscape:cy="16.47324"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -60,15 +60,15 @@
      transform="translate(-4.2333334,-2.6458333)">
     <path
        style="fill:none;stroke:#00000f;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 4.8947917,3.8364583 h 3.96875"
+       d="m 4.6302082,3.4395831 h 4.497917"
        id="path860" />
     <path
        style="fill:none;stroke:#00000f;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 4.8947918,5.423958 H 8.8635416"
+       d="M 4.6302083,5.2916664 H 9.1281251"
        id="path860-4" />
     <path
        style="fill:none;stroke:#00000f;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 4.8947917,7.0114578 h 3.96875"
+       d="m 4.6302082,7.2760415 h 4.497917"
        id="path860-7" />
   </g>
 </svg>
