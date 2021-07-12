@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="icon-menu-save-file-as.svg">
+   sodipodi:docname="menu-icon-save-file-as.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -66,9 +66,9 @@
        x="4.895"
        y="2.7783332" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 5.8686143,4.4312544 6.2514136,5.0942822 6.6342129,5.7573101 6.098568,6.0665649 7.5802314,6.5711833 7.8840507,5.035716 7.3484058,5.3449707 6.9656065,4.6819427 6.5828072,4.0189149 Z"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.7573254,4.3153111 6.5920169,5.5073353 6.0501728,5.8867386 7.6759026,6.3633735 7.7840447,4.6726685 7.2422097,5.0520654 6.4075364,3.8600284 Z"
        id="path834"
-       sodipodi:nodetypes="cccccccccc" />
+       sodipodi:nodetypes="cccccccc" />
   </g>
 </svg>

@@ -14,14 +14,14 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="icon-menu-add-record.svg">
+   sodipodi:docname="navigation-icon-add-record.svg">
   <defs
      id="defs2">
     <pattern
        inkscape:collect="always"
        xlink:href="#Strips1_10"
        id="pattern3158"
-       patternTransform="matrix(0.67933565,0,0,0.67933568,4.331658,2.744158)" />
+       patternTransform="matrix(0.6623521,0,0,0.66238705,4.4603298,2.8726535)" />
     <pattern
        inkscape:collect="always"
        patternUnits="userSpaceOnUse"
@@ -47,9 +47,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="11.170503"
-     inkscape:cy="15.012054"
+     inkscape:zoom="58.921971"
+     inkscape:cx="16.077884"
+     inkscape:cy="16.122099"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -91,8 +91,8 @@
        y="2.7781248" />
     <path
        id="rect900-1"
-       style="opacity:1;fill:url(#pattern3158);fill-opacity:1;stroke:#404040;stroke-width:0.26458333;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 7.7623033,7.802943 c 0.542713,-0.5427132 1.0854262,-1.0854265 1.6281395,-1.6281398 -0.5427133,0 -1.0854265,0 -1.6281395,0 0,0.5427133 0,1.0854266 0,1.6281398 z" />
+       style="opacity:1;fill:url(#pattern3158);fill-opacity:1;stroke:#404040;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 7.8052082,7.8052277 c 0.529145,-0.5291731 1.0582903,-1.0583464 1.5874357,-1.5875196 -0.5291454,0 -1.0582907,0 -1.5874357,0 0,0.5291732 0,1.0583465 0,1.5875196 z" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 6.0854311,5.2917099 1.5874712,-8.65e-5"

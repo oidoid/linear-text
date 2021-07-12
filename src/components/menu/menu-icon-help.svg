@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="31.678384"
-     inkscape:cx="6.8776282"
-     inkscape:cy="13.903676"
+     inkscape:cx="7.2750658"
+     inkscape:cy="13.805602"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -64,21 +64,21 @@
        d="M 5.7707277,3.6451111 C 6.6793206,3.0334511 7.9116413,3.2733883 8.5243817,4.1812573 9.1371221,5.0891263 8.8986605,6.3217436 7.9915327,6.9355744 7.0844049,7.5494051 5.8515142,7.3124153 5.2366047,6.4060141 4.6216952,5.4996129 4.8572088,4.2664288 5.7628663,3.6504307 Z"
        sodipodi:nodetypes="cssscc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 6.8791668,6.1000584 V 4.9634219"
+       style="fill:none;stroke:#000000;stroke-width:0.330729;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 6.8791667,6.1967926 V 5.0601561"
        id="path835"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264582;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.330729;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="path837"
        sodipodi:type="arc"
        sodipodi:cx="6.8791666"
-       sodipodi:cy="4.4832749"
-       sodipodi:rx="0.13229166"
-       sodipodi:ry="0.13229167"
+       sodipodi:cy="4.3986979"
+       sodipodi:rx="0.16536458"
+       sodipodi:ry="0.16536458"
        sodipodi:start="4.1198846"
        sodipodi:end="4.1151024"
        sodipodi:arc-type="slice"
-       d="m 6.8052896,4.3735331 a 0.13229166,0.13229167 0 0 1 0.1835305,0.035734 0.13229166,0.13229167 0 0 1 -0.035514,0.183573 0.13229166,0.13229167 0 0 1 -0.1836154,-0.035295 0.13229166,0.13229167 0 0 1 0.035075,-0.1836575 l 0.074401,0.1093873 z" />
+       d="m 6.7868204,4.2615205 a 0.16536458,0.16536458 0 0 1 0.229413,0.044667 0.16536458,0.16536458 0 0 1 -0.044393,0.2294663 0.16536458,0.16536458 0 0 1 -0.2295192,-0.044118 0.16536458,0.16536458 0 0 1 0.043844,-0.2295718 l 0.093001,0.1367342 z" />
   </g>
 </svg>
