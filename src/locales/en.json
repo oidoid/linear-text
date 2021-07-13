@@ -16,7 +16,7 @@
     "extractedComments": []
   },
   "button-load-file__label": {
-    "translation": "Open",
+    "translation": "Open…",
     "extractedComments": []
   },
   "button-load-file__title": {
@@ -36,7 +36,7 @@
     "extractedComments": []
   },
   "button-redo__title": {
-    "translation": "Reapply the undone action [alt-shift-y].",
+    "translation": "Reverse an undo [alt-shift-y].",
     "extractedComments": []
   },
   "button-remove-record__label": {
@@ -48,7 +48,7 @@
     "extractedComments": []
   },
   "button-save-file-as__label": {
-    "translation": "Save As",
+    "translation": "Save As…",
     "extractedComments": []
   },
   "button-save-file-as__title": {
@@ -68,7 +68,7 @@
     "extractedComments": []
   },
   "button-toggle-menu__title": {
-    "translation": "Toggle menu.",
+    "translation": "Toggle overflow menu.",
     "extractedComments": []
   },
   "button-undo__label": {

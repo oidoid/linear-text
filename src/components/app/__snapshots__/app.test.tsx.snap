@@ -31,7 +31,7 @@ exports[`matches snapshot 1`] = `
                 >
                   <summary
                     class="disclosure__summary buttonish "
-                    data-title="Toggle menu."
+                    data-title="Toggle overflow menu."
                     role="button"
                   >
                     <img
@@ -92,7 +92,7 @@ exports[`matches snapshot 1`] = `
                                 <button
                                   accesskey=""
                                   class="buttonish "
-                                  data-title="Reapply the undone action [alt-shift-y]."
+                                  data-title="Reverse an undo [alt-shift-y]."
                                 >
                                   <img
                                     alt=""
@@ -163,7 +163,7 @@ exports[`matches snapshot 1`] = `
                                 <label
                                   class="icon-buttonish__label"
                                 >
-                                  Save As
+                                  Save As…
                                 </label>
                               </div>
                             </div>
@@ -195,7 +195,7 @@ exports[`matches snapshot 1`] = `
                                 <label
                                   class="icon-buttonish__label"
                                 >
-                                  Open
+                                  Open…
                                 </label>
                               </div>
                               <div
