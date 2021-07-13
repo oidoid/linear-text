@@ -1,12 +1,12 @@
-.menu-card {
+.toolbar-card {
   --card-background-color: var(--color-mid-grey);
-  /* Fix the menu a little below the menu toggle label and remove from layout
-     flow. */
+  /* Fix the toolbar a little below the toolbar toggle label and remove from
+     layout flow. */
   position: fixed;
   margin-top: 9.5px;
 }
 
-.menu__button-group {
+.toolbar__button-group {
   /* Arrange horizontally. */
   display: flex;
 }

@@ -63,11 +63,11 @@
     "translation": "Download file [alt-shift-s].",
     "extractedComments": []
   },
-  "button-toggle-menu__label": {
+  "button-toggle-toolbar__label": {
     "translation": "Menu",
     "extractedComments": []
   },
-  "button-toggle-menu__title": {
+  "button-toggle-toolbar__title": {
     "translation": "Toggle overflow menu.",
     "extractedComments": []
   },

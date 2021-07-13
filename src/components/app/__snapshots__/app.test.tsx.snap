@@ -40,12 +40,12 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="navigation-icon-toggle-menu.svg"
+                      src="navigation-icon-toggle-toolbar.svg"
                       width="20"
                     />
                   </summary>
                   <div
-                    class="menu-card"
+                    class="toolbar-card"
                   >
                     <div
                       class="bubble-card"
@@ -60,7 +60,7 @@ exports[`matches snapshot 1`] = `
                             class="list-item"
                           >
                             <div
-                              class="menu__button-group"
+                              class="toolbar__button-group"
                             >
                               <div
                                 class="icon-button"
@@ -76,7 +76,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-undo.svg"
+                                    src="toolbar-icon-undo.svg"
                                     width="20"
                                   />
                                 </button>
@@ -100,7 +100,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-redo.svg"
+                                    src="toolbar-icon-redo.svg"
                                     width="20"
                                   />
                                 </button>
@@ -116,7 +116,7 @@ exports[`matches snapshot 1`] = `
                             class="list-item"
                           >
                             <div
-                              class="menu__button-group"
+                              class="toolbar__button-group"
                             >
                               <div
                                 class="icon-button"
@@ -132,7 +132,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-save-file.svg"
+                                    src="toolbar-icon-save-file.svg"
                                     width="20"
                                   />
                                 </button>
@@ -156,7 +156,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-save-file-as.svg"
+                                    src="toolbar-icon-save-file-as.svg"
                                     width="20"
                                   />
                                 </button>
@@ -172,7 +172,7 @@ exports[`matches snapshot 1`] = `
                             class="list-item"
                           >
                             <div
-                              class="menu__button-group"
+                              class="toolbar__button-group"
                             >
                               <div
                                 class="icon-button"
@@ -188,7 +188,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-load-file.svg"
+                                    src="toolbar-icon-load-file.svg"
                                     width="20"
                                   />
                                 </button>
@@ -212,7 +212,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-new-file.svg"
+                                    src="toolbar-icon-new-file.svg"
                                     width="20"
                                   />
                                 </button>
@@ -228,7 +228,7 @@ exports[`matches snapshot 1`] = `
                             class="list-item"
                           >
                             <div
-                              class="menu__button-group"
+                              class="toolbar__button-group"
                             >
                               <div
                                 class="icon-button"
@@ -244,7 +244,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="menu-icon-help.svg"
+                                    src="toolbar-icon-help.svg"
                                     width="20"
                                   />
                                 </button>
