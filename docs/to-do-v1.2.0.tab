@@ -10,6 +10,9 @@ Review robots.txt.
 Verify browserstest is running.
 Consider reworking Toggle to use an input.
 Add undo/redo action labeling.
+Add CSV comment support.
+Use header + CellType inference to fill in missing columns.
+Add date CellType support.
 
 ## Reasons to Eject
 - setupTests.ts naming.
