@@ -3,12 +3,11 @@
   --color-light-grey: #f2f5f5;
   --color-mid-grey: #f0f2f0;
   --color-grey: #efefef;
-  --color-dark-grey: #ddd;
-  --color-darkest-grey: #333;
+  --color-dark-grey: #ccc;
+  --color-darkest-grey: #111;
   --color-white: #fff;
   --shade-shadow: rgba(0, 0, 0, 0.1);
 
-  --buttonish-size: calc(var(--min-press-size) + var(--button-margin) * 2);
   --card-border-width: 0.5px;
   --card-padding: 2px;
   --card-margin: 4px;
