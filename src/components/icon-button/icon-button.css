@@ -12,8 +12,10 @@
 
   /* Labels appear under buttons with fixed-width and centered content. */
   display: block;
-  width: var(--buttonish-size);
   text-align: center;
+
+  /* Allow a little more room for text. */
+  min-width: calc(var(--min-press-size) + 4px);
 
   /* Don't allow content highlights. */
   user-select: none;
