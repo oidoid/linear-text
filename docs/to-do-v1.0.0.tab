@@ -11,6 +11,8 @@ Decide how to do grouping and reordering on the fly and at export time.
 Press enter to create card below current card or default location and focus it, tab to go to next card, escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
 Add lasso group select by clicking an empty space and dragging.
 
+Rename store slice thingy.
+Add return types.
 Add arrange support for grid and sorting/arrangement/line-up columnar support.
 Load unstructured files as grid arrangements.
 Decide on default position on enter or new button.

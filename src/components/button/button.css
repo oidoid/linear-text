@@ -46,6 +46,9 @@
   /* Don't allow content highlights. */
   user-select: none;
 
+  /* If content is an image, disable dragging. */
+  -webkit-user-drag: none;
+
   /* Center the content. */
   text-align: center;
 
