@@ -10,7 +10,7 @@ import {IconButton} from '../icon-button/icon-button'
 import {ListItem} from '../list-item/list-item'
 import {MenuCard} from '../menu/menu'
 import {t} from '@lingui/macro'
-import {TabRecord} from '../../tab-record'
+import {TabRecord} from '../../tab/tab-record'
 import {Trans} from '@lingui/react'
 import {UnorderedList} from '../unordered-list/unordered-list'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
@@ -60,8 +60,8 @@ function NavigationList() {
           <IconButton
             label={t`button-remove-record__label`}
             onClick={() => {
-              if (records.focus == null) return
-              dispatch(removeRecord(records.focus))
+              if (records.focusedRecordIndex == null) return
+              dispatch(removeRecord(records.focusedRecordIndex))
             }}
             src={navigationIconRemoveRecord}
             title={t`button-remove-record__title`}

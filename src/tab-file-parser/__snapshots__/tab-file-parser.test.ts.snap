@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integration games.test.tab 1`] = `
+Object {
+  "meta": Object {
+    "columnMap": Object {
+      "text": 0,
+    },
+    "delimiter": "	",
+    "header": Array [
+      "text",
+      "year",
+      "wiki",
+    ],
+    "newline": "
+",
+  },
+  "records": Array [
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Nintendo Entertainment System",
+        "1985",
+        "https://wikipedia.org/wiki/Nintendo_Entertainment_System",
+      ],
+      "text": "Nintendo Entertainment System",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Mega Man 6",
+        "1994",
+        "https://wikipedia.org/wiki/Mega_Man_6",
+      ],
+      "text": "- Mega Man 6",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Solar Jetman: Hunt for the Golden Warpship",
+        "1990",
+        "https://wikipedia.org/wiki/Solar_Jetman",
+      ],
+      "text": "- Solar Jetman: Hunt for the Golden Warpship",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Super Mario Bros. 3",
+        "1989",
+        "https://wikipedia.org/wiki/Super_Mario_Bros._3",
+      ],
+      "text": "- Super Mario Bros. 3",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Teenage Mutant Ninja Turtles III: The Manhattan Project",
+        "1992",
+        "https://wikipedia.org/wiki/Teenage_Mutant_Ninja_Turtles_III:_The_Manhattan_Project",
+      ],
+      "text": "- Teenage Mutant Ninja Turtles III: The Manhattan Project",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- The Guardian Legend",
+        "1989",
+        "https://wikipedia.org/wiki/The_Guardian_Legend",
+      ],
+      "text": "- The Guardian Legend",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "PC",
+      ],
+      "text": "PC",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Red Dead Redemption 2",
+        "2018",
+        "https://wikipedia.org/wiki/Red_Dead_Redemption_2",
+      ],
+      "text": "- Red Dead Redemption 2",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "PlayStation 3",
+        "2006",
+        "https://wikipedia.org/wiki/PlayStation_3",
+      ],
+      "text": "PlayStation 3",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Ico (The Ico & Shadow of the Colossus Collection)",
+        "2001",
+        "https://wikipedia.org/wiki/The_Ico_%26_Shadow_of_the_Colossus_Collection",
+      ],
+      "text": "- Ico (The Ico & Shadow of the Colossus Collection)",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Metal Gear Solid 2: Sons of Liberty (Metal Gear Solid HD Collection)",
+        "2001",
+        "https://wikipedia.org/wiki/Metal_Gear_Solid_HD_Collection",
+      ],
+      "text": "- Metal Gear Solid 2: Sons of Liberty (Metal Gear Solid HD Collection)",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- Shadow of the Colossus (The Ico & Shadow of the Colossus Collection)",
+        "2005",
+        "https://wikipedia.org/wiki/The_Ico_%26_Shadow_of_the_Colossus_Collection",
+      ],
+      "text": "- Shadow of the Colossus (The Ico & Shadow of the Colossus Collection)",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "PlayStation 4",
+        "2013",
+        "https://wikipedia.org/wiki/PlayStation_4",
+      ],
+      "text": "PlayStation 4",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- The Last of Us Remastered",
+        "2013",
+        "https://wikipedia.org/wiki/The_Last_of_Us#The_Last_of_Us_Remastered",
+      ],
+      "text": "- The Last of Us Remastered",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Super Nintendo",
+        "1991",
+        "https://wikipedia.org/wiki/Super_Nintendo_Entertainment_System",
+      ],
+      "text": "Super Nintendo",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- EarthBound",
+        "1995",
+        "https://wikipedia.org/wiki/EarthBound",
+      ],
+      "text": "- EarthBound",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Switch",
+      ],
+      "text": "Switch",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "- The Legend of Zelda: Breath of the Wild",
+        "2017",
+        "https://wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild",
+      ],
+      "text": "- The Legend of Zelda: Breath of the Wild",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+  ],
+}
+`;
+
+exports[`integration groceries.test.tab 1`] = `
+Object {
+  "meta": Object {
+    "columnMap": Object {
+      "text": 0,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
+  "records": Array [
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Produce",
+      ],
+      "text": "Produce",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "[] Cucumber",
+      ],
+      "text": "[] Cucumber",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Snacks",
+      ],
+      "text": "Snacks",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "[x] Pretzels",
+      ],
+      "text": "[x] Pretzels",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "Frozen",
+      ],
+      "text": "Frozen",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "[x] Ice Cream",
+      ],
+      "text": "[x] Ice Cream",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "[x] Pizza",
+      ],
+      "text": "[x] Pizza",
+    },
+    Object {
+      "invalidated": false,
+      "row": Array [
+        "",
+      ],
+      "text": "",
+    },
+  ],
+}
+`;

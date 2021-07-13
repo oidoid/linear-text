@@ -1,8 +1,12 @@
 /** A table row and its application state modeling. */
 export type TabRecord = {
-  id: number
+  /**
+   * Unique for the program's execution lifetime. Never serialized to row.
+   * Symbols are not used as they cannot be serialized for the store.
+   */
+  // readonly id: number
 
-  /** The modeled text to be shown, possibly mini-Markdown or empty. */
+  /** The normalized model text to be shown, possibly mini-Markdown or empty. */
   text: string | undefined
 
   /**
@@ -16,7 +20,7 @@ export type TabRecord = {
    * The model is flushed to the row only on save. Only row data is written to
    * disk.
    */
-  row: TabRow
+  readonly row: TabRow
 }
 
 /**
@@ -31,29 +35,34 @@ export type TabColumn = keyof TabRecord & 'text'
  *
  * This data may be unparseable or unexpected for a given column.
  */
-export type TabRow = (string | undefined)[]
+export type TabRow = TabCell[]
+export type TabCell = string
 
 /**
  * Model column to row index. A given row may have more or less columns than
- * the header or other rows.
+ * the header or other rows. The mapping may be sparse.
  */
-export type TabHeader = Record<TabColumn, number>
+export type TabColumnMap = Partial<Record<TabColumn, number | undefined>>
 
-let uid: number = 0
+// let uid: number = 0
 
 export function TabRecord(text?: string | undefined): TabRecord {
-  uid++
-  return {id: uid, text, invalidated: true, row: []}
+  // uid++
+  return {/* id: uid,*/ text, invalidated: true, row: []}
 }
 
-export namespace TabRecord {
-  export function fromRow(row: TabRow, header: TabHeader): TabRecord {
-    uid++
-    return {id: uid, text: row[header.text], invalidated: false, row}
-  }
+// new uninvalidated row
+TabRecord.fromRow = (row: TabRow, text: string | undefined): TabRecord => {
+  // uid++
+  return {/* id: uid, */ text, invalidated: false, row}
+}
 
-  export function setText(record: TabRecord, text: string): void {
-    record.text = text
-    record.invalidated = true
-  }
+TabRecord.setText = (record: TabRecord, text: string): void => {
+  record.text = text
+  record.invalidated = true
+}
+
+// "void"
+TabRecord.isSpacing = (record: TabRecord): boolean => {
+  return record.text == null || record.text.length === 0
 }

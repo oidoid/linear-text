@@ -1,6 +1,6 @@
 import {BubbleCard} from '../bubble-card/bubble-card'
 import {
-  loadRecordsAsync,
+  loadTabFileAsync,
   newFile,
   selectRecords,
   setFocus
@@ -91,7 +91,7 @@ export function Menu() {
             onClick={async () => {
               const result = await openFile('Pick records file')
               setFile(result)
-              dispatch(loadRecordsAsync(result))
+              dispatch(loadTabFileAsync(result))
             }}
             src={menuIconLoadFile}
             title={t`button-load-file__title`}
@@ -109,9 +109,11 @@ export function Menu() {
           <IconButton
             label={t`button-help__label`}
             onClick={() => {
-              if (records.records.length === 0) return
-              const index = Math.trunc(Math.random() * records.records.length)
-              dispatch(setFocus(records.records[index]))
+              if (records.tab.records.length === 0) return
+              const index = Math.trunc(
+                Math.random() * records.tab.records.length
+              )
+              dispatch(setFocus(index))
               // throw Error('Help unimplemented.')
             }}
             src={menuIconHelp}
