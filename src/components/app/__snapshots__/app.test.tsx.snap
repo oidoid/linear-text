@@ -9,16 +9,16 @@ exports[`matches snapshot 1`] = `
     class="app__header"
   >
     <div
-      class="navigation-card"
+      class="menu-card"
     >
       <div
         class="card"
       >
         <nav
-          class="navigation"
+          class="menu"
         >
           <div
-            class="navigation-list"
+            class="menu-list"
           >
             <ul
               class="ul ul--horizontal"
@@ -40,7 +40,7 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="navigation-icon-toggle-toolbar.svg"
+                      src="menu-icon-toggle-toolbar.svg"
                       width="20"
                     />
                   </summary>
@@ -284,7 +284,7 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="navigation-icon-remove-record.svg"
+                      src="menu-icon-remove-record.svg"
                       width="20"
                     />
                   </button>
@@ -312,7 +312,7 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="navigation-icon-add-record.svg"
+                      src="menu-icon-add-record.svg"
                       width="20"
                     />
                   </button>

@@ -15,39 +15,39 @@ import {Trans} from '@lingui/react'
 import {UnorderedList} from '../unordered-list/unordered-list'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 
-import navigationIconAddRecord from './navigation-icon-add-record.svg'
-import navigationIconRemoveRecord from './navigation-icon-remove-record.svg'
-import navigationIconToggleToolbar from './navigation-icon-toggle-toolbar.svg'
+import menuIconAddRecord from './menu-icon-add-record.svg'
+import menuIconRemoveRecord from './menu-icon-remove-record.svg'
+import menuIconToggleToolbar from './menu-icon-toggle-toolbar.svg'
 
-import './navigation.css'
+import './menu.css'
 
-export function NavigationCard() {
+export function MenuCard() {
   return (
-    <div className='navigation-card'>
+    <div className='menu-card'>
       <Card>
-        <Navigation />
+        <Menu />
       </Card>
     </div>
   )
 }
 
-function Navigation() {
+function Menu() {
   return (
-    <nav className='navigation'>
-      <NavigationList />
+    <nav className='menu'>
+      <MenuList />
     </nav>
   )
 }
 
-function NavigationList() {
+function MenuList() {
   const dispatch = useAppDispatch()
   const records = useAppSelector(selectRecords)
   return (
-    <div className='navigation-list'>
+    <div className='menu-list'>
       <UnorderedList horizontal>
         <ListItem>
           <Disclosure
-            summary={<Icon alt='' src={navigationIconToggleToolbar} />}
+            summary={<Icon alt='' src={menuIconToggleToolbar} />}
             title={t`button-toggle-toolbar__title`}
           >
             <ToolbarCard />
@@ -63,7 +63,7 @@ function NavigationList() {
               if (records.focusedRecordIndex == null) return
               dispatch(removeRecord(records.focusedRecordIndex))
             }}
-            src={navigationIconRemoveRecord}
+            src={menuIconRemoveRecord}
             title={t`button-remove-record__title`}
           />
         </ListItem>
@@ -71,7 +71,7 @@ function NavigationList() {
           <IconButton
             label={t`button-add-record__label`}
             onClick={() => dispatch(addRecord(TabRecord()))}
-            src={navigationIconAddRecord}
+            src={menuIconAddRecord}
             title={t`button-add-record__title`}
           />
         </ListItem>

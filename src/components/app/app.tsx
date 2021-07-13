@@ -1,4 +1,4 @@
-import {NavigationCard} from '../navigation/navigation'
+import {MenuCard} from '../menu/menu'
 
 import './app.css'
 
@@ -8,7 +8,7 @@ export function App({'data-testid': testID}: AppProps) {
   return (
     <div className='app' data-testid={testID}>
       <header className='app__header'>
-        <NavigationCard />
+        <MenuCard />
       </header>
       <main className='app__body'>
         <a
