@@ -27,21 +27,16 @@ test.each([
 })
 
 test('header padding is ignored and preserved', async () => {
-  const input = ' animal , text , color \n frog , ribbit , green '
+  const input = ' a , text , c \n 1 , 2 , 3 '
   const expected = {
     meta: {
-      header: [' animal ', ' text ', ' color '],
+      header: [' a ', ' text ', ' c '],
       columnMap: {text: 1},
       delimiter: ',',
       newline: '\n'
     },
     lines: [
-      {
-        id: 1,
-        text: ' ribbit ',
-        invalidated: false,
-        row: [' frog ', ' ribbit ', ' green ']
-      }
+      {id: 1, text: ' 2 ', invalidated: false, row: [' 1 ', ' 2 ', ' 3 ']}
     ]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
@@ -82,22 +77,15 @@ test('extra empty columns are ignored and preserved', async () => {
 })
 
 test('header capitalization is ignored and preserved', async () => {
-  const input = ' animal , Text , color \n frog , ribbit , green '
+  const input = 'a,Text,c\n1,2,3'
   const expected = {
     meta: {
-      header: [' animal ', ' Text ', ' color '],
+      header: ['a', 'Text', 'c'],
       columnMap: {text: 1},
       delimiter: ',',
       newline: '\n'
     },
-    lines: [
-      {
-        id: 1,
-        text: ' ribbit ',
-        invalidated: false,
-        row: [' frog ', ' ribbit ', ' green ']
-      }
-    ]
+    lines: [{id: 1, text: '2', invalidated: false, row: ['1', '2', '3']}]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
