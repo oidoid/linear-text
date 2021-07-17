@@ -327,15 +327,6 @@ exports[`matches snapshot 1`] = `
   </header>
   <main
     class="app__body"
-  >
-    <a
-      class="App-link"
-      href="https://reactjs.org"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      Learn React
-    </a>
-  </main>
+  />
 </div>
 `;

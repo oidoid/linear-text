@@ -13,18 +13,6 @@ beforeEach(() => {
   i18n.activate('en')
 })
 
-test('renders learn react link', () => {
-  render(
-    <Provider store={store}>
-      <I18nProvider i18n={i18n}>
-        <App />
-      </I18nProvider>
-    </Provider>
-  )
-  const linkElement = screen.getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
-})
-
 test('matches snapshot', () => {
   render(
     <Provider store={store}>
