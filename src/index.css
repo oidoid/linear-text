@@ -6,7 +6,7 @@
   --color-dark-grey: #ccc;
   --color-darkest-grey: #111;
   --color-white: #fff;
-  --shade-shadow: rgba(0, 0, 0, 0.1);
+  --shade-shadow: rgba(0, 0, 0, 0.125);
 
   --card-border-width: 0.5px;
   --card-padding: 2px;
@@ -24,7 +24,8 @@
   /* Require interactive elements large enough to be easily pressed. */
   --min-press-size: 32px;
 
-  --box-shadow: 1px 1px 1px 0.5px var(--shade-shadow);
+  --box-shadow: -0.5px -0.5px 0.5px 0.5px var(--shade-shadow),
+    1px 1px 1px 0.5px var(--shade-shadow);
 }
 
 body {

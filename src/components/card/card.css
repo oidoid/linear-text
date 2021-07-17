@@ -2,10 +2,6 @@
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
-  border-width: var(--card-border-width);
-  border-style: outset;
-  border-color: var(--shade-shadow);
-
   padding-top: var(--card-padding);
   padding-right: var(--card-padding);
   padding-bottom: var(--card-padding);
