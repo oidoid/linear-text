@@ -1,5 +1,6 @@
 # Publish Perfect Memory v1.0.0: Dragging and Grouping
 
+Add void card UI.
 Add thing dragging support.
 
 Add error card.
@@ -31,4 +32,5 @@ Move to oidoid folder.
 Create website.
 Publish source code.
 Create git.io link, reference in readme, and revise package.json to use https://perfectmem.com.
+Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 Publish v1.0.0.

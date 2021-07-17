@@ -1,6 +1,7 @@
 # Publish Perfect Memory v1.2.0: Generalizations and Dreams
 
 Add cartridge things.
+Click images for full-size.
 
 ## Research
 Review web.dev.
@@ -13,6 +14,7 @@ Add undo/redo action labeling.
 Add CSV comment support.
 Use header + TabCellType inference to fill in missing columns.
 Add date TabCellType support.
+Image thumbnailing support.
 
 ## Reasons to Eject
 - setupTests.ts naming.
