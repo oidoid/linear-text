@@ -2,20 +2,7 @@
 
 exports[`integration games.test.tab 1`] = `
 Object {
-  "meta": Object {
-    "columnMap": Object {
-      "text": 0,
-    },
-    "delimiter": "	",
-    "header": Array [
-      "text",
-      "year",
-      "wiki",
-    ],
-    "newline": "
-",
-  },
-  "records": Array [
+  "lines": Array [
     Object {
       "id": 1,
       "invalidated": false,
@@ -249,21 +236,25 @@ Object {
       "text": "",
     },
   ],
-}
-`;
-
-exports[`integration groceries.test.tab 1`] = `
-Object {
   "meta": Object {
     "columnMap": Object {
       "text": 0,
     },
     "delimiter": "	",
-    "header": undefined,
+    "header": Array [
+      "text",
+      "year",
+      "wiki",
+    ],
     "newline": "
 ",
   },
-  "records": Array [
+}
+`;
+
+exports[`integration groceries.test.tab 1`] = `
+Object {
+  "lines": Array [
     Object {
       "id": 1,
       "invalidated": false,
@@ -345,5 +336,14 @@ Object {
       "text": "",
     },
   ],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 0,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
 }
 `;

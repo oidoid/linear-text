@@ -1,4 +1,4 @@
-import {parseCellType} from './tab-cell-type'
+import {parseCellType} from './cell-type'
 
 test.each([
   ['empty', '', 'empty'],

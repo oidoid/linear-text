@@ -1,14 +1,14 @@
-import {TabStats} from './tab-stats'
+import {TableStats} from './table-stats'
 
 test('initial states are zeroed and empty', () =>
-  expect(TabStats()).toStrictEqual({
+  expect(TableStats()).toStrictEqual({
     columns: [],
     total: {text: 0, number: 0, bool: 0, blank: 0, empty: 0}
   }))
 
 test('sampling type increments by one', () => {
-  const stats = TabStats()
-  TabStats.sample(stats, ['', ' ', 'false', '0', 'abc'])
+  const stats = TableStats()
+  TableStats.sample(stats, ['', ' ', 'false', '0', 'abc'])
   expect(stats).toStrictEqual({
     columns: [
       {text: 0, number: 0, bool: 0, blank: 0, empty: 1},
@@ -22,7 +22,7 @@ test('sampling type increments by one', () => {
 })
 
 test('missing cells are not counted', () => {
-  const stats = TabStats()
+  const stats = TableStats()
   const rows = [
     ['', ' ', 'false', '0', 'abc'],
     [],
@@ -31,7 +31,7 @@ test('missing cells are not counted', () => {
     [],
     ['false', 'false', 'false', '100']
   ]
-  TabStats.sample(stats, ...rows)
+  TableStats.sample(stats, ...rows)
   expect(stats).toStrictEqual({
     columns: [
       {text: 1, number: 0, bool: 1, blank: 0, empty: 1},
@@ -53,7 +53,7 @@ test('a zero text mapping is not inferred', () => {
     ],
     total: {text: 0, number: 11, bool: 103, blank: 1003, empty: 10004}
   }
-  expect(TabStats.inferMap(stats)).toStrictEqual({})
+  expect(TableStats.inferMap(stats)).toStrictEqual({})
 })
 
 test('a nonzero text mapping is inferred from zero index', () => {
@@ -65,7 +65,7 @@ test('a nonzero text mapping is inferred from zero index', () => {
     ],
     total: {text: 100, number: 11, bool: 103, blank: 1003, empty: 10004}
   }
-  expect(TabStats.inferMap(stats)).toStrictEqual({text: 0})
+  expect(TableStats.inferMap(stats)).toStrictEqual({text: 0})
 })
 
 test('a nonzero text mapping is inferred from non-zero index', () => {
@@ -77,5 +77,5 @@ test('a nonzero text mapping is inferred from non-zero index', () => {
     ],
     total: {text: 100, number: 11, bool: 103, blank: 1003, empty: 10004}
   }
-  expect(TabStats.inferMap(stats)).toStrictEqual({text: 2})
+  expect(TableStats.inferMap(stats)).toStrictEqual({text: 2})
 })

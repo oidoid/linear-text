@@ -2,11 +2,11 @@ import type {FileWithHandle} from 'browser-fs-access'
 
 import {BubbleCard} from '../bubble-card/bubble-card'
 import {
-  loadTabFileAsync,
+  loadTableAsync,
   newFile,
-  selectRecords,
+  selectTableState,
   setFocus
-} from '../../store/records/records-slice'
+} from '../../store/table-slice/table-slice'
 import {IconButton} from '../icon-button/icon-button'
 import {ListItem} from '../list-item/list-item'
 import {openFile} from '../../file-io/file-io'
@@ -37,12 +37,10 @@ export function ToolbarCard() {
 
 export function Toolbar() {
   const [file, setFile] = useState<FileWithHandle>()
-  const records = useAppSelector(selectRecords)
+  const tableState = useAppSelector(selectTableState)
   const dispatch = useAppDispatch()
 
-  console.log(file)
-  useEffect(() => console.log(JSON.stringify(records)), [records])
-
+  useEffect(() => console.log(file), [file])
   return (
     <UnorderedList layout='grid'>
       <ListItem>
@@ -89,9 +87,11 @@ export function Toolbar() {
         <IconButton
           label={t`button-load-file__label`}
           onClick={async () => {
-            const result = await openFile('Pick records file')
+            const result = await openFile()
             setFile(result)
-            dispatch(loadTabFileAsync({factory: records.factory, file: result}))
+            dispatch(
+              loadTableAsync({idFactory: tableState.idFactory, file: result})
+            )
           }}
           src={toolbarIconLoadFile}
           title={t`button-load-file__title`}
@@ -109,8 +109,10 @@ export function Toolbar() {
         <IconButton
           label={t`button-help__label`}
           onClick={() => {
-            if (records.tab.records.length === 0) return
-            const index = Math.trunc(Math.random() * records.tab.records.length)
+            if (tableState.table.lines.length === 0) return
+            const index = Math.trunc(
+              Math.random() * tableState.table.lines.length
+            )
             dispatch(setFocus(index))
             // throw Error('Help unimplemented.')
           }}

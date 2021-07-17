@@ -1,10 +1,10 @@
 {
-  "button-add-record__label": {
+  "button-add-line__label": {
     "translation": "Add",
     "extractedComments": []
   },
-  "button-add-record__title": {
-    "translation": "Create new record [alt-shift-enter].",
+  "button-add-line__title": {
+    "translation": "Add new line [alt-shift-enter].",
     "extractedComments": []
   },
   "button-help__label": {
@@ -39,12 +39,12 @@
     "translation": "Reverse an undo [alt-shift-y].",
     "extractedComments": []
   },
-  "button-remove-record__label": {
+  "button-remove-line__label": {
     "translation": "Discard",
     "extractedComments": []
   },
-  "button-remove-record__title": {
-    "translation": "Remove selected record(s) [alt-shift-delete].",
+  "button-remove-line__title": {
+    "translation": "Remove selected line(s) [alt-shift-delete].",
     "extractedComments": []
   },
   "button-save-file-as__label": {
@@ -77,6 +77,10 @@
   },
   "button-undo__title": {
     "translation": "Restore the previous state [alt-shift-z].",
+    "extractedComments": []
+  },
+  "dropdown-file-type__description": {
+    "translation": "Tabular file type",
     "extractedComments": []
   },
   "title-with-{version}": {

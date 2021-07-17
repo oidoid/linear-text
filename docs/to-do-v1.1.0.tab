@@ -1,5 +1,7 @@
 # Publish Perfect Memory v1.1.0: Images and Refinements
 
+Forbid add/remove line during load.
+Break apart the store slices.
 Consider CSS Modules.
 Consider structuring by feature more. E.g., feature/counter/* instead of components/counter and reducers/counter.
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.

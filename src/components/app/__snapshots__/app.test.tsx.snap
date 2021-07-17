@@ -272,7 +272,7 @@ exports[`matches snapshot 1`] = `
                   <button
                     accesskey=""
                     class="buttonish "
-                    data-title="Remove selected record(s) [alt-shift-delete]."
+                    data-title="Remove selected line(s) [alt-shift-delete]."
                   >
                     <img
                       alt=""
@@ -280,7 +280,7 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="menu-icon-remove-record.svg"
+                      src="menu-icon-remove-line.svg"
                       width="20"
                     />
                   </button>
@@ -300,7 +300,7 @@ exports[`matches snapshot 1`] = `
                   <button
                     accesskey=""
                     class="buttonish "
-                    data-title="Create new record [alt-shift-enter]."
+                    data-title="Add new line [alt-shift-enter]."
                   >
                     <img
                       alt=""
@@ -308,7 +308,7 @@ exports[`matches snapshot 1`] = `
                       decoding="sync"
                       height="20"
                       loading="eager"
-                      src="menu-icon-add-record.svg"
+                      src="menu-icon-add-line.svg"
                       width="20"
                     />
                   </button>

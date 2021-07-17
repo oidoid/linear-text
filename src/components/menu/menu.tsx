@@ -1,22 +1,21 @@
 import {
-  addRecord,
-  removeRecord,
-  selectRecords
-} from '../../store/records/records-slice'
+  addLine,
+  removeLine,
+  selectTableState
+} from '../../store/table-slice/table-slice'
 import {Card} from '../card/card'
 import {Disclosure} from '../disclosure/disclosure'
 import {Icon} from '../icon/icon'
 import {IconButton} from '../icon-button/icon-button'
 import {ListItem} from '../list-item/list-item'
 import {t} from '@lingui/macro'
-import {TabRecord} from '../../tab/tab-record'
 import {ToolbarCard} from '../toolbar/toolbar'
 import {Trans} from '@lingui/react'
 import {UnorderedList} from '../unordered-list/unordered-list'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 
-import menuIconAddRecord from './menu-icon-add-record.svg'
-import menuIconRemoveRecord from './menu-icon-remove-record.svg'
+import menuIconAddLine from './menu-icon-add-line.svg'
+import menuIconRemoveLine from './menu-icon-remove-line.svg'
 import menuIconToggleToolbar from './menu-icon-toggle-toolbar.svg'
 
 import './menu.css'
@@ -41,7 +40,7 @@ function Menu() {
 
 function MenuList() {
   const dispatch = useAppDispatch()
-  const records = useAppSelector(selectRecords)
+  const tableState = useAppSelector(selectTableState)
   return (
     <div className='menu-list'>
       <UnorderedList layout='horizontal'>
@@ -58,21 +57,21 @@ function MenuList() {
         </ListItem>
         <ListItem>
           <IconButton
-            label={t`button-remove-record__label`}
+            label={t`button-remove-line__label`}
             onClick={() => {
-              if (records.focusedRecordIndex == null) return
-              dispatch(removeRecord(records.focusedRecordIndex))
+              if (tableState.focusedLineIndex == null) return
+              dispatch(removeLine(tableState.focusedLineIndex))
             }}
-            src={menuIconRemoveRecord}
-            title={t`button-remove-record__title`}
+            src={menuIconRemoveLine}
+            title={t`button-remove-line__title`}
           />
         </ListItem>
         <ListItem>
           <IconButton
-            label={t`button-add-record__label`}
-            onClick={() => dispatch(addRecord(TabRecord(records.factory)))}
-            src={menuIconAddRecord}
-            title={t`button-add-record__title`}
+            label={t`button-add-line__label`}
+            onClick={() => dispatch(addLine())}
+            src={menuIconAddLine}
+            title={t`button-add-line__title`}
           />
         </ListItem>
       </UnorderedList>

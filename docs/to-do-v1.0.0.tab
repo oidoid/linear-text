@@ -19,7 +19,7 @@ Load unstructured files as grid arrangements.
 Decide on default position on enter or new button.
 Copy lessons and notes from other projects and references.
 Revise button styles to my old UI styles.
-Finalize name and thing / row / record and TabRecord terminology. Leaning more towards Tab/Record and Tab/File.
+Finalize name and thing / row / record / line and TabRecord terminology. Leaning more towards Tab/Record and Tab/File.
 Finalize button icons.
 Add icon/favicon SVG and update index.html and manifest.
 Add modified state text and icon badge to title bar.

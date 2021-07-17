@@ -4,8 +4,8 @@ export type IDFactory = {
   id: number
 }
 
-export function IDFactory(): IDFactory {
-  return {id: 1}
+export function IDFactory(factory: IDFactory | undefined = {id: 1}): IDFactory {
+  return {id: factory.id}
 }
 
 export function makeID(factory: IDFactory): number {

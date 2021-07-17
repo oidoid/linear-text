@@ -1,7 +1,7 @@
 import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit'
-import recordsReducer from './records/records-slice'
+import {tableSlice} from './table-slice/table-slice'
 
-export const store = configureStore({reducer: {records: recordsReducer}})
+export const store = configureStore({reducer: {table: tableSlice.reducer}})
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

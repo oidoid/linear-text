@@ -1,5 +1,5 @@
 import {IDFactory} from '../id-factory/id-factory'
-import {parseTabFile} from './tab-file-parser'
+import {parseTable} from './table-parser'
 import {readFileSync} from 'fs'
 
 let factory: IDFactory = IDFactory()
@@ -9,9 +9,9 @@ test.each(['\t', ','])('delimiter: "%s"', async delimiter => {
   const row = ['a', 'b', 'c'].join(delimiter)
   const expected = {
     meta: {header: undefined, columnMap: {text: 0}, delimiter, newline: '\n'},
-    records: [{id: 1, text: 'a', invalidated: false, row: ['a', 'b', 'c']}]
+    lines: [{id: 1, text: 'a', invalidated: false, row: ['a', 'b', 'c']}]
   }
-  expect(await parseTabFile(factory, row)).toStrictEqual(expected)
+  expect(await parseTable(factory, row)).toStrictEqual(expected)
 })
 
 test.each([
@@ -21,9 +21,9 @@ test.each([
   const input = `text${newline}abc`
   const expected = {
     meta: {header: ['text'], columnMap: {text: 0}, delimiter: '\t', newline},
-    records: [{id: 1, text: 'abc', invalidated: false, row: ['abc']}]
+    lines: [{id: 1, text: 'abc', invalidated: false, row: ['abc']}]
   }
-  expect(await parseTabFile(factory, input)).toStrictEqual(expected)
+  expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test('header padding is ignored and preserved', async () => {
@@ -35,7 +35,7 @@ test('header padding is ignored and preserved', async () => {
       delimiter: ',',
       newline: '\n'
     },
-    records: [
+    lines: [
       {
         id: 1,
         text: ' ribbit ',
@@ -44,7 +44,7 @@ test('header padding is ignored and preserved', async () => {
       }
     ]
   }
-  expect(await parseTabFile(factory, input)).toStrictEqual(expected)
+  expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test('extra empty columns are ignored and preserved', async () => {
@@ -64,7 +64,7 @@ test('extra empty columns are ignored and preserved', async () => {
       delimiter: '\t',
       newline: '\n'
     },
-    records: [
+    lines: [
       {
         id: 1,
         text: '3',
@@ -78,7 +78,7 @@ test('extra empty columns are ignored and preserved', async () => {
       }
     ]
   }
-  expect(await parseTabFile(factory, input)).toStrictEqual(expected)
+  expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test('header capitalization is ignored and preserved', async () => {
@@ -90,7 +90,7 @@ test('header capitalization is ignored and preserved', async () => {
       delimiter: ',',
       newline: '\n'
     },
-    records: [
+    lines: [
       {
         id: 1,
         text: ' ribbit ',
@@ -99,7 +99,7 @@ test('header capitalization is ignored and preserved', async () => {
       }
     ]
   }
-  expect(await parseTabFile(factory, input)).toStrictEqual(expected)
+  expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test.each([
@@ -133,8 +133,8 @@ test.each([
       {id: 2, text: '', invalidated: false, row: ['']}
     ]
   ]
-])('trailing newline is empty record: %s', async (_, input, expected) => {
-  expect((await parseTabFile(factory, input)).records).toStrictEqual(expected)
+])('trailing newline is an empty Line: %s', async (_, input, expectedLines) => {
+  expect((await parseTable(factory, input)).lines).toStrictEqual(expectedLines)
 })
 
 test.each([
@@ -164,7 +164,7 @@ test.each([
     '1,2,3,4',
     {id: 1, text: '2', invalidated: false, row: ['1', '2', '3', '4']}
   ]
-])('missing cells and inconsistencies: %s', async (_, row, expectedRecord) => {
+])('missing cells and inconsistencies: %s', async (_, row, expectedLine) => {
   const header = 'a,text,c\n'
   const input = header + row
   const expected = {
@@ -174,16 +174,16 @@ test.each([
       delimiter: ',',
       newline: '\n'
     },
-    records: [expectedRecord]
+    lines: [expectedLine]
   }
-  expect(await parseTabFile(factory, input)).toStrictEqual(expected)
+  expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test.each(['games.test.tab', 'groceries.test.tab'])(
   'integration %s',
   async filename => {
-    const absoluteFilename = `${__dirname}/tab-file-test-data/${filename}`
+    const absoluteFilename = `${__dirname}/table-parser-test-data/${filename}`
     const input = readFileSync(absoluteFilename).toString()
-    expect(await parseTabFile(factory, input)).toMatchSnapshot()
+    expect(await parseTable(factory, input)).toMatchSnapshot()
   }
 )

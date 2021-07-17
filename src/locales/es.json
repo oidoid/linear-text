@@ -1,9 +1,9 @@
 {
-  "button-add-record__label": {
+  "button-add-line__label": {
     "translation": "",
     "extractedComments": []
   },
-  "button-add-record__title": {
+  "button-add-line__title": {
     "translation": "",
     "extractedComments": []
   },
@@ -39,11 +39,11 @@
     "translation": "",
     "extractedComments": []
   },
-  "button-remove-record__label": {
+  "button-remove-line__label": {
     "translation": "",
     "extractedComments": []
   },
-  "button-remove-record__title": {
+  "button-remove-line__title": {
     "translation": "",
     "extractedComments": []
   },
@@ -76,6 +76,10 @@
     "extractedComments": []
   },
   "button-undo__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "dropdown-file-type__description": {
     "translation": "",
     "extractedComments": []
   },
