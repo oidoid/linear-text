@@ -70,7 +70,7 @@ function MenuList() {
         <ListItem>
           <IconButton
             label={t`button-add-record__label`}
-            onClick={() => dispatch(addRecord(TabRecord()))}
+            onClick={() => dispatch(addRecord(TabRecord(records.factory)))}
             src={menuIconAddRecord}
             title={t`button-add-record__title`}
           />

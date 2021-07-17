@@ -3,10 +3,12 @@ import type {RootState} from '../store'
 import type {TabRecord} from '../../tab/tab-record'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {IDFactory} from '../../id-factory/id-factory'
 import {parseTabFile} from '../../tab-file-parser/tab-file-parser'
 import {TabFile} from '../../tab/tab-file'
 
 export type RecordsState = Readonly<{
+  factory: IDFactory
   tab: TabFile
   // undefined or [0, records.length)
   focusedRecordIndex: number | undefined
@@ -14,6 +16,7 @@ export type RecordsState = Readonly<{
 }>
 
 export const initialState: RecordsState = Object.freeze({
+  factory: Object.freeze(IDFactory()),
   tab: Object.freeze(TabFile()),
   focusedRecordIndex: undefined,
   status: 'idle'
@@ -26,9 +29,15 @@ export const initialState: RecordsState = Object.freeze({
 // typically used to make async requests.
 export const loadTabFileAsync = createAsyncThunk(
   'records/loadTabFileAsync',
-  async (file: Readonly<FileWithHandle>): Promise<TabFile> => {
+  async ({
+    factory,
+    file
+  }: Readonly<{
+    factory: IDFactory
+    file: Readonly<FileWithHandle>
+  }>): Promise<TabFile> => {
     // The value we return becomes the `fulfilled` action payload
-    return await parseTabFile(file)
+    return await parseTabFile(factory, file)
   }
 )
 

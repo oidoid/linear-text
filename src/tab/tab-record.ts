@@ -1,10 +1,12 @@
+import {IDFactory, makeID} from '../id-factory/id-factory'
+
 /** A table row and its application state modeling. */
 export type TabRecord = {
   /**
    * Unique for the program's execution lifetime. Never serialized to row.
    * Symbols are not used as they cannot be serialized for the store.
    */
-  // readonly id: number
+  readonly id: number
 
   /** The normalized model text to be shown, possibly mini-Markdown or empty. */
   text: string | undefined
@@ -44,17 +46,20 @@ export type TabCell = string
  */
 export type TabColumnMap = Partial<Record<TabColumn, number | undefined>>
 
-// let uid: number = 0
-
-export function TabRecord(text?: string | undefined): TabRecord {
-  // uid++
-  return {/* id: uid,*/ text, invalidated: true, row: []}
+export function TabRecord(
+  factory: IDFactory,
+  text?: string | undefined
+): TabRecord {
+  return {id: makeID(factory), text, invalidated: true, row: []}
 }
 
 // new uninvalidated row
-TabRecord.fromRow = (row: TabRow, text: string | undefined): TabRecord => {
-  // uid++
-  return {/* id: uid, */ text, invalidated: false, row}
+TabRecord.fromRow = (
+  factory: IDFactory,
+  row: TabRow,
+  text: string | undefined
+): TabRecord => {
+  return {id: makeID(factory), text, invalidated: false, row}
 }
 
 TabRecord.setText = (record: TabRecord, text: string): void => {

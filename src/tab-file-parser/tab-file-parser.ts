@@ -5,8 +5,12 @@ import {tabMetaDefaults} from '../tab/tab-file'
 import Papa from 'papaparse'
 import {TabColumnMap, TabRecord} from '../tab/tab-record'
 import {TabStats} from './tab-stats'
+import type {IDFactory} from '../id-factory/id-factory'
 
-export function parseTabFile(input: File | string): Promise<TabFile> {
+export function parseTabFile(
+  factory: IDFactory,
+  input: File | string
+): Promise<TabFile> {
   return new Promise((resolve, reject) =>
     Papa.parse<TabRow>(input, {
       complete({errors, meta, data}) {
@@ -18,13 +22,17 @@ export function parseTabFile(input: File | string): Promise<TabFile> {
           meta.delimiter = tabMetaDefaults.delimiter
         }
         if (errors.length > 0) return reject(errors)
-        return resolve(parse(meta, data))
+        return resolve(parse(factory, meta, data))
       }
     })
   )
 }
 
-function parse(parseMeta: Papa.ParseMeta, data: TabRow[]): TabFile {
+function parse(
+  factory: IDFactory,
+  parseMeta: Papa.ParseMeta,
+  data: TabRow[]
+): TabFile {
   const {header, rows} = parseTabHeaderAndRows(data)
   let columnMap: TabColumnMap = {}
   if (header == null) {
@@ -45,7 +53,7 @@ function parse(parseMeta: Papa.ParseMeta, data: TabRow[]): TabFile {
       delimiter: parseMeta.delimiter,
       newline: parseMeta.linebreak
     },
-    records: rows.map(row => parseTabRecord(row, columnMap))
+    records: rows.map(row => parseTabRecord(factory, row, columnMap))
   }
 }
 
@@ -59,9 +67,13 @@ function parseTabHeaderAndRows(data: readonly TabRow[]): {
   return {header, rows}
 }
 
-function parseTabRecord(row: TabRow, columnMap: TabColumnMap): TabRecord {
+function parseTabRecord(
+  factory: IDFactory,
+  row: TabRow,
+  columnMap: TabColumnMap
+): TabRecord {
   const text = columnMap.text == null ? undefined : row[columnMap.text]
-  return TabRecord.fromRow(row, text)
+  return TabRecord.fromRow(factory, row, text)
 }
 
 function isHeader(row: Readonly<TabRow>): boolean {

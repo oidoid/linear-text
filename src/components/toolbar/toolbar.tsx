@@ -92,7 +92,9 @@ export function Toolbar() {
             onClick={async () => {
               const result = await openFile('Pick records file')
               setFile(result)
-              dispatch(loadTabFileAsync(result))
+              dispatch(
+                loadTabFileAsync({factory: records.factory, file: result})
+              )
             }}
             src={toolbarIconLoadFile}
             title={t`button-load-file__title`}
