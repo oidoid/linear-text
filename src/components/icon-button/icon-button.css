@@ -14,12 +14,11 @@
   display: block;
   text-align: center;
 
-  /* Allow a little more room for text. */
-  min-width: calc(var(--min-press-size) + 4px);
-
   /* Don't allow content highlights. */
   user-select: none;
 
-  /* Align to button margins. */
-  margin: var(--button-margin);
+  margin-top: var(--button-margin);
+  margin-right: var(--button-margin);
+  margin-bottom: var(--button-margin);
+  margin-left: var(--button-margin);
 }

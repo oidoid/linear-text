@@ -1,3 +1,4 @@
 .menu-card {
   --card-background-color: var(--color-mid-grey);
+  --unordered-list--gap: 2px;
 }

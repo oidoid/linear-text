@@ -5,11 +5,14 @@ import './unordered-list.css'
 
 export type UnorderedListProps = Readonly<{
   children: readonly ReactElement<typeof ListItem>[]
-  horizontal?: boolean
+  layout?: 'grid' | 'horizontal' | 'vertical'
 }>
 
-export function UnorderedList({children, horizontal}: UnorderedListProps) {
+export function UnorderedList({
+  children,
+  layout = 'vertical'
+}: UnorderedListProps) {
   return (
-    <ul className={`ul ${horizontal ? 'ul--horizontal' : ''}`}>{children}</ul>
+    <ul className={`unordered-list unordered-list--${layout}`}>{children}</ul>
   )
 }

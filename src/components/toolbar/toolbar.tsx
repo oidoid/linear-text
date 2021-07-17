@@ -44,85 +44,79 @@ export function Toolbar() {
   useEffect(() => console.log(JSON.stringify(records)), [records])
 
   return (
-    <UnorderedList>
+    <UnorderedList layout='grid'>
       <ListItem>
-        <div className='toolbar__button-group'>
-          <IconButton
-            label={t`button-undo__label`}
-            onClick={() => {
-              throw Error('Undo unimplemented.')
-            }}
-            src={toolbarIconUndo}
-            title={t`button-undo__title`}
-          />
-          <IconButton
-            label={t`button-redo__label`}
-            onClick={() => {
-              throw Error('Redo unimplemented.')
-            }}
-            src={toolbarIconRedo}
-            title={t`button-redo__title`}
-          />
-        </div>
+        <IconButton
+          label={t`button-undo__label`}
+          onClick={() => {
+            throw Error('Undo unimplemented.')
+          }}
+          src={toolbarIconUndo}
+          title={t`button-undo__title`}
+        />
       </ListItem>
       <ListItem>
-        <div className='toolbar__button-group'>
-          <IconButton
-            label={t`button-save-file__label`}
-            onClick={() => {
-              throw Error('Save unimplemented.')
-            }}
-            src={toolbarIconSaveFile}
-            title={t`button-save-file__title`}
-          />
-          <IconButton
-            label={t`button-save-file-as__label`}
-            onClick={() => {
-              throw Error('Save as unimplemented.')
-            }}
-            src={toolbarIconSaveFileAs}
-            title={t`button-save-file-as__title`}
-          />
-        </div>
+        <IconButton
+          label={t`button-redo__label`}
+          onClick={() => {
+            throw Error('Redo unimplemented.')
+          }}
+          src={toolbarIconRedo}
+          title={t`button-redo__title`}
+        />
       </ListItem>
       <ListItem>
-        <div className='toolbar__button-group'>
-          <IconButton
-            label={t`button-load-file__label`}
-            onClick={async () => {
-              const result = await openFile('Pick records file')
-              setFile(result)
-              dispatch(
-                loadTabFileAsync({factory: records.factory, file: result})
-              )
-            }}
-            src={toolbarIconLoadFile}
-            title={t`button-load-file__title`}
-          />
-          <IconButton
-            label={t`button-new-file__label`}
-            onClick={() => dispatch(newFile())}
-            src={toolbarIconNewFile}
-            title={t`button-new-file__title`}
-          />
-        </div>
+        <IconButton
+          label={t`button-save-file__label`}
+          onClick={() => {
+            throw Error('Save unimplemented.')
+          }}
+          src={toolbarIconSaveFile}
+          title={t`button-save-file__title`}
+        />
       </ListItem>
       <ListItem>
-        <div className='toolbar__button-group'>
-          <IconButton
-            label={t`button-help__label`}
-            onClick={() => {
-              if (records.tab.records.length === 0) return
-              const index = Math.trunc(
-                Math.random() * records.tab.records.length
-              )
-              dispatch(setFocus(index))
-              // throw Error('Help unimplemented.')
-            }}
-            src={toolbarIconHelp}
-            title={t`button-help__title`}
-          />
-        </div>
+        <IconButton
+          label={t`button-save-file-as__label`}
+          onClick={() => {
+            throw Error('Save as unimplemented.')
+          }}
+          src={toolbarIconSaveFileAs}
+          title={t`button-save-file-as__title`}
+        />
+      </ListItem>
+      <ListItem>
+        <IconButton
+          label={t`button-load-file__label`}
+          onClick={async () => {
+            const result = await openFile('Pick records file')
+            setFile(result)
+            dispatch(loadTabFileAsync({factory: records.factory, file: result}))
+          }}
+          src={toolbarIconLoadFile}
+          title={t`button-load-file__title`}
+        />
+      </ListItem>
+      <ListItem>
+        <IconButton
+          label={t`button-new-file__label`}
+          onClick={() => dispatch(newFile())}
+          src={toolbarIconNewFile}
+          title={t`button-new-file__title`}
+        />
+      </ListItem>
+      <ListItem>
+        <IconButton
+          label={t`button-help__label`}
+          onClick={() => {
+            if (records.tab.records.length === 0) return
+            const index = Math.trunc(Math.random() * records.tab.records.length)
+            dispatch(setFocus(index))
+            // throw Error('Help unimplemented.')
+          }}
+          src={toolbarIconHelp}
+          title={t`button-help__title`}
+        />
       </ListItem>
     </UnorderedList>
   )

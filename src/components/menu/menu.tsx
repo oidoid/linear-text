@@ -44,7 +44,7 @@ function MenuList() {
   const records = useAppSelector(selectRecords)
   return (
     <div className='menu-list'>
-      <UnorderedList horizontal>
+      <UnorderedList layout='horizontal'>
         <ListItem>
           <Disclosure
             summary={<Icon alt='' src={menuIconToggleToolbar} />}

@@ -1,11 +1,17 @@
-.ul {
+.unordered-list {
   /* Clear default list margin, padding, and style. */
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.ul--horizontal {
+.unordered-list--grid {
+  display: grid;
+  grid-template-columns: var(--unordered-list--grid-template-columns, unset);
+}
+
+.unordered-list--horizontal {
   /* Arrange horizontally. */
   display: flex;
+  column-gap: var(--unordered-list--gap, unset);
 }
