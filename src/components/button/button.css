@@ -23,10 +23,11 @@
   /* Indicate button interactivity with a hand icon. */
   cursor: pointer;
 
-  /* Buttons slightly extrude. */
+  /* Buttons slightly extrude with rounded corners. */
   border-width: 0.5px;
   border-style: outset;
   border-color: var(--color-dark-grey);
+  border-radius: var(--border-radius);
 
   /* Specify the background. */
   background-color: var(--color-grey);
@@ -39,9 +40,6 @@
   font-variant: inherit;
   font-weight: inherit;
   line-height: inherit;
-
-  /* Round corners. */
-  border-radius: var(--border-radius);
 
   /* Don't allow content highlights. */
   user-select: none;
