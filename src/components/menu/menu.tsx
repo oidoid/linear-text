@@ -16,6 +16,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 
 import menuIconAddLine from './menu-icon-add-line.svg'
 import menuIconRemoveLine from './menu-icon-remove-line.svg'
+import menuIconToggleMenu from './menu-icon-toggle-menu.svg'
 import menuIconToggleToolbar from './menu-icon-toggle-toolbar.svg'
 
 import './menu.css'
@@ -43,38 +44,44 @@ function MenuList() {
   const tableState = useAppSelector(selectTableState)
   return (
     <div className='menu-list'>
-      <UnorderedList layout='horizontal'>
-        <ListItem>
-          <Disclosure
-            summary={<Icon alt='' src={menuIconToggleToolbar} />}
-            title={t`button-toggle-toolbar__title`}
-          >
-            <ToolbarCard />
-          </Disclosure>
-          <label className='icon-buttonish__label'>
-            <Trans id='button-toggle-toolbar__label' />
-          </label>
-        </ListItem>
-        <ListItem>
-          <IconButton
-            label={t`button-remove-line__label`}
-            onClick={() => {
-              if (tableState.focusedLineIndex == null) return
-              dispatch(removeLine(tableState.focusedLineIndex))
-            }}
-            src={menuIconRemoveLine}
-            title={t`button-remove-line__title`}
-          />
-        </ListItem>
-        <ListItem>
-          <IconButton
-            label={t`button-add-line__label`}
-            onClick={() => dispatch(addLine())}
-            src={menuIconAddLine}
-            title={t`button-add-line__title`}
-          />
-        </ListItem>
-      </UnorderedList>
+      <Disclosure
+        summary={<Icon alt='' src={menuIconToggleMenu} />}
+        title={t`button-toggle-menu__title`}
+        open
+      >
+        <UnorderedList layout='horizontal'>
+          <ListItem>
+            <Disclosure
+              summary={<Icon alt='' src={menuIconToggleToolbar} />}
+              title={t`button-toggle-toolbar__title`}
+            >
+              <ToolbarCard />
+            </Disclosure>
+            <label className='icon-buttonish__label'>
+              <Trans id='button-toggle-toolbar__label' />
+            </label>
+          </ListItem>
+          <ListItem>
+            <IconButton
+              label={t`button-remove-line__label`}
+              onClick={() => {
+                if (tableState.focusedLineIndex == null) return
+                dispatch(removeLine(tableState.focusedLineIndex))
+              }}
+              src={menuIconRemoveLine}
+              title={t`button-remove-line__title`}
+            />
+          </ListItem>
+          <ListItem>
+            <IconButton
+              label={t`button-add-line__label`}
+              onClick={() => dispatch(addLine())}
+              src={menuIconAddLine}
+              title={t`button-add-line__title`}
+            />
+          </ListItem>
+        </UnorderedList>
+      </Disclosure>
     </div>
   )
 }

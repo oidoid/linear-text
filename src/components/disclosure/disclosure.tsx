@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react'
+import type {ReactNode, SyntheticEvent} from 'react'
 
 import {useBool} from '../../hooks/use-bool'
 import {useCallback, useMemo} from 'react'
@@ -22,12 +22,15 @@ export function Disclosure({
   summary,
   title
 }: DisclosureProps) {
-  const {val: open, toggle: toggleOpen} = useBool(initOpen)
+  const {val: open, set: setOpen} = useBool(initOpen)
 
-  const onToggleCb = useCallback(() => {
-    toggleOpen()
-    onToggle?.(!open)
-  }, [onToggle, open, toggleOpen])
+  const onToggleCb = useCallback(
+    (ev: SyntheticEvent<HTMLDetailsElement>) => {
+      setOpen(ev.currentTarget.open)
+      onToggle?.(ev.currentTarget.open)
+    },
+    [onToggle, setOpen]
+  )
 
   const summaryClassName = useMemo(
     () => `disclosure__summary buttonish ${open ? 'buttonish--active' : ''}`,

@@ -8,10 +8,11 @@
 .unordered-list--grid {
   display: grid;
   grid-template-columns: var(--unordered-list--grid-template-columns, unset);
+  grid-template-rows: var(--unordered-list--grid-template-rows, unset);
 }
 
 .unordered-list--horizontal {
   /* Arrange horizontally. */
-  display: flex;
+  display: inline-flex;
   column-gap: var(--unordered-list--gap, unset);
 }

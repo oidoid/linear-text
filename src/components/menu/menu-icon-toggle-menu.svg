@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="menu-icon-toggle-toolbar.svg">
+   sodipodi:docname="menu-icon-toggle-menu.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -59,16 +59,9 @@
      id="layer1"
      transform="translate(-4.2333334,-2.6458333)">
     <path
-       style="fill:none;stroke:#404040;stroke-width:0.33072917;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 4.6302082,3.4395831 h 4.497917"
-       id="path860" />
-    <path
-       style="fill:none;stroke:#404040;stroke-width:0.33072917;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 4.6302083,5.2916664 H 9.1281251"
-       id="path860-4" />
-    <path
-       style="fill:none;stroke:#404040;stroke-width:0.33072917;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 4.6302082,7.2760415 h 4.497917"
-       id="path860-7" />
+       style="fill:none;stroke:#404040;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.2255278,3.3072813 V 7.276052 L 8.5328181,5.2916671 Z"
+       id="path833"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>
