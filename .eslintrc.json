@@ -5,6 +5,9 @@
     // take time.
     "jsx-a11y/no-access-key": "off",
     // Types and functions can share the same name.
-    "@typescript-eslint/no-redeclare": "off"
+    "@typescript-eslint/no-redeclare": "off",
+    // This rule interferes with declarative programming and no rationale given
+    // for leaving it on.
+    "@typescript-eslint/no-use-before-define": "off"
   }
 }

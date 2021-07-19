@@ -1,5 +1,7 @@
-import {IDFactory, makeID} from '../id-factory/id-factory'
+import type {ID} from '../id/id'
 import type {Row} from '../table/row'
+
+import {IDFactory, makeID} from '../id/id-factory'
 
 /** A table row and its application state modeling. */
 export type Line = {
@@ -8,7 +10,7 @@ export type Line = {
    * to line number. Never serialized to row. Symbols are not used as they
    * cannot be serialized in the store.
    */
-  readonly id: number
+  readonly id: ID
 
   /** The normalized model text to be shown, possibly mini-Markdown or empty. */
   text: string | undefined
@@ -22,16 +24,17 @@ export type Line = {
 
   /**
    * The model is flushed to the row only on save. Only row data is written to
-   * disk.
+   * disk. Exercise care when undoing.
    */
   readonly row: Row
 }
 
+/** Creates a new, invalidated line. */
 export function Line(factory: IDFactory, text?: string | undefined): Line {
   return {id: makeID(factory), text, invalidated: true, row: []}
 }
 
-// new uninvalidated line
+/** Creates a new, valid line. */
 Line.fromRow = (
   factory: IDFactory,
   row: Row,

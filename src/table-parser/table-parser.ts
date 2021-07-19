@@ -1,5 +1,5 @@
 import type {ColumnMap} from '../table/column-map'
-import type {IDFactory} from '../id-factory/id-factory'
+import type {IDFactory} from '../id/id-factory'
 import type {Row} from '../table/row'
 import type {Table} from '../table/table'
 

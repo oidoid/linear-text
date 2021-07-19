@@ -1,11 +1,11 @@
 import {makeID, IDFactory} from './id-factory'
 
-test('initial state is positive', () => {
+test('Initial state is positive.', () => {
   const factory = IDFactory()
   expect(factory.id).toBeGreaterThan(0)
 })
 
-test('increments on every ID generated', () => {
+test('Every ID generated.', () => {
   const factory = IDFactory()
   expect(makeID(factory)).toStrictEqual(1)
   expect(makeID(factory)).toStrictEqual(2)

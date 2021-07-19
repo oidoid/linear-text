@@ -1,4 +1,4 @@
-import {IDFactory} from '../id-factory/id-factory'
+import {IDFactory} from '../id/id-factory'
 import {parseTable} from './table-parser'
 import {readFileSync} from 'fs'
 

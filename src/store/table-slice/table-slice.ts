@@ -2,7 +2,7 @@ import type {FileWithHandle} from 'browser-fs-access'
 import type {RootState} from '../store'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {IDFactory} from '../../id-factory/id-factory'
+import {IDFactory} from '../../id/id-factory'
 import {Line} from '../../line/line'
 import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
