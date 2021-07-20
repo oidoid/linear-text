@@ -43,12 +43,18 @@ Line.fromRow = (
   return {id: makeID(factory), text, invalidated: false, row}
 }
 
+/** Updates the text model and invalidates the row. */
 Line.setText = (line: Line, text: string): void => {
   line.text = text
   line.invalidated = true
 }
 
-// "void"
-Line.isSpacing = (line: Line): boolean => {
+/**
+ * Returns true if text is nullish or empty, false if blank or otherwise
+ * nonempty. Additional cells, such as user cells, are not considered.
+ *
+ * Empty lines are usually used for separating logical groups of lines.
+ */
+Line.isEmpty = (line: Readonly<Line>): boolean => {
   return line.text == null || line.text.length === 0
 }
