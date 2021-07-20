@@ -7,7 +7,6 @@ import {Card} from '../card/card'
 import {Disclosure} from '../disclosure/disclosure'
 import {Icon} from '../icon/icon'
 import {IconButton} from '../icon-button/icon-button'
-import {ListItem} from '../list-item/list-item'
 import {t} from '@lingui/macro'
 import {ToolbarCard} from '../toolbar/toolbar'
 import {Trans} from '@lingui/react'
@@ -50,7 +49,7 @@ function MenuList() {
         open
       >
         <UnorderedList layout='horizontal'>
-          <ListItem>
+          <li>
             <Disclosure
               summary={<Icon alt='' src={menuIconToggleToolbar} />}
               title={t`button-toggle-toolbar__title`}
@@ -60,8 +59,8 @@ function MenuList() {
             <label className='icon-buttonish__label'>
               <Trans id='button-toggle-toolbar__label' />
             </label>
-          </ListItem>
-          <ListItem>
+          </li>
+          <li>
             <IconButton
               label={t`button-remove-line__label`}
               onClick={() => {
@@ -71,15 +70,15 @@ function MenuList() {
               src={menuIconRemoveLine}
               title={t`button-remove-line__title`}
             />
-          </ListItem>
-          <ListItem>
+          </li>
+          <li>
             <IconButton
               label={t`button-add-line__label`}
               onClick={() => dispatch(addLine())}
               src={menuIconAddLine}
               title={t`button-add-line__title`}
             />
-          </ListItem>
+          </li>
         </UnorderedList>
       </Disclosure>
     </div>

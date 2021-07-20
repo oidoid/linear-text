@@ -42,9 +42,7 @@ exports[`matches snapshot 1`] = `
               <ul
                 class="unordered-list unordered-list--horizontal"
               >
-                <li
-                  class="list-item"
-                >
+                <li>
                   <details
                     class="disclosure"
                   >
@@ -75,9 +73,7 @@ exports[`matches snapshot 1`] = `
                           <ul
                             class="unordered-list unordered-list--grid"
                           >
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -103,9 +99,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -131,9 +125,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -159,9 +151,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -187,9 +177,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -215,9 +203,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -243,9 +229,7 @@ exports[`matches snapshot 1`] = `
                                 </label>
                               </div>
                             </li>
-                            <li
-                              class="list-item"
-                            >
+                            <li>
                               <div
                                 class="icon-button"
                               >
@@ -282,9 +266,7 @@ exports[`matches snapshot 1`] = `
                     Menu
                   </label>
                 </li>
-                <li
-                  class="list-item"
-                >
+                <li>
                   <div
                     class="icon-button"
                   >
@@ -310,9 +292,7 @@ exports[`matches snapshot 1`] = `
                     </label>
                   </div>
                 </li>
-                <li
-                  class="list-item"
-                >
+                <li>
                   <div
                     class="icon-button"
                   >

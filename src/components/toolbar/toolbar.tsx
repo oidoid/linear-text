@@ -8,7 +8,6 @@ import {
   setFocus
 } from '../../store/table-slice/table-slice'
 import {IconButton} from '../icon-button/icon-button'
-import {ListItem} from '../list-item/list-item'
 import {openFile} from '../../file-io/file-io'
 import {t} from '@lingui/macro'
 import {UnorderedList} from '../unordered-list/unordered-list'
@@ -43,7 +42,7 @@ export function Toolbar() {
   useEffect(() => console.log(file), [file])
   return (
     <UnorderedList layout='grid'>
-      <ListItem>
+      <li>
         <IconButton
           label={t`button-undo__label`}
           onClick={() => {
@@ -52,8 +51,8 @@ export function Toolbar() {
           src={toolbarIconUndo}
           title={t`button-undo__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-redo__label`}
           onClick={() => {
@@ -62,8 +61,8 @@ export function Toolbar() {
           src={toolbarIconRedo}
           title={t`button-redo__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-save-file__label`}
           onClick={() => {
@@ -72,8 +71,8 @@ export function Toolbar() {
           src={toolbarIconSaveFile}
           title={t`button-save-file__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-save-file-as__label`}
           onClick={() => {
@@ -82,8 +81,8 @@ export function Toolbar() {
           src={toolbarIconSaveFileAs}
           title={t`button-save-file-as__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-load-file__label`}
           onClick={async () => {
@@ -96,16 +95,16 @@ export function Toolbar() {
           src={toolbarIconLoadFile}
           title={t`button-load-file__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-new-file__label`}
           onClick={() => dispatch(newFile())}
           src={toolbarIconNewFile}
           title={t`button-new-file__title`}
         />
-      </ListItem>
-      <ListItem>
+      </li>
+      <li>
         <IconButton
           label={t`button-help__label`}
           onClick={() => {
@@ -119,7 +118,7 @@ export function Toolbar() {
           src={toolbarIconHelp}
           title={t`button-help__title`}
         />
-      </ListItem>
+      </li>
     </UnorderedList>
   )
 }

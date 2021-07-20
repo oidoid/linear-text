@@ -42,3 +42,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+li {
+  /* Clear default list item margins and paddings. */
+  margin: 0;
+  padding: 0;
+}

@@ -1,10 +1,9 @@
-import type {ListItem} from '../list-item/list-item'
 import type {ReactElement} from 'react'
 
 import './unordered-list.css'
 
 export type UnorderedListProps = Readonly<{
-  children: readonly ReactElement<typeof ListItem>[]
+  children: readonly ReactElement<HTMLLIElement>[]
   layout?: 'grid' | 'horizontal' | 'vertical'
 }>
 
