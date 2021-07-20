@@ -1,6 +1,5 @@
-import type {ReactNode, SyntheticEvent} from 'react'
+import {ReactNode, SyntheticEvent, useState} from 'react'
 
-import {useBool} from '../../hooks/use-bool'
 import {useCallback, useMemo} from 'react'
 
 import './disclosure.css'
@@ -22,7 +21,7 @@ export function Disclosure({
   summary,
   title
 }: DisclosureProps) {
-  const {val: open, set: setOpen} = useBool(initOpen)
+  const [open, setOpen] = useState(initOpen)
 
   const onToggleCb = useCallback(
     (ev: SyntheticEvent<HTMLDetailsElement>) => {
