@@ -1,7 +1,3 @@
-.disclosure {
-  /* Center the buttonish. */
-}
-
 .disclosure__summary {
   /* Hide the drop-down triangle indicator. */
   list-style: none;
