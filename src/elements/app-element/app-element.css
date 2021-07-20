@@ -1,0 +1,20 @@
+.app-element {
+  /* Dimensions include border and padding. */
+  box-sizing: border-box;
+
+  /* The app always fills the screen exactly and its contents overflow as
+     needed. */
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+
+  background: var(--color-light-grey);
+}
+
+.app-element__header {
+  /* Fix the element to the viewport and remove from layout flow. */
+  position: fixed;
+
+  /* Raise above the content. */
+  z-index: var(--z-index-header);
+}

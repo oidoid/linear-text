@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import {App} from './components/app/app'
+import {AppElement} from './elements/app-element/app-element'
 import {reportWebVitals} from './web-vitals-reporter'
 import {version} from '../package.json'
 import {i18n} from '@lingui/core'
@@ -18,7 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
       <I18nProvider i18n={i18n}>
-        <App />
+        <AppElement />
       </I18nProvider>
     </StoreProvider>
   </React.StrictMode>,

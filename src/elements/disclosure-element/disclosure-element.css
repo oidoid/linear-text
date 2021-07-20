@@ -1,0 +1,10 @@
+.disclosure-element__summary {
+  /* Hide the drop-down triangle indicator. */
+  list-style: none;
+}
+
+/* Hack: copied from button:active to avoid flicker when changing active
+   states. */
+.disclosure-element[open] > .disclosure-element__summary {
+  border-style: inset;
+}

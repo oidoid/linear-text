@@ -1,0 +1,20 @@
+.group-element {
+  margin: 8px;
+}
+
+.group-element__list {
+  /* Always fill the available width. */
+  width: 100%;
+
+  /* Pack lines. */
+  display: flex;
+
+  /* Arrange lines from left to right. */
+  flex-wrap: wrap;
+}
+
+.group-element__list-item--empty {
+  /* The flex is on the list items, not the lines. Make the list item itself
+     fill the full width. */
+  flex-basis: 100%;
+}

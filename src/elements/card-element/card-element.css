@@ -1,0 +1,19 @@
+.card-element {
+  /* Dimensions include border and padding. */
+  box-sizing: border-box;
+
+  padding-top: var(--card-padding);
+  padding-right: var(--card-padding);
+  padding-bottom: var(--card-padding);
+  padding-left: var(--card-padding);
+
+  margin-top: var(--card-margin);
+  margin-right: var(--card-margin);
+  margin-bottom: var(--card-margin);
+  margin-left: var(--card-margin);
+
+  background-color: var(--card-background-color, var(--color-white));
+  border-radius: var(--border-radius);
+
+  box-shadow: var(--box-shadow);
+}
