@@ -1,8 +1,5 @@
 # Publish Perfect Memory v1.0.0: Dragging and Grouping
 
-Add void card UI.
-Add thing dragging support.
-
 Add error card.
 Add scroll with card dragging behavior or use fixed board size.
 Add auto-backup with undo history.

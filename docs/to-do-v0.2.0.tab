@@ -1,9 +1,7 @@
-# Publish Perfect Memory v0.2.0: Notes and Foundations
+Publish Perfect Memory v0.2.0: Notes and Foundations
 
 Add undo / redo system and data model store.
 Add test for loadTabFileAsync.
 Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
-Add file board.
 Add some kind of default grid or column ordering.
-Add sticky note thing / record / line item. Add a CSS effect for void cards / empty lines.
-Add DOM reordering and grouping so tab works sort of sensibly.
+Add dragging support.

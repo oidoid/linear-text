@@ -2,7 +2,7 @@
 
 Add cartridge things.
 Click images for full-size.
-Consider branded type for line ID or alternative.
+Can I move LineTextElement logic like keyboard listening to group or app level?
 
 ## Research
 Review web.dev.
@@ -16,6 +16,7 @@ Add CSV comment support.
 Use header + TabCellType inference to fill in missing columns.
 Add date TabCellType support.
 Image thumbnailing support.
+Investigate CSS contain performance boosts.
 
 ## Reasons to Eject
 - setupTests.ts naming.
