@@ -7,7 +7,7 @@ import {
   selectTableState
 } from '../../store/table-slice/table-slice'
 import {IconButtonElement} from '../icon-button-element/icon-button-element'
-import {openFile} from '../../file-io/file-io'
+import {openFile} from '../../utils/file-util'
 import {t} from '@lingui/macro'
 import {UnorderedListElement} from '../unordered-list-element/unordered-list-element'
 import {useAppSelector, useAppDispatch} from '../../hooks/use-store'

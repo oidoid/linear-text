@@ -1,6 +1,6 @@
 import type {Cell} from '../table/cell'
 
-import {isNumeric} from '../string-util'
+import {isNumeric} from '../utils/string-util'
 
 /** String-encoded data type of the cell value. */
 export type CellType =
