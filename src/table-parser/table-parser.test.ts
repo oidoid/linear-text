@@ -120,6 +120,14 @@ test.each([
       {id: 1, text: 'a', invalidated: false, row: ['a']},
       {id: 2, text: '', invalidated: false, row: ['']}
     ]
+  ],
+  [
+    'nonempty file without trailing newline',
+    'a\nb',
+    [
+      {id: 1, text: 'a', invalidated: false, row: ['a']},
+      {id: 2, text: 'b', invalidated: false, row: ['b']}
+    ]
   ]
 ])('trailing newline is an empty Line: %s', async (_, input, expectedLines) => {
   expect((await parseTable(factory, input)).lines).toStrictEqual(expectedLines)
