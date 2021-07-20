@@ -3,9 +3,8 @@ import type {FileWithHandle} from 'browser-fs-access'
 import {BubbleCard} from '../bubble-card/bubble-card'
 import {
   loadTableAsync,
-  newFile,
-  selectTableState,
-  setFocus
+  newFileAction,
+  selectTableState
 } from '../../store/table-slice/table-slice'
 import {IconButton} from '../icon-button/icon-button'
 import {openFile} from '../../file-io/file-io'
@@ -99,7 +98,7 @@ export function Toolbar() {
       <li>
         <IconButton
           label={t`button-new-file__label`}
-          onClick={() => dispatch(newFile())}
+          onClick={() => dispatch(newFileAction())}
           src={toolbarIconNewFile}
           title={t`button-new-file__title`}
         />
@@ -108,12 +107,7 @@ export function Toolbar() {
         <IconButton
           label={t`button-help__label`}
           onClick={() => {
-            if (tableState.table.lines.length === 0) return
-            const index = Math.trunc(
-              Math.random() * tableState.table.lines.length
-            )
-            dispatch(setFocus(index))
-            // throw Error('Help unimplemented.')
+            throw Error('Help unimplemented.')
           }}
           src={toolbarIconHelp}
           title={t`button-help__title`}

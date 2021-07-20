@@ -9,15 +9,33 @@ import {Table} from '../../table/table'
 
 export type TableState = Readonly<{
   /** undefined or [0, table.lines.length). */
-  focusedLineIndex: number | undefined
+  focus: Readonly<Line> | undefined
   idFactory: Readonly<IDFactory>
+  /**
+   * True if unsaved changes are present. False if no changes since saved, just
+   * loaded and unchanged, or new and unchanged.
+   */
+  invalidated: boolean
   status: 'idle' | 'loading' | 'failed'
   readonly table: Readonly<Table>
 }>
 
+function findLine(state: TableState, id: number): Line {
+  const line = state.table.lines.find(line => line.id === id)
+  if (line == null) throw Error(`Line with ID=${id} not found.`)
+  return line
+}
+
+function findLineIndex(state: TableState, id: number): number {
+  const index = state.table.lines.findIndex(line => line.id === id)
+  if (index === -1) throw Error(`Line with ID=${id} not found.`)
+  return index
+}
+
 export const initTableState: TableState = Object.freeze({
-  focusedLineIndex: undefined,
+  focus: undefined,
   idFactory: Object.freeze(IDFactory()),
+  invalidated: false,
   status: 'idle',
   table: Object.freeze(Table())
 })
@@ -53,28 +71,47 @@ export const tableSlice = createSlice({
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
-    addLine(state) {
-      state.table.lines.push(Line(state.idFactory))
+    addLineAction(state) {
+      const line = Line(state.idFactory)
+      const index =
+        state.focus == null
+          ? state.table.lines.length
+          : findLineIndex(state, state.focus.id) + 1
+      state.table.lines.splice(index, 0, line)
+      state.focus = line
     },
-    newFile(state) {
-      state.table = Table()
-      state.focusedLineIndex = undefined
+    editLineTextAction(
+      state,
+      {payload}: PayloadAction<{id: number; text: string}>
+    ) {
+      const line = findLine(state, payload.id)
+      Line.setText(line, payload.text)
+    },
+    focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {
+      state.focus = payload
+    },
+    newFileAction(state) {
+      state.focus = undefined
+      state.invalidated = false
       state.status = 'idle'
+      state.table = Table()
       // [todo]: cancel loading.
     },
-    removeLine(state, {payload: index}: PayloadAction<number>) {
-      const size = state.table.lines.length
-      if (index < 0 || index >= size)
-        throw Error(`Invalid line removal at index=${index}; size=${size}.`)
+    removeLineAction(
+      state,
+      {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next'}>
+    ) {
+      const index = findLineIndex(state, payload.line.id)
       state.table.lines.splice(index, 1)
-      // Assume index is either the focused line or invalidated by it.
-      state.focusedLineIndex = undefined
-    },
-    setFocus(state, {payload: index}: PayloadAction<number | undefined>) {
-      const size = state.table.lines.length
-      if (index != null && (index < 0 || index >= size))
-        throw Error(`Invalid line focus at index=${index}; size=${size}.`)
-      state.focusedLineIndex = index
+      const nextIndex = Math.max(
+        0,
+        Math.min(
+          index + (payload.focus === 'prev' ? -1 : 0),
+          state.table.lines.length - 1
+        )
+      )
+      state.invalidated = true
+      state.focus = state.table.lines[nextIndex]
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -87,7 +124,7 @@ export const tableSlice = createSlice({
       .addCase(loadTableAsync.fulfilled, (state, action) => {
         state.table = action.payload.table
         state.idFactory = action.payload.idFactory
-        state.focusedLineIndex = undefined
+        state.focus = undefined
         state.status = 'idle'
       })
       .addCase(loadTableAsync.rejected, state => {
@@ -97,7 +134,13 @@ export const tableSlice = createSlice({
   }
 })
 
-export const {addLine, newFile, removeLine, setFocus} = tableSlice.actions
+export const {
+  addLineAction,
+  editLineTextAction,
+  focusLineAction,
+  newFileAction,
+  removeLineAction
+} = tableSlice.actions
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

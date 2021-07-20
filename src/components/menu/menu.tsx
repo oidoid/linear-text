@@ -1,6 +1,6 @@
 import {
-  addLine,
-  removeLine,
+  addLineAction,
+  removeLineAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
 import {Card} from '../card/card'
@@ -63,9 +63,12 @@ function MenuList() {
           <li>
             <IconButton
               label={t`button-remove-line__label`}
-              onClick={() => {
-                if (tableState.focusedLineIndex == null) return
-                dispatch(removeLine(tableState.focusedLineIndex))
+              onClick={ev => {
+                ev.stopPropagation()
+                if (tableState.focus == null) return
+                dispatch(
+                  removeLineAction({line: tableState.focus, focus: 'prev'})
+                )
               }}
               src={menuIconRemoveLine}
               title={t`button-remove-line__title`}
@@ -74,7 +77,7 @@ function MenuList() {
           <li>
             <IconButton
               label={t`button-add-line__label`}
-              onClick={() => dispatch(addLine())}
+              onClick={() => dispatch(addLineAction())}
               src={menuIconAddLine}
               title={t`button-add-line__title`}
             />

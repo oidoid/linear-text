@@ -1,0 +1,92 @@
+.note-element {
+  /* For the focus box-shadow to appear on top of the surroundings. */
+  position: relative;
+
+  /* These dimensions include any border and padding. */
+  box-sizing: border-box;
+
+  /* Add some spacing for distinction and the focus box-shadow. */
+  margin: 2px;
+
+  /* Notes are pretty thin and translucent as is the ink. */
+  color: var(--shade-black);
+
+  /* Handwriting. */
+  font-family: Brush Script MT, cursive;
+  font-size: 16px;
+}
+
+.note-element:not(.note-element--empty) {
+  /* Add space for gripping. */
+  --text-line-padding-top: var(--min-press-size);
+
+  /* Notes are pretty thin and translucent. */
+  background-color: var(--note--background-color, var(--shade-yellow));
+
+  background-image:
+    /* Adhesive. */ linear-gradient(
+      rgba(0, 0, 0, 0.04) 11.5mm,
+      rgba(0, 0, 0, 0) 14mm
+    ),
+    /* Paper. */ url(note-element-noise.png);
+
+  /* Notes don't rest perfectly flat. */
+  box-shadow: var(--box-shadow-bottom);
+
+  width: 75mm;
+
+  /* The corners are rounded. */
+  border-radius: 1px 3px / 2px 0px;
+}
+
+.note-element--empty {
+  --text-line-padding-top: unset;
+
+  background-color: var(--color-light-grey);
+
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  border-style: dashed;
+  border-color: transparent;
+}
+
+.note-element--empty:hover:not(:focus-within) {
+  /* Show a dashed outline on hover if the card isn't already emphasized due to
+     focus. */
+  border-color: var(--color-dark-grey);
+}
+
+.note-element--empty:hover::before {
+  content: '';
+
+  /* Remove from layout flow and fill the container. */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  /* Pencil-line shading. */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.04) 1px,
+    rgba(0, 0, 0, 0.04) 2px,
+    transparent 2px
+  );
+}
+
+.note-element:focus-within {
+  /* Raise above menuing. */
+  z-index: var(--z-index-focused-line);
+  /* Outline the note like card UI and elevate dramatically. */
+  box-shadow: var(--box-shadow-top), 3px 3px 4px 1px var(--shade-dark-shadow);
+}
+
+/* Grabble area. */
+.note-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: var(--min-press-size);
+}

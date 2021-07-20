@@ -6,12 +6,19 @@
   --color-dark-grey: #ccc;
   --color-darkest-grey: #888;
   --color-white: #fff;
+  --shade-grey: rgba(0, 0, 0, 0.3);
+  --shade-black: rgba(0, 0, 0, 0.875);
+  --shade-dark-shadow: rgba(0, 0, 0, 0.25);
   --shade-shadow: rgba(0, 0, 0, 0.125);
+  --shade-yellow: rgba(255, 255, 200, 0.95);
+  --tint-light-white: #fff2;
+  --tint-half-white: #fff6;
 
   --card-border-width: 0.5px;
   --card-padding: 4px;
   --card-margin: 4px;
   --border-radius: 2px;
+  --border-width: 1px;
   --spacing-8: 8px;
 
   --button-margin: 2px;
@@ -20,13 +27,15 @@
   --font-size-tooltip: 12px;
 
   --z-index-header: 100;
+  --z-index-focused-line: 1000;
   --z-index-tooltip: 10000;
 
   /* Require interactive elements large enough to be easily pressed. */
-  --min-press-size: 32px;
+  --min-press-size: 24px;
 
-  --box-shadow: -0.5px -0.5px 0.5px 0.5px var(--shade-shadow),
-    1px 1px 1px 0.5px var(--shade-shadow);
+  --box-shadow: var(--box-shadow-top), var(--box-shadow-bottom);
+  --box-shadow-top: -0.5px -0.5px 0.5px 0.5px var(--shade-shadow);
+  --box-shadow-bottom: 1px 1px 1px 0.5px var(--shade-shadow);
 }
 
 body {
@@ -41,6 +50,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ol,
+ul {
+  /* Clear default list margin, padding, and style. */
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 li {

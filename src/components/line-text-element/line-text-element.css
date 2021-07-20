@@ -1,0 +1,71 @@
+.line-text-element {
+  /* These dimensions include any border and padding. */
+  box-sizing: border-box;
+
+  /* Absolutely positioned children are relative this container. */
+  position: relative;
+}
+
+.line-text-element::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-text) ' ';
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+
+  /* Overflowing content breaks. */
+  word-wrap: break-word;
+
+  /* This is how textarea text behaves. */
+  white-space: pre-wrap;
+}
+
+.line-text-element,
+.line-text-element__text {
+  padding: var(--text-line-padding-top, 8px) 8px 8px 8px;
+}
+
+.line-text-element__text {
+  /* These dimensions include any border and padding. */
+  box-sizing: border-box;
+
+  /* Remove from flow and position in the top-left of the container. */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Disable resizing and scrollbars. */
+  resize: none;
+  overflow: hidden;
+
+  /* Disable the stock white background. */
+  background: none;
+
+  /* Disable the stock border. */
+  border-width: 0;
+
+  /* Add a little outline transition to make it standout on focus. */
+  outline: 1px solid transparent;
+  transition: outline 100ms ease-in-out, background 100ms ease-in-out;
+
+  /* Inherit font and coloring. */
+  font: inherit;
+  color: inherit;
+
+  width: var(--line-text--width, 100%);
+  height: var(--line-text--height, 100%);
+  user-select: none;
+}
+
+.line-text-element__text::selection {
+  background: var(--shade-grey);
+  color: var(--color-white);
+}
+
+.line-text-element__text:focus {
+  background: var(--tint-light-white);
+  outline-color: var(--tint-half-white);
+
+  /* [to-do] This doesn't seem to be working. */
+  user-select: contain;
+}

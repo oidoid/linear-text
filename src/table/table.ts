@@ -4,6 +4,6 @@ import {TableMeta} from './table-meta'
 
 export type Table = {meta: TableMeta; lines: Line[]}
 
-export function Table(): Table {
-  return {meta: TableMeta(['text'], {text: 0}), lines: []}
+export function Table(lines: Line[] = []): Table {
+  return {meta: TableMeta(['text'], {text: 0}), lines}
 }
