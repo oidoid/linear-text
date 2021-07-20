@@ -4,7 +4,7 @@ export type IconElementProps = Readonly<{alt: string; src: string}>
 
 export const iconSize = 20
 
-export function IconElement({alt, src}: IconElementProps) {
+export function IconElement({alt, src}: IconElementProps): JSX.Element {
   return (
     <img
       alt={alt}

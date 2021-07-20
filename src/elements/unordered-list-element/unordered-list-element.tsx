@@ -10,7 +10,7 @@ export type UnorderedListElementProps = Readonly<{
 export function UnorderedListElement({
   children,
   layout = 'vertical'
-}: UnorderedListElementProps) {
+}: UnorderedListElementProps): JSX.Element {
   return (
     <ul className={`unordered-list-element unordered-list-element--${layout}`}>
       {children}

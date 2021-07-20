@@ -33,7 +33,7 @@ export function ToolbarCardElement() {
   )
 }
 
-export function ToolbarElement() {
+export function ToolbarElement(): JSX.Element {
   const [file, setFile] = useState<FileWithHandle>()
   const tableState = useAppSelector(selectTableState)
   const dispatch = useAppDispatch()

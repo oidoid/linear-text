@@ -22,7 +22,7 @@ export function ButtonElement({
   active,
   onClick,
   title
-}: ButtonElementProps) {
+}: ButtonElementProps): JSX.Element {
   const className = useMemo(
     () => `buttonish-element ${active ? 'buttonish-element--active' : ''}`,
     [active]

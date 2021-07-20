@@ -7,7 +7,9 @@ import './app-element.css'
 
 export type AppElementProps = Readonly<{'data-testid'?: string}>
 
-export function AppElement({'data-testid': testID}: AppElementProps) {
+export function AppElement({
+  'data-testid': testID
+}: AppElementProps): JSX.Element {
   const tableState = useAppSelector(selectTableState)
   return (
     <div className='app-element' data-testid={testID}>

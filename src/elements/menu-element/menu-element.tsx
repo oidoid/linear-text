@@ -20,7 +20,7 @@ import menuIconToggleToolbar from './menu-icon-toggle-toolbar.svg'
 
 import './menu-element.css'
 
-export function MenuCardElement() {
+export function MenuCardElement(): JSX.Element {
   return (
     <div className='menu-card-element'>
       <CardElement>
@@ -30,7 +30,7 @@ export function MenuCardElement() {
   )
 }
 
-function MenuElement() {
+function MenuElement(): JSX.Element {
   return (
     <nav className='menu-element'>
       <MenuListElement />
@@ -38,7 +38,7 @@ function MenuElement() {
   )
 }
 
-function MenuListElement() {
+function MenuListElement(): JSX.Element {
   const dispatch = useAppDispatch()
   const tableState = useAppSelector(selectTableState)
   return (

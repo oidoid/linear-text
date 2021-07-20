@@ -20,7 +20,7 @@ export function DisclosureElement({
   open: initOpen = false,
   summary,
   title
-}: DisclosureElementProps) {
+}: DisclosureElementProps): JSX.Element {
   const [open, setOpen] = useState(initOpen)
 
   const onToggleCb = useCallback(

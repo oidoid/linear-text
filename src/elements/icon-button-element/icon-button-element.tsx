@@ -17,7 +17,7 @@ export function IconButtonElement({
   onClick,
   src,
   title
-}: IconButtonElementProps) {
+}: IconButtonElementProps): JSX.Element {
   return (
     <div className='icon-button-element'>
       <ButtonElement onClick={onClick} title={title}>
