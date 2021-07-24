@@ -325,9 +325,7 @@ exports[`matches snapshot 1`] = `
       </div>
     </div>
   </header>
-  <main
-    class="app-element__body"
-  >
+  <main>
     <article
       class="group-element"
     >

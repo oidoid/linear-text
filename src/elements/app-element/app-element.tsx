@@ -16,7 +16,7 @@ export function AppElement({
       <header className='app-element__header'>
         <MenuCardElement />
       </header>
-      <main className='app-element__body'>
+      <main>
         <GroupElement lines={tableState.table.lines} />
       </main>
     </div>
