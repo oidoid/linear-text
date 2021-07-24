@@ -1,3 +1,7 @@
+import type {ReadonlyLine} from '../line/line'
+import type {Table} from '../table/table'
+
+import {ID} from '../id/id'
 import {IDFactory} from '../id/id-factory'
 import {parseTable} from './table-parser'
 import {readFileSync} from 'fs'
@@ -7,9 +11,17 @@ beforeEach(() => (factory = IDFactory()))
 
 test.each(['\t'])('delimiter: "%s"', async delimiter => {
   const row = ['a', 'b', 'c'].join(delimiter)
-  const expected = {
+  const expected: Table = {
     meta: {header: undefined, columnMap: {text: 0}, delimiter, newline: '\n'},
-    lines: [{id: 1, text: 'a', invalidated: false, row: ['a', 'b', 'c']}]
+    lines: [
+      {
+        id: ID(1),
+        state: 'note',
+        text: 'a',
+        invalidated: false,
+        row: ['a', 'b', 'c']
+      }
+    ]
   }
   expect(await parseTable(factory, row)).toStrictEqual(expected)
 })
@@ -19,16 +31,18 @@ test.each([
   ['carriage return and linefeed', '\r\n']
 ])('newline: %s', async (_, newline) => {
   const input = `text${newline}abc`
-  const expected = {
+  const expected: Table = {
     meta: {header: ['text'], columnMap: {text: 0}, delimiter: '\t', newline},
-    lines: [{id: 1, text: 'abc', invalidated: false, row: ['abc']}]
+    lines: [
+      {id: ID(1), state: 'note', text: 'abc', invalidated: false, row: ['abc']}
+    ]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
 test('header padding is ignored and preserved', async () => {
   const input = ' a \t text \t c \n 1 \t 2 \t 3 '
-  const expected = {
+  const expected: Table = {
     meta: {
       header: [' a ', ' text ', ' c '],
       columnMap: {text: 1},
@@ -36,7 +50,13 @@ test('header padding is ignored and preserved', async () => {
       newline: '\n'
     },
     lines: [
-      {id: 1, text: ' 2 ', invalidated: false, row: [' 1 ', ' 2 ', ' 3 ']}
+      {
+        id: ID(1),
+        state: 'note',
+        text: ' 2 ',
+        invalidated: false,
+        row: [' 1 ', ' 2 ', ' 3 ']
+      }
     ]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
@@ -47,7 +67,7 @@ test('extra empty columns are ignored and preserved', async () => {
     'a							b							text										d',
     '1							2							3										4'
   ].join('\n') // prettier-ignore
-  const expected = {
+  const expected: Table = {
     meta: {
       header: [
         'a', '', '', '', '', '', '',
@@ -61,7 +81,8 @@ test('extra empty columns are ignored and preserved', async () => {
     },
     lines: [
       {
-        id: 1,
+        id: ID(1),
+        state: 'note',
         text: '3',
         invalidated: false,
         row:         [
@@ -78,102 +99,188 @@ test('extra empty columns are ignored and preserved', async () => {
 
 test('header capitalization is ignored and preserved', async () => {
   const input = 'a\tText\tc\n1\t2\t3'
-  const expected = {
+  const expected: Table = {
     meta: {
       header: ['a', 'Text', 'c'],
       columnMap: {text: 1},
       delimiter: '\t',
       newline: '\n'
     },
-    lines: [{id: 1, text: '2', invalidated: false, row: ['1', '2', '3']}]
+    lines: [
+      {
+        id: ID(1),
+        state: 'note',
+        text: '2',
+        invalidated: false,
+        row: ['1', '2', '3']
+      }
+    ]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
 
-test.each([
+test.each(<const>[
   ['empty file', '', []],
   [
     'empty file with trailing newline',
     '\n',
     [
-      {id: 1, text: undefined, invalidated: false, row: ['']},
-      {id: 2, text: undefined, invalidated: false, row: ['']}
+      {
+        id: ID(1),
+        state: 'divider',
+        text: undefined,
+        invalidated: false,
+        row: ['']
+      },
+      {
+        id: ID(2),
+        state: 'divider',
+        text: undefined,
+        invalidated: false,
+        row: ['']
+      }
     ]
   ],
   [
     'empty file with header',
     'text\n',
-    [{id: 1, text: '', invalidated: false, row: ['']}]
+    [{id: ID(1), state: 'divider', text: '', invalidated: false, row: ['']}]
   ],
   [
     'nonempty file trailing newline',
     'a\n',
     [
-      {id: 1, text: 'a', invalidated: false, row: ['a']},
-      {id: 2, text: '', invalidated: false, row: ['']}
+      {id: ID(1), state: 'note', text: 'a', invalidated: false, row: ['a']},
+      {id: ID(2), state: 'divider', text: '', invalidated: false, row: ['']}
     ]
   ],
   [
     'nonempty file with header and trailing newline',
     'text\na\n',
     [
-      {id: 1, text: 'a', invalidated: false, row: ['a']},
-      {id: 2, text: '', invalidated: false, row: ['']}
+      {
+        id: ID(1),
+        state: <const>'note',
+        text: 'a',
+        invalidated: false,
+        row: ['a']
+      },
+      {
+        id: ID(2),
+        state: <const>'divider',
+        text: '',
+        invalidated: false,
+        row: ['']
+      }
     ]
   ],
   [
     'nonempty file without trailing newline',
     'a\nb',
     [
-      {id: 1, text: 'a', invalidated: false, row: ['a']},
-      {id: 2, text: 'b', invalidated: false, row: ['b']}
+      {
+        id: ID(1),
+        state: <const>'note',
+        text: 'a',
+        invalidated: false,
+        row: ['a']
+      },
+      {
+        id: ID(2),
+        state: <const>'note',
+        text: 'b',
+        invalidated: false,
+        row: ['b']
+      }
     ]
   ]
-])('trailing newline is an empty Line: %s', async (_, input, expectedLines) => {
-  expect((await parseTable(factory, input)).lines).toStrictEqual(expectedLines)
-})
+])(
+  'trailing newline is an empty Line: %s',
+  async (_, input, expectedLines: readonly ReadonlyLine[]) => {
+    expect((await parseTable(factory, input)).lines).toStrictEqual(
+      expectedLines
+    )
+  }
+)
 
-test.each([
+test.each(<const>[
   [
     'missing leading cell',
     '\t2\t3',
-    {id: 1, text: '2', invalidated: false, row: ['', '2', '3']}
+    {
+      id: ID(1),
+      state: 'note',
+      text: '2',
+      invalidated: false,
+      row: ['', '2', '3']
+    }
   ],
   [
     'missing middling cell',
     '1\t\t3',
-    {id: 1, text: '', invalidated: false, row: ['1', '', '3']}
+    {
+      id: ID(1),
+      state: 'divider',
+      text: '',
+      invalidated: false,
+      row: ['1', '', '3']
+    }
   ],
   [
     'missing trailing cell',
     '1\t2',
-    {id: 1, text: '2', invalidated: false, row: ['1', '2']}
+    {id: ID(1), state: 'note', text: '2', invalidated: false, row: ['1', '2']}
   ],
   [
     'missing trailing cell and trailing comma',
     '1\t2\t',
-    {id: 1, text: '2', invalidated: false, row: ['1', '2', '']}
+    {
+      id: ID(1),
+      state: 'note',
+      text: '2',
+      invalidated: false,
+      row: ['1', '2', '']
+    }
   ],
-  ['missing row', '', {id: 1, text: undefined, invalidated: false, row: ['']}],
+  [
+    'missing row',
+    '',
+    {
+      id: ID(1),
+      state: 'divider',
+      text: undefined,
+      invalidated: false,
+      row: ['']
+    }
+  ],
   [
     'extra cell',
     '1\t2\t3\t4',
-    {id: 1, text: '2', invalidated: false, row: ['1', '2', '3', '4']}
+    {
+      id: ID(1),
+      state: 'note',
+      text: '2',
+      invalidated: false,
+      row: ['1', '2', '3', '4']
+    }
   ]
-])('missing cells and inconsistencies: %s', async (_, row, expectedLine) => {
-  const header = 'a\ttext\tc\n'
-  const input = header + row
-  const expected = {
-    meta: {
-      header: ['a', 'text', 'c'],
-      columnMap: {text: 1},
-      delimiter: '\t',
-      newline: '\n'
-    },
-    lines: [expectedLine]
+])(
+  'missing cells and inconsistencies: %s',
+  async (_, row, expectedLine: ReadonlyLine) => {
+    const header = 'a\ttext\tc\n'
+    const input = header + row
+    const expected = {
+      meta: {
+        header: ['a', 'text', 'c'],
+        columnMap: {text: 1},
+        delimiter: '\t',
+        newline: '\n'
+      },
+      lines: [expectedLine]
+    }
+    expect(await parseTable(factory, input)).toStrictEqual(expected)
   }
-  expect(await parseTable(factory, input)).toStrictEqual(expected)
-})
+)
 
 test.each(['games.test.tab', 'groceries.test.tab'])(
   'integration %s',

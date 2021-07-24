@@ -3,6 +3,18 @@ import type {Row} from '../table/row'
 
 import {IDFactory, makeID} from '../id/id-factory'
 
+/**
+ * Interim visual and behavioral representation. Do not serialize. State is used
+ * to preserve user intent prior to text mutation.
+ *
+ * When a line is created from a file, the state intent (divider or note) can be
+ * accurately determined by whether or not the line is empty. However, from the
+ * UI, a line may be created with the intent to become a note. Without an
+ * intermediate draft state, the line would immediately snap to a divider visual
+ * representation which is a jarring effect.
+ */
+export type LineState = 'divider' | 'draft' | 'note'
+
 /** A table row and its application state modeling. */
 export type Line = {
   /**
@@ -11,6 +23,9 @@ export type Line = {
    * cannot be serialized in the store.
    */
   readonly id: ID
+
+  /** State is managed internally. Do not manually set. */
+  state: LineState
 
   /** The normalized model text to be shown, possibly mini-Markdown or empty. */
   text: string | undefined
@@ -29,23 +44,35 @@ export type Line = {
   readonly row: Row
 }
 
+export type ReadonlyLine = Readonly<Omit<Line, 'row'> & {row: Readonly<Row>}>
+
 /** Creates a new, invalidated line. */
-export function Line(factory: IDFactory, text?: string | undefined): Line {
-  return {id: makeID(factory), text, invalidated: true, row: []}
+export function Line(
+  factory: IDFactory,
+  state: LineState,
+  text?: string | undefined
+): Line {
+  return {id: makeID(factory), state, text, invalidated: true, row: []}
 }
 
 /** Creates a new, valid line. */
 Line.fromRow = (
   factory: IDFactory,
-  row: Row,
-  text: string | undefined
+  state: LineState,
+  text: string | undefined,
+  row: Row
 ): Line => {
-  return {id: makeID(factory), text, invalidated: false, row}
+  return {id: makeID(factory), state, text, invalidated: false, row}
 }
 
 /** Updates the text model and invalidates the row. */
 Line.setText = (line: Line, text: string): void => {
   line.text = text
+  line.state = Line.isEmpty(line)
+    ? line.state === 'divider'
+      ? 'divider'
+      : 'draft'
+    : 'note'
   line.invalidated = true
 }
 
@@ -55,6 +82,6 @@ Line.setText = (line: Line, text: string): void => {
  *
  * Empty lines are usually used for separating logical groups of lines.
  */
-Line.isEmpty = (line: Readonly<Line>): boolean => {
-  return line.text == null || line.text.length === 0
+Line.isEmpty = (line: ReadonlyLine): boolean => {
+  return line.text == null || line.text === ''
 }

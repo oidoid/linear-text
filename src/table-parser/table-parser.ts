@@ -74,5 +74,6 @@ function findHeaderTextIndex(row: Readonly<Row>): number | undefined {
 
 function parseLine(factory: IDFactory, row: Row, columnMap: ColumnMap): Line {
   const text = columnMap.text == null ? undefined : row[columnMap.text]
-  return Line.fromRow(factory, row, text)
+  const state = text == null || text === '' ? 'divider' : 'note'
+  return Line.fromRow(factory, state, text, row)
 }

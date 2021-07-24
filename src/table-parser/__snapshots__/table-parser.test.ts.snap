@@ -9,6 +9,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -19,6 +20,7 @@ Object {
         "1985",
         "https://wikipedia.org/wiki/Nintendo_Entertainment_System",
       ],
+      "state": "note",
       "text": "Nintendo Entertainment System",
     },
     Object {
@@ -29,6 +31,7 @@ Object {
         "1994",
         "https://wikipedia.org/wiki/Mega_Man_6",
       ],
+      "state": "note",
       "text": "- Mega Man 6",
     },
     Object {
@@ -39,6 +42,7 @@ Object {
         "1990",
         "https://wikipedia.org/wiki/Solar_Jetman",
       ],
+      "state": "note",
       "text": "- Solar Jetman: Hunt for the Golden Warpship",
     },
     Object {
@@ -49,6 +53,7 @@ Object {
         "1989",
         "https://wikipedia.org/wiki/Super_Mario_Bros._3",
       ],
+      "state": "note",
       "text": "- Super Mario Bros. 3",
     },
     Object {
@@ -59,6 +64,7 @@ Object {
         "1992",
         "https://wikipedia.org/wiki/Teenage_Mutant_Ninja_Turtles_III:_The_Manhattan_Project",
       ],
+      "state": "note",
       "text": "- Teenage Mutant Ninja Turtles III: The Manhattan Project",
     },
     Object {
@@ -69,6 +75,7 @@ Object {
         "1989",
         "https://wikipedia.org/wiki/The_Guardian_Legend",
       ],
+      "state": "note",
       "text": "- The Guardian Legend",
     },
     Object {
@@ -77,6 +84,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -85,6 +93,7 @@ Object {
       "row": Array [
         "PC",
       ],
+      "state": "note",
       "text": "PC",
     },
     Object {
@@ -95,6 +104,7 @@ Object {
         "2018",
         "https://wikipedia.org/wiki/Red_Dead_Redemption_2",
       ],
+      "state": "note",
       "text": "- Red Dead Redemption 2",
     },
     Object {
@@ -103,6 +113,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -113,6 +124,7 @@ Object {
         "2006",
         "https://wikipedia.org/wiki/PlayStation_3",
       ],
+      "state": "note",
       "text": "PlayStation 3",
     },
     Object {
@@ -123,6 +135,7 @@ Object {
         "2001",
         "https://wikipedia.org/wiki/The_Ico_%26_Shadow_of_the_Colossus_Collection",
       ],
+      "state": "note",
       "text": "- Ico (The Ico & Shadow of the Colossus Collection)",
     },
     Object {
@@ -133,6 +146,7 @@ Object {
         "2001",
         "https://wikipedia.org/wiki/Metal_Gear_Solid_HD_Collection",
       ],
+      "state": "note",
       "text": "- Metal Gear Solid 2: Sons of Liberty (Metal Gear Solid HD Collection)",
     },
     Object {
@@ -143,6 +157,7 @@ Object {
         "2005",
         "https://wikipedia.org/wiki/The_Ico_%26_Shadow_of_the_Colossus_Collection",
       ],
+      "state": "note",
       "text": "- Shadow of the Colossus (The Ico & Shadow of the Colossus Collection)",
     },
     Object {
@@ -151,6 +166,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -161,6 +177,7 @@ Object {
         "2013",
         "https://wikipedia.org/wiki/PlayStation_4",
       ],
+      "state": "note",
       "text": "PlayStation 4",
     },
     Object {
@@ -171,6 +188,7 @@ Object {
         "2013",
         "https://wikipedia.org/wiki/The_Last_of_Us#The_Last_of_Us_Remastered",
       ],
+      "state": "note",
       "text": "- The Last of Us Remastered",
     },
     Object {
@@ -179,6 +197,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -189,6 +208,7 @@ Object {
         "1991",
         "https://wikipedia.org/wiki/Super_Nintendo_Entertainment_System",
       ],
+      "state": "note",
       "text": "Super Nintendo",
     },
     Object {
@@ -199,6 +219,7 @@ Object {
         "1995",
         "https://wikipedia.org/wiki/EarthBound",
       ],
+      "state": "note",
       "text": "- EarthBound",
     },
     Object {
@@ -207,6 +228,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -215,6 +237,7 @@ Object {
       "row": Array [
         "Switch",
       ],
+      "state": "note",
       "text": "Switch",
     },
     Object {
@@ -225,6 +248,7 @@ Object {
         "2017",
         "https://wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild",
       ],
+      "state": "note",
       "text": "- The Legend of Zelda: Breath of the Wild",
     },
     Object {
@@ -233,6 +257,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
   ],
@@ -261,6 +286,7 @@ Object {
       "row": Array [
         "Produce",
       ],
+      "state": "note",
       "text": "Produce",
     },
     Object {
@@ -269,6 +295,7 @@ Object {
       "row": Array [
         "[] Cucumber",
       ],
+      "state": "note",
       "text": "[] Cucumber",
     },
     Object {
@@ -277,6 +304,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -285,6 +313,7 @@ Object {
       "row": Array [
         "Snacks",
       ],
+      "state": "note",
       "text": "Snacks",
     },
     Object {
@@ -293,6 +322,7 @@ Object {
       "row": Array [
         "[x] Pretzels",
       ],
+      "state": "note",
       "text": "[x] Pretzels",
     },
     Object {
@@ -301,6 +331,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
     Object {
@@ -309,6 +340,7 @@ Object {
       "row": Array [
         "Frozen",
       ],
+      "state": "note",
       "text": "Frozen",
     },
     Object {
@@ -317,6 +349,7 @@ Object {
       "row": Array [
         "[x] Ice Cream",
       ],
+      "state": "note",
       "text": "[x] Ice Cream",
     },
     Object {
@@ -325,6 +358,7 @@ Object {
       "row": Array [
         "[x] Pizza",
       ],
+      "state": "note",
       "text": "[x] Pizza",
     },
     Object {
@@ -333,6 +367,7 @@ Object {
       "row": Array [
         "",
       ],
+      "state": "divider",
       "text": "",
     },
   ],

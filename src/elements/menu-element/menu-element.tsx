@@ -77,7 +77,7 @@ function MenuListElement(): JSX.Element {
           <li>
             <IconButtonElement
               label={t`button-add-line__label`}
-              onClick={() => dispatch(addLineAction())}
+              onClick={() => dispatch(addLineAction('draft'))}
               src={menuIconAddLine}
               title={t`button-add-line__title`}
             />

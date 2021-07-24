@@ -51,7 +51,7 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
       ev.stopPropagation()
       dispatch(
         ev.key === 'Enter'
-          ? addLineAction()
+          ? addLineAction('draft')
           : removeLineAction({
               line,
               focus: ev.key === 'Backspace' ? 'prev' : 'next'

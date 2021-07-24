@@ -4,7 +4,7 @@ import type {RootState} from '../store'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {IDFactory} from '../../id/id-factory'
-import {Line} from '../../line/line'
+import {Line, LineState} from '../../line/line'
 import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
 
@@ -60,8 +60,8 @@ export const tableSlice = createSlice({
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
-    addLineAction(state) {
-      const line = Line(state.idFactory)
+    addLineAction(state, {payload}: PayloadAction<LineState>) {
+      const line = Line(state.idFactory, payload)
       const index =
         state.focus == null
           ? state.table.lines.length
