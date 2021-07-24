@@ -1,7 +1,9 @@
 Publish Perfect Memory v0.2.0: Notes and Foundations
 
 Add undo / redo system and data model store.
+Add insert divider button.
 Add test for loadTabFileAsync.
 Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
-Add some kind of default grid or column ordering.
-Add dragging support.
+Rename NameElementProps to just NameProps.
+Rename group-element to... LinearArticle? LineDocument? line File? TableElement?
+Extract focus logic in slice store.

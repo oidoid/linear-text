@@ -23,6 +23,20 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
   const {spellcheck, onBlurSpellcheck, onFocusSpellcheck} =
     useFocusSpellchecker()
   const [text, setText] = useState(line.text)
+  const onBlur = useCallback(
+    (ev: React.FocusEvent<HTMLTextAreaElement>) => {
+      onBlurSpellcheck(ev)
+      if (line.state === 'draft') {
+        // Don't retain focus here. If the current state is a draft and the
+        // reason for removal is new line creation, the better behavior is to
+        // set the cursor back one and recreate a line in the position of this
+        // line. This unfortunately causes a focus glitch when pressing tab to
+        // cause a focus loss from a draft to a subsequent line.
+        dispatch(removeLineAction({line, focus: 'prev'}))
+      }
+    },
+    [dispatch, line, onBlurSpellcheck]
+  )
   const onChange = useCallback(
     (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
       const text = ev.currentTarget.value
@@ -43,7 +57,6 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
   )
   const onKeyDown = useCallback(
     (ev: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      // [todo]: Document keyboard navigation.
       const remove =
         (ev.key === 'Backspace' || ev.key === 'Delete') && Line.isEmpty(line)
       if (ev.key !== 'Enter' && !remove) return
@@ -51,7 +64,7 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
       ev.stopPropagation()
       dispatch(
         ev.key === 'Enter'
-          ? addLineAction('draft')
+          ? addLineAction(line.state === 'draft' ? 'divider' : 'draft')
           : removeLineAction({
               line,
               focus: ev.key === 'Backspace' ? 'prev' : 'next'
@@ -63,8 +76,8 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
 
   const textRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => {
-    if (tableState.focus === line) textRef.current?.focus()
-  }, [tableState.focus, line, textRef])
+    if (tableState.focus?.id === line.id) textRef.current?.focus()
+  }, [tableState.focus, line.id, textRef])
 
   return (
     <div className='line-text-element' data-text={text}>
@@ -72,7 +85,7 @@ export function LineTextElement({line}: LineTextElementProps): JSX.Element {
         ref={textRef}
         autoFocus={tableState.focus === line}
         className='line-text-element__text'
-        onBlur={onBlurSpellcheck}
+        onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
         onKeyDown={onKeyDown}

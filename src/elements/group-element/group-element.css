@@ -1,19 +1,19 @@
 .group-element {
-  margin: 8px;
-}
+  box-sizing: border-box;
 
-.group-element__list {
-  /* Always fill the available width. */
-  width: 100%;
+  margin: var(--spacing);
 
-  /* Pack lines. */
+  /* Arrange lines in columns from left to right. */
   display: flex;
-
-  /* Arrange lines from left to right. */
+  flex-direction: column;
   flex-wrap: wrap;
+  align-content: flex-start;
+
+  /* flex-basis requires a defined height. */
+  height: 99in;
 }
 
-.group-element__list-item--empty {
+.group-element__list-item--divider {
   /* The flex is on the list items, not the lines. Make the list item itself
      fill the full width. */
   flex-basis: 100%;

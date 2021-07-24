@@ -326,13 +326,9 @@ exports[`matches snapshot 1`] = `
     </div>
   </header>
   <main>
-    <article
+    <ul
       class="group-element"
-    >
-      <ul
-        class="group-element__list"
-      />
-    </article>
+    />
   </main>
 </div>
 `;

@@ -89,18 +89,23 @@ export const tableSlice = createSlice({
     },
     removeLineAction(
       state,
-      {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next'}>
+      {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next' | 'retain'}>
     ) {
       const index = Table.removeLine(state.table, payload.line.id)
-      const nextIndex = Math.max(
-        0,
-        Math.min(
-          index + (payload.focus === 'prev' ? -1 : 0),
-          state.table.lines.length - 1
-        )
-      )
       state.invalidated = true
-      state.focus = state.table.lines[nextIndex]
+      if (payload.focus === 'retain') {
+        state.focus =
+          state.focus?.id === payload.line.id ? undefined : state.focus
+      } else {
+        const nextIndex = Math.max(
+          0,
+          Math.min(
+            index + (payload.focus === 'prev' ? -1 : 0),
+            state.table.lines.length - 1
+          )
+        )
+        state.focus = state.table.lines[nextIndex]
+      }
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,

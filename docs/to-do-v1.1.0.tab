@@ -22,3 +22,10 @@ Review React component library references.
 Consider showing navigation labels on wide screens.
 Evaluate Service Worker Papa Parse
 Add oid.dev site.
+Figure out how to get the menu out of the way.
+Document keyboard navigation.
+Split / join with previous line on enter/backspace? This will need to handle the gneerated draft states.
+extract keyboard handling
+Add multi-card movements.
+How can I represent that the divider is editable better?
+

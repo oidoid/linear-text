@@ -14,12 +14,12 @@
   --tint-light-white: #fff2;
   --tint-half-white: #fff6;
 
+  --spacing: 4px;
   --card-border-width: 0.5px;
-  --card-padding: 4px;
-  --card-margin: 4px;
+  --card-padding: var(--spacing);
+  --card-margin: var(--spacing);
   --border-radius: 2px;
   --border-width: 1px;
-  --spacing-8: 8px;
 
   --button-margin: 2px;
 

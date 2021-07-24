@@ -1,6 +1,6 @@
+import type {Line} from '../../line/line'
 import type React from 'react'
 
-import {Line} from '../../line/line'
 import {LineTextElement} from '../line-text-element/line-text-element'
 import {useCallback, useMemo} from 'react'
 
@@ -11,17 +11,17 @@ export type NoteElementProps = Readonly<{line: Readonly<Line>}>
 /** A sticky note. */
 export function NoteElement({line}: NoteElementProps): JSX.Element {
   const className = useMemo(
-    () => `note-element ${Line.isEmpty(line) ? 'note-element--empty' : ''}`,
-    [line]
+    () => `note-element note-element--${line.state}`,
+    [line.state]
   )
-  const onClick = useCallback(
-    (ev: React.MouseEvent<HTMLElementTagNameMap['aside']>) =>
-      // Block clicks from GroupElement. See LineTextElement's focus listener.
-      ev.stopPropagation(),
+  const onFocusCapture = useCallback(
+    (ev: React.FocusEvent<HTMLElementTagNameMap['aside']>) =>
+      // Smooth scroll into view.
+      ev.currentTarget.scrollIntoView({behavior: 'smooth', block: 'nearest'}),
     []
   )
   return (
-    <aside className={className} onClick={onClick}>
+    <aside className={className} onFocusCapture={onFocusCapture}>
       <LineTextElement line={line} />
     </aside>
   )
