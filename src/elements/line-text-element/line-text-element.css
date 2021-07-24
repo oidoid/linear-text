@@ -23,6 +23,9 @@
 .line-text-element,
 .line-text-element__text {
   padding: var(--text-line-padding-top, 8px) 8px 8px 8px;
+
+  width: var(--line-text--width, 100%);
+  height: var(--line-text--height, 100%);
 }
 
 .line-text-element__text {
@@ -52,8 +55,6 @@
   font: inherit;
   color: inherit;
 
-  width: var(--line-text--width, 100%);
-  height: var(--line-text--height, 100%);
   user-select: none;
 }
 
