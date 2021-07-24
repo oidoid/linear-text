@@ -5,5 +5,4 @@ Add insert divider button.
 Add test for loadTabFileAsync.
 Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
 Rename NameElementProps to just NameProps.
-Rename group-element to... LinearArticle? LineDocument? line File? TableElement?
 Extract focus logic in slice store.

@@ -1,4 +1,4 @@
-import {GroupElement} from '../group-element/group-element'
+import {TableElement} from '../table-element/table-element'
 import {MenuCardElement} from '../menu-element/menu-element'
 import {selectTableState} from '../../store/table-slice/table-slice'
 import {useAppSelector} from '../../hooks/use-store'
@@ -17,7 +17,7 @@ export function AppElement({
         <MenuCardElement />
       </header>
       <main>
-        <GroupElement lines={tableState.table.lines} />
+        <TableElement table={tableState.table} />
       </main>
     </div>
   )

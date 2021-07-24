@@ -327,7 +327,7 @@ exports[`matches snapshot 1`] = `
   </header>
   <main>
     <ul
-      class="group-element"
+      class="table-element"
     />
   </main>
 </div>
