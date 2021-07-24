@@ -5,7 +5,7 @@ import {readFileSync} from 'fs'
 let factory: IDFactory = IDFactory()
 beforeEach(() => (factory = IDFactory()))
 
-test.each(['\t', ','])('delimiter: "%s"', async delimiter => {
+test.each(['\t'])('delimiter: "%s"', async delimiter => {
   const row = ['a', 'b', 'c'].join(delimiter)
   const expected = {
     meta: {header: undefined, columnMap: {text: 0}, delimiter, newline: '\n'},
@@ -27,12 +27,12 @@ test.each([
 })
 
 test('header padding is ignored and preserved', async () => {
-  const input = ' a , text , c \n 1 , 2 , 3 '
+  const input = ' a \t text \t c \n 1 \t 2 \t 3 '
   const expected = {
     meta: {
       header: [' a ', ' text ', ' c '],
       columnMap: {text: 1},
-      delimiter: ',',
+      delimiter: '\t',
       newline: '\n'
     },
     lines: [
@@ -77,12 +77,12 @@ test('extra empty columns are ignored and preserved', async () => {
 })
 
 test('header capitalization is ignored and preserved', async () => {
-  const input = 'a,Text,c\n1,2,3'
+  const input = 'a\tText\tc\n1\t2\t3'
   const expected = {
     meta: {
       header: ['a', 'Text', 'c'],
       columnMap: {text: 1},
-      delimiter: ',',
+      delimiter: '\t',
       newline: '\n'
     },
     lines: [{id: 1, text: '2', invalidated: false, row: ['1', '2', '3']}]
@@ -136,38 +136,38 @@ test.each([
 test.each([
   [
     'missing leading cell',
-    ',2,3',
+    '\t2\t3',
     {id: 1, text: '2', invalidated: false, row: ['', '2', '3']}
   ],
   [
     'missing middling cell',
-    '1,,3',
+    '1\t\t3',
     {id: 1, text: '', invalidated: false, row: ['1', '', '3']}
   ],
   [
     'missing trailing cell',
-    '1,2',
+    '1\t2',
     {id: 1, text: '2', invalidated: false, row: ['1', '2']}
   ],
   [
     'missing trailing cell and trailing comma',
-    '1,2,',
+    '1\t2\t',
     {id: 1, text: '2', invalidated: false, row: ['1', '2', '']}
   ],
   ['missing row', '', {id: 1, text: undefined, invalidated: false, row: ['']}],
   [
     'extra cell',
-    '1,2,3,4',
+    '1\t2\t3\t4',
     {id: 1, text: '2', invalidated: false, row: ['1', '2', '3', '4']}
   ]
 ])('missing cells and inconsistencies: %s', async (_, row, expectedLine) => {
-  const header = 'a,text,c\n'
+  const header = 'a\ttext\tc\n'
   const input = header + row
   const expected = {
     meta: {
       header: ['a', 'text', 'c'],
       columnMap: {text: 1},
-      delimiter: ',',
+      delimiter: '\t',
       newline: '\n'
     },
     lines: [expectedLine]
