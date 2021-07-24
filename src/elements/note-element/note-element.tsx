@@ -6,10 +6,10 @@ import {useCallback, useMemo} from 'react'
 
 import './note-element.css'
 
-export type NoteElementProps = Readonly<{line: Readonly<Line>}>
+export type NoteProps = Readonly<{line: Readonly<Line>}>
 
 /** A sticky note. */
-export function NoteElement({line}: NoteElementProps): JSX.Element {
+export function NoteElement({line}: NoteProps): JSX.Element {
   const className = useMemo(
     () => `note-element note-element--${line.state}`,
     [line.state]

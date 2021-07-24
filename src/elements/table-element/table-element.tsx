@@ -4,9 +4,9 @@ import {LineElement} from '../line-element/line-element'
 
 import './table-element.css'
 
-export type TableElementProps = Readonly<{table: Readonly<Table>}>
+export type TableProps = Readonly<{table: Readonly<Table>}>
 
-export function TableElement({table}: TableElementProps): JSX.Element {
+export function TableElement({table}: TableProps): JSX.Element {
   return (
     <ul className='table-element'>
       {table.lines.map(line => (

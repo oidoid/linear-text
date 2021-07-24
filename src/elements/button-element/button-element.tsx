@@ -4,7 +4,7 @@ import {useMemo} from 'react'
 
 import './button-element.css'
 
-export type ButtonElementProps = Readonly<{
+export type ButtonProps = Readonly<{
   accessKey?: string
   active?: boolean
   children: ReactNode
@@ -22,7 +22,7 @@ export function ButtonElement({
   active,
   onClick,
   title
-}: ButtonElementProps): JSX.Element {
+}: ButtonProps): JSX.Element {
   const className = useMemo(
     () => `buttonish-element ${active ? 'buttonish-element--active' : ''}`,
     [active]

@@ -5,7 +5,7 @@ import {IconElement} from '../icon-element/icon-element'
 
 import './icon-button-element.css'
 
-export type IconButtonElementProps = Readonly<{
+export type IconButtonProps = Readonly<{
   label: string
   onClick: MouseEventHandler<HTMLButtonElement>
   src: string
@@ -17,7 +17,7 @@ export function IconButtonElement({
   onClick,
   src,
   title
-}: IconButtonElementProps): JSX.Element {
+}: IconButtonProps): JSX.Element {
   return (
     <div className='icon-button-element'>
       <ButtonElement onClick={onClick} title={title}>

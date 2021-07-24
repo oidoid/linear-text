@@ -2,7 +2,7 @@ import type {ReactElement} from 'react'
 
 import './unordered-list-element.css'
 
-export type UnorderedListElementProps = Readonly<{
+export type UnorderedListProps = Readonly<{
   children: readonly ReactElement<HTMLLIElement>[]
   layout?: 'grid' | 'horizontal' | 'vertical'
 }>
@@ -10,7 +10,7 @@ export type UnorderedListElementProps = Readonly<{
 export function UnorderedListElement({
   children,
   layout = 'vertical'
-}: UnorderedListElementProps): JSX.Element {
+}: UnorderedListProps): JSX.Element {
   return (
     <ul className={`unordered-list-element unordered-list-element--${layout}`}>
       {children}

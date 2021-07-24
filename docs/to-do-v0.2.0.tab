@@ -1,8 +1,6 @@
 Publish Perfect Memory v0.2.0: Notes and Foundations
 
+Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
 Add undo / redo system and data model store.
 Add insert divider button.
 Add test for loadTabFileAsync.
-Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
-Rename NameElementProps to just NameProps.
-Extract focus logic in slice store.

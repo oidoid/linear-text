@@ -14,9 +14,9 @@ import {useFocusSpellchecker} from '../../hooks/use-focus-spellcheck'
 
 import './line-text-element.css'
 
-export type LineTextElementProps = Readonly<{line: Readonly<Line>}>
+export type LineTextProps = Readonly<{line: Readonly<Line>}>
 
-export function LineTextElement({line}: LineTextElementProps): JSX.Element {
+export function LineTextElement({line}: LineTextProps): JSX.Element {
   const dispatch = useAppDispatch()
   const tableState = useAppSelector(selectTableState)
 

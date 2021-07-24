@@ -4,7 +4,7 @@ import {useCallback, useMemo} from 'react'
 
 import './disclosure-element.css'
 
-export type DisclosureElementProps = Readonly<{
+export type DisclosureProps = Readonly<{
   children: ReactNode
   'data-testid'?: string
   onToggle?(open: boolean): void
@@ -20,7 +20,7 @@ export function DisclosureElement({
   open: initOpen = false,
   summary,
   title
-}: DisclosureElementProps): JSX.Element {
+}: DisclosureProps): JSX.Element {
   const [open, setOpen] = useState(initOpen)
 
   const onToggleCb = useCallback(
