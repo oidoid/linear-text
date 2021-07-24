@@ -75,6 +75,7 @@ export const tableSlice = createSlice({
     ) {
       const line = Table.findLine(state.table, payload.id)
       Line.setText(line, payload.text)
+      state.invalidated = true
     },
     focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {
       state.focus = payload
