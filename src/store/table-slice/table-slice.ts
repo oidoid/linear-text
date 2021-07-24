@@ -1,4 +1,5 @@
 import type {FileWithHandle} from 'browser-fs-access'
+import type {ID} from '../../id/id'
 import type {RootState} from '../store'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
@@ -17,20 +18,8 @@ export type TableState = Readonly<{
    */
   invalidated: boolean
   status: 'idle' | 'loading' | 'failed'
-  readonly table: Readonly<Table>
+  table: Readonly<Table>
 }>
-
-function findLine(state: TableState, id: number): Line {
-  const line = state.table.lines.find(line => line.id === id)
-  if (line == null) throw Error(`Line with ID=${id} not found.`)
-  return line
-}
-
-function findLineIndex(state: TableState, id: number): number {
-  const index = state.table.lines.findIndex(line => line.id === id)
-  if (index === -1) throw Error(`Line with ID=${id} not found.`)
-  return index
-}
 
 export const initTableState: TableState = Object.freeze({
   focus: undefined,
@@ -76,15 +65,15 @@ export const tableSlice = createSlice({
       const index =
         state.focus == null
           ? state.table.lines.length
-          : findLineIndex(state, state.focus.id) + 1
+          : Table.findLineIndex(state.table, state.focus.id) + 1
       state.table.lines.splice(index, 0, line)
       state.focus = line
     },
     editLineTextAction(
       state,
-      {payload}: PayloadAction<{id: number; text: string}>
+      {payload}: PayloadAction<{id: ID; text: string}>
     ) {
-      const line = findLine(state, payload.id)
+      const line = Table.findLine(state.table, payload.id)
       Line.setText(line, payload.text)
     },
     focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {
@@ -101,8 +90,7 @@ export const tableSlice = createSlice({
       state,
       {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next'}>
     ) {
-      const index = findLineIndex(state, payload.line.id)
-      state.table.lines.splice(index, 1)
+      const index = Table.removeLine(state.table, payload.line.id)
       const nextIndex = Math.max(
         0,
         Math.min(
