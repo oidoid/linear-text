@@ -1,4 +1,4 @@
-# Publish Perfect Memory v1.0.0: Dragging and Grouping
+# Publish Linear Text v1.0.0: Dragging and Grouping
 
 Fix flexbox margin issue for groups. https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width
 Add dragging support.
@@ -34,6 +34,6 @@ Polish and test. Also test mobile support.
 Move to oidoid folder.
 Create website.
 Publish source code.
-Create git.io link, reference in readme, and revise package.json to use https://perfectmem.com.
+Create git.io link, reference in readme, and revise package.json to use https://LinearText.com.
 Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
 Publish v1.0.0.

@@ -1,7 +1,7 @@
 {
   "//": "[i18n][theme]",
-  "short_name": "Perf Mem",
-  "name": "Perfect Memory",
+  "short_name": "─Text",
+  "name": "Linear Text",
   "icons": [
     {
       "src": "favicon.ico",

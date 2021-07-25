@@ -1,17 +1,17 @@
 {
-  "name": "perfect-memory",
+  "name": "linear-text",
   "author": "oidoid",
   "version": "0.1.0",
   "private": true,
   "license": "GPL-3.0-only",
   "//": "[i18n]",
-  "description": "📝 Notetaking and keeping.",
+  "description": "📝 plain text outliner.",
   "keywords": [
     "notes"
   ],
-  "homepage": "https://git.io/pmem",
-  "repository": "github:oidoid/perfect-memory",
-  "bugs": "https://github.com/oidoid/perfect-memory/issues",
+  "homepage": "https://git.io/linear-text",
+  "repository": "github:oidoid/linear-text",
+  "bugs": "https://github.com/oidoid/linear-text/issues",
   "type": "module",
   "scripts": {
     "start": "react-scripts start",

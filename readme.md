@@ -1,4 +1,4 @@
-# 📝 Perfect Memory
+# 📝 Linear Text
 
 ## [Changelog](docs/changelog.md)
 

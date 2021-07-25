@@ -1,4 +1,4 @@
-Publish Perfect Memory v0.2.0: Notes and Foundations
+Publish Linear Text v0.2.0: Notes and Foundations
 
 Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
 Add undo / redo system and data model store.
