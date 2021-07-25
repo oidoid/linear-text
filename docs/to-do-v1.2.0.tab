@@ -10,7 +10,6 @@ Review Twitter share cards.
 Investigate why Create React App / Webpack can't detect file renames.
 Review robots.txt.
 Verify browserstest is running.
-Consider reworking Toggle to use an input.
 Add undo/redo action labeling.
 Add CSV comment support.
 Use header + TabCellType inference to fill in missing columns.

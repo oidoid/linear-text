@@ -5,7 +5,7 @@ Break apart the store slices.
 Consider CSS Modules.
 Consider structuring by feature more. E.g., feature/counter/* instead of components/counter and reducers/counter.
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
-Consider grid for menu since we probably shouldn't show save for Firefox.
+Probably shouldn't show save for Firefox?
 Add locale picker.
 Combine new row thing with row thing selector widget
 Add mini-Markdown support: unordered list items, h1, h2, ...?
@@ -21,11 +21,9 @@ Fix button title hover styles.
 Review React component library references.
 Consider showing navigation labels on wide screens.
 Evaluate Service Worker Papa Parse
-Add oid.dev site.
 Figure out how to get the menu out of the way.
 Document keyboard navigation.
 Split / join with previous line on enter/backspace? This will need to handle the gneerated draft states.
 extract keyboard handling
 Add multi-card movements.
 How can I represent that the divider is editable better?
-

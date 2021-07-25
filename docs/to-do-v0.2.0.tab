@@ -4,3 +4,13 @@ Add ungrouped export to CSV with tests for save and save as and defaults (.tab e
 Add undo / redo system and data model store.
 Add insert divider button.
 Add test for loadTabFileAsync.
+Add help screen dialog.
+Create lineartext.com with both embedded homepage and dedicated live editor.
+Prompt to save unsaved work on new file or page departure.
+Move to oidoid folder.
+Revise oidoid.com to include Linear Text.
+Update NPM and index.html description and keywords.
+Create git.io link, reference in readme, and revise package.json to use https://LinearText.com.
+Document, add help, update readme, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
+Publish source code.
+Publish NPM v0.2.0.
