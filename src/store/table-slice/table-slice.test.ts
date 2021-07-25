@@ -57,6 +57,7 @@ test('newFileAction() clears tab, focus, and status.', () => {
   state = tableSlice.reducer(state, addLineAction('note'))
   state = tableSlice.reducer(state, newFileAction())
   expect(state).toStrictEqual({
+    filename: undefined,
     focus: undefined,
     idFactory: {id: 4},
     invalidated: false,
@@ -75,6 +76,7 @@ test('removeLineAction() deletes the line and sets the previous focus.', () => {
     removeLineAction({line: state.table.lines[1]!, focus: 'prev'})
   )
   expect(state).toStrictEqual({
+    filename: undefined,
     focus: state.table.lines[0],
     idFactory: {id: 4},
     invalidated: true,
@@ -96,6 +98,7 @@ test('removeLineAction() deletes the line and sets the next focus.', () => {
     removeLineAction({line: state.table.lines[1]!, focus: 'next'})
   )
   expect(state).toStrictEqual({
+    filename: undefined,
     focus: state.table.lines[1],
     idFactory: {id: 4},
     invalidated: true,

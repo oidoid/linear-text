@@ -98,7 +98,10 @@ export function ToolbarElement(): JSX.Element {
       <li>
         <IconButtonElement
           label={t`button-new-file__label`}
-          onClick={() => dispatch(newFileAction())}
+          onClick={() => {
+            setFile(undefined)
+            dispatch(newFileAction())
+          }}
           src={toolbarIconNewFile}
           title={t`button-new-file__title`}
         />

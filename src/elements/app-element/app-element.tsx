@@ -12,17 +12,21 @@ export type AppProps = Readonly<{'data-testid'?: string}>
 export function AppElement({'data-testid': testID}: AppProps): JSX.Element {
   const tableState = useAppSelector(selectTableState)
   useEffect(() => {
-    const filename = 'filename'
+    const filename = tableState.filename
     document.title = tableState.invalidated
-      ? t`app-title-unsaved-${filename}`
-      : t`app-title-saved-${filename}`
+      ? filename == null
+        ? t`app-title-with-unsaved`
+        : t`app-title-with-unsaved-${filename}`
+      : filename == null
+      ? t`app-title-with-saved`
+      : t`app-title-with-saved-${filename}`
 
     const favicon = getFavicon()
     if (!favicon) return
     favicon.href = `${process.env.PUBLIC_URL}/favicon${
       tableState.invalidated ? '-unsaved' : ''
     }.svg`
-  }, [tableState.invalidated])
+  }, [tableState.filename, tableState.invalidated])
   return (
     <div className='app-element' data-testid={testID}>
       <header className='app-element__header'>

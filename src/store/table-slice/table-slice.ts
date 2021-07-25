@@ -18,10 +18,12 @@ export type TableState = Readonly<{
    */
   invalidated: boolean
   status: 'idle' | 'loading' | 'failed'
+  filename: string | undefined
   table: Readonly<Table>
 }>
 
 export const initTableState: TableState = Object.freeze({
+  filename: undefined,
   focus: undefined,
   idFactory: Object.freeze(IDFactory()),
   invalidated: false,
@@ -41,11 +43,15 @@ export const loadTableAsync = createAsyncThunk(
       idFactory: IDFactory
       file: Readonly<FileWithHandle>
     }>
-  ): Promise<{idFactory: IDFactory; table: Table}> => {
+  ): Promise<{
+    filename: string
+    idFactory: IDFactory
+    table: Table
+  }> => {
     // The value we return becomes the `fulfilled` action payload
-    const factory = IDFactory(props.idFactory)
-    const table = await parseTable(factory, props.file)
-    return {idFactory: factory, table}
+    const idFactory = IDFactory(props.idFactory)
+    const table = await parseTable(idFactory, props.file)
+    return {filename: props.file.name, idFactory, table}
   }
 )
 
@@ -81,6 +87,7 @@ export const tableSlice = createSlice({
       state.focus = payload
     },
     newFileAction(state) {
+      state.filename = undefined
       state.focus = undefined
       state.invalidated = false
       state.status = 'idle'
@@ -115,9 +122,11 @@ export const tableSlice = createSlice({
       .addCase(loadTableAsync.pending, state => {
         state.status = 'loading'
       })
-      .addCase(loadTableAsync.fulfilled, (state, action) => {
-        state.table = action.payload.table
-        state.idFactory = action.payload.idFactory
+      .addCase(loadTableAsync.fulfilled, (state, {payload}) => {
+        state.invalidated = false
+        state.filename = payload.filename
+        state.table = payload.table
+        state.idFactory = payload.idFactory
         state.focus = undefined
         state.status = 'idle'
       })

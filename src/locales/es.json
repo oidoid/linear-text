@@ -1,9 +1,17 @@
 {
-  "app-title-saved-{filename}": {
+  "app-title-with-saved": {
     "translation": "",
     "extractedComments": []
   },
-  "app-title-unsaved-{filename}": {
+  "app-title-with-saved-{filename}": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "app-title-with-unsaved": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "app-title-with-unsaved-{filename}": {
     "translation": "",
     "extractedComments": []
   },
