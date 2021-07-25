@@ -35,7 +35,7 @@ serviceWorker.unregister()
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
 
-console.log(`${t`title-with-${version}`}
+console.log(`${t`app-title-with-${version}`}
 by ┌>°┐
    │  │idoid
    └──┘`)

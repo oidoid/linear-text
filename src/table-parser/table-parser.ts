@@ -8,6 +8,7 @@ import Papa from 'papaparse'
 import {TableHeader, tableMetaDefaults} from '../table/table-meta'
 import {TableStats} from './table-stats'
 
+/** Parse a table from tab-delimited values. */
 export function parseTable(
   factory: IDFactory,
   input: File | string

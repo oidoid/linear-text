@@ -1,4 +1,16 @@
 {
+  "app-title-saved-{filename}": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "app-title-unsaved-{filename}": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "app-title-with-{version}": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-add-line__label": {
     "translation": "",
     "extractedComments": []
@@ -84,10 +96,6 @@
     "extractedComments": []
   },
   "dropdown-file-type__description": {
-    "translation": "",
-    "extractedComments": []
-  },
-  "title-with-{version}": {
     "translation": "",
     "extractedComments": []
   }

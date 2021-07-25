@@ -1,4 +1,16 @@
 {
+  "app-title-saved-{filename}": {
+    "translation": "{filename} – Linear Text",
+    "extractedComments": []
+  },
+  "app-title-unsaved-{filename}": {
+    "translation": "*{filename} (Unsaved) – Linear Text",
+    "extractedComments": []
+  },
+  "app-title-with-{version}": {
+    "translation": "Linear Text v{version}",
+    "extractedComments": []
+  },
   "button-add-line__label": {
     "translation": "Add",
     "extractedComments": []
@@ -85,10 +97,6 @@
   },
   "dropdown-file-type__description": {
     "translation": "Tabular file type",
-    "extractedComments": []
-  },
-  "title-with-{version}": {
-    "translation": "Linear Text v{version}",
     "extractedComments": []
   }
 }
