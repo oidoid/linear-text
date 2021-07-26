@@ -45,6 +45,7 @@ export function ToolbarElement(): JSX.Element {
     <UnorderedListElement layout='grid'>
       <li>
         <IconButtonElement
+          accessKey={t`button-undo__access-key`}
           label={t`button-undo__label`}
           onClick={() => {
             throw Error('Undo unimplemented.')
@@ -55,6 +56,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-redo__access-key`}
           label={t`button-redo__label`}
           onClick={() => {
             throw Error('Redo unimplemented.')
@@ -65,6 +67,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-save-file__access-key`}
           label={t`button-save-file__label`}
           onClick={() => {
             throw Error('Save unimplemented.')
@@ -75,6 +78,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-add-divider__access-key`}
           label={t`button-add-divider__label`}
           onClick={() => {
             dispatch(addLineAction('divider'))
@@ -95,6 +99,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-load-file__access-key`}
           label={t`button-load-file__label`}
           onClick={async () => {
             const result = await openFile()
@@ -112,6 +117,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-new-file__access-key`}
           label={t`button-new-file__label`}
           onClick={() => {
             setFile(undefined)
@@ -123,6 +129,7 @@ export function ToolbarElement(): JSX.Element {
       </li>
       <li>
         <IconButtonElement
+          accessKey={t`button-help__access-key`}
           label={t`button-help__label`}
           onClick={() => {
             throw Error('Help unimplemented.')

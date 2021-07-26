@@ -25,8 +25,9 @@ exports[`matches snapshot 1`] = `
               open=""
             >
               <summary
+                accesskey="m"
                 class="disclosure-element__summary buttonish-element buttonish-element--active"
-                data-title="Toggle expanded menu."
+                data-title="Toggle expanded menu [alt-m]."
                 role="button"
               >
                 <img
@@ -47,8 +48,9 @@ exports[`matches snapshot 1`] = `
                     class="disclosure-element"
                   >
                     <summary
+                      accesskey="t"
                       class="disclosure-element__summary buttonish-element "
-                      data-title="Toggle overflow menu."
+                      data-title="Toggle overflow menu [alt–t]."
                       role="button"
                     >
                       <img
@@ -78,9 +80,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="z"
                                   class="buttonish-element "
-                                  data-title="Restore the previous state [alt-shift-z]."
+                                  data-title="Restore the previous state [alt–z]."
                                 >
                                   <img
                                     alt=""
@@ -104,9 +106,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="y"
                                   class="buttonish-element "
-                                  data-title="Reverse an undo [alt-shift-y]."
+                                  data-title="Reverse an undo [alt–y]."
                                 >
                                   <img
                                     alt=""
@@ -130,9 +132,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="s"
                                   class="buttonish-element "
-                                  data-title="Download file [alt-shift-s]."
+                                  data-title="Download file [alt–s]."
                                 >
                                   <img
                                     alt=""
@@ -156,9 +158,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="|"
                                   class="buttonish-element "
-                                  data-title="Add empty line."
+                                  data-title="Add empty line [alt–|]."
                                 >
                                   <img
                                     alt=""
@@ -182,7 +184,6 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
                                   class="buttonish-element "
                                   data-title="Open save dialog."
                                 >
@@ -208,9 +209,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="o"
                                   class="buttonish-element "
-                                  data-title="Load an existing file [alt-shift-o]."
+                                  data-title="Load an existing file [alt–o]."
                                 >
                                   <img
                                     alt=""
@@ -234,9 +235,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="n"
                                   class="buttonish-element "
-                                  data-title="Create an empty file [alt-shift-n]."
+                                  data-title="Create an empty file [alt–n]."
                                 >
                                   <img
                                     alt=""
@@ -260,9 +261,9 @@ exports[`matches snapshot 1`] = `
                                 class="icon-button-element"
                               >
                                 <button
-                                  accesskey=""
+                                  accesskey="?"
                                   class="buttonish-element "
-                                  data-title="Open documentation [alt-shift-f1]."
+                                  data-title="Open documentation [alt–?]."
                                 >
                                   <img
                                     alt=""
@@ -297,9 +298,9 @@ exports[`matches snapshot 1`] = `
                     class="icon-button-element"
                   >
                     <button
-                      accesskey=""
+                      accesskey="-"
                       class="buttonish-element "
-                      data-title="Remove selected line(s) [alt-shift-delete]."
+                      data-title="Remove selected line(s) [alt–-]."
                     >
                       <img
                         alt=""
@@ -323,9 +324,9 @@ exports[`matches snapshot 1`] = `
                     class="icon-button-element"
                   >
                     <button
-                      accesskey=""
+                      accesskey="+"
                       class="buttonish-element "
-                      data-title="Add new line [alt-shift-enter]."
+                      data-title="Add new line [alt–+]."
                     >
                       <img
                         alt=""

@@ -5,8 +5,9 @@ import {useCallback, useMemo} from 'react'
 import './disclosure-element.css'
 
 export type DisclosureProps = Readonly<{
+  accessKey?: string | undefined
   children: ReactNode
-  'data-testid'?: string
+  'data-testid'?: string | undefined
   onToggle?(open: boolean): void
   open?: boolean
   summary: ReactNode
@@ -14,6 +15,7 @@ export type DisclosureProps = Readonly<{
 }>
 
 export function DisclosureElement({
+  accessKey,
   children,
   'data-testid': testID,
   onToggle,
@@ -46,7 +48,12 @@ export function DisclosureElement({
       onToggle={onToggleCb}
       open={open}
     >
-      <summary className={summaryClassName} data-title={title} role='button'>
+      <summary
+        accessKey={accessKey}
+        className={summaryClassName}
+        data-title={title}
+        role='button'
+      >
         {summary}
       </summary>
       {children}

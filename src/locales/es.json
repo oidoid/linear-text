@@ -19,11 +19,19 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-add-divider__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-add-divider__label": {
     "translation": "",
     "extractedComments": []
   },
   "button-add-divider__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-add-line__access-key": {
     "translation": "",
     "extractedComments": []
   },
@@ -35,11 +43,19 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-help__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-help__label": {
     "translation": "",
     "extractedComments": []
   },
   "button-help__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-load-file__access-key": {
     "translation": "",
     "extractedComments": []
   },
@@ -51,6 +67,10 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-new-file__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-new-file__label": {
     "translation": "",
     "extractedComments": []
@@ -59,11 +79,19 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-redo__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-redo__label": {
     "translation": "",
     "extractedComments": []
   },
   "button-redo__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-remove-line__access-key": {
     "translation": "",
     "extractedComments": []
   },
@@ -83,6 +111,10 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-save-file__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-save-file__label": {
     "translation": "",
     "extractedComments": []
@@ -91,7 +123,15 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-toggle-menu__access-key": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-toggle-menu__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-toggle-toolbar__access-key": {
     "translation": "",
     "extractedComments": []
   },
@@ -100,6 +140,10 @@
     "extractedComments": []
   },
   "button-toggle-toolbar__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-undo__access-key": {
     "translation": "",
     "extractedComments": []
   },

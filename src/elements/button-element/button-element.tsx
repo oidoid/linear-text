@@ -5,11 +5,11 @@ import {useMemo} from 'react'
 import './button-element.css'
 
 export type ButtonProps = Readonly<{
-  accessKey?: string
-  active?: boolean
+  accessKey?: string | undefined
+  active?: boolean | undefined
   children: ReactNode
   'data-testid'?: string
-  disabled?: boolean
+  disabled?: boolean | undefined
   onClick: MouseEventHandler<HTMLButtonElement>
   title: string
 }>
@@ -29,11 +29,11 @@ export function ButtonElement({
   )
   return (
     <button
-      accessKey={accessKey ?? ''}
+      accessKey={accessKey}
       className={className}
       data-testid={testID}
       data-title={title}
-      disabled={disabled ?? false}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}

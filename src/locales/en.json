@@ -19,12 +19,20 @@
     "translation": "Linear Text v{version}",
     "extractedComments": []
   },
+  "button-add-divider__access-key": {
+    "translation": "|",
+    "extractedComments": []
+  },
   "button-add-divider__label": {
     "translation": "Divide",
     "extractedComments": []
   },
   "button-add-divider__title": {
-    "translation": "Add empty line.",
+    "translation": "Add empty line [alt–|].",
+    "extractedComments": []
+  },
+  "button-add-line__access-key": {
+    "translation": "+",
     "extractedComments": []
   },
   "button-add-line__label": {
@@ -32,7 +40,11 @@
     "extractedComments": []
   },
   "button-add-line__title": {
-    "translation": "Add new line [alt-shift-enter].",
+    "translation": "Add new line [alt–+].",
+    "extractedComments": []
+  },
+  "button-help__access-key": {
+    "translation": "?",
     "extractedComments": []
   },
   "button-help__label": {
@@ -40,7 +52,11 @@
     "extractedComments": []
   },
   "button-help__title": {
-    "translation": "Open documentation [alt-shift-f1].",
+    "translation": "Open documentation [alt–?].",
+    "extractedComments": []
+  },
+  "button-load-file__access-key": {
+    "translation": "o",
     "extractedComments": []
   },
   "button-load-file__label": {
@@ -48,7 +64,11 @@
     "extractedComments": []
   },
   "button-load-file__title": {
-    "translation": "Load an existing file [alt-shift-o].",
+    "translation": "Load an existing file [alt–o].",
+    "extractedComments": []
+  },
+  "button-new-file__access-key": {
+    "translation": "n",
     "extractedComments": []
   },
   "button-new-file__label": {
@@ -56,7 +76,11 @@
     "extractedComments": []
   },
   "button-new-file__title": {
-    "translation": "Create an empty file [alt-shift-n].",
+    "translation": "Create an empty file [alt–n].",
+    "extractedComments": []
+  },
+  "button-redo__access-key": {
+    "translation": "y",
     "extractedComments": []
   },
   "button-redo__label": {
@@ -64,7 +88,11 @@
     "extractedComments": []
   },
   "button-redo__title": {
-    "translation": "Reverse an undo [alt-shift-y].",
+    "translation": "Reverse an undo [alt–y].",
+    "extractedComments": []
+  },
+  "button-remove-line__access-key": {
+    "translation": "-",
     "extractedComments": []
   },
   "button-remove-line__label": {
@@ -72,7 +100,7 @@
     "extractedComments": []
   },
   "button-remove-line__title": {
-    "translation": "Remove selected line(s) [alt-shift-delete].",
+    "translation": "Remove selected line(s) [alt–-].",
     "extractedComments": []
   },
   "button-save-file-as__label": {
@@ -83,16 +111,28 @@
     "translation": "Open save dialog.",
     "extractedComments": []
   },
+  "button-save-file__access-key": {
+    "translation": "s",
+    "extractedComments": []
+  },
   "button-save-file__label": {
     "translation": "Save",
     "extractedComments": []
   },
   "button-save-file__title": {
-    "translation": "Download file [alt-shift-s].",
+    "translation": "Download file [alt–s].",
+    "extractedComments": []
+  },
+  "button-toggle-menu__access-key": {
+    "translation": "m",
     "extractedComments": []
   },
   "button-toggle-menu__title": {
-    "translation": "Toggle expanded menu.",
+    "translation": "Toggle expanded menu [alt-m].",
+    "extractedComments": []
+  },
+  "button-toggle-toolbar__access-key": {
+    "translation": "t",
     "extractedComments": []
   },
   "button-toggle-toolbar__label": {
@@ -100,7 +140,11 @@
     "extractedComments": []
   },
   "button-toggle-toolbar__title": {
-    "translation": "Toggle overflow menu.",
+    "translation": "Toggle overflow menu [alt–t].",
+    "extractedComments": []
+  },
+  "button-undo__access-key": {
+    "translation": "z",
     "extractedComments": []
   },
   "button-undo__label": {
@@ -108,7 +152,7 @@
     "extractedComments": []
   },
   "button-undo__title": {
-    "translation": "Restore the previous state [alt-shift-z].",
+    "translation": "Restore the previous state [alt–z].",
     "extractedComments": []
   },
   "dropdown-file-type__description": {

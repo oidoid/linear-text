@@ -44,6 +44,7 @@ function MenuListElement(): JSX.Element {
   return (
     <div className='menu-list-element'>
       <DisclosureElement
+        accessKey={t`button-toggle-menu__access-key`}
         summary={<IconElement alt='' src={menuIconToggleMenu} />}
         title={t`button-toggle-menu__title`}
         open
@@ -51,6 +52,7 @@ function MenuListElement(): JSX.Element {
         <UnorderedListElement layout='horizontal'>
           <li>
             <DisclosureElement
+              accessKey={t`button-toggle-toolbar__access-key`}
               summary={<IconElement alt='' src={menuIconToggleToolbar} />}
               title={t`button-toggle-toolbar__title`}
             >
@@ -62,6 +64,7 @@ function MenuListElement(): JSX.Element {
           </li>
           <li>
             <IconButtonElement
+              accessKey={t`button-remove-line__access-key`}
               label={t`button-remove-line__label`}
               onClick={ev => {
                 ev.stopPropagation()
@@ -76,6 +79,7 @@ function MenuListElement(): JSX.Element {
           </li>
           <li>
             <IconButtonElement
+              accessKey={t`button-add-line__access-key`}
               label={t`button-add-line__label`}
               onClick={() => dispatch(addLineAction('draft'))}
               src={menuIconAddLine}
