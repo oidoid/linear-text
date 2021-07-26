@@ -3,7 +3,7 @@ import type {FileWithHandle} from 'browser-fs-access'
 import {BubbleCardElement} from '../bubble-card-element/bubble-card-element'
 import {
   addLineAction,
-  loadTableAsync,
+  loadTableFileAsync,
   newFileAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
@@ -100,7 +100,10 @@ export function ToolbarElement(): JSX.Element {
             const result = await openFile()
             setFile(result)
             dispatch(
-              loadTableAsync({idFactory: tableState.idFactory, file: result})
+              loadTableFileAsync({
+                idFactory: tableState.idFactory,
+                file: result
+              })
             )
           }}
           src={toolbarIconLoadFile}

@@ -2,7 +2,7 @@ Publish Linear Text v0.2.0: Notes and Foundations
 
 Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
 Add undo / redo system and data model store.
-Add test for loadTabFileAsync.
+Add test for loadTableFileAsync.
 Add help screen dialog.
 Create lineartext.com with both embedded homepage and dedicated live editor.
 Prompt to save unsaved work on new file or page departure.
