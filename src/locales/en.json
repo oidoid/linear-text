@@ -8,15 +8,23 @@
     "extractedComments": []
   },
   "app-title-with-unsaved": {
-    "translation": "*(Unsaved) – Linear Text",
+    "translation": "• (Unsaved) – Linear Text",
     "extractedComments": []
   },
   "app-title-with-unsaved-{filename}": {
-    "translation": "*{filename} (Unsaved) – Linear Text",
+    "translation": "• {filename} (Unsaved) – Linear Text",
     "extractedComments": []
   },
   "app-title-with-{version}": {
     "translation": "Linear Text v{version}",
+    "extractedComments": []
+  },
+  "button-add-divider__label": {
+    "translation": "Divide",
+    "extractedComments": []
+  },
+  "button-add-divider__title": {
+    "translation": "Add empty line.",
     "extractedComments": []
   },
   "button-add-line__label": {

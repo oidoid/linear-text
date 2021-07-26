@@ -158,6 +158,32 @@ exports[`matches snapshot 1`] = `
                                 <button
                                   accesskey=""
                                   class="buttonish-element "
+                                  data-title="Add empty line."
+                                >
+                                  <img
+                                    alt=""
+                                    class="icon-element"
+                                    decoding="sync"
+                                    height="20"
+                                    loading="eager"
+                                    src="toolbar-icon-add-divider.svg"
+                                    width="20"
+                                  />
+                                </button>
+                                <label
+                                  class="icon-buttonish-element__label"
+                                >
+                                  Divide
+                                </label>
+                              </div>
+                            </li>
+                            <li>
+                              <div
+                                class="icon-button-element"
+                              >
+                                <button
+                                  accesskey=""
+                                  class="buttonish-element "
                                   data-title="Open save dialog."
                                 >
                                   <img

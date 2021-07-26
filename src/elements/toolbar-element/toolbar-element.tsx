@@ -2,6 +2,7 @@ import type {FileWithHandle} from 'browser-fs-access'
 
 import {BubbleCardElement} from '../bubble-card-element/bubble-card-element'
 import {
+  addLineAction,
   loadTableAsync,
   newFileAction,
   selectTableState
@@ -13,6 +14,7 @@ import {UnorderedListElement} from '../unordered-list-element/unordered-list-ele
 import {useAppSelector, useAppDispatch} from '../../hooks/use-store'
 import {useEffect, useState} from 'react'
 
+import toolbarIconAddDivider from './toolbar-icon-add-divider.svg'
 import toolbarIconHelp from './toolbar-icon-help.svg'
 import toolbarIconLoadFile from './toolbar-icon-load-file.svg'
 import toolbarIconNewFile from './toolbar-icon-new-file.svg'
@@ -69,6 +71,16 @@ export function ToolbarElement(): JSX.Element {
           }}
           src={toolbarIconSaveFile}
           title={t`button-save-file__title`}
+        />
+      </li>
+      <li>
+        <IconButtonElement
+          label={t`button-add-divider__label`}
+          onClick={() => {
+            dispatch(addLineAction('divider'))
+          }}
+          src={toolbarIconAddDivider}
+          title={t`button-add-divider__title`}
         />
       </li>
       <li>
