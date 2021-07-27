@@ -189,11 +189,15 @@ test.each(<const>[
   }
 )
 
-test.each(['games.test.tab', 'groceries.test.tab'])(
-  'integration %s',
-  async filename => {
-    const absoluteFilename = `${__dirname}/table-parser-test-data/${filename}`
-    const input = readFileSync(absoluteFilename).toString()
-    expect(await parseTable(factory, input)).toMatchSnapshot()
-  }
-)
+test.each([
+  'alphabet.test.tab',
+  'colors.test.tab',
+  'digits.test.tab',
+  'empty.test.tab',
+  'games.test.tab',
+  'groceries.test.tab'
+])('integration %s', async filename => {
+  const absoluteFilename = `${__dirname}/../table-test-data/${filename}`
+  const input = readFileSync(absoluteFilename).toString()
+  expect(await parseTable(factory, input)).toMatchSnapshot()
+})

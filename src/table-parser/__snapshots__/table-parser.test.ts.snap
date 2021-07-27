@@ -1,5 +1,347 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`integration alphabet.test.tab 1`] = `
+Object {
+  "lines": Array [
+    Object {
+      "id": 1,
+      "row": Array [
+        "a",
+      ],
+      "state": "note",
+      "text": "a",
+    },
+    Object {
+      "id": 2,
+      "row": Array [
+        "b",
+      ],
+      "state": "note",
+      "text": "b",
+    },
+    Object {
+      "id": 3,
+      "row": Array [
+        "c",
+      ],
+      "state": "note",
+      "text": "c",
+    },
+    Object {
+      "id": 4,
+      "row": Array [
+        "d",
+      ],
+      "state": "note",
+      "text": "d",
+    },
+    Object {
+      "id": 5,
+      "row": Array [
+        "e",
+      ],
+      "state": "note",
+      "text": "e",
+    },
+    Object {
+      "id": 6,
+      "row": Array [
+        "f",
+      ],
+      "state": "note",
+      "text": "f",
+    },
+    Object {
+      "id": 7,
+      "row": Array [
+        "g",
+      ],
+      "state": "note",
+      "text": "g",
+    },
+    Object {
+      "id": 8,
+      "row": Array [
+        "h",
+      ],
+      "state": "note",
+      "text": "h",
+    },
+    Object {
+      "id": 9,
+      "row": Array [
+        "i",
+      ],
+      "state": "note",
+      "text": "i",
+    },
+    Object {
+      "id": 10,
+      "row": Array [
+        "j",
+      ],
+      "state": "note",
+      "text": "j",
+    },
+    Object {
+      "id": 11,
+      "row": Array [
+        "k",
+      ],
+      "state": "note",
+      "text": "k",
+    },
+    Object {
+      "id": 12,
+      "row": Array [
+        "l",
+      ],
+      "state": "note",
+      "text": "l",
+    },
+    Object {
+      "id": 13,
+      "row": Array [
+        "m",
+      ],
+      "state": "note",
+      "text": "m",
+    },
+    Object {
+      "id": 14,
+      "row": Array [
+        "n",
+      ],
+      "state": "note",
+      "text": "n",
+    },
+    Object {
+      "id": 15,
+      "row": Array [
+        "o",
+      ],
+      "state": "note",
+      "text": "o",
+    },
+    Object {
+      "id": 16,
+      "row": Array [
+        "p",
+      ],
+      "state": "note",
+      "text": "p",
+    },
+    Object {
+      "id": 17,
+      "row": Array [
+        "q",
+      ],
+      "state": "note",
+      "text": "q",
+    },
+    Object {
+      "id": 18,
+      "row": Array [
+        "r",
+      ],
+      "state": "note",
+      "text": "r",
+    },
+    Object {
+      "id": 19,
+      "row": Array [
+        "s",
+      ],
+      "state": "note",
+      "text": "s",
+    },
+    Object {
+      "id": 20,
+      "row": Array [
+        "t",
+      ],
+      "state": "note",
+      "text": "t",
+    },
+    Object {
+      "id": 21,
+      "row": Array [
+        "u",
+      ],
+      "state": "note",
+      "text": "u",
+    },
+    Object {
+      "id": 22,
+      "row": Array [
+        "v",
+      ],
+      "state": "note",
+      "text": "v",
+    },
+    Object {
+      "id": 23,
+      "row": Array [
+        "w",
+      ],
+      "state": "note",
+      "text": "w",
+    },
+    Object {
+      "id": 24,
+      "row": Array [
+        "x",
+      ],
+      "state": "note",
+      "text": "x",
+    },
+    Object {
+      "id": 25,
+      "row": Array [
+        "y",
+      ],
+      "state": "note",
+      "text": "y",
+    },
+    Object {
+      "id": 26,
+      "row": Array [
+        "z",
+      ],
+      "state": "note",
+      "text": "z",
+    },
+  ],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 0,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
+}
+`;
+
+exports[`integration colors.test.tab 1`] = `
+Object {
+  "lines": Array [
+    Object {
+      "id": 1,
+      "row": Array [
+        "C",
+        "cyan",
+      ],
+      "state": "note",
+      "text": "cyan",
+    },
+    Object {
+      "id": 2,
+      "row": Array [
+        "M",
+        "magenta",
+      ],
+      "state": "note",
+      "text": "magenta",
+    },
+    Object {
+      "id": 3,
+      "row": Array [
+        "Y",
+        "yellow",
+      ],
+      "state": "note",
+      "text": "yellow",
+    },
+    Object {
+      "id": 4,
+      "row": Array [
+        "K",
+        "key",
+      ],
+      "state": "note",
+      "text": "key",
+    },
+  ],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 1,
+    },
+    "delimiter": "	",
+    "header": Array [
+      "letter",
+      "text",
+    ],
+    "newline": "
+",
+  },
+}
+`;
+
+exports[`integration digits.test.tab 1`] = `
+Object {
+  "lines": Array [
+    Object {
+      "id": 1,
+      "row": Array [
+        "1",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+    Object {
+      "id": 2,
+      "row": Array [
+        "2",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+    Object {
+      "id": 3,
+      "row": Array [
+        "3",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+    Object {
+      "id": 4,
+      "row": Array [
+        "",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+  ],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 1,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
+}
+`;
+
+exports[`integration empty.test.tab 1`] = `
+Object {
+  "lines": Array [],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 0,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
+}
+`;
+
 exports[`integration games.test.tab 1`] = `
 Object {
   "lines": Array [
