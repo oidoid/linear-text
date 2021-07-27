@@ -3,7 +3,11 @@ import type {Row} from './row'
 
 export type TableMeta = {
   readonly header: TableHeader | undefined
-  /** If header is not present, this will be inferred from the data. */
+  /**
+   * If header is not present, this will be inferred from the data. The mapping
+   * enforces that all modeled columns be planned for whether they're actually
+   * present at load time or not.
+   */
   columnMap: ColumnMap
   readonly delimiter: string
   readonly newline: string

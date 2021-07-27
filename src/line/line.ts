@@ -2,6 +2,7 @@ import type {ID} from '../id/id'
 import type {Row} from '../table/row'
 
 import {IDFactory, makeID} from '../id/id-factory'
+import type {ColumnMap} from '../table/column-map'
 
 /**
  * Interim visual and behavioral representation. Do not serialize. State is used
@@ -27,20 +28,13 @@ export type Line = {
   /** State is managed internally. Do not manually set. */
   state: LineState
 
-  /** The normalized model text to be shown, possibly mini-Markdown or empty. */
+  /**
+   * The normalized model text to be shown, possibly mini-Markdown or empty.
+   * This is a cached copy of the appropriate column kept in sync by setText().
+   */
   text: string | undefined
 
-  /**
-   * True when the row property is outdated. Invalidated data is flushed to the
-   * row on save. Invalidating, saving, and reloading data is expected to
-   * produce the same model results as just invalidating and saving.
-   */
-  invalidated: boolean
-
-  /**
-   * The model is flushed to the row only on save. Only row data is written to
-   * disk. Exercise care when undoing.
-   */
+  /** The known columns (text) and any user columns verbatim. */
   readonly row: Row
 }
 
@@ -49,10 +43,13 @@ export type ReadonlyLine = Readonly<Omit<Line, 'row'> & {row: Readonly<Row>}>
 /** Creates a new, invalidated line. */
 export function Line(
   factory: IDFactory,
+  map: ColumnMap,
   state: LineState,
-  text?: string | undefined
+  text: string | undefined = undefined,
+  row: Row | undefined = []
 ): Line {
-  return {id: makeID(factory), state, text, invalidated: true, row: []}
+  if (text != null) row[map.text] = text
+  return {id: makeID(factory), state, text, row: []}
 }
 
 /** Creates a new, valid line. */
@@ -62,18 +59,18 @@ Line.fromRow = (
   text: string | undefined,
   row: Row
 ): Line => {
-  return {id: makeID(factory), state, text, invalidated: false, row}
+  return {id: makeID(factory), state, text, row}
 }
 
 /** Updates the text model and invalidates the row. */
-Line.setText = (line: Line, text: string): void => {
+Line.setText = (line: Line, map: ColumnMap, text: string): void => {
   line.text = text
+  line.row[map.text] = text
   line.state = Line.isEmpty(line)
     ? line.state === 'divider'
       ? 'divider'
       : 'draft'
     : 'note'
-  line.invalidated = true
 }
 
 /**

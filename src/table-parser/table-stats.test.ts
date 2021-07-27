@@ -44,7 +44,7 @@ test('missing cells are not counted', () => {
   })
 })
 
-test('a zero text mapping is not inferred', () => {
+test('no text maps to a new last column', () => {
   const stats = {
     columns: [
       {text: 0, number: 1, bool: 2, blank: 3, empty: 4},
@@ -53,7 +53,7 @@ test('a zero text mapping is not inferred', () => {
     ],
     total: {text: 0, number: 11, bool: 103, blank: 1003, empty: 10004}
   }
-  expect(TableStats.inferMap(stats)).toStrictEqual({})
+  expect(TableStats.inferMap(stats)).toStrictEqual({text: 3})
 })
 
 test('a nonzero text mapping is inferred from zero index', () => {

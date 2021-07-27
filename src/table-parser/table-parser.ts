@@ -11,7 +11,7 @@ import {TableStats} from './table-stats'
 /** Parse a table from tab-delimited values. */
 export function parseTable(
   factory: IDFactory,
-  input: File | string
+  input: Readonly<File> | string
 ): Promise<Table> {
   return new Promise((resolve, reject) =>
     Papa.parse<Row>(input, {
@@ -30,7 +30,7 @@ function parse(
   data: Row[]
 ): Table {
   const {header, rows} = parseTableHeaderAndRows(data)
-  let columnMap: ColumnMap = {}
+  let columnMap: ColumnMap
   if (header == null) {
     // No header. Use a heuristic to guess the best mapping from the model
     // columns to the actual row columns.
@@ -39,7 +39,10 @@ function parse(
     columnMap = TableStats.inferMap(stats)
   } else {
     // Use the header to map from the model columns to the actual row columns.
-    columnMap = {text: findHeaderTextIndex(header)}
+    const textIndex = findHeaderTextIndex(header)
+    if (textIndex == null)
+      throw Error(`Unable to find "text" header in: ${header.join(',')}.`)
+    columnMap = {text: textIndex}
   }
 
   return {
@@ -73,8 +76,8 @@ function findHeaderTextIndex(row: Readonly<Row>): number | undefined {
   return index === -1 ? undefined : index
 }
 
-function parseLine(factory: IDFactory, row: Row, columnMap: ColumnMap): Line {
-  const text = columnMap.text == null ? undefined : row[columnMap.text]
+function parseLine(factory: IDFactory, row: Row, map: ColumnMap): Line {
+  const text = row[map.text]
   const state = text == null || text === '' ? 'divider' : 'note'
   return Line.fromRow(factory, state, text, row)
 }

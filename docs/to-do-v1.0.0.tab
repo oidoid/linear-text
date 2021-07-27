@@ -3,7 +3,7 @@
 Consider useMemo for computing groups of uls.
 Consider renaming extensions to .txt if tables won't be supported.
 Fix flexbox margin issue for groups. https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width
-Add dragging support.
+Add dragging support. Drag to position in grid at least.
 Reevaluate virtual board size. Right now this is 99in.
 Add group dragging.
 Groups are absolutely positionable? IDK. Going to have scroll issues but this is what i really want.

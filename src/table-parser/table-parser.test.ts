@@ -13,15 +13,7 @@ test.each(['\t'])('delimiter: "%s"', async delimiter => {
   const row = ['a', 'b', 'c'].join(delimiter)
   const expected: Table = {
     meta: {header: undefined, columnMap: {text: 0}, delimiter, newline: '\n'},
-    lines: [
-      {
-        id: ID(1),
-        state: 'note',
-        text: 'a',
-        invalidated: false,
-        row: ['a', 'b', 'c']
-      }
-    ]
+    lines: [{id: ID(1), state: 'note', text: 'a', row: ['a', 'b', 'c']}]
   }
   expect(await parseTable(factory, row)).toStrictEqual(expected)
 })
@@ -33,9 +25,7 @@ test.each([
   const input = `text${newline}abc`
   const expected: Table = {
     meta: {header: ['text'], columnMap: {text: 0}, delimiter: '\t', newline},
-    lines: [
-      {id: ID(1), state: 'note', text: 'abc', invalidated: false, row: ['abc']}
-    ]
+    lines: [{id: ID(1), state: 'note', text: 'abc', row: ['abc']}]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
@@ -49,15 +39,7 @@ test('header padding is ignored and preserved', async () => {
       delimiter: '\t',
       newline: '\n'
     },
-    lines: [
-      {
-        id: ID(1),
-        state: 'note',
-        text: ' 2 ',
-        invalidated: false,
-        row: [' 1 ', ' 2 ', ' 3 ']
-      }
-    ]
+    lines: [{id: ID(1), state: 'note', text: ' 2 ', row: [' 1 ', ' 2 ', ' 3 ']}]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
@@ -84,8 +66,7 @@ test('extra empty columns are ignored and preserved', async () => {
         id: ID(1),
         state: 'note',
         text: '3',
-        invalidated: false,
-        row:         [
+        row: [
           '1', '', '', '', '', '', '',
           '2', '', '', '', '', '', '',
           '3', '', '', '', '', '', '', '', '', '',
@@ -106,15 +87,7 @@ test('header capitalization is ignored and preserved', async () => {
       delimiter: '\t',
       newline: '\n'
     },
-    lines: [
-      {
-        id: ID(1),
-        state: 'note',
-        text: '2',
-        invalidated: false,
-        row: ['1', '2', '3']
-      }
-    ]
+    lines: [{id: ID(1), state: 'note', text: '2', row: ['1', '2', '3']}]
   }
   expect(await parseTable(factory, input)).toStrictEqual(expected)
 })
@@ -125,73 +98,37 @@ test.each(<const>[
     'empty file with trailing newline',
     '\n',
     [
-      {
-        id: ID(1),
-        state: 'divider',
-        text: undefined,
-        invalidated: false,
-        row: ['']
-      },
-      {
-        id: ID(2),
-        state: 'divider',
-        text: undefined,
-        invalidated: false,
-        row: ['']
-      }
+      {id: ID(1), state: 'divider', text: undefined, row: ['']},
+      {id: ID(2), state: 'divider', text: undefined, row: ['']}
     ]
   ],
   [
     'empty file with header',
     'text\n',
-    [{id: ID(1), state: 'divider', text: '', invalidated: false, row: ['']}]
+    [{id: ID(1), state: 'divider', text: '', row: ['']}]
   ],
   [
     'nonempty file trailing newline',
     'a\n',
     [
-      {id: ID(1), state: 'note', text: 'a', invalidated: false, row: ['a']},
-      {id: ID(2), state: 'divider', text: '', invalidated: false, row: ['']}
+      {id: ID(1), state: 'note', text: 'a', row: ['a']},
+      {id: ID(2), state: 'divider', text: '', row: ['']}
     ]
   ],
   [
     'nonempty file with header and trailing newline',
     'text\na\n',
     [
-      {
-        id: ID(1),
-        state: <const>'note',
-        text: 'a',
-        invalidated: false,
-        row: ['a']
-      },
-      {
-        id: ID(2),
-        state: <const>'divider',
-        text: '',
-        invalidated: false,
-        row: ['']
-      }
+      {id: ID(1), state: <const>'note', text: 'a', row: ['a']},
+      {id: ID(2), state: <const>'divider', text: '', row: ['']}
     ]
   ],
   [
     'nonempty file without trailing newline',
     'a\nb',
     [
-      {
-        id: ID(1),
-        state: <const>'note',
-        text: 'a',
-        invalidated: false,
-        row: ['a']
-      },
-      {
-        id: ID(2),
-        state: <const>'note',
-        text: 'b',
-        invalidated: false,
-        row: ['b']
-      }
+      {id: ID(1), state: <const>'note', text: 'a', row: ['a']},
+      {id: ID(2), state: <const>'note', text: 'b', row: ['b']}
     ]
   ]
 ])(
@@ -207,62 +144,32 @@ test.each(<const>[
   [
     'missing leading cell',
     '\t2\t3',
-    {
-      id: ID(1),
-      state: 'note',
-      text: '2',
-      invalidated: false,
-      row: ['', '2', '3']
-    }
+    {id: ID(1), state: 'note', text: '2', row: ['', '2', '3']}
   ],
   [
     'missing middling cell',
     '1\t\t3',
-    {
-      id: ID(1),
-      state: 'divider',
-      text: '',
-      invalidated: false,
-      row: ['1', '', '3']
-    }
+    {id: ID(1), state: 'divider', text: '', row: ['1', '', '3']}
   ],
   [
     'missing trailing cell',
     '1\t2',
-    {id: ID(1), state: 'note', text: '2', invalidated: false, row: ['1', '2']}
+    {id: ID(1), state: 'note', text: '2', row: ['1', '2']}
   ],
   [
     'missing trailing cell and trailing comma',
     '1\t2\t',
-    {
-      id: ID(1),
-      state: 'note',
-      text: '2',
-      invalidated: false,
-      row: ['1', '2', '']
-    }
+    {id: ID(1), state: 'note', text: '2', row: ['1', '2', '']}
   ],
   [
     'missing row',
     '',
-    {
-      id: ID(1),
-      state: 'divider',
-      text: undefined,
-      invalidated: false,
-      row: ['']
-    }
+    {id: ID(1), state: 'divider', text: undefined, row: ['']}
   ],
   [
     'extra cell',
     '1\t2\t3\t4',
-    {
-      id: ID(1),
-      state: 'note',
-      text: '2',
-      invalidated: false,
-      row: ['1', '2', '3', '4']
-    }
+    {id: ID(1), state: 'note', text: '2', row: ['1', '2', '3', '4']}
   ]
 ])(
   'missing cells and inconsistencies: %s',

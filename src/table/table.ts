@@ -5,8 +5,12 @@ import {TableMeta} from './table-meta'
 
 export type Table = {meta: TableMeta; lines: Line[]}
 
-export function Table(lines: Line[] = []): Table {
-  return {meta: TableMeta(['text'], {text: 0}), lines}
+export function Table(
+  // Favor an empty header for now. This keeps the file plain text.
+  meta: TableMeta = TableMeta(undefined, {text: 0}),
+  lines: Line[] = []
+): Table {
+  return {meta, lines}
 }
 
 Table.findLine = (table: Readonly<Table>, id: ID): Line => {

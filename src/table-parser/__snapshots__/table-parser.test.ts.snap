@@ -5,7 +5,6 @@ Object {
   "lines": Array [
     Object {
       "id": 1,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -14,7 +13,6 @@ Object {
     },
     Object {
       "id": 2,
-      "invalidated": false,
       "row": Array [
         "Nintendo Entertainment System",
         "1985",
@@ -25,7 +23,6 @@ Object {
     },
     Object {
       "id": 3,
-      "invalidated": false,
       "row": Array [
         "- Mega Man 6",
         "1994",
@@ -36,7 +33,6 @@ Object {
     },
     Object {
       "id": 4,
-      "invalidated": false,
       "row": Array [
         "- Solar Jetman: Hunt for the Golden Warpship",
         "1990",
@@ -47,7 +43,6 @@ Object {
     },
     Object {
       "id": 5,
-      "invalidated": false,
       "row": Array [
         "- Super Mario Bros. 3",
         "1989",
@@ -58,7 +53,6 @@ Object {
     },
     Object {
       "id": 6,
-      "invalidated": false,
       "row": Array [
         "- Teenage Mutant Ninja Turtles III: The Manhattan Project",
         "1992",
@@ -69,7 +63,6 @@ Object {
     },
     Object {
       "id": 7,
-      "invalidated": false,
       "row": Array [
         "- The Guardian Legend",
         "1989",
@@ -80,7 +73,6 @@ Object {
     },
     Object {
       "id": 8,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -89,7 +81,6 @@ Object {
     },
     Object {
       "id": 9,
-      "invalidated": false,
       "row": Array [
         "PC",
       ],
@@ -98,7 +89,6 @@ Object {
     },
     Object {
       "id": 10,
-      "invalidated": false,
       "row": Array [
         "- Red Dead Redemption 2",
         "2018",
@@ -109,7 +99,6 @@ Object {
     },
     Object {
       "id": 11,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -118,7 +107,6 @@ Object {
     },
     Object {
       "id": 12,
-      "invalidated": false,
       "row": Array [
         "PlayStation 3",
         "2006",
@@ -129,7 +117,6 @@ Object {
     },
     Object {
       "id": 13,
-      "invalidated": false,
       "row": Array [
         "- Ico (The Ico & Shadow of the Colossus Collection)",
         "2001",
@@ -140,7 +127,6 @@ Object {
     },
     Object {
       "id": 14,
-      "invalidated": false,
       "row": Array [
         "- Metal Gear Solid 2: Sons of Liberty (Metal Gear Solid HD Collection)",
         "2001",
@@ -151,7 +137,6 @@ Object {
     },
     Object {
       "id": 15,
-      "invalidated": false,
       "row": Array [
         "- Shadow of the Colossus (The Ico & Shadow of the Colossus Collection)",
         "2005",
@@ -162,7 +147,6 @@ Object {
     },
     Object {
       "id": 16,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -171,7 +155,6 @@ Object {
     },
     Object {
       "id": 17,
-      "invalidated": false,
       "row": Array [
         "PlayStation 4",
         "2013",
@@ -182,7 +165,6 @@ Object {
     },
     Object {
       "id": 18,
-      "invalidated": false,
       "row": Array [
         "- The Last of Us Remastered",
         "2013",
@@ -193,7 +175,6 @@ Object {
     },
     Object {
       "id": 19,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -202,7 +183,6 @@ Object {
     },
     Object {
       "id": 20,
-      "invalidated": false,
       "row": Array [
         "Super Nintendo",
         "1991",
@@ -213,7 +193,6 @@ Object {
     },
     Object {
       "id": 21,
-      "invalidated": false,
       "row": Array [
         "- EarthBound",
         "1995",
@@ -224,7 +203,6 @@ Object {
     },
     Object {
       "id": 22,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -233,7 +211,6 @@ Object {
     },
     Object {
       "id": 23,
-      "invalidated": false,
       "row": Array [
         "Switch",
       ],
@@ -242,7 +219,6 @@ Object {
     },
     Object {
       "id": 24,
-      "invalidated": false,
       "row": Array [
         "- The Legend of Zelda: Breath of the Wild",
         "2017",
@@ -253,7 +229,6 @@ Object {
     },
     Object {
       "id": 25,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -282,7 +257,6 @@ Object {
   "lines": Array [
     Object {
       "id": 1,
-      "invalidated": false,
       "row": Array [
         "Produce",
       ],
@@ -291,7 +265,6 @@ Object {
     },
     Object {
       "id": 2,
-      "invalidated": false,
       "row": Array [
         "[] Cucumber",
       ],
@@ -300,7 +273,6 @@ Object {
     },
     Object {
       "id": 3,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -309,7 +281,6 @@ Object {
     },
     Object {
       "id": 4,
-      "invalidated": false,
       "row": Array [
         "Snacks",
       ],
@@ -318,7 +289,6 @@ Object {
     },
     Object {
       "id": 5,
-      "invalidated": false,
       "row": Array [
         "[x] Pretzels",
       ],
@@ -327,7 +297,6 @@ Object {
     },
     Object {
       "id": 6,
-      "invalidated": false,
       "row": Array [
         "",
       ],
@@ -336,7 +305,6 @@ Object {
     },
     Object {
       "id": 7,
-      "invalidated": false,
       "row": Array [
         "Frozen",
       ],
@@ -345,7 +313,6 @@ Object {
     },
     Object {
       "id": 8,
-      "invalidated": false,
       "row": Array [
         "[x] Ice Cream",
       ],
@@ -354,7 +321,6 @@ Object {
     },
     Object {
       "id": 9,
-      "invalidated": false,
       "row": Array [
         "[x] Pizza",
       ],
@@ -363,7 +329,6 @@ Object {
     },
     Object {
       "id": 10,
-      "invalidated": false,
       "row": Array [
         "",
       ],

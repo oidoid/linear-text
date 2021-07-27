@@ -9,6 +9,8 @@ import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
 
 export type TableState = Readonly<{
+  /** The loaded / saved filename, if any. */
+  filename: string | undefined
   /** undefined or [0, table.lines.length). */
   focus: Readonly<Line> | undefined
   idFactory: Readonly<IDFactory>
@@ -18,7 +20,6 @@ export type TableState = Readonly<{
    */
   invalidated: boolean
   status: 'idle' | 'loading' | 'failed'
-  filename: string | undefined
   table: Readonly<Table>
 }>
 
@@ -36,24 +37,16 @@ export const initTableState: TableState = Object.freeze({
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
-export const loadTableFileAsync = createAsyncThunk(
-  'table/loadTableFileAsync',
-  async (
-    props: Readonly<{
-      idFactory: IDFactory
-      file: Readonly<FileWithHandle>
-    }>
-  ): Promise<{
-    filename: string
-    idFactory: IDFactory
-    table: Table
-  }> => {
-    // The value we return becomes the `fulfilled` action payload
-    const idFactory = IDFactory(props.idFactory)
-    const table = await parseTable(idFactory, props.file)
-    return {filename: props.file.name, idFactory, table}
-  }
-)
+export const loadTableFileAsync = createAsyncThunk<
+  {filename: string; idFactory: Readonly<IDFactory>; table: Table},
+  {fileWithHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
+  {state: RootState}
+>('table/loadTableFileAsync', async ({fileWithHandle, idFactory}) => {
+  // The value we return becomes the `fulfilled` action payload
+  const factory = IDFactory(idFactory)
+  const table = await parseTable(factory, fileWithHandle)
+  return {filename: fileWithHandle.name, idFactory: factory, table}
+})
 
 export const tableSlice = createSlice({
   name: 'table',
@@ -67,7 +60,7 @@ export const tableSlice = createSlice({
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
     addLineAction(state, {payload}: PayloadAction<LineState>) {
-      const line = Line(state.idFactory, payload)
+      const line = Line(state.idFactory, state.table.meta.columnMap, payload)
       const index =
         state.focus == null
           ? state.table.lines.length
@@ -80,13 +73,14 @@ export const tableSlice = createSlice({
       {payload}: PayloadAction<{id: ID; text: string}>
     ) {
       const line = Table.findLine(state.table, payload.id)
-      Line.setText(line, payload.text)
+      Line.setText(line, state.table.meta.columnMap, payload.text)
       state.invalidated = true
     },
     focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {
       state.focus = payload
     },
     newFileAction(state) {
+      // dump undo
       state.filename = undefined
       state.focus = undefined
       state.invalidated = false
@@ -113,6 +107,16 @@ export const tableSlice = createSlice({
         )
         state.focus = state.table.lines[nextIndex]
       }
+    },
+    saveFileAction(state, {payload}: PayloadAction<string | undefined>) {
+      state.filename = payload
+      state.invalidated = false
+    },
+    undoAction(_state) {
+      throw Error('Undo unimplemented.')
+    },
+    redoAction(_state) {
+      throw Error('Redo unimplemented.')
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -123,10 +127,11 @@ export const tableSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(loadTableFileAsync.fulfilled, (state, {payload}) => {
+        // dump undo
         state.invalidated = false
         state.filename = payload.filename
-        state.table = payload.table
         state.idFactory = payload.idFactory
+        state.table = payload.table
         state.focus = undefined
         state.status = 'idle'
       })
@@ -142,7 +147,10 @@ export const {
   editLineTextAction,
   focusLineAction,
   newFileAction,
-  removeLineAction
+  removeLineAction,
+  saveFileAction,
+  undoAction,
+  redoAction
 } = tableSlice.actions
 
 // The function below is called a selector and allows us to select a value from

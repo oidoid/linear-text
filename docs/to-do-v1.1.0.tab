@@ -10,7 +10,7 @@ Add locale picker.
 Combine new row thing with row thing selector widget
 Add mini-Markdown support: unordered list items, h1, h2, ...?
 Add Electron builds.
-Add instant-photo thing.
+Add instant-photo thing. Click to open large photo or upload new photo or drag and drop image to board to upload new? Detect URLs by protocol (inline data: and file: protocols initially, maybe stuff that ends in .jpg). Resize photo to column.
 Create large print photo thing with resizing.
 Use image URLs for imports.
 Change thing type when a thing is selected and picker changes.
@@ -27,3 +27,4 @@ Split / join with previous line on enter/backspace? This will need to handle the
 extract keyboard handling
 Add multi-card movements.
 How can I represent that the divider is editable better?
+Disable vertical autoscroll on dividers.

@@ -1,6 +1,7 @@
 import {ID} from '../../id/id'
 import type {Line} from '../../line/line'
 import {Table} from '../../table/table'
+import {TableMeta} from '../../table/table-meta'
 import {
   addLineAction,
   initTableState,
@@ -24,13 +25,7 @@ test('An invalid action produces no change.', () => {
 
 test('addLineAction() stores a line and sets the focus.', () => {
   const state = tableSlice.reducer(initTableState, addLineAction('draft'))
-  const line: Line = {
-    id: ID(1),
-    state: 'draft',
-    text: undefined,
-    invalidated: true,
-    row: []
-  }
+  const line: Line = {id: ID(1), state: 'draft', text: undefined, row: []}
   expect(state.table.lines).toStrictEqual([line])
   expect(state.focus).toStrictEqual(line)
 })
@@ -81,9 +76,9 @@ test('removeLineAction() deletes the line and sets the previous focus.', () => {
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',
-    table: Table([
-      {id: ID(1), state: 'note', text: undefined, invalidated: true, row: []},
-      {id: ID(3), state: 'divider', text: undefined, invalidated: true, row: []}
+    table: Table(TableMeta(undefined, {text: 0}), [
+      {id: ID(1), state: 'note', text: undefined, row: []},
+      {id: ID(3), state: 'divider', text: undefined, row: []}
     ])
   })
 })
@@ -103,9 +98,9 @@ test('removeLineAction() deletes the line and sets the next focus.', () => {
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',
-    table: Table([
-      {id: ID(1), state: 'note', text: undefined, invalidated: true, row: []},
-      {id: ID(3), state: 'note', text: undefined, invalidated: true, row: []}
+    table: Table(TableMeta(undefined, {text: 0}), [
+      {id: ID(1), state: 'note', text: undefined, row: []},
+      {id: ID(3), state: 'note', text: undefined, row: []}
     ])
   })
 })

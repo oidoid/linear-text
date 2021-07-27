@@ -1,11 +1,11 @@
 Publish Linear Text v0.2.0: Notes and Foundations
 
-Add ungrouped export to CSV with tests for save and save as and defaults (.tab extension, tabs).
+Add save tests.
 Add undo / redo system and data model store.
 Add test for loadTableFileAsync.
 Add help screen dialog.
 Create lineartext.com with both embedded homepage and dedicated live editor.
-Prompt to save unsaved work on new file or page departure.
+Prompt to save unsaved work on new file, load file, or page departure.
 Move to oidoid folder.
 Revise oidoid.com to include Linear Text.
 Update NPM and index.html description and keywords.
@@ -13,3 +13,14 @@ Create git.io link, reference in readme, and revise package.json to use https://
 Document, add help, update readme, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
 Publish source code.
 Publish NPM v0.2.0.
+
+Add type tests:
+  Parser sets initial type as note or divider, never draft.
+  UI sets initial type as note or divider, never draft.
+  Backspace on note type deletes.
+  Backspace on divider type converts to note... Or deletes?
+  Note is considered draft when isEmpty and type is note.
+  Drafts are deleted on focus loss.
+  Drafts become plain notes on content add.
+  Enter on draft becomes divider.
+Shortcut and button tests.

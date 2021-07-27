@@ -6,7 +6,10 @@ import {CellTypeStats} from './cell-type-stats'
 import {parseCellType} from './cell-type'
 
 export type TableStats = Readonly<{
-  /** Column index to CellTypeStats. */
+  /**
+   * Column index to CellTypeStats. The maximum number of columns in any row of
+   * the table is the length of this array.
+   */
   columns: CellTypeStats[]
   /** Aggregated stats for all columns. */
   total: CellTypeStats
@@ -35,10 +38,10 @@ function sampleRow({columns, total}: TableStats, row: Readonly<Row>): void {
 }
 
 TableStats.inferMap = (stats: TableStats): ColumnMap => {
-  const map: ColumnMap = {}
-  const textIndex = findMaxCellTypeIndex(stats, 'text')
-  if (textIndex != null) map.text = textIndex
-  return map
+  const maxColumns = stats.columns.length
+  return {
+    text: findMaxCellTypeIndex(stats, 'text') ?? maxColumns
+  }
 }
 
 function findMaxCellTypeIndex(
