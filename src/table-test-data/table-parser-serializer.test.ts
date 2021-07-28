@@ -3,19 +3,22 @@ import type {Table} from '../table/table'
 
 import {ID} from '../id/id'
 import {IDFactory} from '../id/id-factory'
-import {parseTable} from './table-parser'
+import {parseTable} from '../table-parser/table-parser'
 import {readFileSync} from 'fs'
+import {serializeTable} from '../table-serializer/table-serializer'
 
 let factory: IDFactory = IDFactory()
 beforeEach(() => (factory = IDFactory()))
 
 test.each(['\t'])('delimiter: "%s"', async delimiter => {
-  const row = ['a', 'b', 'c'].join(delimiter)
+  const input = ['a', 'b', 'c'].join(delimiter)
   const expected: Table = {
     meta: {header: undefined, columnMap: {text: 0}, delimiter, newline: '\n'},
     lines: [{id: ID(1), state: 'note', text: 'a', row: ['a', 'b', 'c']}]
   }
-  expect(await parseTable(factory, row)).toStrictEqual(expected)
+  const table = await parseTable(factory, input)
+  expect(table).toStrictEqual(expected)
+  expect(serializeTable(table)).toStrictEqual(input)
 })
 
 test.each([
@@ -27,7 +30,9 @@ test.each([
     meta: {header: ['text'], columnMap: {text: 0}, delimiter: '\t', newline},
     lines: [{id: ID(1), state: 'note', text: 'abc', row: ['abc']}]
   }
-  expect(await parseTable(factory, input)).toStrictEqual(expected)
+  const table = await parseTable(factory, input)
+  expect(table).toStrictEqual(expected)
+  expect(serializeTable(table)).toStrictEqual(input)
 })
 
 test('header padding is ignored and preserved', async () => {
@@ -41,7 +46,10 @@ test('header padding is ignored and preserved', async () => {
     },
     lines: [{id: ID(1), state: 'note', text: ' 2 ', row: [' 1 ', ' 2 ', ' 3 ']}]
   }
-  expect(await parseTable(factory, input)).toStrictEqual(expected)
+  const table = await parseTable(factory, input)
+  expect(table).toStrictEqual(expected)
+  // https://github.com/mholt/PapaParse/issues/888
+  // expect(serializeTable(table)).toStrictEqual(input)
 })
 
 test('extra empty columns are ignored and preserved', async () => {
@@ -75,7 +83,9 @@ test('extra empty columns are ignored and preserved', async () => {
       }
     ]
   }
-  expect(await parseTable(factory, input)).toStrictEqual(expected)
+  const table = await parseTable(factory, input)
+  expect(table).toStrictEqual(expected)
+  expect(serializeTable(table)).toStrictEqual(input)
 })
 
 test('header capitalization is ignored and preserved', async () => {
@@ -89,7 +99,9 @@ test('header capitalization is ignored and preserved', async () => {
     },
     lines: [{id: ID(1), state: 'note', text: '2', row: ['1', '2', '3']}]
   }
-  expect(await parseTable(factory, input)).toStrictEqual(expected)
+  const table = await parseTable(factory, input)
+  expect(table).toStrictEqual(expected)
+  expect(serializeTable(table)).toStrictEqual(input)
 })
 
 test.each(<const>[
@@ -134,9 +146,9 @@ test.each(<const>[
 ])(
   'trailing newline is an empty Line: %s',
   async (_, input, expectedLines: readonly ReadonlyLine[]) => {
-    expect((await parseTable(factory, input)).lines).toStrictEqual(
-      expectedLines
-    )
+    const table = await parseTable(factory, input)
+    expect(table.lines).toStrictEqual(expectedLines)
+    expect(serializeTable(table)).toStrictEqual(input)
   }
 )
 
@@ -176,7 +188,7 @@ test.each(<const>[
   async (_, row, expectedLine: ReadonlyLine) => {
     const header = 'a\ttext\tc\n'
     const input = header + row
-    const expected = {
+    const expectedTable = {
       meta: {
         header: ['a', 'text', 'c'],
         columnMap: {text: 1},
@@ -185,7 +197,9 @@ test.each(<const>[
       },
       lines: [expectedLine]
     }
-    expect(await parseTable(factory, input)).toStrictEqual(expected)
+    const table = await parseTable(factory, input)
+    expect(table).toStrictEqual(expectedTable)
+    expect(serializeTable(table)).toStrictEqual(input)
   }
 )
 
@@ -196,10 +210,12 @@ test.each([
   'empty.test.txt',
   'games.test.txt',
   'groceries.test.txt',
-  'perf-1k.txt',
-  'perf-10k.txt'
+  'perf-1k.test.txt',
+  'perf-10k.test.txt',
+  'windows.test.txt'
 ])('integration %s', async filename => {
-  const absoluteFilename = `${__dirname}/../table-test-data/${filename}`
-  const input = readFileSync(absoluteFilename).toString()
-  expect(await parseTable(factory, input)).toMatchSnapshot()
+  const input = readFileSync(`${__dirname}/${filename}`).toString()
+  const table = await parseTable(factory, input)
+  expect(table).toMatchSnapshot()
+  expect(serializeTable(table)).toStrictEqual(input)
 })

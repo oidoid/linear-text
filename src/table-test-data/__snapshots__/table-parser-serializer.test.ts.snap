@@ -690,7 +690,7 @@ Object {
 }
 `;
 
-exports[`integration perf-1k.txt 1`] = `
+exports[`integration perf-1k.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -8706,7 +8706,7 @@ Object {
 }
 `;
 
-exports[`integration perf-10k.txt 1`] = `
+exports[`integration perf-10k.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -88713,6 +88713,118 @@ Object {
   "meta": Object {
     "columnMap": Object {
       "text": 1,
+    },
+    "delimiter": "	",
+    "header": undefined,
+    "newline": "
+",
+  },
+}
+`;
+
+exports[`integration windows.test.txt 1`] = `
+Object {
+  "lines": Array [
+    Object {
+      "id": 1,
+      "row": Array [
+        "Sepal length",
+        "Sepal width",
+        "Petal length",
+        "Petal width",
+        "Species",
+      ],
+      "state": "note",
+      "text": "Species",
+    },
+    Object {
+      "id": 2,
+      "row": Array [
+        "5.1",
+        "3.5",
+        "1.4",
+        "0.2",
+        "I. setosa",
+      ],
+      "state": "note",
+      "text": "I. setosa",
+    },
+    Object {
+      "id": 3,
+      "row": Array [
+        "4.9",
+        "3.0",
+        "1.4",
+        "0.2",
+        "I. setosa",
+      ],
+      "state": "note",
+      "text": "I. setosa",
+    },
+    Object {
+      "id": 4,
+      "row": Array [
+        "4.7",
+        "3.2",
+        "1.3",
+        "0.2",
+        "I. setosa",
+      ],
+      "state": "note",
+      "text": "I. setosa",
+    },
+    Object {
+      "id": 5,
+      "row": Array [
+        "4.6",
+        "3.1",
+        "1.5",
+        "0.2",
+        "I. setosa",
+      ],
+      "state": "note",
+      "text": "I. setosa",
+    },
+    Object {
+      "id": 6,
+      "row": Array [
+        "5.0",
+        "3.6",
+        "1.4",
+        "0.2",
+        "I. setosa",
+      ],
+      "state": "note",
+      "text": "I. setosa",
+    },
+    Object {
+      "id": 7,
+      "row": Array [
+        "",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+    Object {
+      "id": 8,
+      "row": Array [
+        "https://en.wikipedia.org/wiki/Tab-separated_values",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+    Object {
+      "id": 9,
+      "row": Array [
+        "",
+      ],
+      "state": "divider",
+      "text": undefined,
+    },
+  ],
+  "meta": Object {
+    "columnMap": Object {
+      "text": 4,
     },
     "delimiter": "	",
     "header": undefined,
