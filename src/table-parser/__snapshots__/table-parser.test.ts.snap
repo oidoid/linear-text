@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`integration alphabet.test.tab 1`] = `
+exports[`integration alphabet.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -224,7 +224,7 @@ Object {
 }
 `;
 
-exports[`integration colors.test.tab 1`] = `
+exports[`integration colors.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -279,7 +279,7 @@ Object {
 }
 `;
 
-exports[`integration digits.test.tab 1`] = `
+exports[`integration digits.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -327,7 +327,7 @@ Object {
 }
 `;
 
-exports[`integration empty.test.tab 1`] = `
+exports[`integration empty.test.txt 1`] = `
 Object {
   "lines": Array [],
   "meta": Object {
@@ -342,7 +342,7 @@ Object {
 }
 `;
 
-exports[`integration games.test.tab 1`] = `
+exports[`integration games.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {
@@ -594,7 +594,7 @@ Object {
 }
 `;
 
-exports[`integration groceries.test.tab 1`] = `
+exports[`integration groceries.test.txt 1`] = `
 Object {
   "lines": Array [
     Object {

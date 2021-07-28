@@ -6,21 +6,21 @@ import {
 } from 'browser-fs-access'
 import {t} from '@lingui/macro'
 
-export const defaultFileExtension = '.tab'
-export const defaultFilename = `linear-text${defaultFileExtension}`
+export const defaultFileExtension: string = '.txt'
+export const defaultFilename: string = `linear-text${defaultFileExtension}`
 
-export const defaultMimeType: string = 'text/tab-separated-values'
+export const defaultMimeType: string = 'text/plain'
 
 export const supportedMIMETypes: readonly string[] = Object.freeze([
   defaultMimeType,
-  'text/csv',
-  'text/plain'
+  'text/tab-separated-values',
+  'text/csv'
 ])
 export const supportedExtensions: readonly string[] = Object.freeze([
   defaultFileExtension,
+  '.tab',
   '.tsv',
-  '.csv',
-  '.txt'
+  '.csv'
 ])
 
 export function openFile(): Promise<FileWithHandle> {

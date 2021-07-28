@@ -190,12 +190,12 @@ test.each(<const>[
 )
 
 test.each([
-  'alphabet.test.tab',
-  'colors.test.tab',
-  'digits.test.tab',
-  'empty.test.tab',
-  'games.test.tab',
-  'groceries.test.tab'
+  'alphabet.test.txt',
+  'colors.test.txt',
+  'digits.test.txt',
+  'empty.test.txt',
+  'games.test.txt',
+  'groceries.test.txt'
 ])('integration %s', async filename => {
   const absoluteFilename = `${__dirname}/../table-test-data/${filename}`
   const input = readFileSync(absoluteFilename).toString()
