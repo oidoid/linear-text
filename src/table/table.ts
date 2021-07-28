@@ -7,8 +7,8 @@ export type Table = {meta: TableMeta; lines: Line[]}
 
 export function Table(
   // Favor an empty header for now. This keeps the file plain text.
-  meta: TableMeta = TableMeta(undefined, {text: 0}),
-  lines: Line[] = []
+  meta: TableMeta | undefined = TableMeta(undefined, {text: 0}),
+  lines: Line[] | undefined = []
 ): Table {
   return {meta, lines}
 }

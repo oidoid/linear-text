@@ -1,6 +1,5 @@
 Publish Linear Text v0.2.0: Notes and Foundations
 
-Add save tests.
 Add undo / redo system and data model store.
 Add test for loadTableFileAsync.
 Add help screen dialog.

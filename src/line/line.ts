@@ -40,7 +40,7 @@ export type Line = {
 
 export type ReadonlyLine = Readonly<Omit<Line, 'row'> & {row: Readonly<Row>}>
 
-/** Creates a new, invalidated line. */
+/** Creates a new line. */
 export function Line(
   factory: IDFactory,
   map: ColumnMap,
@@ -49,20 +49,10 @@ export function Line(
   row: Row | undefined = []
 ): Line {
   if (text != null) row[map.text] = text
-  return {id: makeID(factory), state, text, row: []}
-}
-
-/** Creates a new, valid line. */
-Line.fromRow = (
-  factory: IDFactory,
-  state: LineState,
-  text: string | undefined,
-  row: Row
-): Line => {
   return {id: makeID(factory), state, text, row}
 }
 
-/** Updates the text model and invalidates the row. */
+/** Updates the text model and row. */
 Line.setText = (line: Line, map: ColumnMap, text: string): void => {
   line.text = text
   line.row[map.text] = text
