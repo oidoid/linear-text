@@ -60,6 +60,7 @@ export const tableSlice = createSlice({
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
     addLineAction(state, {payload}: PayloadAction<LineState>) {
+      if (state.focus?.state === 'draft' && payload === 'draft') return // Already have a draft.
       const line = Line(state.idFactory, state.table.meta.columnMap, payload)
       const index =
         state.focus == null
@@ -74,6 +75,8 @@ export const tableSlice = createSlice({
     ) {
       const line = Table.findLine(state.table, payload.id)
       Line.setText(line, state.table.meta.columnMap, payload.text)
+      // The state of line is changed. It is assumed to be the focus.
+      state.focus = line
       state.invalidated = true
     },
     focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {

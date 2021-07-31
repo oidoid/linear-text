@@ -26,14 +26,8 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
   const onBlur = useCallback(
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
       onBlurSpellcheck(ev)
-      if (line.state === 'draft') {
-        // Don't retain focus here. If the current state is a draft and the
-        // reason for removal is new line creation, the better behavior is to
-        // set the cursor back one and recreate a line in the position of this
-        // line. This unfortunately causes a focus glitch when pressing tab to
-        // cause a focus loss from a draft to a subsequent line.
-        dispatch(removeLineAction({line, focus: 'prev'}))
-      }
+      if (line.state === 'draft')
+        dispatch(removeLineAction({line, focus: 'retain'}))
     },
     [dispatch, line, onBlurSpellcheck]
   )
@@ -62,6 +56,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       if (ev.key !== 'Enter' && !remove) return
       ev.preventDefault()
       ev.stopPropagation()
+      console.log(line.state)
       dispatch(
         ev.key === 'Enter'
           ? addLineAction(line.state === 'draft' ? 'divider' : 'draft')
