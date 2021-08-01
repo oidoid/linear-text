@@ -91,7 +91,7 @@ export function ToolbarElement(): JSX.Element {
     dispatch(newFileAction())
   }, [dispatch])
   const onHelpClick = useCallback(() => {
-    throw Error('Help unimplemented.')
+    console.error('Help unimplemented.')
   }, [])
 
   return (
