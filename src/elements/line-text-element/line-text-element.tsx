@@ -59,7 +59,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       console.log(line.state)
       dispatch(
         ev.key === 'Enter'
-          ? addLineAction(line.state === 'draft' ? 'divider' : 'draft')
+          ? addLineAction({draft: line.state !== 'draft'})
           : removeLineAction({
               line,
               focus: ev.key === 'Backspace' ? 'prev' : 'next'

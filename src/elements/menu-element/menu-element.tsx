@@ -81,7 +81,7 @@ function MenuListElement(): JSX.Element {
             <IconButtonElement
               accessKey={t`button-add-line__access-key`}
               label={t`button-add-line__label`}
-              onClick={() => dispatch(addLineAction('draft'))}
+              onClick={() => dispatch(addLineAction({draft: true}))}
               src={menuIconAddLine}
               title={t`button-add-line__title`}
             />

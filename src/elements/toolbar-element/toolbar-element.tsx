@@ -51,7 +51,7 @@ export function ToolbarElement(): JSX.Element {
     dispatch(redoAction())
   }, [dispatch])
   const onAddDividerClick = useCallback(() => {
-    dispatch(addLineAction('divider'))
+    dispatch(addLineAction({draft: false}))
   }, [dispatch])
   const save = useCallback(
     async (fileSystemHandle: FileSystemHandle | undefined) => {

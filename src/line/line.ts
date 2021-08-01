@@ -44,18 +44,25 @@ export type ReadonlyLine = Readonly<Omit<Line, 'row'> & {row: Readonly<Row>}>
 export function Line(
   factory: IDFactory,
   map: ColumnMap,
-  state: LineState,
+  draft: boolean | undefined = false,
   text: string | undefined = undefined,
   row: Row | undefined = []
 ): Line {
-  if (text != null) row[map.text] = text
-  return {id: makeID(factory), state, text, row}
+  if (text == null) delete row[map.text]
+  else row[map.text] = text
+  return {
+    id: makeID(factory),
+    state: draft ? 'draft' : text == null || text === '' ? 'divider' : 'note',
+    text,
+    row
+  }
 }
 
 /** Updates the text model and row. */
-Line.setText = (line: Line, map: ColumnMap, text: string): void => {
+Line.setText = (line: Line, map: ColumnMap, text: string | undefined): void => {
   line.text = text
-  line.row[map.text] = text
+  if (text == null) delete line.row[map.text]
+  else line.row[map.text] = text
   line.state = Line.isEmpty(line)
     ? line.state === 'divider'
       ? 'divider'
