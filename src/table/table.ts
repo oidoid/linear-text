@@ -13,19 +13,14 @@ export function Table(
   return {meta, lines}
 }
 
-Table.findLine = (table: Readonly<Table>, id: ID): Line => {
-  const index = Table.findLineIndex(table, id)
-  return table.lines[index]!
-}
-
-Table.findLineIndex = (table: Readonly<Table>, id: ID): number => {
+Table.findLine = (table: Readonly<Table>, id: ID): [Line, number] => {
   const index = table.lines.findIndex(line => line.id === id)
   if (index === -1) throw Error(`Line with ID=${id} not found.`)
-  return index
+  return [table.lines[index]!, index]
 }
 
-Table.removeLine = (table: Readonly<Table>, id: ID): number => {
-  const index = Table.findLineIndex(table, id)
+Table.removeLine = (table: Readonly<Table>, id: ID): [Line, number] => {
+  const [line, index] = Table.findLine(table, id)
   table.lines.splice(index, 1)
-  return index
+  return [line, index]
 }

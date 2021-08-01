@@ -69,7 +69,7 @@ export const tableSlice = createSlice({
       const index =
         state.focus == null
           ? state.table.lines.length
-          : Table.findLineIndex(state.table, state.focus.id) + 1
+          : Table.findLine(state.table, state.focus.id)[1] + 1
       state.table.lines.splice(index, 0, line)
       state.focus = line
     },
@@ -77,7 +77,7 @@ export const tableSlice = createSlice({
       state,
       {payload}: PayloadAction<{id: ID; text: string}>
     ) {
-      const line = Table.findLine(state.table, payload.id)
+      const [line] = Table.findLine(state.table, payload.id)
       Line.setText(line, state.table.meta.columnMap, payload.text)
       // The state of line is changed. It is assumed to be the focus.
       state.focus = line
@@ -99,7 +99,7 @@ export const tableSlice = createSlice({
       state,
       {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next' | 'retain'}>
     ) {
-      const index = Table.removeLine(state.table, payload.line.id)
+      const [_, index] = Table.removeLine(state.table, payload.line.id)
       state.invalidated = true
       if (payload.focus === 'retain') {
         state.focus =

@@ -8,6 +8,15 @@
     "@typescript-eslint/no-redeclare": "off",
     // This rule interferes with declarative programming and no rationale given
     // for leaving it on.
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": "off",
+    // Ignore intentionally unused variables starting with an underscore.
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }
