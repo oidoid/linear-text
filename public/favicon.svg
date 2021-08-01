@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.6309041"
-     inkscape:cx="34.872649"
-     inkscape:cy="121.1671"
+     inkscape:cx="-65.283035"
+     inkscape:cy="90.759302"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -56,17 +56,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-182.07539,-14.843615)">
-    <g
-       id="g2071"
-       transform="matrix(0.9973305,0,0,0.9973305,-5.343113,-8.896546)"
-       style="stroke-width:1.00268" />
     <rect
-       style="fill:#278d4f;fill-opacity:1;stroke:#278d4f;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#09863b;fill-opacity:1;stroke:#09863b;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect840"
-       width="112"
-       height="112"
-       x="190.07539"
-       y="22.843615" />
+       width="96"
+       height="96"
+       x="198.07539"
+       y="30.843615" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1223"
@@ -88,5 +84,9 @@
        height="14.0001"
        x="262.07529"
        y="42.843513" />
+    <g
+       id="g2071"
+       transform="matrix(0.9973305,0,0,0.9973305,-5.343113,-8.896546)"
+       style="stroke-width:1.00268" />
   </g>
 </svg>
