@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npm run test:unit && npm run test:format && npm run build",
+    "test": "tsc --noEmit && npm run test:unit && npm run test:format && npm run build",
     "test:unit": "react-scripts test --watchAll=false",
     "test:format": "npm run formatter -- -l",
     "eject": "react-scripts eject",

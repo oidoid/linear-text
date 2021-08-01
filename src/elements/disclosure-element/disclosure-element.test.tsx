@@ -1,9 +1,9 @@
 import {DisclosureElement} from './disclosure-element'
 import {fireEvent, render, screen} from '@testing-library/react'
 
-test('matches snapshot', () => {
+test('Matches snapshot.', () => {
   render(
-    <DisclosureElement data-testid='disclosure' summary='Summary'>
+    <DisclosureElement data-testid='disclosure' summary='Summary' title='Title'>
       Children
     </DisclosureElement>
   )
@@ -11,9 +11,14 @@ test('matches snapshot', () => {
   expect(disclosure).toMatchSnapshot()
 })
 
-test('renders summary and children', () => {
+test('Renders summary and children.', () => {
   render(
-    <DisclosureElement data-testid='disclosure' open summary='Summary'>
+    <DisclosureElement
+      data-testid='disclosure'
+      open
+      summary='Summary'
+      title='Title'
+    >
       Children
     </DisclosureElement>
   )
@@ -21,13 +26,14 @@ test('renders summary and children', () => {
   expect(disclosure).toHaveTextContent('SummaryChildren')
 })
 
-test('reports toggle', () => {
+test('Reports toggle.', () => {
   const onToggle = jest.fn()
   render(
     <DisclosureElement
       data-testid='disclosure'
       onToggle={onToggle}
       summary='Summary'
+      title='Title'
     >
       Children
     </DisclosureElement>
