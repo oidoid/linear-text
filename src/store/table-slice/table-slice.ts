@@ -59,24 +59,24 @@ export const tableSlice = createSlice({
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
-    addLineAction(state, {payload}: PayloadAction<{draft: boolean}>) {
-      const focus =
-        state.focus == null
-          ? undefined
-          : Table.findLine(state.table, state.focus)
-      if (focus?.[0]?.state === 'draft' && payload.draft) return // Already have a draft.
-      const line = Line(
-        state.idFactory,
-        state.table.meta.columnMap,
-        payload.draft
-      )
+    addDividerAction(state) {
+      const focus = getFocus(state)
+      const line = Line(state.idFactory, state.table.meta.columnMap)
       const index = focus == null ? state.table.lines.length : focus[1] + 1
       state.table.lines.splice(index, 0, line)
       state.focus = line.id
     },
-    editLineTextAction(
+    addDraftAction(state) {
+      const focus = getFocus(state)
+      if (focus?.[0]?.state === 'draft') return // Already have a draft.
+      const line = Line(state.idFactory, state.table.meta.columnMap, true)
+      const index = focus == null ? state.table.lines.length : focus[1] + 1
+      state.table.lines.splice(index, 0, line)
+      state.focus = line.id
+    },
+    editLineAction(
       state,
-      {payload}: PayloadAction<{id: ID; text: string}>
+      {payload}: PayloadAction<{id: ID; text: string | undefined}>
     ) {
       const [line] = Table.findLine(state.table, payload.id)
       Line.setText(line, state.table.meta.columnMap, payload.text)
@@ -98,17 +98,17 @@ export const tableSlice = createSlice({
     },
     removeLineAction(
       state,
-      {payload}: PayloadAction<{id: ID; focus: 'prev' | 'next' | 'retain'}>
+      {payload}: PayloadAction<{id: ID; nextFocus: 'prev' | 'next' | 'retain'}>
     ) {
       const [_, index] = Table.removeLine(state.table, payload.id)
       state.invalidated = true
-      if (payload.focus === 'retain') {
+      if (payload.nextFocus === 'retain') {
         state.focus = state.focus === payload.id ? undefined : state.focus
       } else {
         const nextIndex = Math.max(
           0,
           Math.min(
-            index + (payload.focus === 'prev' ? -1 : 0),
+            index + (payload.nextFocus === 'prev' ? -1 : 0),
             state.table.lines.length - 1
           )
         )
@@ -150,8 +150,9 @@ export const tableSlice = createSlice({
 })
 
 export const {
-  addLineAction,
-  editLineTextAction,
+  addDividerAction,
+  addDraftAction,
+  editLineAction,
   focusLineAction,
   newFileAction,
   removeLineAction,
@@ -166,4 +167,10 @@ export const {
 // `useSelector((state: RootState) => state.table.value)`.
 export function selectTableState(state: RootState): TableState {
   return state.table
+}
+
+function getFocus(state: Readonly<TableState>): [Line, number] | undefined {
+  return state.focus == null
+    ? undefined
+    : Table.findLine(state.table, state.focus)
 }

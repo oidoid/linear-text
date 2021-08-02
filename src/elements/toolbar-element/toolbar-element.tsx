@@ -2,7 +2,7 @@ import type {FileSystemHandle} from 'browser-fs-access'
 
 import {BubbleCardElement} from '../bubble-card-element/bubble-card-element'
 import {
-  addLineAction,
+  addDividerAction,
   loadTableFileAsync,
   newFileAction,
   redoAction,
@@ -51,7 +51,7 @@ export function ToolbarElement(): JSX.Element {
     dispatch(redoAction())
   }, [dispatch])
   const onAddDividerClick = useCallback(() => {
-    dispatch(addLineAction({draft: false}))
+    dispatch(addDividerAction())
   }, [dispatch])
   const save = useCallback(
     async (fileSystemHandle: FileSystemHandle | undefined) => {

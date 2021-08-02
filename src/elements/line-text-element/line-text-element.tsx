@@ -1,8 +1,9 @@
 import type React from 'react'
 
 import {
-  addLineAction,
-  editLineTextAction,
+  addDividerAction,
+  addDraftAction,
+  editLineAction,
   focusLineAction,
   removeLineAction,
   selectTableState
@@ -27,7 +28,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
       onBlurSpellcheck(ev)
       if (line.state === 'draft')
-        dispatch(removeLineAction({id: line.id, focus: 'retain'}))
+        dispatch(removeLineAction({id: line.id, nextFocus: 'retain'}))
     },
     [dispatch, line, onBlurSpellcheck]
   )
@@ -35,7 +36,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
     (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
       const text = ev.currentTarget.value
       setText(text)
-      dispatch(editLineTextAction({id: line.id, text}))
+      dispatch(editLineAction({id: line.id, text}))
     },
     [dispatch, line.id]
   )
@@ -59,10 +60,12 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       console.log(line.state)
       dispatch(
         ev.key === 'Enter'
-          ? addLineAction({draft: line.state !== 'draft'})
+          ? line.state === 'draft'
+            ? addDividerAction()
+            : addDraftAction()
           : removeLineAction({
               id: line.id,
-              focus: ev.key === 'Backspace' ? 'prev' : 'next'
+              nextFocus: ev.key === 'Backspace' ? 'prev' : 'next'
             })
       )
     },

@@ -1,5 +1,5 @@
 import {
-  addLineAction,
+  addDraftAction,
   removeLineAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
@@ -70,7 +70,7 @@ function MenuListElement(): JSX.Element {
                 ev.stopPropagation()
                 if (tableState.focus == null) return
                 dispatch(
-                  removeLineAction({id: tableState.focus, focus: 'prev'})
+                  removeLineAction({id: tableState.focus, nextFocus: 'prev'})
                 )
               }}
               src={menuIconRemoveLine}
@@ -81,7 +81,7 @@ function MenuListElement(): JSX.Element {
             <IconButtonElement
               accessKey={t`button-add-line__access-key`}
               label={t`button-add-line__label`}
-              onClick={() => dispatch(addLineAction({draft: true}))}
+              onClick={() => dispatch(addDraftAction())}
               src={menuIconAddLine}
               title={t`button-add-line__title`}
             />
