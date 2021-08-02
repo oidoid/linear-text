@@ -12,7 +12,7 @@ export type TableState = Readonly<{
   /** The loaded / saved filename, if any. */
   filename: string | undefined
   /** undefined or [0, table.lines.length). */
-  focus: Readonly<Line> | undefined
+  focus: ID | undefined
   idFactory: Readonly<IDFactory>
   /**
    * True if unsaved changes are present. False if no changes since saved, just
@@ -60,18 +60,19 @@ export const tableSlice = createSlice({
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
     addLineAction(state, {payload}: PayloadAction<{draft: boolean}>) {
-      if (state.focus?.state === 'draft' && payload.draft) return // Already have a draft.
+      const focus =
+        state.focus == null
+          ? undefined
+          : Table.findLine(state.table, state.focus)
+      if (focus?.[0]?.state === 'draft' && payload.draft) return // Already have a draft.
       const line = Line(
         state.idFactory,
         state.table.meta.columnMap,
         payload.draft
       )
-      const index =
-        state.focus == null
-          ? state.table.lines.length
-          : Table.findLine(state.table, state.focus.id)[1] + 1
+      const index = focus == null ? state.table.lines.length : focus[1] + 1
       state.table.lines.splice(index, 0, line)
-      state.focus = line
+      state.focus = line.id
     },
     editLineTextAction(
       state,
@@ -80,10 +81,10 @@ export const tableSlice = createSlice({
       const [line] = Table.findLine(state.table, payload.id)
       Line.setText(line, state.table.meta.columnMap, payload.text)
       // The state of line is changed. It is assumed to be the focus.
-      state.focus = line
+      state.focus = line.id
       state.invalidated = true
     },
-    focusLineAction(state, {payload}: PayloadAction<Line | undefined>) {
+    focusLineAction(state, {payload}: PayloadAction<ID | undefined>) {
       state.focus = payload
     },
     newFileAction(state) {
@@ -97,13 +98,12 @@ export const tableSlice = createSlice({
     },
     removeLineAction(
       state,
-      {payload}: PayloadAction<{line: Line; focus: 'prev' | 'next' | 'retain'}>
+      {payload}: PayloadAction<{id: ID; focus: 'prev' | 'next' | 'retain'}>
     ) {
-      const [_, index] = Table.removeLine(state.table, payload.line.id)
+      const [_, index] = Table.removeLine(state.table, payload.id)
       state.invalidated = true
       if (payload.focus === 'retain') {
-        state.focus =
-          state.focus?.id === payload.line.id ? undefined : state.focus
+        state.focus = state.focus === payload.id ? undefined : state.focus
       } else {
         const nextIndex = Math.max(
           0,
@@ -112,7 +112,7 @@ export const tableSlice = createSlice({
             state.table.lines.length - 1
           )
         )
-        state.focus = state.table.lines[nextIndex]
+        state.focus = state.table.lines[nextIndex]?.id
       }
     },
     saveFileAction(state, {payload}: PayloadAction<string | undefined>) {

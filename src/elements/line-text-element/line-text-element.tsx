@@ -27,7 +27,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
       onBlurSpellcheck(ev)
       if (line.state === 'draft')
-        dispatch(removeLineAction({line, focus: 'retain'}))
+        dispatch(removeLineAction({id: line.id, focus: 'retain'}))
     },
     [dispatch, line, onBlurSpellcheck]
   )
@@ -45,7 +45,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       ev.stopPropagation()
       // There is not a mirroring dispatch call for blur because focus is lost
       // on discard button press. Clear focus on GroupElement click instead.
-      dispatch(focusLineAction(line))
+      dispatch(focusLineAction(line.id))
     },
     [dispatch, line, onFocusSpellcheck]
   )
@@ -61,7 +61,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
         ev.key === 'Enter'
           ? addLineAction({draft: line.state !== 'draft'})
           : removeLineAction({
-              line,
+              id: line.id,
               focus: ev.key === 'Backspace' ? 'prev' : 'next'
             })
       )
@@ -71,14 +71,14 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
 
   const textRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => {
-    if (tableState.focus?.id === line.id) textRef.current?.focus()
+    if (tableState.focus === line.id) textRef.current?.focus()
   }, [tableState.focus, line.id, textRef])
 
   return (
     <div className='line-text-element' data-text={text}>
       <textarea
         ref={textRef}
-        autoFocus={tableState.focus === line}
+        autoFocus={tableState.focus === line.id}
         className='line-text-element__text'
         onBlur={onBlur}
         onChange={onChange}

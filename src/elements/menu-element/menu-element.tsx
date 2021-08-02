@@ -70,7 +70,7 @@ function MenuListElement(): JSX.Element {
                 ev.stopPropagation()
                 if (tableState.focus == null) return
                 dispatch(
-                  removeLineAction({line: tableState.focus, focus: 'prev'})
+                  removeLineAction({id: tableState.focus, focus: 'prev'})
                 )
               }}
               src={menuIconRemoveLine}
