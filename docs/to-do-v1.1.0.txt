@@ -1,4 +1,4 @@
-# Publish Linear Text v1.1.0: Images and Refinements
+# Publish Linear Text v1.1.0: Refinements
 
 Forbid add/remove line during load.
 Break apart the store slices.

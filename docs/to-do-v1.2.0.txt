@@ -16,9 +16,9 @@ Use header + TabCellType inference to fill in missing columns.
 Add date TabCellType support.
 Image thumbnailing support.
 Investigate CSS contain performance boosts.
+File of files using file scheme, file extension, and file content heuristics.
+Multiple open file tabs.
 
 ## Reasons to Eject
 - setupTests.ts naming.
 - Snapshot colocating.
-
-Add extra delimiter (comma, semicolon,..) support / import wizard.

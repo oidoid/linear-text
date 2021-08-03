@@ -1,0 +1,5 @@
+# Publish Linear Text v0.5.0: Links and Images
+
+Add link and image heuristic.
+Add link support for URLs.
+Add image line support for remote and file scheme images.

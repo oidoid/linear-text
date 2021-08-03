@@ -1,25 +1,33 @@
-# Publish Linear Text v1.0.0: Dragging and Grouping
+# Publish Linear Text v1.0.0: Everything
 
-Consider useMemo for computing groups of uls.
-Consider renaming extensions to .txt if tables won't be supported.
-Fix flexbox margin issue for groups. https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width
-Add dragging support. Drag to position in grid at least.
-Reevaluate virtual board size. Right now this is 99in.
-Add group dragging.
-Groups are absolutely positionable? IDK. Going to have scroll issues but this is what i really want.
-Add error card.
-Add scroll with card dragging behavior or use fixed board size.
-Add auto-backup with undo history.
 
-Decide how to do grouping and reordering on the fly and at export time.
-Press enter to create card below current card or default location and focus it, tab to go to next card, escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
+Expose locales.
+Revise menu.
+Add test for loadTableFileAsync.
+Create lineartext.com with both embedded homepage and dedicated live editor.
+Revise package.json to use https://LinearText.com.
+Move to oidoid folder.
+Revise oidoid.com to include Linear Text.
+Update NPM and index.html description and keywords.
+Document, add help, update readme, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
+
+Add type tests:
+  Parser sets initial type as note or divider, never draft.
+  UI sets initial type as note or divider, never draft.
+  Backspace on note type deletes.
+  Backspace on divider type converts to note... Or deletes?
+  Note is considered draft when isEmpty and type is note.
+  Drafts are deleted on focus loss.
+  Drafts become plain notes on content add.
+  Enter on draft becomes divider.
+Shortcut and button tests.
+
+Press escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
 Add lasso group select by clicking an empty space and dragging.
 
 Rename store slice thingy.
 Add return types.
 Add arrange support for grid and sorting/arrangement/line-up columnar support.
-Load unstructured files as grid arrangements.
-Decide on default position on enter or new button.
 Copy lessons and notes from other projects and references; oidoid; revise button styles to my old UI styles.
 Validate HTML.
 Middle click to drag workspace.

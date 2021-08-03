@@ -1,0 +1,9 @@
+Publish Linear Text v0.4.0: Groups
+
+Add grouping.
+  Consider useMemo for computing groups of uls.
+Add group dragging.
+Reevaluate virtual board size. Right now this is 99in.
+Fix flexbox margin issue for groups.
+  https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width
+Add long click to drag, click to edit, longer click to change type?
