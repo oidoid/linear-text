@@ -24,6 +24,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
   const {spellcheck, onBlurSpellcheck, onFocusSpellcheck} =
     useFocusSpellchecker()
   const [text, setText] = useState(line.text)
+  if (text !== line.text) setText(line.text)
   const onBlur = useCallback(
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
       onBlurSpellcheck(ev)
@@ -57,7 +58,6 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       if (ev.key !== 'Enter' && !remove) return
       ev.preventDefault()
       ev.stopPropagation()
-      console.log(line.state)
       dispatch(
         ev.key === 'Enter'
           ? line.state === 'draft'

@@ -5,10 +5,8 @@ import {
   addDividerAction,
   loadTableFileAsync,
   newFileAction,
-  redoAction,
   saveFileAction,
-  selectTableState,
-  undoAction
+  selectTableState
 } from '../../store/table-slice/table-slice'
 import {IconButtonElement} from '../icon-button-element/icon-button-element'
 import {openFile, saveFile} from '../../utils/file-util'
@@ -17,6 +15,7 @@ import {t} from '@lingui/macro'
 import {UnorderedListElement} from '../unordered-list-element/unordered-list-element'
 import {useAppSelector, useAppDispatch} from '../../hooks/use-store'
 import {useCallback, useState} from 'react'
+import {ActionCreators} from 'redux-undo'
 
 import toolbarIconAddDivider from './toolbar-icon-add-divider.svg'
 import toolbarIconHelp from './toolbar-icon-help.svg'
@@ -45,10 +44,10 @@ export function ToolbarElement(): JSX.Element {
   const dispatch = useAppDispatch()
 
   const onUndoClick = useCallback(() => {
-    dispatch(undoAction())
+    dispatch(ActionCreators.undo())
   }, [dispatch])
   const onRedoClick = useCallback(() => {
-    dispatch(redoAction())
+    dispatch(ActionCreators.redo())
   }, [dispatch])
   const onAddDividerClick = useCallback(() => {
     dispatch(addDividerAction())

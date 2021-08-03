@@ -118,12 +118,6 @@ export const tableSlice = createSlice({
     saveFileAction(state, {payload}: PayloadAction<string | undefined>) {
       state.filename = payload
       state.invalidated = false
-    },
-    undoAction(_state) {
-      throw Error('Undo unimplemented.')
-    },
-    redoAction(_state) {
-      throw Error('Redo unimplemented.')
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -156,9 +150,7 @@ export const {
   focusLineAction,
   newFileAction,
   removeLineAction,
-  saveFileAction,
-  undoAction,
-  redoAction
+  saveFileAction
 } = tableSlice.actions
 
 // The function below is called a selector and allows us to select a value from
@@ -166,7 +158,7 @@ export const {
 // in the slice file. For example:
 // `useSelector((state: RootState) => state.table.value)`.
 export function selectTableState(state: RootState): TableState {
-  return state.table
+  return state.table.present
 }
 
 function getFocus(state: Readonly<TableState>): [Line, number] | undefined {
