@@ -1,4 +1,7 @@
-# 📝 Linear Text
+# 📝 [Linear Text](https://git.io/linear-text)
+
+| ⚠️ Linear Text is in early development, may lose data, and is not ready for evaluation. |
+| --------------------------------------------------------------------------------------- |
 
 ## [Changelog](docs/changelog.md)
 
