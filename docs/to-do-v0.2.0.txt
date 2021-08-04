@@ -1,7 +1,0 @@
-Publish Linear Text v0.2.0: Notes and Foundations
-
-Create git.io link, reference in readme, and revise package.json.
-Rework readme a bit to include license and other info.
-  Add warning that Linear Text is early in development, may lose data, and is not ready for evaluation.
-Publish source code.
-Publish NPM v0.2.0.
