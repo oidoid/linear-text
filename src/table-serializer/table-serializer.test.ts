@@ -1,29 +1,37 @@
 import {IDFactory} from '../id/id-factory'
 import {Line} from '../line/line'
 import {Table} from '../table/table'
-import {TableMeta} from '../table/table-meta'
 import {serializeTable} from './table-serializer'
 
-test('Inserting a new text column sparsely serializes correctly.', () => {
+test('Notes are serialized.', () => {
   const factory = IDFactory()
-  const meta = TableMeta(undefined, {text: 3})
-  const line = Line(factory, meta.columnMap, false, 'abc')
-  const table = Table(meta, [line])
-  expect(serializeTable(table)).toStrictEqual('\t\t\tabc')
+  const line = Line(factory, false, 'abc')
+  const table = Table('\n', [line])
+  expect(serializeTable(table)).toStrictEqual('abc')
 })
 
-test('Inserting a new text column partly sparsely serializes correctly.', () => {
+test('Dividers are serialized.', () => {
   const factory = IDFactory()
-  const meta = TableMeta(undefined, {text: 3})
-  const line = Line(factory, meta.columnMap, false, 'abc', ['1', '2'])
-  const table = Table(meta, [line])
-  expect(serializeTable(table)).toStrictEqual('1\t2\t\tabc')
+  const line = Line(factory)
+  const table = Table('\n', [line, line])
+  expect(serializeTable(table)).toStrictEqual('\n')
 })
 
 test('Drafts are never serialized.', () => {
   const factory = IDFactory()
-  const meta = TableMeta(undefined, {text: 0})
-  const line = Line(factory, meta.columnMap, true, 'abc')
-  const table = Table(meta, [line])
+  const line = Line(factory, true, 'abc')
+  const table = Table('\n', [line])
   expect(serializeTable(table)).toStrictEqual('')
+})
+
+test.each([
+  ['Linux', '\n', 'abc\ndef'],
+  ['Windows', '\r\n', 'abc\r\ndef']
+])('%s newlines are supported.', (_, newline, expected) => {
+  const factory = IDFactory()
+  const table = Table(newline, [
+    Line(factory, false, 'abc'),
+    Line(factory, false, 'def')
+  ])
+  expect(serializeTable(table)).toStrictEqual(expected)
 })

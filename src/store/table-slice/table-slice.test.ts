@@ -1,7 +1,6 @@
 import {ID} from '../../id/id'
 import type {Line} from '../../line/line'
 import {Table} from '../../table/table'
-import {TableMeta} from '../../table/table-meta'
 import {
   addDraftAction,
   addDividerAction,
@@ -11,6 +10,13 @@ import {
   focusLineAction,
   tableSlice
 } from './table-slice'
+
+// [to-do]: add tests most especially around un/redo. See undo branch.
+// - loadTableFileAsync
+// - editLineTextAction
+// - saveFileAction
+// - undoAction
+// - redoAction
 
 test('An undefined state with an invalid action produces the initial state.', () => {
   expect(tableSlice.reducer(undefined, {type: 'invalid'})).toStrictEqual(
@@ -26,7 +32,7 @@ test('An invalid action produces no change.', () => {
 
 test('addLineAction() stores a line and sets the focus.', () => {
   const state = tableSlice.reducer(initTableState, addDraftAction())
-  const line: Line = {id: ID(1), state: 'draft', text: undefined, row: []}
+  const line: Line = {id: ID(1), state: 'draft', text: ''}
   expect(state.table.lines).toStrictEqual([line])
   expect(state.focus).toStrictEqual(line.id)
 })
@@ -77,9 +83,9 @@ test('removeLineAction() deletes the line and sets the previous focus.', () => {
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',
-    table: Table(TableMeta(undefined, {text: 0}), [
-      {id: ID(1), state: 'divider', text: undefined, row: []},
-      {id: ID(3), state: 'divider', text: undefined, row: []}
+    table: Table('\n', [
+      {id: ID(1), state: 'divider', text: ''},
+      {id: ID(3), state: 'divider', text: ''}
     ])
   })
 })
@@ -99,9 +105,9 @@ test('removeLineAction() deletes the line and sets the next focus.', () => {
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',
-    table: Table(TableMeta(undefined, {text: 0}), [
-      {id: ID(1), state: 'divider', text: undefined, row: []},
-      {id: ID(3), state: 'divider', text: undefined, row: []}
+    table: Table('\n', [
+      {id: ID(1), state: 'divider', text: ''},
+      {id: ID(3), state: 'divider', text: ''}
     ])
   })
 })

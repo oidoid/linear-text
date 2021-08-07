@@ -2,7 +2,6 @@ import {ID} from '../id/id'
 import {IDFactory} from '../id/id-factory'
 import {Line} from '../line/line'
 import {Table} from './table'
-import {TableMeta} from './table-meta'
 
 test('A missing line is not found.', () => {
   const table = Table()
@@ -11,10 +10,9 @@ test('A missing line is not found.', () => {
 
 test('A present line is not found.', () => {
   const factory = IDFactory()
-  const map = {text: 0}
-  const lines = [Line(factory, map), Line(factory, map), Line(factory, map)]
+  const lines = [Line(factory), Line(factory), Line(factory)]
   const line = lines[1]!
-  const table = Table(TableMeta(undefined, map), lines)
+  const table = Table('\n', lines)
   expect(Table.findLine(table, line?.id)).toStrictEqual([line, 1])
 })
 
@@ -25,10 +23,9 @@ test('A missing line is not removed.', () => {
 
 test('A present line is removed.', () => {
   const factory = IDFactory()
-  const map = {text: 0}
-  const lines = [Line(factory, map), Line(factory, map), Line(factory, map)]
+  const lines = [Line(factory), Line(factory), Line(factory)]
   const line = lines[1]!
-  const table = Table(TableMeta(undefined, map), lines)
+  const table = Table('\n', lines)
   expect(Table.removeLine(table, line?.id)).toStrictEqual([line, 1])
   expect(table.lines).toStrictEqual([lines[0], lines[1]])
 })

@@ -1,4 +1,4 @@
-import {parseCellType} from './cell-type'
+import {parseTextType} from './text-type'
 
 test.each([
   ['empty', '', 'empty'],
@@ -14,6 +14,6 @@ test.each([
   ['number (great)', '1e9', 'number'],
   ['number (hex)', '0xff', 'number'],
   ['text', 'abc', 'text']
-])('%s', (_, cell, expected) =>
-  expect(parseCellType(cell)).toStrictEqual(expected)
+])('%s', (_, text, expected) =>
+  expect(parseTextType(text)).toStrictEqual(expected)
 )

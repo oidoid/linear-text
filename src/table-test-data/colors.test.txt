@@ -1,5 +1,4 @@
-letter	text
-C	cyan
-M	magenta
-Y	yellow
-K	key
+cyan
+magenta
+yellow
+key

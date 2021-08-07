@@ -11,22 +11,10 @@ export const defaultFilename: string = `linear-text${defaultFileExtension}`
 
 export const defaultMimeType: string = 'text/plain'
 
-export const supportedMIMETypes: readonly string[] = Object.freeze([
-  defaultMimeType,
-  'text/tab-separated-values',
-  'text/csv'
-])
-export const supportedExtensions: readonly string[] = Object.freeze([
-  defaultFileExtension,
-  '.tab',
-  '.tsv',
-  '.csv'
-])
-
 export function openFile(): Promise<FileWithHandle> {
   return fileOpen({
-    mimeTypes: [...supportedMIMETypes],
-    extensions: [...supportedExtensions],
+    mimeTypes: [defaultMimeType],
+    extensions: [defaultFileExtension],
     description: t`dropdown-file-type__description`
   })
 }
@@ -39,7 +27,7 @@ export function saveFile(
     new Blob([tabSeparatedValues], {type: defaultMimeType}),
     {
       fileName: handle?.name ?? defaultFilename,
-      extensions: [...supportedExtensions]
+      extensions: [defaultFileExtension]
     },
     handle,
     handle != null

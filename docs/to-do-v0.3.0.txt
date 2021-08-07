@@ -1,8 +1,8 @@
 Publish Linear Text v0.3.0: Goodbye Tabulation, Hello Dragging
 
-Replace Papa Parse with line reading.
-  Rename extensions to .txt if tables won't be supported.
-Add drag support.
+Add drag support. There's a relationship with grouping too.
+  Some tutorial on this and it could be a lot simpler with drag-and-drop now vs absolute positioning.
+  What to do about splitting?
 Add scroll with card dragging behavior or use fixed board size.
 Prompt to save unsaved work on new file, load file, or page departure.
 Add auto-backup to LocalStorage.

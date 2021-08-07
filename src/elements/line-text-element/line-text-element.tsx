@@ -1,3 +1,5 @@
+import type {ID} from '../../id/id'
+import type {Line} from '../../line/line'
 import type React from 'react'
 
 import {
@@ -8,7 +10,6 @@ import {
   removeLineAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
-import {Line} from '../../line/line'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import {useFocusSpellchecker} from '../../hooks/use-focus-spellcheck'
@@ -46,7 +47,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       onFocusSpellcheck(ev)
       ev.stopPropagation()
       // There is not a mirroring dispatch call for blur because focus is lost
-      // on discard button press. Clear focus on GroupElement click instead.
+      // on discard button press.
       dispatch(focusLineAction(line.id))
     },
     [dispatch, line, onFocusSpellcheck]
@@ -54,7 +55,7 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
   const onKeyDown = useCallback(
     (ev: React.KeyboardEvent<HTMLTextAreaElement>) => {
       const remove =
-        (ev.key === 'Backspace' || ev.key === 'Delete') && Line.isEmpty(line)
+        (ev.key === 'Backspace' || ev.key === 'Delete') && line.text === ''
       if (ev.key !== 'Enter' && !remove) return
       ev.preventDefault()
       ev.stopPropagation()
@@ -73,20 +74,28 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
   )
 
   const textRef = useRef<HTMLTextAreaElement>(null)
+  const focus = useRef<[ID | undefined, ID] | undefined>()
   useEffect(() => {
-    if (tableState.focus === line.id) textRef.current?.focus()
-  }, [tableState.focus, line.id, textRef])
+    if (textRef.current == null) return
+    if (
+      focus.current?.[0] === tableState.focus &&
+      focus.current?.[1] === line.id
+    )
+      return
+    focus.current = [tableState.focus, line.id]
+    if (tableState.focus === line.id) textRef.current.focus()
+  })
 
   return (
     <div className='line-text-element' data-text={text}>
       <textarea
-        ref={textRef}
         autoFocus={tableState.focus === line.id}
         className='line-text-element__text'
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}
         onKeyDown={onKeyDown}
+        ref={textRef}
         rows={1}
         spellCheck={spellcheck}
         value={text}

@@ -1,8 +1,6 @@
 import type {ID} from '../id/id'
-import type {Row} from '../table/row'
 
 import {IDFactory, makeID} from '../id/id-factory'
-import type {ColumnMap} from '../table/column-map'
 
 /**
  * Interim visual and behavioral representation. Do not serialize. State is used
@@ -16,66 +14,48 @@ import type {ColumnMap} from '../table/column-map'
  */
 export type LineState = 'divider' | 'draft' | 'note'
 
-/** A table row and its application state modeling. */
+/** A line of text and its application state modeling. */
 export type Line = {
   /**
-   * Unique model identity for the program's execution lifetime. No association
-   * to line number. Never serialized to row. Symbols are not used as they
-   * cannot be serialized in the store.
+   * Unique identity for the program's execution lifetime. No association to
+   * line number. Never serialized. Symbols are not used as they cannot be
+   * serialized in the store.
    */
   readonly id: ID
 
-  /** State is managed internally. Do not manually set. */
+  /** State is managed internally. **Do not manually set.** */
   state: LineState
 
   /**
-   * The normalized model text to be shown, possibly mini-Markdown or empty.
-   * This is a cached copy of the appropriate column kept in sync by setText().
+   * The text to be shown, possibly mini-Markdown or empty. Never contains
+   * newlines. Empty lines are usually used for separating logical groups of
+   * lines. State and text are coupled internally. **Do not manually set.**
    */
-  text: string | undefined
-
-  /** The known columns (text) and any user columns verbatim. */
-  readonly row: Row
+  text: string
 }
-
-export type ReadonlyLine = Readonly<Omit<Line, 'row'> & {row: Readonly<Row>}>
 
 /** Creates a new line. */
 export function Line(
   factory: IDFactory,
-  map: ColumnMap,
   draft: boolean | undefined = false,
-  text: string | undefined = undefined,
-  row: Row | undefined = []
+  text: string | undefined = ''
 ): Line {
-  if (text == null) delete row[map.text]
-  else row[map.text] = text
+  throwIfNewline(text)
   return {
     id: makeID(factory),
-    state: draft ? 'draft' : text == null || text === '' ? 'divider' : 'note',
-    text,
-    row
+    state: draft ? 'draft' : text === '' ? 'divider' : 'note',
+    text
   }
 }
 
-/** Updates the text model and row. */
-Line.setText = (line: Line, map: ColumnMap, text: string | undefined): void => {
+/** Updates the text and state. */
+Line.setText = (line: Line, text: string): void => {
+  throwIfNewline(text)
   line.text = text
-  if (text == null) delete line.row[map.text]
-  else line.row[map.text] = text
-  line.state = Line.isEmpty(line)
-    ? line.state === 'divider'
-      ? 'divider'
-      : 'draft'
-    : 'note'
+  line.state =
+    text === '' ? (line.state === 'divider' ? 'divider' : 'draft') : 'note'
 }
 
-/**
- * Returns true if text is nullish or empty, false if blank or otherwise
- * nonempty. Additional cells, such as user cells, are not considered.
- *
- * Empty lines are usually used for separating logical groups of lines.
- */
-Line.isEmpty = (line: ReadonlyLine): boolean => {
-  return line.text == null || line.text === ''
+function throwIfNewline(text: string): void {
+  if (/\r?\n/.test(text)) throw Error('Newlines are forbidden in text.')
 }

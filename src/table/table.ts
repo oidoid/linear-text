@@ -1,16 +1,18 @@
 import type {ID} from '../id/id'
 import type {Line} from '../line/line'
 
-import {TableMeta} from './table-meta'
-
-export type Table = {meta: TableMeta; lines: Line[]}
+export const newlineDefault = '\n' // [to-do]: platform agnostic.
+export type Table = Readonly<{
+  /** The line delimiter. Usually \n or \r\n. */
+  newline: string
+  lines: Line[]
+}>
 
 export function Table(
-  // Favor an empty header for now. This keeps the file plain text.
-  meta: TableMeta | undefined = TableMeta(undefined, {text: 0}),
+  newline: string | undefined = newlineDefault,
   lines: Line[] | undefined = []
 ): Table {
-  return {meta, lines}
+  return {newline, lines}
 }
 
 Table.findLine = (table: Readonly<Table>, id: ID): [Line, number] => {

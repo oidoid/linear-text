@@ -73,16 +73,19 @@ export function ToolbarElement(): JSX.Element {
   )
   const onSaveAs = useCallback(() => save(undefined), [save])
   const onLoadClick = useCallback(async () => {
-    let fileWithHandle
+    let fileHandle
     try {
-      fileWithHandle = await openFile()
+      fileHandle = await openFile()
     } catch (err) {
       if (isCanceledByUser(err)) return
       throw err
     }
-    setFileSystemHandle(fileWithHandle.handle)
+    setFileSystemHandle(fileHandle.handle)
     dispatch(
-      loadTableFileAsync({fileWithHandle, idFactory: tableState.idFactory})
+      loadTableFileAsync({
+        fileHandle,
+        idFactory: tableState.idFactory
+      })
     )
   }, [dispatch, tableState.idFactory])
   const onNewClick = useCallback(() => {

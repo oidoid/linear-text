@@ -39,13 +39,13 @@ export const initTableState: TableState = Object.freeze({
 // typically used to make async requests.
 export const loadTableFileAsync = createAsyncThunk<
   {filename: string; idFactory: Readonly<IDFactory>; table: Table},
-  {fileWithHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
+  {fileHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
   {state: RootState}
->('table/loadTableFileAsync', async ({fileWithHandle, idFactory}) => {
+>('table/loadTableFileAsync', async ({fileHandle, idFactory}) => {
   // The value we return becomes the `fulfilled` action payload
   const factory = IDFactory(idFactory)
-  const table = await parseTable(factory, fileWithHandle)
-  return {filename: fileWithHandle.name, idFactory: factory, table}
+  const table = await parseTable(factory, fileHandle)
+  return {filename: fileHandle.name, idFactory: factory, table}
 })
 
 export const tableSlice = createSlice({
@@ -61,7 +61,7 @@ export const tableSlice = createSlice({
     // Use the PayloadAction type to declare the contents of `action.payload`
     addDividerAction(state) {
       const focus = getFocus(state)
-      const line = Line(state.idFactory, state.table.meta.columnMap)
+      const line = Line(state.idFactory)
       const index = focus == null ? state.table.lines.length : focus[1] + 1
       state.table.lines.splice(index, 0, line)
       state.focus = line.id
@@ -69,17 +69,14 @@ export const tableSlice = createSlice({
     addDraftAction(state) {
       const focus = getFocus(state)
       if (focus?.[0]?.state === 'draft') return // Already have a draft.
-      const line = Line(state.idFactory, state.table.meta.columnMap, true)
+      const line = Line(state.idFactory, true)
       const index = focus == null ? state.table.lines.length : focus[1] + 1
       state.table.lines.splice(index, 0, line)
       state.focus = line.id
     },
-    editLineAction(
-      state,
-      {payload}: PayloadAction<{id: ID; text: string | undefined}>
-    ) {
+    editLineAction(state, {payload}: PayloadAction<{id: ID; text: string}>) {
       const [line] = Table.findLine(state.table, payload.id)
-      Line.setText(line, state.table.meta.columnMap, payload.text)
+      Line.setText(line, payload.text)
       // The state of line is changed. It is assumed to be the focus.
       state.focus = line.id
       state.invalidated = true
@@ -88,7 +85,6 @@ export const tableSlice = createSlice({
       state.focus = payload
     },
     newFileAction(state) {
-      // dump undo
       state.filename = undefined
       state.focus = undefined
       state.invalidated = false
@@ -128,7 +124,6 @@ export const tableSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(loadTableFileAsync.fulfilled, (state, {payload}) => {
-        // dump undo
         state.invalidated = false
         state.filename = payload.filename
         state.idFactory = payload.idFactory
