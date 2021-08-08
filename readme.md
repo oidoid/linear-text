@@ -42,6 +42,9 @@ Translations for each locale are extracted and compiled to
 ### Conventions
 
 - [BEM](http://getbem.com) CSS naming conventions are used.
+- User documentation lives in-editor for offline access. Developer documentation
+  lives in repo. [lineartext.com](https://github.com/oidoid/lineartext.com) is
+  only for brief introduction and demonstration.
 
 ## License
 
