@@ -9,10 +9,6 @@ Tabular functionality removed.
 
 ## v0.2.1
 
-Fix NPM package publishing.
-
-## v0.2.0
-
 Initial release. Primitive support for tabular notes.
 
 ## v0.1.0 (unreleased)

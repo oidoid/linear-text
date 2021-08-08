@@ -28,6 +28,7 @@
     "formatter": "prettier './**/*.{css,html,json,md,ts,tsx}'",
     "preversion": "[ -z \"$(git status -z)\" ]",
     "version": "npm ci && npm t",
+    "postversion": "npm publish",
     "prepublishOnly": "git push origin \"$(git tag --points-at @)\""
   },
   "engines": {
