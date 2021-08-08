@@ -1,18 +1,20 @@
 import type {ID} from '../id/id'
 import type {Line} from '../line/line'
 
-export const newlineDefault = '\n' // [to-do]: platform agnostic.
+/** The line delimiter. The end of a line of text and the start of a new one. */
+export type LineBreak = '\n' | '\r\n'
+
+export const newlineDefault: LineBreak = '\n' // [to-do]: platform agnostic.
 export type Table = Readonly<{
-  /** The line delimiter. Usually \n or \r\n. */
-  newline: string
+  lineBreak: LineBreak
   lines: Line[]
 }>
 
 export function Table(
-  newline: string | undefined = newlineDefault,
+  lineBreak: LineBreak | undefined = newlineDefault,
   lines: Line[] | undefined = []
 ): Table {
-  return {newline, lines}
+  return {lineBreak, lines}
 }
 
 Table.findLine = (table: Readonly<Table>, id: ID): [Line, number] => {

@@ -23,15 +23,3 @@ test('Drafts are never serialized.', () => {
   const table = Table('\n', [line])
   expect(serializeTable(table)).toStrictEqual('')
 })
-
-test.each([
-  ['Linux', '\n', 'abc\ndef'],
-  ['Windows', '\r\n', 'abc\r\ndef']
-])('%s newlines are supported.', (_, newline, expected) => {
-  const factory = IDFactory()
-  const table = Table(newline, [
-    Line(factory, false, 'abc'),
-    Line(factory, false, 'def')
-  ])
-  expect(serializeTable(table)).toStrictEqual(expected)
-})

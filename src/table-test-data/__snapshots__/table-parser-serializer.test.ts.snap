@@ -2,6 +2,8 @@
 
 exports[`integration alphabet.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -134,13 +136,13 @@ Object {
       "text": "z",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration colors.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -163,13 +165,13 @@ Object {
       "text": "key",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration digits.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -192,21 +194,21 @@ Object {
       "text": "",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration empty.test.txt 1`] = `
 Object {
-  "lines": Array [],
-  "newline": "
+  "lineBreak": "
 ",
+  "lines": Array [],
 }
 `;
 
 exports[`integration games.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -329,13 +331,13 @@ Object {
       "text": "",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration groceries.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -388,13 +390,13 @@ Object {
       "text": "",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration perf-1k.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -5397,13 +5399,13 @@ Object {
       "text": "999",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration perf-10k.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -55406,13 +55408,13 @@ Object {
       "text": "9999",
     },
   ],
-  "newline": "
-",
 }
 `;
 
 exports[`integration windows.test.txt 1`] = `
 Object {
+  "lineBreak": "
+",
   "lines": Array [
     Object {
       "id": 1,
@@ -55460,7 +55462,5 @@ Object {
       "text": "",
     },
   ],
-  "newline": "
-",
 }
 `;

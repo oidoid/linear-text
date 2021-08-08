@@ -10,13 +10,13 @@ import {serializeTable} from '../table-serializer/table-serializer'
 let factory: IDFactory = IDFactory()
 beforeEach(() => (factory = IDFactory()))
 
-test.each([
-  ['linefeed', '\n'],
-  ['carriage return and linefeed', '\r\n']
-])('newline: %s', async (_, newline) => {
-  const input = `abc${newline}def`
+test.each(<const>[
+  ['Linux linefeed', '\n'],
+  ['Windows carriage return and linefeed', '\r\n']
+])('Line break: %s', async (_, lineBreak) => {
+  const input = `abc${lineBreak}def`
   const expected: Table = {
-    newline,
+    lineBreak: lineBreak,
     lines: [
       {id: ID(1), state: 'note', text: 'abc'},
       {id: ID(2), state: 'note', text: 'def'}
@@ -29,8 +29,9 @@ test.each([
 
 test.each(<const>[
   ['empty file', '', []],
+  ['single line', 'abc', [{id: ID(1), state: 'note', text: 'abc'}]],
   [
-    'empty file with trailing newline',
+    'empty file with trailing line break',
     '\n',
     [
       {id: ID(1), state: 'divider', text: ''},
@@ -38,7 +39,7 @@ test.each(<const>[
     ]
   ],
   [
-    'nonempty file trailing newline',
+    'nonempty file trailing line break',
     'a\n',
     [
       {id: ID(1), state: 'note', text: 'a'},
@@ -46,7 +47,7 @@ test.each(<const>[
     ]
   ],
   [
-    'nonempty file without trailing newline',
+    'nonempty file without trailing line break',
     'a\nb',
     [
       {id: ID(1), state: 'note', text: 'a'},
@@ -69,7 +70,7 @@ test.each(<const>[
     ]
   ]
 ])(
-  'trailing newline is an empty Line: %s',
+  'trailing line break is an empty Line: %s',
   async (_, input, expectedLines: readonly Readonly<Line>[]) => {
     const table = await parseTable(factory, input)
     expect(table.lines).toStrictEqual(expectedLines)

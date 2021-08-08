@@ -3,7 +3,7 @@ import type {Table} from '../table/table'
 
 import {Line} from '../line/line'
 
-/** Parse a table from tab-delimited values. */
+/** Parse a table from newline delimited values. */
 export async function parseTable(
   factory: IDFactory,
   input: Readonly<File> | string
@@ -11,8 +11,8 @@ export async function parseTable(
   const text = typeof input === 'string' ? input : await input.text()
   // [to-do] Consider platform since this won't default well on a Windows file
   //   without multiple lines.
-  const newline = /\r\n/.test(text) ? '\r\n' : '\n'
-  return {newline, lines: parseLines(factory, text)}
+  const lineBreak = /\r\n/.test(text) ? '\r\n' : '\n'
+  return {lineBreak, lines: parseLines(factory, text)}
 }
 
 function parseLines(factory: IDFactory, text: string): Line[] {
