@@ -5,9 +5,15 @@
   "private": true,
   "license": "GPL-3.0-only",
   "//": "[i18n]",
-  "description": "📝 plain text outliner.",
+  "description": "📝 Graphical line editor for plain text.",
   "keywords": [
-    "notes"
+    "editor",
+    "text",
+    "WYSIWYG",
+    "kanban",
+    "notes",
+    "to-do",
+    "todo"
   ],
   "homepage": "https://lineartext.com",
   "repository": "github:oidoid/linear-text",
@@ -19,7 +25,6 @@
     "test": "tsc --noEmit && npm run test:unit && npm run test:format && npm run build",
     "test:unit": "react-scripts test --watchAll=false",
     "test:format": "npm run formatter -- -l",
-    "eject": "react-scripts eject",
     "format": "npm run formatter -- -w",
     "formatter": "prettier './**/*.{css,html,json,md,ts,tsx}'",
     "preversion": "[ -z \"$(git status -z)\" ]",
