@@ -3,9 +3,13 @@
 Versions and bullets are arranged chronologically from latest to oldest. Future
 releases are planned in [docs/to-do-\*.txt](.).
 
-## v0.2.0 (unreleased)
+## v0.2.1
 
-Initial release planned. Primitive support for tabular notes.
+Fix NPM package publishing.
+
+## v0.2.0
+
+Initial release. Primitive support for tabular notes.
 
 ## v0.1.0 (unreleased)
 
