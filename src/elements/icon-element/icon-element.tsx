@@ -8,7 +8,7 @@ export function IconElement({alt, src}: IconProps): JSX.Element {
   return (
     <img
       alt={alt}
-      className='icon-element'
+      className='icon'
       decoding='sync'
       height={iconSize}
       loading='eager'

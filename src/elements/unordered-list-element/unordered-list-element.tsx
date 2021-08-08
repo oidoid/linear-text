@@ -12,8 +12,6 @@ export function UnorderedListElement({
   layout = 'vertical'
 }: UnorderedListProps): JSX.Element {
   return (
-    <ul className={`unordered-list-element unordered-list-element--${layout}`}>
-      {children}
-    </ul>
+    <ul className={`unordered-list unordered-list--${layout}`}>{children}</ul>
   )
 }

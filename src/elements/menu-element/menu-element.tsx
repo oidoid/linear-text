@@ -22,7 +22,7 @@ import './menu-element.css'
 
 export function MenuCardElement(): JSX.Element {
   return (
-    <div className='menu-card-element'>
+    <div className='menu-card'>
       <CardElement>
         <MenuElement />
       </CardElement>
@@ -32,7 +32,7 @@ export function MenuCardElement(): JSX.Element {
 
 function MenuElement(): JSX.Element {
   return (
-    <nav className='menu-element'>
+    <nav className='menu'>
       <MenuListElement />
     </nav>
   )
@@ -42,7 +42,7 @@ function MenuListElement(): JSX.Element {
   const dispatch = useAppDispatch()
   const tableState = useAppSelector(selectTableState)
   return (
-    <div className='menu-list-element'>
+    <div className='menu-list'>
       <DisclosureElement
         accessKey={t`button-toggle-menu__access-key`}
         summary={<IconElement alt='' src={menuIconToggleMenu} />}
@@ -58,7 +58,7 @@ function MenuListElement(): JSX.Element {
             >
               <ToolbarCardElement />
             </DisclosureElement>
-            <label className='icon-buttonish-element__label'>
+            <label className='icon-buttonish__label'>
               <Trans id='button-toggle-toolbar__label' />
             </label>
           </li>

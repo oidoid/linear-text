@@ -10,10 +10,7 @@ export type NoteProps = Readonly<{line: Readonly<Line>}>
 
 /** A sticky note. */
 export function NoteElement({line}: NoteProps): JSX.Element {
-  const className = useMemo(
-    () => `note-element note-element--${line.state}`,
-    [line.state]
-  )
+  const className = useMemo(() => `note note--${line.state}`, [line.state])
   const onFocusCapture = useCallback(
     (ev: React.FocusEvent<HTMLElementTagNameMap['aside']>) =>
       // Smooth scroll into view.

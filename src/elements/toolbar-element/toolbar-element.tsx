@@ -30,7 +30,7 @@ import './toolbar-element.css'
 
 export function ToolbarCardElement() {
   return (
-    <div className='toolbar-card-element'>
+    <div className='toolbar-card'>
       <BubbleCardElement>
         <ToolbarElement />
       </BubbleCardElement>

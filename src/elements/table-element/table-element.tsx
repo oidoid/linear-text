@@ -8,9 +8,9 @@ export type TableProps = Readonly<{table: Readonly<Table>}>
 
 export function TableElement({table}: TableProps): JSX.Element {
   return (
-    <ul className='table-element'>
+    <ul className='table'>
       {table.lines.map(line => (
-        <li className={`table-element__list-item--${line.state}`} key={line.id}>
+        <li className={`table__list-item--${line.state}`} key={line.id}>
           <LineElement line={line} />
         </li>
       ))}

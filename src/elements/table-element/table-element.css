@@ -1,4 +1,4 @@
-.table-element {
+.table {
   box-sizing: border-box;
 
   margin: var(--spacing);
@@ -13,7 +13,7 @@
   height: 99in;
 }
 
-.table-element__list-item--divider {
+.table__list-item--divider {
   /* The flex is on the list items, not the lines. Make the list item itself
      fill the full width. */
   flex-basis: 100%;

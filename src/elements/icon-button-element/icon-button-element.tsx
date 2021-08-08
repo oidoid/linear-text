@@ -21,11 +21,11 @@ export function IconButtonElement({
   title
 }: IconButtonProps): JSX.Element {
   return (
-    <div className='icon-button-element'>
+    <div className='icon-button'>
       <ButtonElement accessKey={accessKey} onClick={onClick} title={title}>
         <IconElement alt='' src={src} />
       </ButtonElement>
-      <label className='icon-buttonish-element__label'>{label}</label>
+      <label className='icon-buttonish__label'>{label}</label>
     </div>
   )
 }

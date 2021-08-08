@@ -1,5 +1,5 @@
 /* Buttonish classes are shared by other button-like components. */
-.buttonish-element {
+.buttonish {
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
@@ -50,7 +50,7 @@
   /* Center the content. */
   text-align: center;
 
-  /* For pseudo-element positioning. */
+  /* For pseudo positioning. */
   position: relative;
 
   /* Button-likes may specify different display types. */
@@ -60,14 +60,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.buttonish-element:active,
+.buttonish:active,
 /* --active state can be held too. */
-.buttonish-element--active {
+.buttonish--active {
   border-style: inset;
 }
 
 /* Tooltip. */
-.buttonish-element[data-title]::after {
+.buttonish[data-title]::after {
   /* Set the child to the value of the data-title attribute. */
   content: attr(data-title);
 
@@ -115,7 +115,7 @@
    https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/.
   */
 @media (hover: hover) {
-  .buttonish-element[data-title]:hover::after {
+  .buttonish[data-title]:hover::after {
     /* Show after a long delay. */
     visibility: visible;
     transition-delay: 2s;

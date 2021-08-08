@@ -87,10 +87,10 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
   })
 
   return (
-    <div className='line-text-element' data-text={text}>
+    <div className='line-text' data-text={text}>
       <textarea
         autoFocus={tableState.focus === line.id}
-        className='line-text-element__text'
+        className='line-text__text'
         onBlur={onBlur}
         onChange={onChange}
         onFocus={onFocus}

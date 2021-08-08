@@ -24,7 +24,7 @@ export function ButtonElement({
   title
 }: ButtonProps): JSX.Element {
   const className = useMemo(
-    () => `buttonish-element ${active ? 'buttonish-element--active' : ''}`,
+    () => `buttonish ${active ? 'buttonish--active' : ''}`,
     [active]
   )
   return (

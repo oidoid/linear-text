@@ -5,7 +5,7 @@ import './bubble-card-element.css'
 
 export function BubbleCardElement(props: CardProps): JSX.Element {
   return (
-    <div className='bubble-card-element'>
+    <div className='bubble-card'>
       <CardElement {...props} />
     </div>
   )

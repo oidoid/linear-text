@@ -5,5 +5,5 @@ import './card-element.css'
 export type CardProps = Readonly<{children: ReactNode}>
 
 export function CardElement({children}: CardProps): JSX.Element {
-  return <div className='card-element'>{children}</div>
+  return <div className='card'>{children}</div>
 }

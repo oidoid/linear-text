@@ -1,4 +1,4 @@
-.app-element {
+.app {
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
@@ -11,7 +11,7 @@
   background: var(--color-light-grey);
 }
 
-.app-element__header {
+.app__header {
   /* Fix the element to the viewport and remove from layout flow. */
   position: fixed;
 

@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <button
-  class="buttonish-element "
+  class="buttonish "
   data-testid="button"
   data-title="Title"
 >

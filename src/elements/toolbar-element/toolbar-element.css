@@ -1,4 +1,4 @@
-.toolbar-card-element {
+.toolbar-card {
   --card-background-color: var(--color-mid-grey);
   --unordered-list--grid-template-columns: 1fr 1fr;
 

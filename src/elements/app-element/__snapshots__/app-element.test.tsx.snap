@@ -2,37 +2,37 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  class="app-element"
+  class="app"
   data-testid="app"
 >
   <header
-    class="app-element__header"
+    class="app__header"
   >
     <div
-      class="menu-card-element"
+      class="menu-card"
     >
       <div
-        class="card-element"
+        class="card"
       >
         <nav
-          class="menu-element"
+          class="menu"
         >
           <div
-            class="menu-list-element"
+            class="menu-list"
           >
             <details
-              class="disclosure-element"
+              class="disclosure"
               open=""
             >
               <summary
                 accesskey="m"
-                class="disclosure-element__summary buttonish-element buttonish-element--active"
+                class="disclosure__summary buttonish buttonish--active"
                 data-title="Toggle expanded menu [alt-m]."
                 role="button"
               >
                 <img
                   alt=""
-                  class="icon-element"
+                  class="icon"
                   decoding="sync"
                   height="20"
                   loading="eager"
@@ -41,21 +41,21 @@ exports[`matches snapshot 1`] = `
                 />
               </summary>
               <ul
-                class="unordered-list-element unordered-list-element--horizontal"
+                class="unordered-list unordered-list--horizontal"
               >
                 <li>
                   <details
-                    class="disclosure-element"
+                    class="disclosure"
                   >
                     <summary
                       accesskey="t"
-                      class="disclosure-element__summary buttonish-element "
+                      class="disclosure__summary buttonish "
                       data-title="Toggle overflow menu [alt–t]."
                       role="button"
                     >
                       <img
                         alt=""
-                        class="icon-element"
+                        class="icon"
                         decoding="sync"
                         height="20"
                         loading="eager"
@@ -64,29 +64,29 @@ exports[`matches snapshot 1`] = `
                       />
                     </summary>
                     <div
-                      class="toolbar-card-element"
+                      class="toolbar-card"
                     >
                       <div
-                        class="bubble-card-element"
+                        class="bubble-card"
                       >
                         <div
-                          class="card-element"
+                          class="card"
                         >
                           <ul
-                            class="unordered-list-element unordered-list-element--grid"
+                            class="unordered-list unordered-list--grid"
                           >
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="z"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Restore the previous state [alt–z]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -95,7 +95,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Undo
                                 </label>
@@ -103,16 +103,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="y"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Reverse an undo [alt–y]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -121,7 +121,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Redo
                                 </label>
@@ -129,16 +129,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="s"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Download file [alt–s]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -147,7 +147,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Save
                                 </label>
@@ -155,16 +155,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="|"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Add empty line [alt–|]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -173,7 +173,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Divide
                                 </label>
@@ -181,15 +181,15 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Open save dialog."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -198,7 +198,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Save As…
                                 </label>
@@ -206,16 +206,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="o"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Load an existing file [alt–o]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -224,7 +224,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Open…
                                 </label>
@@ -232,16 +232,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="n"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Create an empty file [alt–n]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -250,7 +250,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   New
                                 </label>
@@ -258,16 +258,16 @@ exports[`matches snapshot 1`] = `
                             </li>
                             <li>
                               <div
-                                class="icon-button-element"
+                                class="icon-button"
                               >
                                 <button
                                   accesskey="?"
-                                  class="buttonish-element "
+                                  class="buttonish "
                                   data-title="Open documentation [alt–?]."
                                 >
                                   <img
                                     alt=""
-                                    class="icon-element"
+                                    class="icon"
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
@@ -276,7 +276,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish-element__label"
+                                  class="icon-buttonish__label"
                                 >
                                   Help
                                 </label>
@@ -288,23 +288,23 @@ exports[`matches snapshot 1`] = `
                     </div>
                   </details>
                   <label
-                    class="icon-buttonish-element__label"
+                    class="icon-buttonish__label"
                   >
                     Menu
                   </label>
                 </li>
                 <li>
                   <div
-                    class="icon-button-element"
+                    class="icon-button"
                   >
                     <button
                       accesskey="-"
-                      class="buttonish-element "
+                      class="buttonish "
                       data-title="Remove selected line(s) [alt–-]."
                     >
                       <img
                         alt=""
-                        class="icon-element"
+                        class="icon"
                         decoding="sync"
                         height="20"
                         loading="eager"
@@ -313,7 +313,7 @@ exports[`matches snapshot 1`] = `
                       />
                     </button>
                     <label
-                      class="icon-buttonish-element__label"
+                      class="icon-buttonish__label"
                     >
                       Discard
                     </label>
@@ -321,16 +321,16 @@ exports[`matches snapshot 1`] = `
                 </li>
                 <li>
                   <div
-                    class="icon-button-element"
+                    class="icon-button"
                   >
                     <button
                       accesskey="+"
-                      class="buttonish-element "
+                      class="buttonish "
                       data-title="Add new line [alt–+]."
                     >
                       <img
                         alt=""
-                        class="icon-element"
+                        class="icon"
                         decoding="sync"
                         height="20"
                         loading="eager"
@@ -339,7 +339,7 @@ exports[`matches snapshot 1`] = `
                       />
                     </button>
                     <label
-                      class="icon-buttonish-element__label"
+                      class="icon-buttonish__label"
                     >
                       Add
                     </label>
@@ -354,7 +354,7 @@ exports[`matches snapshot 1`] = `
   </header>
   <main>
     <ul
-      class="table-element"
+      class="table"
     />
   </main>
 </div>

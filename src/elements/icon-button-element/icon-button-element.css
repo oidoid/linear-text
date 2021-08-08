@@ -1,10 +1,10 @@
-.icon-button-element {
+.icon-button {
   /* Center the button */
   text-align: center;
 }
 
 /* Icon-buttonish classes are shared by other icon-button-like components. */
-.icon-buttonish-element__label {
+.icon-buttonish__label {
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 

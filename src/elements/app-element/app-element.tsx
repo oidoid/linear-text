@@ -28,8 +28,8 @@ export function AppElement({'data-testid': testID}: AppProps): JSX.Element {
     }.svg`
   }, [tableState.filename, tableState.invalidated])
   return (
-    <div className='app-element' data-testid={testID}>
-      <header className='app-element__header'>
+    <div className='app' data-testid={testID}>
+      <header className='app__header'>
         <MenuCardElement />
       </header>
       <main>

@@ -34,16 +34,13 @@ export function DisclosureElement({
   )
 
   const summaryClassName = useMemo(
-    () =>
-      `disclosure-element__summary buttonish-element ${
-        open ? 'buttonish-element--active' : ''
-      }`,
+    () => `disclosure__summary buttonish ${open ? 'buttonish--active' : ''}`,
     [open]
   )
 
   return (
     <details
-      className='disclosure-element'
+      className='disclosure'
       data-testid={testID}
       onToggle={onToggleCb}
       open={open}

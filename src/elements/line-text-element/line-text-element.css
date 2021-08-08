@@ -1,4 +1,4 @@
-.line-text-element {
+.line-text {
   /* These dimensions include any border and padding. */
   box-sizing: border-box;
 
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.line-text-element::after {
+.line-text::after {
   /* Note the weird space! Needed to preventy jumpy behavior */
   content: attr(data-text) ' ';
 
@@ -20,15 +20,15 @@
   white-space: pre-wrap;
 }
 
-.line-text-element,
-.line-text-element__text {
+.line-text,
+.line-text__text {
   padding: var(--text-line-padding-top, 8px) 8px 8px 8px;
 
   width: var(--line-text--width, 100%);
   height: var(--line-text--height, 100%);
 }
 
-.line-text-element__text {
+.line-text__text {
   /* These dimensions include any border and padding. */
   box-sizing: border-box;
 
@@ -58,12 +58,12 @@
   user-select: none;
 }
 
-.line-text-element__text::selection {
+.line-text__text::selection {
   background: var(--shade-grey);
   color: var(--color-white);
 }
 
-.line-text-element__text:focus {
+.line-text__text:focus {
   background: var(--tint-light-white);
   outline-color: var(--tint-half-white);
 

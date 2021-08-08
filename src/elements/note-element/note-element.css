@@ -1,4 +1,4 @@
-.note-element {
+.note {
   /* For the focus box-shadow to appear on top of the surroundings. */
   position: relative;
 
@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.note-element:not(.note-element--divider) {
+.note:not(.note--divider) {
   width: 75mm;
 
   /* The corners are rounded. */
@@ -45,7 +45,7 @@
   box-shadow: var(--box-shadow-bottom);
 }
 
-.note-element:focus-within:not(.note-element--divider) {
+.note:focus-within:not(.note--divider) {
   /* Raise above menuing. */
   z-index: var(--z-index-focused-line);
   /* Outline the note like card UI and elevate dramatically. */
@@ -53,7 +53,7 @@
 }
 
 /* Grabble area. */
-.note-element::after {
+.note::after {
   content: '';
   position: absolute;
   top: 0;
@@ -61,7 +61,7 @@
   height: var(--min-press-size);
 }
 
-.note-element--divider {
+.note--divider {
   width: 16px;
   height: 100%;
 
@@ -76,8 +76,8 @@
   border-color: transparent;
 }
 
-.note-element--divider:hover,
-.note-element--divider:focus-within {
+.note--divider:hover,
+.note--divider:focus-within {
   /* Show a dashed outline on hover if the card isn't already emphasized due to
      focus. */
   border-color: var(--color-dark-grey);
