@@ -14,7 +14,7 @@ planned under [docs/to-do-\*.txt](docs).
 
 ## Development
 
-### Quick start
+### Quick Start
 
 ```bash
 npm i && npm start
