@@ -1,75 +1,47 @@
-# 📝 [Linear Text](https://git.io/linear-text)
+# 📝 Linear Text
+
+Linear Text is a graphical line editor for plain text. See
+[lineartext.com](https://lineartext.com) and in-editor help for user-facing
+documentation.
 
 | ⚠️ Linear Text is in early development, may lose data, and is not ready for evaluation. |
 | --------------------------------------------------------------------------------------- |
 
-## [Changelog](docs/changelog.md)
+## Release Notes and Roadmap
 
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+See the [changelog](docs/changelog.md) for past releases. Future work is loosely
+planned under [docs/to-do-\*.txt](docs).
 
-## Available Scripts
+## Development
 
-In the project directory, you can run:
+### Quick start
 
-### `npm start`
+```bash
+npm i && npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Scripts
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The following NPM scripts are provided:
 
-### `npm test`
+- `install` / `i`: Install package dependencies.
+- `start`: Execute the editor in development mode.
+- `test` / `t`: Build the editor and execute all tests.
+- `run test:unit`: Execute unit tests. Pass `-u` to update all Jest snapshots.
+- `run format`: Apply lint fixes automatically where available.
+- `run build`: Build the editor.
+- `version`: Increment the editor package version.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+### Internationalization
 
-### `npm run build`
+Translations for each locale are extracted and compiled to
+[src/locales](src/locales) by executing
+`npx lingui extract && npx lingui compile`. See `npx lingui --help`,
+[Lingui](https://lingui.js.org), and [the config](.linguirc.json).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best
-performance.
+### Conventions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
-
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Internationalization
-
-Translations for each locale are extracted and compiled to src/locales by
-running `npx lingui extract && npx lingui compile`. See
-[Lingui](https://lingui.js.org) and [the config](.linguirc.json).
+- [BEM](http://getbem.com) CSS naming conventions are used.
 
 ## License
 
