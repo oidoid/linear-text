@@ -2,7 +2,6 @@
   "name": "linear-text",
   "author": "oidoid",
   "version": "0.2.0",
-  "private": true,
   "license": "GPL-3.0-only",
   "//": "[i18n]",
   "description": "📝 Graphical line editor for plain text.",
