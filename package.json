@@ -32,8 +32,8 @@
     "prepublishOnly": "git push origin \"$(git tag --points-at @)\""
   },
   "engines": {
-    "node": "15.10.0",
-    "npm": "7.5.3"
+    "node": "16.6.1",
+    "npm": "7.20.3"
   },
   "devDependencies": {
     "@lingui/cli": "3.10.2",
