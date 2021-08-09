@@ -13,10 +13,10 @@ import {Trans} from '@lingui/react'
 import {UnorderedListElement} from '../unordered-list-element/unordered-list-element'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 
-import menuIconAddLine from './menu-icon-add-line.svg'
-import menuIconRemoveLine from './menu-icon-remove-line.svg'
-import menuIconToggleMenu from './menu-icon-toggle-menu.svg'
-import menuIconToggleToolbar from './menu-icon-toggle-toolbar.svg'
+import addLineIcon from '../../icons/add-line-icon.svg'
+import removeLineIcon from '../../icons/remove-line-icon.svg'
+import toggleMenuIcon from '../../icons/toggle-menu-icon.svg'
+import toggleToolbarIcon from '../../icons/toggle-toolbar-icon.svg'
 
 import './menu-element.css'
 
@@ -45,7 +45,7 @@ function MenuListElement(): JSX.Element {
     <div className='menu-list'>
       <DisclosureElement
         accessKey={t`button-toggle-menu__access-key`}
-        summary={<IconElement alt='' src={menuIconToggleMenu} />}
+        summary={<IconElement alt='' src={toggleMenuIcon} />}
         title={t`button-toggle-menu__title`}
         open
       >
@@ -53,7 +53,7 @@ function MenuListElement(): JSX.Element {
           <li>
             <DisclosureElement
               accessKey={t`button-toggle-toolbar__access-key`}
-              summary={<IconElement alt='' src={menuIconToggleToolbar} />}
+              summary={<IconElement alt='' src={toggleToolbarIcon} />}
               title={t`button-toggle-toolbar__title`}
             >
               <ToolbarCardElement />
@@ -73,7 +73,7 @@ function MenuListElement(): JSX.Element {
                   removeLineAction({id: tableState.focus, nextFocus: 'prev'})
                 )
               }}
-              src={menuIconRemoveLine}
+              src={removeLineIcon}
               title={t`button-remove-line__title`}
             />
           </li>
@@ -82,7 +82,7 @@ function MenuListElement(): JSX.Element {
               accessKey={t`button-add-line__access-key`}
               label={t`button-add-line__label`}
               onClick={() => dispatch(addDraftAction())}
-              src={menuIconAddLine}
+              src={addLineIcon}
               title={t`button-add-line__title`}
             />
           </li>

@@ -17,14 +17,14 @@ import {useAppSelector, useAppDispatch} from '../../hooks/use-store'
 import {useCallback, useState} from 'react'
 import {ActionCreators} from 'redux-undo'
 
-import toolbarIconAddDivider from './toolbar-icon-add-divider.svg'
-import toolbarIconHelp from './toolbar-icon-help.svg'
-import toolbarIconLoadFile from './toolbar-icon-load-file.svg'
-import toolbarIconNewFile from './toolbar-icon-new-file.svg'
-import toolbarIconRedo from './toolbar-icon-redo.svg'
-import toolbarIconSaveFile from './toolbar-icon-save-file.svg'
-import toolbarIconSaveFileAs from './toolbar-icon-save-file-as.svg'
-import toolbarIconUndo from './toolbar-icon-undo.svg'
+import addDividerIcon from '../../icons/add-divider-icon.svg'
+import helpIcon from '../../icons/help-icon.svg'
+import loadFileIcon from '../../icons/load-file-icon.svg'
+import newFileIcon from '../../icons/new-file-icon.svg'
+import redoIcon from '../../icons/redo-icon.svg'
+import saveFileIcon from '../../icons/save-file-icon.svg'
+import saveFileAsIcon from '../../icons/save-file-as-icon.svg'
+import undoIcon from '../../icons/undo-icon.svg'
 
 import './toolbar-element.css'
 
@@ -103,7 +103,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-undo__access-key`}
           label={t`button-undo__label`}
           onClick={onUndoClick}
-          src={toolbarIconUndo}
+          src={undoIcon}
           title={t`button-undo__title`}
         />
       </li>
@@ -112,7 +112,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-redo__access-key`}
           label={t`button-redo__label`}
           onClick={onRedoClick}
-          src={toolbarIconRedo}
+          src={redoIcon}
           title={t`button-redo__title`}
         />
       </li>
@@ -121,7 +121,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-save-file__access-key`}
           label={t`button-save-file__label`}
           onClick={onSaveClick}
-          src={toolbarIconSaveFile}
+          src={saveFileIcon}
           title={t`button-save-file__title`}
         />
       </li>
@@ -130,7 +130,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-add-divider__access-key`}
           label={t`button-add-divider__label`}
           onClick={onAddDividerClick}
-          src={toolbarIconAddDivider}
+          src={addDividerIcon}
           title={t`button-add-divider__title`}
         />
       </li>
@@ -138,7 +138,7 @@ export function ToolbarElement(): JSX.Element {
         <IconButtonElement
           label={t`button-save-file-as__label`}
           onClick={onSaveAs}
-          src={toolbarIconSaveFileAs}
+          src={saveFileAsIcon}
           title={t`button-save-file-as__title`}
         />
       </li>
@@ -147,7 +147,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-load-file__access-key`}
           label={t`button-load-file__label`}
           onClick={onLoadClick}
-          src={toolbarIconLoadFile}
+          src={loadFileIcon}
           title={t`button-load-file__title`}
         />
       </li>
@@ -156,7 +156,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-new-file__access-key`}
           label={t`button-new-file__label`}
           onClick={onNewClick}
-          src={toolbarIconNewFile}
+          src={newFileIcon}
           title={t`button-new-file__title`}
         />
       </li>
@@ -165,7 +165,7 @@ export function ToolbarElement(): JSX.Element {
           accessKey={t`button-help__access-key`}
           label={t`button-help__label`}
           onClick={onHelpClick}
-          src={toolbarIconHelp}
+          src={helpIcon}
           title={t`button-help__title`}
         />
       </li>

@@ -36,7 +36,7 @@ exports[`matches snapshot 1`] = `
                   decoding="sync"
                   height="20"
                   loading="eager"
-                  src="menu-icon-toggle-menu.svg"
+                  src="toggle-menu-icon.svg"
                   width="20"
                 />
               </summary>
@@ -59,7 +59,7 @@ exports[`matches snapshot 1`] = `
                         decoding="sync"
                         height="20"
                         loading="eager"
-                        src="menu-icon-toggle-toolbar.svg"
+                        src="toggle-toolbar-icon.svg"
                         width="20"
                       />
                     </summary>
@@ -90,7 +90,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-undo.svg"
+                                    src="undo-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -116,7 +116,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-redo.svg"
+                                    src="redo-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -142,7 +142,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-save-file.svg"
+                                    src="save-file-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -168,7 +168,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-add-divider.svg"
+                                    src="add-divider-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -193,7 +193,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-save-file-as.svg"
+                                    src="save-file-as-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -219,7 +219,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-load-file.svg"
+                                    src="load-file-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -245,7 +245,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-new-file.svg"
+                                    src="new-file-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -271,7 +271,7 @@ exports[`matches snapshot 1`] = `
                                     decoding="sync"
                                     height="20"
                                     loading="eager"
-                                    src="toolbar-icon-help.svg"
+                                    src="help-icon.svg"
                                     width="20"
                                   />
                                 </button>
@@ -308,7 +308,7 @@ exports[`matches snapshot 1`] = `
                         decoding="sync"
                         height="20"
                         loading="eager"
-                        src="menu-icon-remove-line.svg"
+                        src="remove-line-icon.svg"
                         width="20"
                       />
                     </button>
@@ -334,7 +334,7 @@ exports[`matches snapshot 1`] = `
                         decoding="sync"
                         height="20"
                         loading="eager"
-                        src="menu-icon-add-line.svg"
+                        src="add-line-icon.svg"
                         width="20"
                       />
                     </button>
