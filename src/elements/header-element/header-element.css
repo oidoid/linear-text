@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+}
+
+.header--1 {
+  margin-top: 0;
+}
+
+.header__action-end {
+  margin-left: auto;
+}
+
+.header--1 {
+  font-size: 1.7rem;
+}
+.header--2 {
+  font-size: 1.5rem;
+}
+.header--3 {
+  font-size: 1.2rem;
+}
+.header--4 {
+  font-size: 1.1rem;
+}
+.header--5 {
+  font-size: 0.8rem;
+}
+.header--6 {
+  font-size: 0.7rem;
+}
