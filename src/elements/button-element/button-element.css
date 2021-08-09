@@ -113,7 +113,7 @@
 
 /* Limit tooltips to devices without sticky hover states:
    https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/.
-  */
+*/
 @media (hover: hover) {
   .buttonish[data-title]:hover::after {
     /* Show after a long delay. */
