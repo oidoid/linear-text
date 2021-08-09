@@ -41,7 +41,7 @@ exports[`matches snapshot 1`] = `
                 />
               </summary>
               <ul
-                class="unordered-list unordered-list--horizontal"
+                class="list unordered-list unordered-list--horizontal"
               >
                 <li>
                   <details
@@ -73,7 +73,7 @@ exports[`matches snapshot 1`] = `
                           class="card "
                         >
                           <ul
-                            class="unordered-list unordered-list--grid"
+                            class="list unordered-list unordered-list--grid"
                           >
                             <li>
                               <div
@@ -354,7 +354,7 @@ exports[`matches snapshot 1`] = `
   </header>
   <main>
     <ul
-      class="table"
+      class="list table"
     />
   </main>
 </div>

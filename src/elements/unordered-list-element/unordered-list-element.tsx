@@ -1,5 +1,7 @@
 import type {ReactElement} from 'react'
 
+import {ListElement} from '../list-element/list-element'
+
 import './unordered-list-element.css'
 
 export type UnorderedListProps = Readonly<{
@@ -12,6 +14,11 @@ export function UnorderedListElement({
   layout = 'vertical'
 }: UnorderedListProps): JSX.Element {
   return (
-    <ul className={`unordered-list unordered-list--${layout}`}>{children}</ul>
+    <ListElement
+      className={`unordered-list unordered-list--${layout}`}
+      unordered
+    >
+      {children}
+    </ListElement>
   )
 }
