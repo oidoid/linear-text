@@ -95,7 +95,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Undo
                                 </label>
@@ -121,7 +121,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Redo
                                 </label>
@@ -147,7 +147,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Save
                                 </label>
@@ -173,7 +173,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Divide
                                 </label>
@@ -198,7 +198,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Save As…
                                 </label>
@@ -224,7 +224,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Open…
                                 </label>
@@ -250,7 +250,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   New
                                 </label>
@@ -276,7 +276,7 @@ exports[`matches snapshot 1`] = `
                                   />
                                 </button>
                                 <label
-                                  class="icon-buttonish__label"
+                                  class="icon-buttonish__label "
                                 >
                                   Help
                                 </label>
@@ -313,7 +313,7 @@ exports[`matches snapshot 1`] = `
                       />
                     </button>
                     <label
-                      class="icon-buttonish__label"
+                      class="icon-buttonish__label "
                     >
                       Discard
                     </label>
@@ -339,7 +339,7 @@ exports[`matches snapshot 1`] = `
                       />
                     </button>
                     <label
-                      class="icon-buttonish__label"
+                      class="icon-buttonish__label "
                     >
                       Add
                     </label>

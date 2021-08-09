@@ -11,6 +11,7 @@ export type IconButtonProps = Readonly<{
   onClick: MouseEventHandler<HTMLButtonElement>
   src: string
   title: string
+  hideLabel?: true
 }>
 
 export function IconButtonElement({
@@ -18,14 +19,21 @@ export function IconButtonElement({
   label,
   onClick,
   src,
-  title
+  title,
+  hideLabel
 }: IconButtonProps): JSX.Element {
   return (
     <div className='icon-button'>
       <ButtonElement accessKey={accessKey} onClick={onClick} title={title}>
         <IconElement alt='' src={src} />
       </ButtonElement>
-      <label className='icon-buttonish__label'>{label}</label>
+      <label
+        className={`icon-buttonish__label ${
+          hideLabel ? 'icon-buttonish__label--hide' : ''
+        }`}
+      >
+        {label}
+      </label>
     </div>
   )
 }

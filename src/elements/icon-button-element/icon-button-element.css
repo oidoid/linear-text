@@ -1,4 +1,7 @@
 .icon-button {
+  width: 40px;
+  height: 48px;
+
   /* Center the button */
   text-align: center;
 }
@@ -21,4 +24,13 @@
   margin-right: var(--button-margin);
   margin-bottom: var(--button-margin);
   margin-left: var(--button-margin);
+
+  /* Don't inherit. */
+  font-weight: normal;
+}
+
+.icon-buttonish__label--hide {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
