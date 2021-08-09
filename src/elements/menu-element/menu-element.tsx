@@ -5,6 +5,7 @@ import {
 } from '../../store/table-slice/table-slice'
 import {CardElement} from '../card-element/card-element'
 import {DisclosureElement} from '../disclosure-element/disclosure-element'
+import {HelpDialogCardElement} from '../help-element/help-element'
 import {IconElement} from '../icon-element/icon-element'
 import {IconButtonElement} from '../icon-button-element/icon-button-element'
 import {t} from '@lingui/macro'
@@ -12,6 +13,7 @@ import {ToolbarCardElement} from '../toolbar-element/toolbar-element'
 import {Trans} from '@lingui/react'
 import {UnorderedListElement} from '../unordered-list-element/unordered-list-element'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
+import {useCallback, useState} from 'react'
 
 import addLineIcon from '../../icons/add-line-icon.svg'
 import removeLineIcon from '../../icons/remove-line-icon.svg'
@@ -41,6 +43,8 @@ function MenuElement(): JSX.Element {
 function MenuListElement(): JSX.Element {
   const dispatch = useAppDispatch()
   const tableState = useAppSelector(selectTableState)
+  const [showHelp, setShowHelp] = useState(false)
+  const toggleHelp = useCallback(() => setShowHelp(showHelp => !showHelp), [])
   return (
     <div className='menu-list'>
       <DisclosureElement
@@ -56,7 +60,7 @@ function MenuListElement(): JSX.Element {
               summary={<IconElement alt='' src={toggleToolbarIcon} />}
               title={t`button-toggle-toolbar__title`}
             >
-              <ToolbarCardElement />
+              <ToolbarCardElement onHelpClick={toggleHelp} />
             </DisclosureElement>
             <label className='icon-buttonish__label'>
               <Trans id='button-toggle-toolbar__label' />
@@ -88,6 +92,7 @@ function MenuListElement(): JSX.Element {
           </li>
         </UnorderedListElement>
       </DisclosureElement>
+      {showHelp && <HelpDialogCardElement onDismissClick={toggleHelp} />}
     </div>
   )
 }

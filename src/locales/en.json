@@ -43,6 +43,14 @@
     "translation": "Add new line [alt–+].",
     "extractedComments": []
   },
+  "button-dismiss-dialog__label": {
+    "translation": "Dismiss",
+    "extractedComments": []
+  },
+  "button-dismiss-dialog__title": {
+    "translation": "Dismiss dialog.",
+    "extractedComments": []
+  },
   "button-help__access-key": {
     "translation": "?",
     "extractedComments": []

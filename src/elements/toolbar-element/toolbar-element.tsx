@@ -28,17 +28,19 @@ import undoIcon from '../../icons/undo-icon.svg'
 
 import './toolbar-element.css'
 
-export function ToolbarCardElement() {
+export type ToolbarProps = Readonly<{onHelpClick(): void}>
+
+export function ToolbarCardElement(props: ToolbarProps) {
   return (
     <div className='toolbar-card'>
       <BubbleCardElement>
-        <ToolbarElement />
+        <ToolbarElement {...props} />
       </BubbleCardElement>
     </div>
   )
 }
 
-export function ToolbarElement(): JSX.Element {
+export function ToolbarElement({onHelpClick}: ToolbarProps): JSX.Element {
   const [fileSystemHandle, setFileSystemHandle] = useState<FileSystemHandle>()
   const tableState = useAppSelector(selectTableState)
   const dispatch = useAppDispatch()
@@ -92,9 +94,6 @@ export function ToolbarElement(): JSX.Element {
     setFileSystemHandle(undefined)
     dispatch(newFileAction())
   }, [dispatch])
-  const onHelpClick = useCallback(() => {
-    console.error('Help unimplemented.')
-  }, [])
 
   return (
     <UnorderedListElement layout='grid'>

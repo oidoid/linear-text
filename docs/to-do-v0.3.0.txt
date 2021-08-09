@@ -6,5 +6,4 @@ Add drag support. There's a relationship with grouping too.
 Add scroll with card dragging behavior or use fixed board size.
 Prompt to save unsaved work on new file, load file, or page departure.
 Add auto-backup to LocalStorage.
-Add help screen dialog.
 Add error card.

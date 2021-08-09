@@ -5,7 +5,8 @@ releases are planned in [docs/to-do-\*.txt](.).
 
 ## v0.3.0 (unreleased)
 
-Tabular functionality removed.
+- Tabular functionality removed.
+- In-editor help.
 
 ## v0.2.1
 
