@@ -36,6 +36,8 @@
   --box-shadow: var(--box-shadow-top), var(--box-shadow-bottom);
   --box-shadow-top: -0.5px -0.5px 0.5px 0.5px var(--shade-shadow);
   --box-shadow-bottom: 1px 1px 1px 0.5px var(--shade-shadow);
+
+  --breakpoint: 800px;
 }
 
 body {

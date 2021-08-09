@@ -1,0 +1,28 @@
+.dialog-card {
+  /* Fix the element to the viewport and remove from layout flow. */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Fill the viewport. */
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--shade-grey);
+}
+
+.dialog-card__box {
+  width: min(100%, var(--breakpoint));
+
+  /* [to-do] Scroll the card contents not the card. */
+  max-height: 100%;
+  overflow-y: auto;
+
+  /* [to-do] Buttonish tooltips are causing the card to overflow available
+    space. */
+  overflow-x: hidden;
+
+  /* Center card. */
+  margin-left: auto;
+  margin-right: auto;
+}
