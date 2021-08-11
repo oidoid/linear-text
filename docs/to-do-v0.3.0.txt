@@ -1,9 +1,12 @@
 Publish Linear Text v0.3.0: Goodbye Tabulation, Hello Dragging
 
 Add drag support. There's a relationship with grouping too.
-  Some tutorial on this and it could be a lot simpler with drag-and-drop now vs absolute positioning.
-  What to do about splitting?
+  What to do about dragging a divider?
+  What to do about dragging a note to a divider? Add the note and a leading / trailing divider as needed.
+  Use a library?
 Add scroll with card dragging behavior or use fixed board size.
 Prompt to save unsaved work on new file, load file, or page departure.
+What to do about async loading and undo?
+  https://github.com/omnidan/redux-undo/issues/203
 Add auto-backup to LocalStorage.
-Add error card.
+Add error card if I still have a use case.

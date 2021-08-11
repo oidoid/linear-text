@@ -1,6 +1,5 @@
 # Publish Linear Text v1.2.0: Generalizations and Dreams
 
-Add cartridge things.
 Click images for full-size.
 Can I move LineTextElement logic like keyboard listening to group or app level?
 
@@ -10,15 +9,17 @@ Review Twitter share cards.
 Investigate why Create React App / Webpack can't detect file renames.
 Review robots.txt.
 Verify browserstest is running.
-Add undo/redo action labeling.
-Add CSV comment support.
-Use header + TabCellType inference to fill in missing columns.
-Add date TabCellType support.
+Add undo/redo action labeling. In general, it'd be nice to gently alert when the file has been saved or which particular action had been undone/redone.
+Add date TextType support.
 Image thumbnailing support.
 Investigate CSS contain performance boosts.
 File of files using file scheme, file extension, and file content heuristics.
 Multiple open file tabs.
+oid.dev
+Review all the past GitHub repo setups.
+Review all my other repos.
 
 ## Reasons to Eject
 - setupTests.ts naming.
 - Snapshot colocating.
+- Custom loaders (I was going to load translated HTML via a raw loader).

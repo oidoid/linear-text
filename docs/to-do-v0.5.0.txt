@@ -1,5 +1,14 @@
 # Publish Linear Text v0.5.0: Links and Images
 
-Add link and image heuristic.
+Add link, file, and image heuristic.
+  https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+  https://en.wikipedia.org/wiki/File_URI_scheme
+  https://en.wikipedia.org/wiki/List_of_URI_schemes (nothing popular for images?)
+  https://en.wikipedia.org/wiki/Data_URI_scheme (note: MIME type)
+  https://stackoverflow.com/questions/4896223/how-to-get-an-uri-of-an-image-resource-in-android
 Add link support for URLs.
-Add image line support for remote and file scheme images.
+Add image line support for remote and file scheme images. There are many nice ways to represent these statically sized.
+  Maybe 4px white border.
+  https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath
+  https://github.com/GoogleChromeLabs/browser-fs-access (open direcotries with webkitRelativePath) 
+Consider less skeuomorphic notes that are more compact, less distracting, and with strong visual coherence to the images. Like an editor.

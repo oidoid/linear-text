@@ -5,9 +5,8 @@ Expose locales.
 Revise menu.
 Add test for loadTableFileAsync.
 Create lineartext.com with both embedded homepage and dedicated live editor.
-Revise package.json to use https://LinearText.com.
-Move to oidoid folder.
-Revise oidoid.com to include Linear Text.
+New logo, at least for site.
+  Revise oidoid.com to include Linear Text.
 Update NPM and index.html description and keywords.
 Document, add help, update readme, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
 
@@ -20,7 +19,7 @@ Add type tests:
   Drafts are deleted on focus loss.
   Drafts become plain notes on content add.
   Enter on draft becomes divider.
-Shortcut and button tests.
+Shortcut and button tests, integration tests.
 
 Press escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
 Add lasso group select by clicking an empty space and dragging.

@@ -7,13 +7,13 @@ Consider structuring by feature more. E.g., feature/counter/* instead of compone
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
 Probably shouldn't show save for Firefox?
 Add locale picker.
-Combine new row thing with row thing selector widget
+Combine new line with line type selector widget.
+  Change thing type when a thing is selected and picker changes.
 Add mini-Markdown support: unordered list items, h1, h2, ...?
 Add Electron builds.
-Add instant-photo thing. Click to open large photo or upload new photo or drag and drop image to board to upload new? Detect URLs by protocol (inline data: and file: protocols initially, maybe stuff that ends in .jpg). Resize photo to column.
+Add instant-photo line. Click to open large photo or upload new photo or drag and drop image to board to upload new? Detect URLs by protocol (inline data: and file: protocols initially, maybe stuff that ends in .jpg). Resize photo to column.
 Create large print photo thing with resizing.
 Use image URLs for imports.
-Change thing type when a thing is selected and picker changes.
 Consider bundling a better handwriting font.
 Implement better cross-platform access keys.
 Forbid ESLint warnings, enable caching, and the usual.
