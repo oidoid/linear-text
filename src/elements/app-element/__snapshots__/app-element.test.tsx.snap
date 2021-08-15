@@ -352,7 +352,9 @@ exports[`matches snapshot 1`] = `
       </div>
     </div>
   </header>
-  <main>
+  <main
+    class="app__main"
+  >
     <ul
       class="list table"
     />

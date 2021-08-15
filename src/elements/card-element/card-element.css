@@ -16,6 +16,9 @@
   border-radius: var(--border-radius);
 
   box-shadow: var(--box-shadow);
+
+  /* Size to content. */
+  display: inline-block;
 }
 
 .card--header {

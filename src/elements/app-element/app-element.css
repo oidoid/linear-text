@@ -2,19 +2,24 @@
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
-  /* The app always fills the screen exactly and its contents overflow as
-     needed. */
+  /* The app always fills the screen exactly. Its children are responsible for
+     their own overflows. */
   width: 100vw;
   height: 100vh;
-  overflow: auto;
+
+  /* Arrange contents from top-to-bottom. */
+  display: flex;
+  flex-direction: column;
 
   background: var(--color-light-grey);
 }
 
 .app__header {
-  /* Fix the element to the viewport and remove from layout flow. */
-  position: fixed;
-
-  /* Raise above the content. */
+  /* Raise sub-menus above the content. */
   z-index: var(--z-index-header);
+}
+
+.app__main {
+  /* Contents scroll as needed. */
+  overflow: auto;
 }

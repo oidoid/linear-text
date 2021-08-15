@@ -32,7 +32,7 @@ export function AppElement({'data-testid': testID}: AppProps): JSX.Element {
       <header className='app__header'>
         <MenuCardElement />
       </header>
-      <main>
+      <main className='app__main'>
         <TableElement table={tableState.table} />
       </main>
     </div>
