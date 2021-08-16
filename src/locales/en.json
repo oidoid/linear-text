@@ -131,18 +131,6 @@
     "translation": "Download file [alt–s].",
     "extractedComments": []
   },
-  "button-toggle-toolbar__access-key": {
-    "translation": "t",
-    "extractedComments": []
-  },
-  "button-toggle-toolbar__label": {
-    "translation": "Menu",
-    "extractedComments": []
-  },
-  "button-toggle-toolbar__title": {
-    "translation": "Toggle overflow menu [alt–t].",
-    "extractedComments": []
-  },
   "button-undo__access-key": {
     "translation": "z",
     "extractedComments": []

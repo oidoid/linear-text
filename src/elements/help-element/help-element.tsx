@@ -1,7 +1,7 @@
 import {DialogCardElement} from '../dialog-card-element/dialog-card-element'
 import {H2Element} from '../header-element/header-element'
-
-import './help-element.css'
+import {t} from '@lingui/macro'
+import {version} from '../../../package.json'
 
 export type HelpDialogCardProps = Readonly<{onDismissClick(): void}>
 
@@ -9,15 +9,13 @@ export function HelpDialogCardElement({
   onDismissClick
 }: HelpDialogCardProps): JSX.Element {
   return (
-    <div className='menu-card'>
-      <DialogCardElement
-        id='help'
-        label='Linear Text'
-        onDismissClick={onDismissClick}
-      >
-        <HelpElement />
-      </DialogCardElement>
-    </div>
+    <DialogCardElement
+      id='help'
+      label={t`app-title-with-${version}`}
+      onDismissClick={onDismissClick}
+    >
+      <HelpElement />
+    </DialogCardElement>
   )
 }
 

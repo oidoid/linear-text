@@ -1,9 +1,0 @@
-.toolbar-card {
-  --card-background-color: var(--color-mid-grey);
-  --unordered-list--grid-template-columns: 1fr 1fr;
-
-  /* Fix the toolbar a little below the toolbar toggle label and remove from
-     layout flow. */
-  position: fixed;
-  margin-top: 9.5px;
-}

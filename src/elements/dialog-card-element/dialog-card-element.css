@@ -5,18 +5,17 @@
   left: 0;
 
   /* Fill the viewport. */
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
   background-color: var(--shade-grey);
+
+  z-index: var(--z-index-dialog);
 }
 
 .dialog-card__box {
   width: min(100%, var(--breakpoint));
-
-  /* [to-do] Scroll the card contents not the card. */
-  max-height: 100%;
-  overflow-y: auto;
+  height: 100%;
 
   /* Center card. */
   margin-left: auto;

@@ -17,316 +17,269 @@ exports[`matches snapshot 1`] = `
         <nav
           class="menu"
         >
-          <div
-            class="menu-list"
+          <ul
+            class="list menu__list"
           >
-            <ul
-              class="list unordered-list unordered-list--horizontal"
-            >
-              <li>
-                <details
-                  class="disclosure"
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="+"
+                  class="buttonish "
+                  title="Add new line [alt–+]."
                 >
-                  <summary
-                    accesskey="t"
-                    class="disclosure__summary buttonish "
-                    data-title="Toggle overflow menu [alt–t]."
-                    role="button"
-                  >
-                    <img
-                      alt=""
-                      class="icon"
-                      decoding="sync"
-                      height="20"
-                      loading="eager"
-                      src="toggle-toolbar-icon.svg"
-                      width="20"
-                    />
-                  </summary>
-                  <div
-                    class="toolbar-card"
-                  >
-                    <div
-                      class="bubble-card"
-                    >
-                      <div
-                        class="card "
-                      >
-                        <ul
-                          class="list unordered-list unordered-list--grid"
-                        >
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="z"
-                                class="buttonish "
-                                title="Restore the previous state [alt–z]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="undo-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Undo
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="y"
-                                class="buttonish "
-                                title="Reverse an undo [alt–y]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="redo-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Redo
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="s"
-                                class="buttonish "
-                                title="Download file [alt–s]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="save-file-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Save
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="|"
-                                class="buttonish "
-                                title="Add empty line [alt–|]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="add-divider-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Divide
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                class="buttonish "
-                                title="Open save dialog."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="save-file-as-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Save As…
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="o"
-                                class="buttonish "
-                                title="Load an existing file [alt–o]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="load-file-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Open…
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="n"
-                                class="buttonish "
-                                title="Create an empty file [alt–n]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="new-file-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                New
-                              </label>
-                            </div>
-                          </li>
-                          <li>
-                            <div
-                              class="icon-button"
-                            >
-                              <button
-                                accesskey="?"
-                                class="buttonish "
-                                title="Open documentation [alt–?]."
-                              >
-                                <img
-                                  alt=""
-                                  class="icon"
-                                  decoding="sync"
-                                  height="20"
-                                  loading="eager"
-                                  src="help-icon.svg"
-                                  width="20"
-                                />
-                              </button>
-                              <label
-                                class="icon-buttonish__label "
-                              >
-                                Help
-                              </label>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </details>
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="add-line-icon.svg"
+                    width="20"
+                  />
+                </button>
                 <label
-                  class="icon-buttonish__label"
+                  class="icon-buttonish__label "
                 >
-                  Menu
+                  Add
                 </label>
-              </li>
-              <li>
-                <div
-                  class="icon-button"
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="|"
+                  class="buttonish "
+                  title="Add empty line [alt–|]."
                 >
-                  <button
-                    accesskey="-"
-                    class="buttonish "
-                    title="Remove selected line(s) [alt–-]."
-                  >
-                    <img
-                      alt=""
-                      class="icon"
-                      decoding="sync"
-                      height="20"
-                      loading="eager"
-                      src="remove-line-icon.svg"
-                      width="20"
-                    />
-                  </button>
-                  <label
-                    class="icon-buttonish__label "
-                  >
-                    Discard
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div
-                  class="icon-button"
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="add-divider-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
                 >
-                  <button
-                    accesskey="+"
-                    class="buttonish "
-                    title="Add new line [alt–+]."
-                  >
-                    <img
-                      alt=""
-                      class="icon"
-                      decoding="sync"
-                      height="20"
-                      loading="eager"
-                      src="add-line-icon.svg"
-                      width="20"
-                    />
-                  </button>
-                  <label
-                    class="icon-buttonish__label "
-                  >
-                    Add
-                  </label>
-                </div>
-              </li>
-            </ul>
-          </div>
+                  Divide
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="-"
+                  class="buttonish "
+                  title="Remove selected line(s) [alt–-]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="remove-line-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Discard
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="z"
+                  class="buttonish "
+                  title="Restore the previous state [alt–z]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="undo-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Undo
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="y"
+                  class="buttonish "
+                  title="Reverse an undo [alt–y]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="redo-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Redo
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="s"
+                  class="buttonish "
+                  title="Download file [alt–s]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="save-file-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Save
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="o"
+                  class="buttonish "
+                  title="Load an existing file [alt–o]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="load-file-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Open…
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  class="buttonish "
+                  title="Open save dialog."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="save-file-as-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Save As…
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="n"
+                  class="buttonish "
+                  title="Create an empty file [alt–n]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="new-file-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  New
+                </label>
+              </div>
+            </li>
+            <li>
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="?"
+                  class="buttonish "
+                  title="Open documentation [alt–?]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="help-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Help
+                </label>
+              </div>
+            </li>
+          </ul>
         </nav>
       </div>
     </div>

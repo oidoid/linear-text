@@ -28,6 +28,7 @@
 
   --z-index-header: 100;
   --z-index-focused-line: 1000;
+  --z-index-dialog: 10000;
 
   /* Require interactive elements large enough to be easily pressed. */
   --min-press-size: 24px;

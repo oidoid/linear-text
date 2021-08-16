@@ -39,13 +39,13 @@ export const initTableState: TableState = Object.freeze({
 // typically used to make async requests.
 export const loadTableFileAsync = createAsyncThunk<
   {filename: string; idFactory: Readonly<IDFactory>; table: Table},
-  {fileHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
+  {fileWithHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
   {state: RootState}
->('table/loadTableFileAsync', async ({fileHandle, idFactory}) => {
+>('table/loadTableFileAsync', async ({fileWithHandle, idFactory}) => {
   // The value we return becomes the `fulfilled` action payload
   const factory = IDFactory(idFactory)
-  const table = await parseTable(factory, fileHandle)
-  return {filename: fileHandle.name, idFactory: factory, table}
+  const table = await parseTable(factory, fileWithHandle)
+  return {filename: fileWithHandle.name, idFactory: factory, table}
 })
 
 export const tableSlice = createSlice({

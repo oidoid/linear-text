@@ -21,10 +21,10 @@ export function openFile(): Promise<FileWithHandle> {
 
 export function saveFile(
   handle: Readonly<FileSystemHandle> | undefined,
-  tabSeparatedValues: string
+  doc: string
 ): Promise<FileSystemHandle> {
   return fileSave(
-    new Blob([tabSeparatedValues], {type: defaultMimeType}),
+    new Blob([doc], {type: defaultMimeType}),
     {
       fileName: handle?.name ?? defaultFilename,
       extensions: [defaultFileExtension]

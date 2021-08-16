@@ -14,11 +14,6 @@
   background: var(--color-light-grey);
 }
 
-.app__header {
-  /* Raise sub-menus above the content. */
-  z-index: var(--z-index-header);
-}
-
 .app__main {
   /* Contents scroll as needed. */
   overflow: auto;

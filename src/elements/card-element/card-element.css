@@ -19,6 +19,11 @@
 
   /* Size to content. */
   display: inline-block;
+
+  /* Scroll on overflow. */
+  max-width: calc(100% - var(--card-margin) * 2);
+  max-height: calc(100% - var(--card-margin) * 2);
+  overflow: auto;
 }
 
 .card--header {
