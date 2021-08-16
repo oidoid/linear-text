@@ -25,11 +25,9 @@
   --button-margin: 2px;
 
   --font-size-small: 8px;
-  --font-size-tooltip: 12px;
 
   --z-index-header: 100;
   --z-index-focused-line: 1000;
-  --z-index-tooltip: 10000;
 
   /* Require interactive elements large enough to be easily pressed. */
   --min-press-size: 24px;

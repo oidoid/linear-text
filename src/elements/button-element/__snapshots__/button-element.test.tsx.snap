@@ -4,7 +4,7 @@ exports[`matches snapshot 1`] = `
 <button
   class="buttonish "
   data-testid="button"
-  data-title="Title"
+  title="Title"
 >
   Label
 </button>

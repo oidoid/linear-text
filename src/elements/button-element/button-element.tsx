@@ -32,7 +32,7 @@ export function ButtonElement({
       accessKey={accessKey}
       className={className}
       data-testid={testID}
-      data-title={title}
+      title={title}
       disabled={disabled}
       onClick={onClick}
     >

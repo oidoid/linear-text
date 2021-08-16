@@ -18,10 +18,6 @@
   max-height: 100%;
   overflow-y: auto;
 
-  /* [to-do] Buttonish tooltips are causing the card to overflow available
-    space. */
-  overflow-x: hidden;
-
   /* Center card. */
   margin-left: auto;
   margin-right: auto;

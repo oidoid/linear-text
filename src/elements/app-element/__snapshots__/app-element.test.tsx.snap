@@ -62,7 +62,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="z"
                                 class="buttonish "
-                                data-title="Restore the previous state [alt–z]."
+                                title="Restore the previous state [alt–z]."
                               >
                                 <img
                                   alt=""
@@ -88,7 +88,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="y"
                                 class="buttonish "
-                                data-title="Reverse an undo [alt–y]."
+                                title="Reverse an undo [alt–y]."
                               >
                                 <img
                                   alt=""
@@ -114,7 +114,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="s"
                                 class="buttonish "
-                                data-title="Download file [alt–s]."
+                                title="Download file [alt–s]."
                               >
                                 <img
                                   alt=""
@@ -140,7 +140,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="|"
                                 class="buttonish "
-                                data-title="Add empty line [alt–|]."
+                                title="Add empty line [alt–|]."
                               >
                                 <img
                                   alt=""
@@ -165,7 +165,7 @@ exports[`matches snapshot 1`] = `
                             >
                               <button
                                 class="buttonish "
-                                data-title="Open save dialog."
+                                title="Open save dialog."
                               >
                                 <img
                                   alt=""
@@ -191,7 +191,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="o"
                                 class="buttonish "
-                                data-title="Load an existing file [alt–o]."
+                                title="Load an existing file [alt–o]."
                               >
                                 <img
                                   alt=""
@@ -217,7 +217,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="n"
                                 class="buttonish "
-                                data-title="Create an empty file [alt–n]."
+                                title="Create an empty file [alt–n]."
                               >
                                 <img
                                   alt=""
@@ -243,7 +243,7 @@ exports[`matches snapshot 1`] = `
                               <button
                                 accesskey="?"
                                 class="buttonish "
-                                data-title="Open documentation [alt–?]."
+                                title="Open documentation [alt–?]."
                               >
                                 <img
                                   alt=""
@@ -280,7 +280,7 @@ exports[`matches snapshot 1`] = `
                   <button
                     accesskey="-"
                     class="buttonish "
-                    data-title="Remove selected line(s) [alt–-]."
+                    title="Remove selected line(s) [alt–-]."
                   >
                     <img
                       alt=""
@@ -306,7 +306,7 @@ exports[`matches snapshot 1`] = `
                   <button
                     accesskey="+"
                     class="buttonish "
-                    data-title="Add new line [alt–+]."
+                    title="Add new line [alt–+]."
                   >
                     <img
                       alt=""
