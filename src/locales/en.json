@@ -131,14 +131,6 @@
     "translation": "Download file [alt–s].",
     "extractedComments": []
   },
-  "button-toggle-menu__access-key": {
-    "translation": "m",
-    "extractedComments": []
-  },
-  "button-toggle-menu__title": {
-    "translation": "Toggle expanded menu [alt-m].",
-    "extractedComments": []
-  },
   "button-toggle-toolbar__access-key": {
     "translation": "t",
     "extractedComments": []
