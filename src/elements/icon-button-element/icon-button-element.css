@@ -1,8 +1,8 @@
 .icon-button {
-  width: 40px;
-  height: 48px;
+  min-width: 40px;
+  min-height: 48px;
 
-  /* Center the button */
+  /* Center the button. */
   text-align: center;
 }
 
