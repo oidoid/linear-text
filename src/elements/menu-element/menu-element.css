@@ -5,3 +5,9 @@
 .menu__list {
   display: flex;
 }
+
+.menu__list-item {
+  min-width: 44px;
+  /* Force equal width. */
+  width: 100%;
+}

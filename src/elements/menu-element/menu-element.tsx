@@ -105,99 +105,93 @@ function MenuElement(): JSX.Element {
     dispatch(newFileAction())
   }, [dispatch])
 
+  const entries = [
+    {
+      accessKey: t`button-add-line__access-key`,
+      label: t`button-add-line__label`,
+      onClick: onAddLineClick,
+      src: addLineIcon,
+      title: t`button-add-line__title`
+    },
+    {
+      accessKey: t`button-add-divider__access-key`,
+      label: t`button-add-divider__label`,
+      onClick: onAddDividerClick,
+      src: addDividerIcon,
+      title: t`button-add-divider__title`
+    },
+    {
+      accessKey: t`button-remove-line__access-key`,
+      label: t`button-remove-line__label`,
+      onClick: onRemoveLineClick,
+      src: removeLineIcon,
+      title: t`button-remove-line__title`
+    },
+    {
+      accessKey: t`button-undo__access-key`,
+      label: t`button-undo__label`,
+      onClick: onUndoClick,
+      src: undoIcon,
+      title: t`button-undo__title`
+    },
+    {
+      accessKey: t`button-redo__access-key`,
+      label: t`button-redo__label`,
+      onClick: onRedoClick,
+      src: redoIcon,
+      title: t`button-redo__title`
+    },
+    {
+      accessKey: t`button-save-file__access-key`,
+      label: t`button-save-file__label`,
+      onClick: onSaveClick,
+      src: saveFileIcon,
+      title: t`button-save-file__title`
+    },
+    {
+      accessKey: t`button-load-file__access-key`,
+      label: t`button-load-file__label`,
+      onClick: onLoadClick,
+      src: loadFileIcon,
+      title: t`button-load-file__title`
+    },
+    {
+      label: t`button-save-file-as__label`,
+      onClick: onSaveAs,
+      src: saveFileAsIcon,
+      title: t`button-save-file-as__title`
+    },
+    {
+      accessKey: t`button-new-file__access-key`,
+      label: t`button-new-file__label`,
+      onClick: onNewClick,
+      src: newFileIcon,
+      title: t`button-new-file__title`
+    },
+    {
+      accessKey: t`button-help__access-key`,
+      label: t`button-help__label`,
+      onClick: toggleHelp,
+      src: helpIcon,
+      title: t`button-help__title`
+    }
+  ]
+
   return (
     <>
       <nav className='menu'>
         <ListElement className='menu__list' unordered>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-add-line__access-key`}
-              label={t`button-add-line__label`}
-              onClick={onAddLineClick}
-              src={addLineIcon}
-              title={t`button-add-line__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-add-divider__access-key`}
-              label={t`button-add-divider__label`}
-              onClick={onAddDividerClick}
-              src={addDividerIcon}
-              title={t`button-add-divider__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-remove-line__access-key`}
-              label={t`button-remove-line__label`}
-              onClick={onRemoveLineClick}
-              src={removeLineIcon}
-              title={t`button-remove-line__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-undo__access-key`}
-              label={t`button-undo__label`}
-              onClick={onUndoClick}
-              src={undoIcon}
-              title={t`button-undo__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-redo__access-key`}
-              label={t`button-redo__label`}
-              onClick={onRedoClick}
-              src={redoIcon}
-              title={t`button-redo__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-save-file__access-key`}
-              label={t`button-save-file__label`}
-              onClick={onSaveClick}
-              src={saveFileIcon}
-              title={t`button-save-file__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-load-file__access-key`}
-              label={t`button-load-file__label`}
-              onClick={onLoadClick}
-              src={loadFileIcon}
-              title={t`button-load-file__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              label={t`button-save-file-as__label`}
-              onClick={onSaveAs}
-              src={saveFileAsIcon}
-              title={t`button-save-file-as__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-new-file__access-key`}
-              label={t`button-new-file__label`}
-              onClick={onNewClick}
-              src={newFileIcon}
-              title={t`button-new-file__title`}
-            />
-          </li>
-          <li>
-            <IconButtonElement
-              accessKey={t`button-help__access-key`}
-              label={t`button-help__label`}
-              onClick={toggleHelp}
-              src={helpIcon}
-              title={t`button-help__title`}
-            />
-          </li>
+          {entries.map((entry, index) => (
+            <li className='menu__list-item' key={index}>
+              <IconButtonElement
+                accessKey={entry.accessKey}
+                label={entry.label}
+                onClick={entry.onClick}
+                src={entry.src}
+                title={entry.title}
+              />
+            </li>
+          ))}
         </ListElement>
       </nav>
       {showHelp && <HelpDialogCardElement onDismissClick={toggleHelp} />}
