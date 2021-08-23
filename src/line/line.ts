@@ -1,6 +1,7 @@
 import type {ID} from '../id/id'
 
 import {IDFactory, makeID} from '../id/id-factory'
+import {assert} from '../utils/assert'
 
 /**
  * Interim visual and behavioral representation. Do not serialize. State is used
@@ -40,7 +41,7 @@ export function Line(
   draft: boolean | undefined = false,
   text: string | undefined = ''
 ): Line {
-  throwIfNewline(text)
+  assertNoLineBreak(text)
   return {
     id: makeID(factory),
     state: draft ? 'draft' : text === '' ? 'divider' : 'note',
@@ -50,12 +51,12 @@ export function Line(
 
 /** Updates the text and state. */
 Line.setText = (line: Line, text: string): void => {
-  throwIfNewline(text)
+  assertNoLineBreak(text)
   line.text = text
   line.state =
     text === '' ? (line.state === 'divider' ? 'divider' : 'draft') : 'note'
 }
 
-function throwIfNewline(text: string): void {
-  if (/\r?\n/.test(text)) throw Error('Newlines are forbidden in text.')
+function assertNoLineBreak(text: string): void {
+  assert(!/\r?\n/.test(text), 'Newlines are forbidden in text.')
 }
