@@ -11,14 +11,15 @@ import {
   selectTableState
 } from '../../store/table-slice/table-slice'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
-import {useCallback, useEffect, useRef, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useFocusSpellchecker} from '../../hooks/use-focus-spellcheck'
 
 import './line-text-element.css'
 
-export type LineTextProps = Readonly<{line: Readonly<Line>}>
+export type LineTextProps = Readonly<{line: Readonly<Line>; x: number}>
 
-export function LineTextElement({line}: LineTextProps): JSX.Element {
+export function LineTextElement({line, x}: LineTextProps): JSX.Element {
+  const lineIndex = useMemo(() => ({id: line.id, x}), [line.id, x])
   const dispatch = useAppDispatch()
   const tableState = useAppSelector(selectTableState)
 
@@ -30,17 +31,17 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
       onBlurSpellcheck(ev)
       if (line.state === 'draft')
-        dispatch(removeLineAction({id: line.id, nextFocus: 'retain'}))
+        dispatch(removeLineAction({index: lineIndex, nextFocus: 'retain'}))
     },
-    [dispatch, line, onBlurSpellcheck]
+    [dispatch, line.state, lineIndex, onBlurSpellcheck]
   )
   const onChange = useCallback(
     (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
       const text = ev.currentTarget.value
       setText(text)
-      dispatch(editLineAction({id: line.id, text}))
+      dispatch(editLineAction({index: lineIndex, text}))
     },
-    [dispatch, line.id]
+    [dispatch, lineIndex]
   )
   const onFocus = useCallback(
     (ev: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -48,9 +49,9 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       ev.stopPropagation()
       // There is not a mirroring dispatch call for blur because focus is lost
       // on discard button press.
-      dispatch(focusLineAction(line.id))
+      dispatch(focusLineAction(lineIndex))
     },
-    [dispatch, line, onFocusSpellcheck]
+    [dispatch, lineIndex, onFocusSpellcheck]
   )
   const onKeyDown = useCallback(
     (ev: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -65,12 +66,12 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
             ? addDividerAction()
             : addDraftAction()
           : removeLineAction({
-              id: line.id,
+              index: lineIndex,
               nextFocus: ev.key === 'Backspace' ? 'prev' : 'next'
             })
       )
     },
-    [dispatch, line]
+    [dispatch, line.state, line.text, lineIndex]
   )
 
   const textRef = useRef<HTMLTextAreaElement>(null)
@@ -82,14 +83,14 @@ export function LineTextElement({line}: LineTextProps): JSX.Element {
       focus.current?.[1] === line.id
     )
       return
-    focus.current = [tableState.focus, line.id]
-    if (tableState.focus === line.id) textRef.current.focus()
+    focus.current = [tableState.focus?.id, line.id]
+    if (tableState.focus?.id === line.id) textRef.current.focus()
   })
 
   return (
     <div className='line-text' data-text={text}>
       <textarea
-        autoFocus={tableState.focus === line.id}
+        autoFocus={tableState.focus?.id === line.id}
         className='line-text__text'
         onBlur={onBlur}
         onChange={onChange}

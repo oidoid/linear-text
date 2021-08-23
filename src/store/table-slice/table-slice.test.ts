@@ -34,15 +34,18 @@ test('addLineAction() stores a line and sets the focus.', () => {
   const state = tableSlice.reducer(initTableState, addDraftAction())
   const line: Line = {id: ID(1), state: 'draft', text: ''}
   expect(state.table.lines).toStrictEqual([line])
-  expect(state.focus).toStrictEqual(line.id)
+  expect(state.focus).toStrictEqual({id: line.id, x: 0})
 })
 
 test('focusLineAction() with a line sets the focus.', () => {
   let state = tableSlice.reducer(initTableState, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
-  state = tableSlice.reducer(state, focusLineAction(state.table.lines[1]?.id))
-  expect(state.focus).toStrictEqual(state.table.lines[1]?.id)
+  state = tableSlice.reducer(
+    state,
+    focusLineAction({id: state.table.lines[1]!.id, x: 1})
+  )
+  expect(state.focus).toStrictEqual({id: state.table.lines[1]!.id, x: 1})
 })
 
 test('focusLineAction() without a line clears the focus.', () => {
@@ -72,14 +75,20 @@ test('removeLineAction() deletes the line and sets the previous focus.', () => {
   let state = tableSlice.reducer(initTableState, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
-  state = tableSlice.reducer(state, focusLineAction(state.table.lines[1]?.id))
   state = tableSlice.reducer(
     state,
-    removeLineAction({id: state.table.lines[1]!.id, nextFocus: 'prev'})
+    focusLineAction({id: state.table.lines[1]!.id, x: 1})
+  )
+  state = tableSlice.reducer(
+    state,
+    removeLineAction({
+      index: {id: state.table.lines[1]!.id, x: 1},
+      nextFocus: 'prev'
+    })
   )
   expect(state).toStrictEqual({
     filename: undefined,
-    focus: state.table.lines[0]?.id,
+    focus: {id: state.table.lines[0]!.id, x: 0},
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',
@@ -94,14 +103,20 @@ test('removeLineAction() deletes the line and sets the next focus.', () => {
   let state = tableSlice.reducer(initTableState, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
   state = tableSlice.reducer(state, addDividerAction())
-  state = tableSlice.reducer(state, focusLineAction(state.table.lines[1]?.id))
   state = tableSlice.reducer(
     state,
-    removeLineAction({id: state.table.lines[1]!.id, nextFocus: 'next'})
+    focusLineAction({id: state.table.lines[1]!.id, x: 1})
+  )
+  state = tableSlice.reducer(
+    state,
+    removeLineAction({
+      index: {id: state.table.lines[1]!.id, x: 1},
+      nextFocus: 'next'
+    })
   )
   expect(state).toStrictEqual({
     filename: undefined,
-    focus: state.table.lines[1]?.id,
+    focus: {id: state.table.lines[1]!.id, x: 1},
     idFactory: {id: 4},
     invalidated: true,
     status: 'idle',

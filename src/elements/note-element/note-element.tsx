@@ -6,10 +6,10 @@ import {useCallback, useMemo} from 'react'
 
 import './note-element.css'
 
-export type NoteProps = Readonly<{line: Readonly<Line>}>
+export type NoteProps = Readonly<{line: Readonly<Line>; x: number}>
 
 /** A sticky note. */
-export function NoteElement({line}: NoteProps): JSX.Element {
+export function NoteElement({line, x}: NoteProps): JSX.Element {
   const className = useMemo(() => `note note--${line.state}`, [line.state])
   const onFocusCapture = useCallback(
     (ev: React.FocusEvent<HTMLElementTagNameMap['aside']>) =>
@@ -19,7 +19,7 @@ export function NoteElement({line}: NoteProps): JSX.Element {
   )
   return (
     <aside className={className} onFocusCapture={onFocusCapture}>
-      <LineTextElement line={line} />
+      <LineTextElement line={line} x={x} />
     </aside>
   )
 }

@@ -1,10 +1,11 @@
 import type {FileWithHandle} from 'browser-fs-access'
-import type {ID} from '../../id/id'
+import type {LineIndex} from '../../table/line-index'
 import type {RootState} from '../store'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {IDFactory} from '../../id/id-factory'
 import {Line} from '../../line/line'
+import {NonNull} from '../../utils/assert'
 import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
 
@@ -12,7 +13,7 @@ export type TableState = Readonly<{
   /** The loaded / saved filename, if any. */
   filename: string | undefined
   /** undefined or [0, table.lines.length). */
-  focus: ID | undefined
+  focus: LineIndex | undefined
   idFactory: Readonly<IDFactory>
   /**
    * True if unsaved changes are present. False if no changes since saved, just
@@ -60,28 +61,33 @@ export const tableSlice = createSlice({
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
     addDividerAction(state) {
-      const focus = getFocus(state)
       const line = Line(state.idFactory)
-      const index = focus == null ? state.table.lines.length : focus[1] + 1
+      const index =
+        state.focus == null ? state.table.lines.length : state.focus.x + 1
       state.table.lines.splice(index, 0, line)
-      state.focus = line.id
+      state.focus = {id: line.id, x: index}
     },
     addDraftAction(state) {
-      const focus = getFocus(state)
-      if (focus?.[0]?.state === 'draft') return // Already have a draft.
+      const focus =
+        state.focus == null ? undefined : state.table.lines[state.focus?.x]
+      if (focus?.state === 'draft') return // Already have a draft.
       const line = Line(state.idFactory, true)
-      const index = focus == null ? state.table.lines.length : focus[1] + 1
+      const index =
+        state.focus == null ? state.table.lines.length : state.focus.x + 1
       state.table.lines.splice(index, 0, line)
-      state.focus = line.id
+      state.focus = {id: line.id, x: index}
     },
-    editLineAction(state, {payload}: PayloadAction<{id: ID; text: string}>) {
-      const [line] = Table.findLine(state.table, payload.id)
+    editLineAction(
+      state,
+      {payload}: PayloadAction<{index: LineIndex; text: string}>
+    ) {
+      const line = NonNull(state.table.lines[payload.index.x])
       Line.setText(line, payload.text)
       // The state of line is changed. It is assumed to be the focus.
-      state.focus = line.id
+      state.focus = payload.index
       state.invalidated = true
     },
-    focusLineAction(state, {payload}: PayloadAction<ID | undefined>) {
+    focusLineAction(state, {payload}: PayloadAction<LineIndex | undefined>) {
       state.focus = payload
     },
     newFileAction(state) {
@@ -94,21 +100,29 @@ export const tableSlice = createSlice({
     },
     removeLineAction(
       state,
-      {payload}: PayloadAction<{id: ID; nextFocus: 'prev' | 'next' | 'retain'}>
+      {
+        payload
+      }: PayloadAction<{
+        index: LineIndex
+        nextFocus: 'prev' | 'next' | 'retain'
+      }>
     ) {
-      const [_, index] = Table.removeLine(state.table, payload.id)
+      Table.removeLine(state.table, payload.index.id)
       state.invalidated = true
       if (payload.nextFocus === 'retain') {
-        state.focus = state.focus === payload.id ? undefined : state.focus
+        state.focus =
+          state.focus?.id === payload.index.id ? undefined : state.focus
       } else {
         const nextIndex = Math.max(
           0,
           Math.min(
-            index + (payload.nextFocus === 'prev' ? -1 : 0),
+            payload.index.x + (payload.nextFocus === 'prev' ? -1 : 0),
             state.table.lines.length - 1
           )
         )
-        state.focus = state.table.lines[nextIndex]?.id
+        const nextLine = state.table.lines[nextIndex]
+        state.focus =
+          nextLine == null ? undefined : {id: nextLine.id, x: nextIndex}
       }
     },
     saveFileAction(state, {payload}: PayloadAction<string | undefined>) {
@@ -154,10 +168,4 @@ export const {
 // `useSelector((state: RootState) => state.table.value)`.
 export function selectTableState(state: RootState): TableState {
   return state.table.present
-}
-
-function getFocus(state: Readonly<TableState>): [Line, number] | undefined {
-  return state.focus == null
-    ? undefined
-    : Table.findLine(state.table, state.focus)
 }

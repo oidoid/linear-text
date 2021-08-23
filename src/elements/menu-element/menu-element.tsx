@@ -65,7 +65,7 @@ function MenuElement(): JSX.Element {
   }, [dispatch])
   const onRemoveLineClick = useCallback(() => {
     if (tableState.focus == null) return
-    dispatch(removeLineAction({id: tableState.focus, nextFocus: 'prev'}))
+    dispatch(removeLineAction({index: tableState.focus, nextFocus: 'prev'}))
   }, [dispatch, tableState.focus])
   const save = useCallback(
     async (fileHandle: FileSystemHandle | undefined) => {
