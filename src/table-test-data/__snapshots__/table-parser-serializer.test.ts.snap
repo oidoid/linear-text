@@ -139,6 +139,75 @@ Object {
 }
 `;
 
+exports[`integration animals.test.txt 1`] = `
+Object {
+  "lineBreak": "
+",
+  "lines": Array [
+    Object {
+      "id": 1,
+      "state": "note",
+      "text": "Animals with Fur",
+    },
+    Object {
+      "id": 2,
+      "state": "note",
+      "text": "  Bear",
+    },
+    Object {
+      "id": 3,
+      "state": "note",
+      "text": "  Zebra",
+    },
+    Object {
+      "id": 4,
+      "state": "divider",
+      "text": "",
+    },
+    Object {
+      "id": 5,
+      "state": "divider",
+      "text": "",
+    },
+    Object {
+      "id": 6,
+      "state": "divider",
+      "text": "",
+    },
+    Object {
+      "id": 7,
+      "state": "divider",
+      "text": "",
+    },
+    Object {
+      "id": 8,
+      "state": "divider",
+      "text": "",
+    },
+    Object {
+      "id": 9,
+      "state": "note",
+      "text": "Other Animals",
+    },
+    Object {
+      "id": 10,
+      "state": "note",
+      "text": "  Cobra",
+    },
+    Object {
+      "id": 11,
+      "state": "note",
+      "text": "  Shark",
+    },
+    Object {
+      "id": 12,
+      "state": "divider",
+      "text": "",
+    },
+  ],
+}
+`;
+
 exports[`integration colors.test.txt 1`] = `
 Object {
   "lineBreak": "

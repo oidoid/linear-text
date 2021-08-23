@@ -80,6 +80,7 @@ test.each(<const>[
 
 test.each([
   'alphabet.test.txt',
+  'animals.test.txt',
   'colors.test.txt',
   'digits.test.txt',
   'empty.test.txt',
