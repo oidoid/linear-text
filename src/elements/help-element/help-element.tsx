@@ -1,4 +1,4 @@
-import {DialogCardElement} from '../dialog-card-element/dialog-card-element'
+import {DialogCardElement} from '../card-element/dialog-card-element'
 import {H2Element} from '../header-element/header-element'
 import {t} from '@lingui/macro'
 import {version} from '../../../package.json'

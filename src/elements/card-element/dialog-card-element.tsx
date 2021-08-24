@@ -1,5 +1,5 @@
-import {CardElement} from '../card-element/card-element'
-import {IconButtonElement} from '../icon-button-element/icon-button-element'
+import {CardElement} from './card-element'
+import {IconButtonElement} from '../button-element/icon-button-element'
 import React, {ReactNode, useCallback, useEffect} from 'react'
 import {t} from '@lingui/macro'
 

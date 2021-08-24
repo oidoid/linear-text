@@ -1,6 +1,6 @@
 import type {MouseEventHandler} from 'react'
 
-import {ButtonElement} from '../button-element/button-element'
+import {ButtonElement} from './button-element'
 import {IconElement} from '../icon-element/icon-element'
 
 import './icon-button-element.css'

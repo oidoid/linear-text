@@ -3,9 +3,9 @@ import type {Table} from '../table/table'
 
 import {ID} from '../id/id'
 import {IDFactory} from '../id/id-factory'
-import {parseTable} from '../table-parser/table-parser'
+import {parseTable} from './table-parser'
+import {serializeTable} from './table-serializer'
 import {readFileSync} from 'fs'
-import {serializeTable} from '../table-serializer/table-serializer'
 
 let factory: IDFactory = IDFactory()
 beforeEach(() => (factory = IDFactory()))
@@ -90,7 +90,9 @@ test.each([
   'perf-10k.test.txt',
   'windows.test.txt'
 ])('integration %s', async filename => {
-  const input = readFileSync(`${__dirname}/${filename}`).toString()
+  const input = readFileSync(
+    `${__dirname}/table-test-data/${filename}`
+  ).toString()
   const table = await parseTable(factory, input)
   expect(table).toMatchSnapshot()
   expect(serializeTable(table)).toStrictEqual(input)

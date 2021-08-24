@@ -1,6 +1,6 @@
 import type {Line} from '../../line/line'
 
-import {NoteElement} from '../note-element/note-element'
+import {NoteElement} from '../line-element/note-element'
 
 export type LineProps = Readonly<{line: Readonly<Line>; x: number}>
 

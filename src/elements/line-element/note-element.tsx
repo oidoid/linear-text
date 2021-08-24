@@ -1,7 +1,7 @@
 import type {Line} from '../../line/line'
 import type React from 'react'
 
-import {LineTextElement} from '../line-text-element/line-text-element'
+import {LineTextElement} from '../line-element/line-text-element'
 import {useCallback, useMemo} from 'react'
 
 import './note-element.css'
