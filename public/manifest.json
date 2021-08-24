@@ -1,6 +1,6 @@
 {
   "//": "[i18n][theme]",
-  "short_name": "─Text",
+  "short_name": "─txt",
   "name": "Linear Text",
   "icons": [
     {
@@ -11,6 +11,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#d0d0d0",
+  "theme_color": "#ccc",
   "background_color": "#f2f5f5"
 }
