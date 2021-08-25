@@ -79,7 +79,7 @@ export function LineTextElement({line, x}: LineTextProps): JSX.Element {
   useEffect(() => {
     if (textRef.current == null) return
     if (
-      focus.current?.[0] === tableState.focus &&
+      focus.current?.[0] === tableState.focus?.id &&
       focus.current?.[1] === line.id
     )
       return
