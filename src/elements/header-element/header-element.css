@@ -2,6 +2,19 @@
   display: flex;
 }
 
+.header__link {
+  color: unset;
+  text-decoration: none;
+}
+
+.header__fragment {
+  visibility: hidden;
+}
+
+.header__link:hover > .header__fragment {
+  visibility: visible;
+}
+
 .header--1 {
   margin-top: 0;
 }

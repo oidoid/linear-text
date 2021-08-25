@@ -1,3 +1,5 @@
+import type {ReactNode} from 'react'
+
 import './header-element.css'
 
 export type HeaderProps = Readonly<{
@@ -5,83 +7,40 @@ export type HeaderProps = Readonly<{
   /** Fragment identifier for linking. */
   id: string
   label: string
-  level: 1 | 2 | 3 | 4 | 5 | 6
+  level: HeaderLevel
 }>
 
-export type HProps = Omit<HeaderProps, 'level'>
+export type HeaderLevel = 1 | 2 | 3 | 4 | 5 | 6
 
-export function HeaderElement({level, ...props}: HeaderProps): JSX.Element {
-  // [to-do]: Is there a trick to consolidate these to a single implementation
-  //   that can vary by level?
-  switch (level) {
-    case 1:
-      return <H1Element {...props} />
-    case 2:
-      return <H2Element {...props} />
-    case 3:
-      return <H3Element {...props} />
-    case 4:
-      return <H4Element {...props} />
-    case 5:
-      return <H5Element {...props} />
-    case 6:
-      return <H6Element {...props} />
-  }
-}
+type HProps = Readonly<{className: string; id: string; children: ReactNode}>
 
-export function H1Element({actionEnd, label, ...props}: HProps): JSX.Element {
+export function HeaderElement({
+  actionEnd,
+  id,
+  label,
+  level
+}: HeaderProps): JSX.Element {
+  const H = headerLevelToElement[level]
   return (
-    <h1 className='header header--1' {...props}>
-      {label}
+    <H className={`header header--${level}`} id={id}>
+      <a className='header__link' href={`#${id}`}>
+        {label} <span className='header__fragment'>#</span>
+      </a>
       <ActionEndElement action={actionEnd} />
-    </h1>
+    </H>
   )
 }
 
-export function H2Element({actionEnd, label, ...props}: HProps): JSX.Element {
-  return (
-    <h2 className='header header--2' {...props}>
-      {label}
-      <ActionEndElement action={actionEnd} />
-    </h2>
-  )
-}
-
-export function H3Element({actionEnd, label, ...props}: HProps): JSX.Element {
-  return (
-    <h3 className='header header--3' {...props}>
-      {label}
-      <ActionEndElement action={actionEnd} />
-    </h3>
-  )
-}
-
-export function H4Element({actionEnd, label, ...props}: HProps): JSX.Element {
-  return (
-    <h4 className='header header--4' {...props}>
-      {label}
-      <ActionEndElement action={actionEnd} />
-    </h4>
-  )
-}
-
-export function H5Element({actionEnd, label, ...props}: HProps): JSX.Element {
-  return (
-    <h5 className='header header--5' {...props}>
-      {label}
-      <ActionEndElement action={actionEnd} />
-    </h5>
-  )
-}
-
-export function H6Element({actionEnd, label, ...props}: HProps): JSX.Element {
-  return (
-    <h6 className='header header--6' {...props}>
-      {label}
-      <ActionEndElement action={actionEnd} />
-    </h6>
-  )
-}
+const headerLevelToElement: Readonly<
+  Record<HeaderLevel, (props: HProps) => JSX.Element>
+> = Object.freeze({
+  1: props => <h1 {...props} />, // eslint-disable-line jsx-a11y/heading-has-content
+  2: props => <h2 {...props} />, // eslint-disable-line jsx-a11y/heading-has-content
+  3: props => <h3 {...props} />, // eslint-disable-line jsx-a11y/heading-has-content
+  4: props => <h4 {...props} />, // eslint-disable-line jsx-a11y/heading-has-content
+  5: props => <h5 {...props} />, // eslint-disable-line jsx-a11y/heading-has-content
+  6: props => <h6 {...props} /> // eslint-disable-line jsx-a11y/heading-has-content
+})
 
 type ActionProps = Readonly<{action?: JSX.Element | undefined}>
 

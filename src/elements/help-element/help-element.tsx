@@ -1,5 +1,5 @@
 import {DialogCardElement} from '../card-element/dialog-card-element'
-import {H2Element} from '../header-element/header-element'
+import {HeaderElement} from '../header-element/header-element'
 import {t} from '@lingui/macro'
 import {version} from '../../../package.json'
 
@@ -40,11 +40,13 @@ function HelpElement(): JSX.Element {
       </section>
 
       <section>
-        <H2Element id='data-format' label='Data Format' />
+        <HeaderElement id='data-format' label='Data Format' level={2} />
 
         <p>
           Linear Text reads and writes lines of text. If it makes sense in plain
-          text, it makes sense visually in Linear Text and vice versa.
+          text, it makes sense visually in Linear Text and vice versa. Linear
+          Text is kind of like enabling "pretty mode" for your text. It's just a
+          temporary lens or different way to see them.
         </p>
 
         <ul>
@@ -55,20 +57,22 @@ function HelpElement(): JSX.Element {
             vertically.
           </li>
           <li>
-            The text is the UI and the UI is text. Switch between plain text and
-            UI seamlessly and losslessly. The two representations always
-            correspond so use whichever you prefer whenever you prefer. Editing
-            within Linear Text or externally produces the same results.
+            The text is the UI (HTML) and the UI is text. Switch between plain
+            text and UI seamlessly and losslessly. The two representations
+            always correspond so use whichever you prefer whenever you prefer.
+            Editing within Linear Text or externally produces the same results.
           </li>
           <li>
             The data format is discardable. When Linear Text vanishes, the data
             remains unmarred by the format.
           </li>
         </ul>
+
+        <p>Text can be indented.</p>
       </section>
 
       <section>
-        <H2Element id='use-and-misuse' label='Use and Misuse' />
+        <HeaderElement id='use-and-misuse' label='Use and Misuse' level={2} />
 
         <p>Linear Text is designed for:</p>
         <ul>
@@ -79,6 +83,7 @@ function HelpElement(): JSX.Element {
           <li>Outlining.</li>
           <li>Local file editing.</li>
           <li>Lightweight project management.</li>
+          <li>Small collections and lists.</li>
         </ul>
 
         <p>Linear Text is not designed for:</p>
@@ -89,7 +94,7 @@ function HelpElement(): JSX.Element {
       </section>
 
       <section>
-        <H2Element id='similar-tools' label='Similar Tools' />
+        <HeaderElement id='similar-tools' label='Similar Tools' level={2} />
         <ul>
           <li>
             <a href='https://trello.com'>Trello</a>
