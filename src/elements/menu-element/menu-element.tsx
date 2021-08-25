@@ -142,18 +142,18 @@ function MenuElement(): JSX.Element {
       title: t`button-redo__title`
     },
     {
-      accessKey: t`button-save-file__access-key`,
-      label: t`button-save-file__label`,
-      onClick: onSaveClick,
-      src: saveFileIcon,
-      title: t`button-save-file__title`
-    },
-    {
       accessKey: t`button-load-file__access-key`,
       label: t`button-load-file__label`,
       onClick: onLoadClick,
       src: loadFileIcon,
       title: t`button-load-file__title`
+    },
+    {
+      accessKey: t`button-save-file__access-key`,
+      label: t`button-save-file__label`,
+      onClick: onSaveClick,
+      src: saveFileIcon,
+      title: t`button-save-file__title`
     },
     {
       label: t`button-save-file-as__label`,

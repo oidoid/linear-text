@@ -167,34 +167,6 @@ exports[`matches snapshot 1`] = `
                 class="icon-button"
               >
                 <button
-                  accesskey="s"
-                  class="buttonish "
-                  title="Download file [alt–s]."
-                >
-                  <img
-                    alt=""
-                    class="icon"
-                    decoding="sync"
-                    height="20"
-                    loading="eager"
-                    src="save-file-icon.svg"
-                    width="20"
-                  />
-                </button>
-                <label
-                  class="icon-buttonish__label "
-                >
-                  Save
-                </label>
-              </div>
-            </li>
-            <li
-              class="menu__list-item"
-            >
-              <div
-                class="icon-button"
-              >
-                <button
                   accesskey="o"
                   class="buttonish "
                   title="Load an existing file [alt–o]."
@@ -213,6 +185,34 @@ exports[`matches snapshot 1`] = `
                   class="icon-buttonish__label "
                 >
                   Open…
+                </label>
+              </div>
+            </li>
+            <li
+              class="menu__list-item"
+            >
+              <div
+                class="icon-button"
+              >
+                <button
+                  accesskey="s"
+                  class="buttonish "
+                  title="Download file [alt–s]."
+                >
+                  <img
+                    alt=""
+                    class="icon"
+                    decoding="sync"
+                    height="20"
+                    loading="eager"
+                    src="save-file-icon.svg"
+                    width="20"
+                  />
+                </button>
+                <label
+                  class="icon-buttonish__label "
+                >
+                  Save
                 </label>
               </div>
             </li>
