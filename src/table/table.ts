@@ -1,17 +1,15 @@
 import type {ID} from '../id/id'
 import type {Line} from '../line/line'
 
-/** The line delimiter. The end of a line of text and the start of a new one. */
-export type LineBreak = '\n' | '\r\n'
+import {LineBreak, lineBreakDefault} from './line-break'
 
-export const newlineDefault: LineBreak = '\n' // [to-do]: platform agnostic.
 export type Table = Readonly<{
   lineBreak: LineBreak
   lines: Line[]
 }>
 
 export function Table(
-  lineBreak: LineBreak | undefined = newlineDefault,
+  lineBreak: LineBreak | undefined = lineBreakDefault,
   lines: Line[] | undefined = []
 ): Table {
   return {lineBreak, lines}
