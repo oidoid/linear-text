@@ -1,6 +1,6 @@
 import type {Table} from '../../table/table'
 
-import {LineElement} from '../line-element/line-element'
+import {GroupElement} from './group-element'
 import {ListElement} from '../list-element/list-element'
 
 import './table-element.css'
@@ -9,12 +9,14 @@ export type TableProps = Readonly<{table: Readonly<Table>}>
 
 export function TableElement({table}: TableProps): JSX.Element {
   return (
-    <ListElement className='table' unordered>
-      {table.lines.map((line, x) => (
-        <li className={`table__list-item--${line.state}`} key={line.id}>
-          <LineElement line={line} x={x} />
-        </li>
-      ))}
-    </ListElement>
+    <article className='table'>
+      <ListElement className='table__list' unordered>
+        {table.groups.map((group, x) => (
+          <li className='table__list-item' key={group.id}>
+            <GroupElement group={group} x={x} />
+          </li>
+        ))}
+      </ListElement>
+    </article>
   )
 }

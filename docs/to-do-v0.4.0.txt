@@ -1,9 +1,11 @@
-Publish Linear Text v0.4.0: Groups
+Publish Linear Text v0.4.0: Dragging
 
-Add grouping.
-  Consider useMemo for computing groups of uls.
-Add group dragging.
-Reevaluate virtual board size. Right now this is 99in.
-Fix flexbox margin issue for groups.
-  https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width
+Add line and group drag support.
+  Use a library?
+Add scroll with card dragging behavior or use fixed board size.
+Prompt to save unsaved work on new file, load file, or page departure.
+What to do about async loading and undo?
+  https://github.com/omnidan/redux-undo/issues/203
+  https://github.com/ForbesLindesay/redux-optimist
+Add auto-backup to LocalStorage.
 Add long click to drag, click to edit, longer click to change type?

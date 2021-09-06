@@ -1,5 +1,6 @@
 .menu-card {
   --card-background-color: var(--color-mid-grey);
+  --card-margin: 2px;
 }
 
 .menu__list {

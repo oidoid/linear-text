@@ -1,5 +1,4 @@
-import type {Line} from '../line/line'
-import type {Table} from '../table/table'
+import type {ReadonlyTable, Table} from '../table/table'
 
 import {ID} from '../id/id'
 import {IDFactory} from '../id/id-factory'
@@ -16,11 +15,16 @@ test.each(<const>[
 ])('Line break: %s', async (_, lineBreak) => {
   const input = `abc${lineBreak}def`
   const expected: Table = {
-    lineBreak: lineBreak,
-    lines: [
-      {id: ID(1), state: 'note', text: 'abc'},
-      {id: ID(2), state: 'note', text: 'def'}
-    ]
+    groups: [
+      {
+        id: ID(1),
+        lines: [
+          {id: ID(2), text: 'abc'},
+          {id: ID(3), text: 'def'}
+        ]
+      }
+    ],
+    lineBreak
   }
   const table = await parseTable(factory, input)
   expect(table).toStrictEqual(expected)
@@ -28,55 +32,236 @@ test.each(<const>[
 })
 
 test.each(<const>[
-  ['empty file', '', []],
-  ['single line', 'abc', [{id: ID(1), state: 'note', text: 'abc'}]],
+  ['An empty file has no groups.', '', {groups: [], lineBreak: '\n'}],
   [
-    'empty file with trailing line break',
-    '\n',
-    [
-      {id: ID(1), state: 'divider', text: ''},
-      {id: ID(2), state: 'divider', text: ''}
-    ]
+    'A single line file with not text and a trailing newline has one group with no lines.',
+    '|',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []}
+      ],
+      lineBreak: '\n'
+    }
   ],
   [
-    'nonempty file trailing line break',
-    'a\n',
-    [
-      {id: ID(1), state: 'note', text: 'a'},
-      {id: ID(2), state: 'divider', text: ''}
-    ]
+    'A single line file without a trailing newline has one group with one line.',
+    'abc',
+    {
+      groups: [{id: ID(1), lines: [{id: ID(2), text: 'abc'}]}],
+      lineBreak: '\n'
+    }
   ],
   [
-    'nonempty file without trailing line break',
-    'a\nb',
-    [
-      {id: ID(1), state: 'note', text: 'a'},
-      {id: ID(2), state: 'note', text: 'b'}
-    ]
+    'A single line file with a trailing newline has one group with one line.',
+    'abc|',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'abc'}]},
+        {id: ID(3), lines: []}
+      ],
+      lineBreak: '\n'
+    }
   ],
   [
-    'groups and empty groups',
-    'a\n\n\nb\nc\nd\n\ne\n',
-    [
-      {id: ID(1), state: 'note', text: 'a'},
-      {id: ID(2), state: 'divider', text: ''},
-      {id: ID(3), state: 'divider', text: ''},
-      {id: ID(4), state: 'note', text: 'b'},
-      {id: ID(5), state: 'note', text: 'c'},
-      {id: ID(6), state: 'note', text: 'd'},
-      {id: ID(7), state: 'divider', text: ''},
-      {id: ID(8), state: 'note', text: 'e'},
-      {id: ID(9), state: 'divider', text: ''}
-    ]
+    'A two line file without a trailing newline has one group with two lines.',
+    'abc|def',
+    {
+      groups: [
+        {
+          id: ID(1),
+          lines: [
+            {id: ID(2), text: 'abc'},
+            {id: ID(3), text: 'def'}
+          ]
+        }
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A two line file with a trailing newline has one group with two lines.',
+    'abc|def|',
+    {
+      groups: [
+        {
+          id: ID(1),
+          lines: [
+            {id: ID(2), text: 'abc'},
+            {id: ID(3), text: 'def'}
+          ]
+        },
+        {id: ID(4), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A three line file with a division and without a trailing newline has two groups with one line each.',
+    'abc||def',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'abc'}]},
+        {id: ID(3), lines: [{id: ID(4), text: 'def'}]}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A three line file with a division and a trailing newline has two groups with one line each.',
+    'abc||def|',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'abc'}]},
+        {id: ID(3), lines: [{id: ID(4), text: 'def'}]},
+        {id: ID(5), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A three group file with various lines.',
+    'a||b|c|d||e|',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'a'}]},
+        {
+          id: ID(3),
+          lines: [
+            {id: ID(4), text: 'b'},
+            {id: ID(5), text: 'c'},
+            {id: ID(6), text: 'd'}
+          ]
+        },
+        {id: ID(7), lines: [{id: ID(8), text: 'e'}]},
+        {id: ID(9), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A four group file with various lines.',
+    'a|||b|c|d||e|',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'a'}]},
+        {id: ID(3), lines: []},
+        {
+          id: ID(4),
+          lines: [
+            {id: ID(5), text: 'b'},
+            {id: ID(6), text: 'c'},
+            {id: ID(7), text: 'd'}
+          ]
+        },
+        {id: ID(8), lines: [{id: ID(9), text: 'e'}]},
+        {id: ID(10), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'A five group file with various lines.',
+    'a||||b|c|d||e|',
+    {
+      groups: [
+        {id: ID(1), lines: [{id: ID(2), text: 'a'}]},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []},
+        {
+          id: ID(5),
+          lines: [
+            {id: ID(6), text: 'b'},
+            {id: ID(7), text: 'c'},
+            {id: ID(8), text: 'd'}
+          ]
+        },
+        {id: ID(9), lines: [{id: ID(10), text: 'e'}]},
+        {id: ID(11), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'Three empty groups.',
+    '|||',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'Four empty groups.',
+    '||||',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []},
+        {id: ID(5), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'Five empty groups.',
+    '|||||',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []},
+        {id: ID(5), lines: []},
+        {id: ID(6), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'Six empty groups.',
+    '||||||',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []},
+        {id: ID(5), lines: []},
+        {id: ID(6), lines: []},
+        {id: ID(7), lines: []}
+      ],
+      lineBreak: '\n'
+    }
+  ],
+  [
+    'Seven empty groups.',
+    '|||||||',
+    {
+      groups: [
+        {id: ID(1), lines: []},
+        {id: ID(2), lines: []},
+        {id: ID(3), lines: []},
+        {id: ID(4), lines: []},
+        {id: ID(5), lines: []},
+        {id: ID(6), lines: []},
+        {id: ID(7), lines: []},
+        {id: ID(8), lines: []}
+      ],
+      lineBreak: '\n'
+    }
   ]
-])(
-  'trailing line break is an empty Line: %s',
-  async (_, input, expectedLines: readonly Readonly<Line>[]) => {
-    const table = await parseTable(factory, input)
-    expect(table.lines).toStrictEqual(expectedLines)
-    expect(serializeTable(table)).toStrictEqual(input)
-  }
-)
+])('%s', async (_, input, expectedTable: ReadonlyTable) => {
+  const table = await parseTable(factory, input.replace(/\|/g, '\n'))
+  expect(table).toStrictEqual(expectedTable)
+  expect(serializeTable(table)).toStrictEqual(input.replace(/\|/g, '\n'))
+})
 
 test.each([
   'alphabet.test.txt',

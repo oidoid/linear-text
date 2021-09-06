@@ -1,0 +1,44 @@
+.group {
+  /* Dimensions include border and padding. */
+  box-sizing: border-box;
+
+  /* Groups are fill available space and scroll their contents, snapping to the
+     top of each line (+2 px so the user can see it's really the top). */
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 2px;
+
+  /* Keep some spacing between groups. */
+  margin-left: calc(var(--spacing) / 2);
+  margin-right: calc(var(--spacing) / 2);
+
+  /* Make space for empty group borders. */
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  border-style: dashed;
+  border-color: transparent;
+
+  /* No standard focus outline. This is covered below. */
+  outline-width: 0;
+}
+
+.group--empty:hover,
+.group--empty:focus {
+  /* Show a dashed border on hover and focus. */
+  border-color: var(--color-dark-grey);
+}
+
+.group__list {
+  /* Fix width so that size doesn't change when empty. */
+  width: calc(var(--note-width) + var(--note-margin-horizontal) * 2);
+
+  /* Additional margin for scrollbar. */
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.group__list-item {
+  /* Snap to the top of each line. */
+  scroll-snap-align: start;
+}

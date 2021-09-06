@@ -19,16 +19,16 @@
     "translation": "Linear Text v{version}",
     "extractedComments": []
   },
-  "button-add-divider__access-key": {
+  "button-add-group__access-key": {
     "translation": "|",
     "extractedComments": []
   },
-  "button-add-divider__label": {
-    "translation": "Divide",
+  "button-add-group__label": {
+    "translation": "Group",
     "extractedComments": []
   },
-  "button-add-divider__title": {
-    "translation": "Add empty line [alt–|].",
+  "button-add-group__title": {
+    "translation": "Add group [alt–|].",
     "extractedComments": []
   },
   "button-add-line__access-key": {

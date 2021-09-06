@@ -1,19 +1,18 @@
 import type {FileWithHandle} from 'browser-fs-access'
-import type {LineIndex} from '../../table/line-index'
+import type {GroupIndex, LineIndex} from '../../table/line-index'
 import type {RootState} from '../store'
 
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {Group} from '../../table/group'
 import {IDFactory} from '../../id/id-factory'
 import {Line} from '../../line/line'
-import {NonNull} from '../../utils/assert'
 import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
 
 export type TableState = Readonly<{
   /** The loaded / saved filename, if any. */
   filename: string | undefined
-  /** undefined or [0, table.lines.length). */
-  focus: LineIndex | undefined
+  focus: Readonly<GroupIndex> | Readonly<LineIndex> | undefined
   idFactory: Readonly<IDFactory>
   /**
    * True if unsaved changes are present. False if no changes since saved, just
@@ -60,34 +59,47 @@ export const tableSlice = createSlice({
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
     // Use the PayloadAction type to declare the contents of `action.payload`
-    addDividerAction(state) {
-      const line = Line(state.idFactory)
-      const index =
-        state.focus == null ? state.table.lines.length : state.focus.x + 1
-      state.table.lines.splice(index, 0, line)
-      state.focus = {id: line.id, x: index}
+    addGroupAction(state) {
+      // group or divider?an empty group is a divider
+      const group = Group(state.idFactory)
+      let x
+      if (state.focus == null) x = Table.appendGroup(state.table, group)
+      else x = Table.insertGroup(state.table, group, state.focus.x + 1)
+      state.focus = {id: group.id, x}
+      state.invalidated = true
     },
     addDraftAction(state) {
       const focus =
-        state.focus == null ? undefined : state.table.lines[state.focus?.x]
-      if (focus?.state === 'draft') return // Already have a draft.
-      const line = Line(state.idFactory, true)
-      const index =
-        state.focus == null ? state.table.lines.length : state.focus.x + 1
-      state.table.lines.splice(index, 0, line)
-      state.focus = {id: line.id, x: index}
+        state.focus == null || !('y' in state.focus)
+          ? undefined
+          : Table.getLine(state.table, state.focus)
+      if (focus != null && Line.isEmpty(focus)) return // Already have a draft.
+      const line = Line(state.idFactory)
+      if (state.focus == null)
+        state.focus = Table.appendLine(state.table, line, state.idFactory)
+      else
+        state.focus = Table.insertLine(
+          state.table,
+          line,
+          {x: state.focus.x, y: 'y' in state.focus ? state.focus.y + 1 : 0},
+          state.idFactory
+        )
     },
+    clearHistoryAction() {},
     editLineAction(
       state,
-      {payload}: PayloadAction<{index: LineIndex; text: string}>
+      {payload}: PayloadAction<{lineIndex: LineIndex; text: string}>
     ) {
-      const line = NonNull(state.table.lines[payload.index.x])
+      const line = Table.getLine(state.table, payload.lineIndex)
       Line.setText(line, payload.text)
       // The state of line is changed. It is assumed to be the focus.
-      state.focus = payload.index
+      state.focus = payload.lineIndex
       state.invalidated = true
     },
-    focusLineAction(state, {payload}: PayloadAction<LineIndex | undefined>) {
+    focusAction(
+      state,
+      {payload}: PayloadAction<LineIndex | GroupIndex | undefined>
+    ) {
       state.focus = payload
     },
     newFileAction(state) {
@@ -98,31 +110,88 @@ export const tableSlice = createSlice({
       state.table = Table()
       // [todo]: cancel loading.
     },
+    removeGroupAction(
+      state,
+      {
+        payload
+      }: PayloadAction<{
+        lineIndex: GroupIndex
+        nextFocus: 'prev' | 'next' | 'retain'
+      }>
+    ) {
+      Table.removeGroup(state.table, payload.lineIndex.x)
+      state.invalidated = true
+      if (payload.nextFocus === 'retain') {
+        state.focus =
+          state.focus?.id === payload.lineIndex.id ? undefined : state.focus
+      } else {
+        const x = Math.max(
+          0,
+          Math.min(
+            payload.lineIndex.x + (payload.nextFocus === 'prev' ? -1 : 0),
+            state.table.groups.length - 1
+          )
+        )
+        const group = state.table.groups[x]
+        const y = Math.max(
+          0,
+          Math.min(
+            payload.nextFocus === 'prev' ? Number.MAX_SAFE_INTEGER : 0,
+            (group?.lines.length ?? 1) - 1
+          )
+        )
+        if (group?.lines[y]?.id == null) {
+          const id = group?.id
+          state.focus = id == null ? undefined : {id, x}
+        } else {
+          const id = group?.lines[y]?.id
+          state.focus = id == null ? undefined : {id, x, y}
+        }
+      }
+    },
     removeLineAction(
       state,
       {
         payload
       }: PayloadAction<{
-        index: LineIndex
+        lineIndex: LineIndex
         nextFocus: 'prev' | 'next' | 'retain'
       }>
     ) {
-      Table.removeLine(state.table, payload.index.id)
+      Table.removeLine(state.table, payload.lineIndex)
       state.invalidated = true
       if (payload.nextFocus === 'retain') {
         state.focus =
-          state.focus?.id === payload.index.id ? undefined : state.focus
+          state.focus?.id === payload.lineIndex.id ? undefined : state.focus
       } else {
-        const nextIndex = Math.max(
+        const group = Table.getGroup(state.table, payload.lineIndex)
+        const oldY = payload.lineIndex.y
+        const x =
+          (oldY === 0 && payload.nextFocus === 'prev') ||
+          (oldY === group.lines.length && payload.nextFocus === 'next')
+            ? Math.max(
+                0,
+                Math.min(
+                  payload.lineIndex.x + (payload.nextFocus === 'prev' ? -1 : 0),
+                  state.table.groups.length - 1
+                )
+              )
+            : payload.lineIndex.x
+        const y = Math.max(
           0,
           Math.min(
-            payload.index.x + (payload.nextFocus === 'prev' ? -1 : 0),
-            state.table.lines.length - 1
+            oldY == null ? 0 : oldY + (payload.nextFocus === 'prev' ? -1 : 0),
+            (state.table.groups[x]?.lines.length ?? 1) - 1
           )
         )
-        const nextLine = state.table.lines[nextIndex]
-        state.focus =
-          nextLine == null ? undefined : {id: nextLine.id, x: nextIndex}
+
+        if (group?.lines[y]?.id == null) {
+          const id = group?.id
+          state.focus = id == null ? undefined : {id, x}
+        } else {
+          const id = group?.lines[y]?.id
+          state.focus = id == null ? undefined : {id, x, y}
+        }
       }
     },
     saveFileAction(state, {payload}: PayloadAction<string | undefined>) {
@@ -153,11 +222,13 @@ export const tableSlice = createSlice({
 })
 
 export const {
-  addDividerAction,
   addDraftAction,
+  addGroupAction,
+  clearHistoryAction,
   editLineAction,
-  focusLineAction,
+  focusAction,
   newFileAction,
+  removeGroupAction,
   removeLineAction,
   saveFileAction
 } = tableSlice.actions

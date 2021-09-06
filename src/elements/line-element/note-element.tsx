@@ -1,16 +1,16 @@
 import type {Line} from '../../line/line'
 import type React from 'react'
+import type {XY} from '../../math/xy'
 
 import {LineTextElement} from '../line-element/line-text-element'
-import {useCallback, useMemo} from 'react'
+import {useCallback} from 'react'
 
 import './note-element.css'
 
-export type NoteProps = Readonly<{line: Readonly<Line>; x: number}>
+export type NoteProps = Readonly<{line: Readonly<Line>; xy: Readonly<XY>}>
 
 /** A sticky note. */
-export function NoteElement({line, x}: NoteProps): JSX.Element {
-  const className = useMemo(() => `note note--${line.state}`, [line.state])
+export function NoteElement({line, xy}: NoteProps): JSX.Element {
   const onFocusCapture = useCallback(
     (ev: React.FocusEvent<HTMLElementTagNameMap['aside']>) =>
       // Smooth scroll into view.
@@ -18,8 +18,8 @@ export function NoteElement({line, x}: NoteProps): JSX.Element {
     []
   )
   return (
-    <aside className={className} onFocusCapture={onFocusCapture}>
-      <LineTextElement line={line} x={x} />
+    <aside className='note' onFocusCapture={onFocusCapture}>
+      <LineTextElement line={line} xy={xy} />
     </aside>
   )
 }

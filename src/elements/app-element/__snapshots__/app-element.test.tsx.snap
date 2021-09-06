@@ -57,7 +57,7 @@ exports[`matches snapshot 1`] = `
                 <button
                   accesskey="|"
                   class="buttonish "
-                  title="Add empty line [alt–|]."
+                  title="Add group [alt–|]."
                 >
                   <img
                     alt=""
@@ -65,14 +65,14 @@ exports[`matches snapshot 1`] = `
                     decoding="sync"
                     height="20"
                     loading="eager"
-                    src="add-divider-icon.svg"
+                    src="add-group-icon.svg"
                     width="20"
                   />
                 </button>
                 <label
                   class="icon-buttonish__label "
                 >
-                  Divide
+                  Group
                 </label>
               </div>
             </li>
@@ -307,9 +307,13 @@ exports[`matches snapshot 1`] = `
   <main
     class="app__main"
   >
-    <ul
-      class="list table"
-    />
+    <article
+      class="table"
+    >
+      <ul
+        class="list table__list"
+      />
+    </article>
   </main>
 </div>
 `;

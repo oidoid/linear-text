@@ -9,10 +9,9 @@
   --text-line-padding-top: var(--min-press-size);
 
   /* Add some spacing for distinction and the focus box-shadow. */
-  margin-top: 2px;
-  margin-right: 2px;
-  margin-bottom: 2px;
-  margin-left: 2px;
+  margin-right: var(--note-margin-horizontal);
+  margin-bottom: 4px;
+  margin-left: var(--note-margin-horizontal);
 
   /* Notes are pretty thin and translucent as is the ink. */
   color: var(--shade-black);
@@ -23,10 +22,8 @@
 
   /* Show a pointing finger, not a cursor. */
   cursor: pointer;
-}
 
-.note:not(.note--divider) {
-  width: 75mm;
+  width: var(--note-width);
 
   /* The corners are rounded. */
   border-radius: 1px 3px / 2px 0px;
@@ -45,7 +42,7 @@
   box-shadow: var(--box-shadow-bottom);
 }
 
-.note:focus-within:not(.note--divider) {
+.note:focus-within {
   /* Raise above menuing. */
   z-index: var(--z-index-focused-line);
   /* Outline the note like card UI and elevate dramatically. */
@@ -59,27 +56,4 @@
   top: 0;
   width: 100%;
   height: var(--min-press-size);
-}
-
-.note--divider {
-  width: 16px;
-  height: 100%;
-
-  /* Width changes on focus and hover states. Animate the transition. */
-  transition-delay: 0.2s;
-  transition-duration: 0.3s;
-  transition-property: width;
-
-  border-width: var(--border-width);
-  border-radius: var(--border-radius);
-  border-style: dashed;
-  border-color: transparent;
-}
-
-.note--divider:hover,
-.note--divider:focus-within {
-  /* Show a dashed outline on hover if the card isn't already emphasized due to
-     focus. */
-  border-color: var(--color-dark-grey);
-  width: 32px;
 }

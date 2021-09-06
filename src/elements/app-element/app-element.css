@@ -15,6 +15,9 @@
 }
 
 .app__main {
+  /* Always fill available space. */
+  flex-grow: 1;
+
   /* Contents scroll as needed. */
   overflow: auto;
 }

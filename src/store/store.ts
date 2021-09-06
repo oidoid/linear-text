@@ -3,20 +3,20 @@ import {tableSlice} from './table-slice/table-slice'
 import undoable, {excludeAction, UndoableOptions} from 'redux-undo'
 
 const undoConfig: Readonly<UndoableOptions> = Object.freeze({
-  clearHistoryType: [
-    tableSlice.actions.newFileAction.type,
-    tableSlice.actions.saveFileAction.type
-  ],
+  clearHistoryType: [tableSlice.actions.clearHistoryAction.type],
   filter: excludeAction([
-    tableSlice.actions.addDividerAction.type,
     tableSlice.actions.addDraftAction.type,
-    tableSlice.actions.focusLineAction.type
+    tableSlice.actions.focusAction.type
   ])
 })
 
-export const store = configureStore({
-  reducer: {table: undoable(tableSlice.reducer, undoConfig)}
-})
+export function Store() {
+  return configureStore({
+    reducer: {table: undoable(tableSlice.reducer, undoConfig)}
+  })
+}
+
+export const store = Store()
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

@@ -9,7 +9,6 @@
   --shade-grey: rgba(0, 0, 0, 0.3);
   --shade-black: rgba(0, 0, 0, 0.875);
   --shade-dark-shadow: rgba(0, 0, 0, 0.25);
-  --shade-half-black: rgba(0, 0, 0, 0.5);
   --shade-shadow: rgba(0, 0, 0, 0.125);
   --shade-yellow: rgba(255, 255, 200, 0.95);
   --tint-light-white: #fff2;
@@ -38,6 +37,9 @@
   --box-shadow-bottom: 1px 1px 1px 0.5px var(--shade-shadow);
 
   --breakpoint: 800px;
+
+  --note-width: 75mm;
+  --note-margin-horizontal: 2px;
 }
 
 body {
@@ -60,19 +62,19 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 2px;
+  border-radius: 8px;
   border-style: solid;
   border-width: 4px;
-  border-color: var(--shade-dark-shadow);
+  border-color: var(--shade-shadow);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 2px;
+  border-radius: 8px;
   border-style: solid;
   border-width: 4px;
-  border-color: var(--shade-dark-shadow);
+  border-color: var(--shade-shadow);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  border-color: var(--shade-half-black);
+  border-color: var(--shade-dark-shadow);
 }

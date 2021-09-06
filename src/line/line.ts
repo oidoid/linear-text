@@ -3,18 +3,6 @@ import type {ID} from '../id/id'
 import {IDFactory, makeID} from '../id/id-factory'
 import {assert} from '../utils/assert'
 
-/**
- * Interim visual and behavioral representation. Do not serialize. State is used
- * to preserve user intent prior to text mutation.
- *
- * When a line is created from a file, the state intent (divider or note) can be
- * accurately determined by whether or not the line is empty. However, from the
- * UI, a line may be created with the intent to become a note. Without an
- * intermediate draft state, the line would immediately snap to a divider visual
- * representation which is a jarring effect.
- */
-export type LineState = 'divider' | 'draft' | 'note'
-
 /** A line of text and its application state modeling. */
 export type Line = {
   /**
@@ -23,9 +11,6 @@ export type Line = {
    * serialized in the store.
    */
   readonly id: ID
-
-  /** State is managed internally. **Do not manually set.** */
-  state: LineState
 
   /**
    * The text to be shown, possibly mini-Markdown or empty. Never contains
@@ -36,27 +21,25 @@ export type Line = {
 }
 
 /** Creates a new line. */
-export function Line(
-  factory: IDFactory,
-  draft: boolean | undefined = false,
-  text: string | undefined = ''
-): Line {
+export function Line(factory: IDFactory, text: string | undefined = ''): Line {
   assertNoLineBreak(text)
-  return {
-    id: makeID(factory),
-    state: draft ? 'draft' : text === '' ? 'divider' : 'note',
-    text
-  }
+  return {id: makeID(factory), text}
 }
 
-/** Updates the text and state. */
+/** Validates and updates the tet. */
 Line.setText = (line: Line, text: string): void => {
   assertNoLineBreak(text)
   line.text = text
-  line.state =
-    text === '' ? (line.state === 'divider' ? 'divider' : 'draft') : 'note'
 }
 
+/**
+ * An empty line is considered a draft. The UI only permits one draft to exist
+ * at any time. Empty lines created in the GUI would be parsed as groups so only
+ * nonempty lines are persisted.
+ */
+Line.isEmpty = (line: Readonly<Line>): boolean => line.text === ''
+
+// [to-do]: Instead of asserting, replace all.
 function assertNoLineBreak(text: string): void {
   assert(!/\r?\n/.test(text), 'Newlines are forbidden in text.')
 }

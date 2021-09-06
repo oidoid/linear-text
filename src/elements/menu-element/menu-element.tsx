@@ -2,11 +2,13 @@ import type {FileSystemHandle} from 'browser-fs-access'
 
 import {ActionCreators} from 'redux-undo'
 import {
-  addDividerAction,
+  addGroupAction,
   addDraftAction,
+  clearHistoryAction,
   loadTableFileAsync,
   newFileAction,
   removeLineAction,
+  removeGroupAction,
   saveFileAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
@@ -20,7 +22,7 @@ import {t} from '@lingui/macro'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 import {useCallback, useState} from 'react'
 
-import addDividerIcon from '../../icons/add-divider-icon.svg'
+import addGroupIcon from '../../icons/add-group-icon.svg'
 import addLineIcon from '../../icons/add-line-icon.svg'
 import helpIcon from '../../icons/help-icon.svg'
 import loadFileIcon from '../../icons/load-file-icon.svg'
@@ -54,18 +56,28 @@ function MenuElement(): JSX.Element {
     () => dispatch(addDraftAction()),
     [dispatch]
   )
-  const onUndoClick = useCallback(() => {
-    dispatch(ActionCreators.undo())
-  }, [dispatch])
-  const onRedoClick = useCallback(() => {
-    dispatch(ActionCreators.redo())
-  }, [dispatch])
-  const onAddDividerClick = useCallback(() => {
-    dispatch(addDividerAction())
-  }, [dispatch])
-  const onRemoveLineClick = useCallback(() => {
+  const onUndoClick = useCallback(
+    () => dispatch(ActionCreators.undo()),
+    [dispatch]
+  )
+  const onRedoClick = useCallback(
+    () => dispatch(ActionCreators.redo()),
+    [dispatch]
+  )
+  const onAddGroupClick = useCallback(
+    () => dispatch(addGroupAction()),
+    [dispatch]
+  )
+  const onRemoveClick = useCallback(() => {
     if (tableState.focus == null) return
-    dispatch(removeLineAction({index: tableState.focus, nextFocus: 'prev'}))
+    if ('y' in tableState.focus)
+      dispatch(
+        removeLineAction({lineIndex: tableState.focus, nextFocus: 'next'})
+      )
+    else
+      dispatch(
+        removeGroupAction({lineIndex: tableState.focus, nextFocus: 'next'})
+      )
   }, [dispatch, tableState.focus])
   const save = useCallback(
     async (fileHandle: FileSystemHandle | undefined) => {
@@ -103,6 +115,7 @@ function MenuElement(): JSX.Element {
   const onNewClick = useCallback(() => {
     setFileHandle(undefined)
     dispatch(newFileAction())
+    dispatch(clearHistoryAction())
   }, [dispatch])
 
   const entries = [
@@ -114,16 +127,17 @@ function MenuElement(): JSX.Element {
       title: t`button-add-line__title`
     },
     {
-      accessKey: t`button-add-divider__access-key`,
-      label: t`button-add-divider__label`,
-      onClick: onAddDividerClick,
-      src: addDividerIcon,
-      title: t`button-add-divider__title`
+      accessKey: t`button-add-group__access-key`,
+      label: t`button-add-group__label`,
+      onClick: onAddGroupClick,
+      src: addGroupIcon,
+      title: t`button-add-group__title`
     },
     {
+      // [to-do]: This handles lines and groups. Fix or update i18n.
       accessKey: t`button-remove-line__access-key`,
       label: t`button-remove-line__label`,
-      onClick: onRemoveLineClick,
+      onClick: onRemoveClick,
       src: removeLineIcon,
       title: t`button-remove-line__title`
     },
