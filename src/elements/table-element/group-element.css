@@ -9,10 +9,6 @@
   scroll-snap-type: y proximity;
   scroll-padding-top: 2px;
 
-  /* Keep some spacing between groups. */
-  margin-left: calc(var(--spacing) / 2);
-  margin-right: calc(var(--spacing) / 2);
-
   /* Make space for empty group borders. */
   border-width: var(--border-width);
   border-radius: var(--border-radius-formal);
