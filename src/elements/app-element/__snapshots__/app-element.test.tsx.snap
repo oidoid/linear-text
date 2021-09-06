@@ -295,7 +295,7 @@ exports[`matches snapshot 1`] = `
                 <label
                   class="icon-buttonish__label "
                 >
-                  Help
+                  Help…
                 </label>
               </div>
             </li>
