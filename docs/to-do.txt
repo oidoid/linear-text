@@ -3,3 +3,10 @@ internal / extenral link components
 Scrub the repo.
 Identify top 3 unpleasant experiences and fix them.
 Add cartridge things.
+Document outlining (just the first entry of every list + linking)
+List collapsing (horizontally)
+noref link
+Review commercial alternative UIs but keep it as simple as possible and line-based. Keyboard navigation is important but so is cursor/UI/non-text editing experience.
+Reload file button / poll file for changes? maybe electron can actually detect
+Plain text editor in-app experience
+

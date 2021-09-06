@@ -9,3 +9,5 @@ What to do about async loading and undo?
   https://github.com/ForbesLindesay/redux-optimist
 Add auto-backup to LocalStorage.
 Add long click to drag, click to edit, longer click to change type?
+Better mid-group splitting
+Long press
