@@ -4,6 +4,13 @@
 
   /* Absolutely positioned children are relative this container. */
   position: relative;
+
+  /* Add a little border transition to make it standout on focus. */
+  transition: border 100ms ease-in-out, background 100ms ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--border-radius-friendly);
+  border-color: #0000;
 }
 
 .line-text::after {
@@ -41,15 +48,10 @@
   resize: none;
   overflow: hidden;
 
-  /* Disable the stock white background. */
-  background: none;
-
-  /* Disable the stock border. */
+  /* Disable the stock outline, border, and white background. */
+  outline: none;
   border-width: 0;
-
-  /* Add a little outline transition to make it standout on focus. */
-  outline: 1px solid transparent;
-  transition: outline 100ms ease-in-out, background 100ms ease-in-out;
+  background: none;
 
   /* Inherit font and coloring. */
   font: inherit;
@@ -64,9 +66,11 @@
 }
 
 .line-text__text:focus {
-  background: var(--tint-light-white);
-  outline-color: var(--tint-half-white);
-
   /* [to-do] This doesn't seem to be working. */
   user-select: contain;
+}
+
+.line-text:focus-within {
+  border-color: var(--tint-half-white);
+  background-color: var(--tint-light-white);
 }

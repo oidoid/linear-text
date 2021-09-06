@@ -10,6 +10,7 @@
 
   /* Add some spacing for distinction and the focus box-shadow. */
   margin-right: var(--note-margin-horizontal);
+  margin-top: 2px;
   margin-bottom: 4px;
   margin-left: var(--note-margin-horizontal);
 
