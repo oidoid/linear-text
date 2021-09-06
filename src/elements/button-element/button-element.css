@@ -27,7 +27,7 @@
   border-width: 0.5px;
   border-style: outset;
   border-color: var(--color-dark-grey);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-formal);
 
   /* Specify the background. */
   background-color: var(--color-grey);

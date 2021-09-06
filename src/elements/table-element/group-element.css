@@ -15,7 +15,7 @@
 
   /* Make space for empty group borders. */
   border-width: var(--border-width);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-formal);
   border-style: dashed;
   border-color: transparent;
 

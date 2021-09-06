@@ -18,7 +18,8 @@
   --card-border-width: 0.5px;
   --card-padding: var(--spacing);
   --card-margin: var(--spacing);
-  --border-radius: 2px;
+  --border-radius-formal: 2px;
+  --border-radius-friendly: 8px;
   --border-width: 1px;
 
   --button-margin: 2px;
@@ -62,14 +63,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 8px;
+  border-radius: var(--border-radius-friendly);
   border-style: solid;
   border-width: 4px;
   border-color: var(--shade-shadow);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+  border-radius: var(--border-radius-friendly);
   border-style: solid;
   border-width: 4px;
   border-color: var(--shade-shadow);

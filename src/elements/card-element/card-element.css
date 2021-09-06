@@ -13,7 +13,7 @@
   margin-left: var(--card-margin);
 
   background-color: var(--card-background-color, var(--color-white));
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-formal);
 
   box-shadow: var(--box-shadow);
 

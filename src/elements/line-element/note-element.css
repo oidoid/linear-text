@@ -16,10 +16,6 @@
   /* Notes are pretty thin and translucent as is the ink. */
   color: var(--shade-black);
 
-  /* Handwriting. */
-  font-family: Brush Script MT, cursive;
-  font-size: 16px;
-
   /* Show a pointing finger, not a cursor. */
   cursor: pointer;
 
@@ -27,6 +23,7 @@
 
   /* The corners are rounded. */
   border-radius: 1px 3px / 2px 0px;
+  border-radius: var(--border-radius-friendly);
 
   /* Notes are pretty thin and translucent. */
   background-color: var(--note--background-color, var(--shade-yellow));
