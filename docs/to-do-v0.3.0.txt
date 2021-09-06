@@ -1,3 +1,0 @@
-Publish Linear Text v0.3.0: Goodbye Tabulation, Hello Groups
-
-- Test, publish, update release notes.

@@ -3,7 +3,7 @@
 Versions and bullets are arranged chronologically from latest to oldest. Future
 releases are planned in [docs/to-do-\*.txt](.).
 
-## v0.3.0 (unreleased)
+## v0.3.0
 
 - Improved grouping. Dividers are replaced with groups and height is limited to
   space available.
