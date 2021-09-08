@@ -9,4 +9,4 @@ noref link
 Review commercial alternative UIs but keep it as simple as possible and line-based. Keyboard navigation is important but so is cursor/UI/non-text editing experience.
 Reload file button / poll file for changes? maybe electron can actually detect
 Plain text editor in-app experience
-
+Rename note-element to text-element?

@@ -12,3 +12,4 @@ Add image line support for remote and file scheme images. There are many nice wa
   https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath
   https://github.com/GoogleChromeLabs/browser-fs-access (open direcotries with webkitRelativePath) 
 Consider less skeuomorphic notes that are more compact, less distracting, and with strong visual coherence to the images. Like an editor.
+Better cross-group keyboard support.
