@@ -1,6 +1,6 @@
 # 📝 Linear Text
 
-Linear Text is a graphical line editor for plain text. See
+Linear Text is a graphical line-oriented text editor. See
 [lineartext.com](https://lineartext.com) and in-editor help for user-facing
 documentation.
 

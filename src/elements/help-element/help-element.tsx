@@ -24,7 +24,7 @@ function HelpElement(): JSX.Element {
   return (
     <article>
       <section>
-        <p>Linear Text is a graphical line editor for plain text.</p>
+        <p>Linear Text is a graphical line-oriented text editor.</p>
 
         <ul>
           <li>
