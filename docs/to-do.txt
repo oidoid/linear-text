@@ -10,3 +10,4 @@ Review commercial alternative UIs but keep it as simple as possible and line-bas
 Reload file button / poll file for changes? maybe electron can actually detect
 Plain text editor in-app experience
 Rename note-element to text-element?
+Make columns collapsible.
