@@ -1,4 +1,4 @@
-import type {FileWithHandle} from 'browser-fs-access'
+import type {FileAndHandle} from '../../utils/file-util'
 import type {GroupIndex, LineIndex} from '../../table/line-index'
 import type {RootState} from '../store'
 
@@ -39,13 +39,13 @@ export const initTableState: TableState = Object.freeze({
 // typically used to make async requests.
 export const loadTableFileAsync = createAsyncThunk<
   {filename: string; idFactory: Readonly<IDFactory>; table: Table},
-  {fileWithHandle: Readonly<FileWithHandle>; idFactory: Readonly<IDFactory>},
+  {fileAndHandle: Readonly<FileAndHandle>; idFactory: Readonly<IDFactory>},
   {state: RootState}
->('table/loadTableFileAsync', async ({fileWithHandle, idFactory}) => {
+>('table/loadTableFileAsync', async ({fileAndHandle, idFactory}) => {
   // The value we return becomes the `fulfilled` action payload
   const factory = IDFactory(idFactory)
-  const table = await parseTable(factory, fileWithHandle)
-  return {filename: fileWithHandle.name, idFactory: factory, table}
+  const table = await parseTable(factory, fileAndHandle[0])
+  return {filename: fileAndHandle[0].name, idFactory: factory, table}
 })
 
 export const tableSlice = createSlice({

@@ -1,5 +1,3 @@
-import type {FileSystemHandle} from 'browser-fs-access'
-
 import {ActionCreators} from 'redux-undo'
 import {
   addGroupAction,
@@ -13,14 +11,20 @@ import {
   selectTableState
 } from '../../store/table-slice/table-slice'
 import {CardElement} from '../card-element/card-element'
+import {
+  FileAndHandle,
+  isFileModified,
+  openFile,
+  reopenFile,
+  saveFile
+} from '../../utils/file-util'
 import {HelpDialogCardElement} from '../help-element/help-element'
 import {IconButtonElement} from '../button-element/icon-button-element'
 import {ListElement} from '../list-element/list-element'
-import {openFile, saveFile} from '../../utils/file-util'
 import {serializeTable} from '../../table-parser/table-serializer'
 import {t} from '@lingui/macro'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
-import {useCallback, useState} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 
 import addGroupIcon from '../../icons/add-group-icon.svg'
 import addLineIcon from '../../icons/add-line-icon.svg'
@@ -50,7 +54,7 @@ function MenuElement(): JSX.Element {
   const tableState = useAppSelector(selectTableState)
   const [showHelp, setShowHelp] = useState(false)
   const toggleHelp = useCallback(() => setShowHelp(showHelp => !showHelp), [])
-  const [fileHandle, setFileHandle] = useState<FileSystemHandle>()
+  const fileAndHandle = useRef<FileAndHandle>()
 
   const onAddLineClick = useCallback(
     () => dispatch(addDraftAction()),
@@ -80,40 +84,64 @@ function MenuElement(): JSX.Element {
       )
   }, [dispatch, tableState.focus])
   const save = useCallback(
-    async (fileHandle: FileSystemHandle | undefined) => {
+    async (newFileAndHandle: FileAndHandle | undefined) => {
       const doc = serializeTable(tableState.table)
-      let handle
       try {
-        handle = await saveFile(fileHandle, doc)
+        fileAndHandle.current = await saveFile(newFileAndHandle, doc)
       } catch (err) {
         if (isCanceledByUser(err)) return
         throw err
       }
-      setFileHandle(handle)
-      dispatch(saveFileAction(handle.name))
+      dispatch(saveFileAction(fileAndHandle.current?.[0].name))
     },
     [dispatch, tableState.table]
   )
   const onSaveClick = useCallback(
-    async () => save(fileHandle),
-    [fileHandle, save]
+    async () => save(fileAndHandle.current),
+    [save]
   )
   const onSaveAs = useCallback(() => save(undefined), [save])
+  const load = useCallback(
+    async (newFileAndHandle: FileAndHandle) => {
+      fileAndHandle.current = newFileAndHandle
+      dispatch(
+        loadTableFileAsync({
+          fileAndHandle: newFileAndHandle,
+          idFactory: tableState.idFactory
+        })
+      )
+    },
+    [dispatch, tableState.idFactory]
+  )
   const onLoadClick = useCallback(async () => {
-    let fileWithHandle
+    let newFileAndHandle
     try {
-      fileWithHandle = await openFile()
+      newFileAndHandle = await openFile()
     } catch (err) {
       if (isCanceledByUser(err)) return
       throw err
     }
-    setFileHandle(fileWithHandle.handle)
-    dispatch(
-      loadTableFileAsync({fileWithHandle, idFactory: tableState.idFactory})
+    load(newFileAndHandle)
+  }, [load])
+  const onFocus = useCallback(async () => {
+    if (tableState.invalidated) return
+    if (fileAndHandle.current == null) return
+
+    // If we have a handle, we can check the timestamp of the current snapshot
+    // against a new opened snapshot to determine whether to reload.
+    const newFileAndHandle = await reopenFile(fileAndHandle.current)
+    if (
+      newFileAndHandle != null &&
+      !isFileModified(fileAndHandle.current, newFileAndHandle)
     )
-  }, [dispatch, tableState.idFactory])
+      return
+
+    // If we don't have a handle, snapshots are probably unsupported so just
+    // reload the current file.
+    load(newFileAndHandle == null ? fileAndHandle.current : newFileAndHandle)
+  }, [load, tableState.invalidated])
   const onNewClick = useCallback(() => {
-    setFileHandle(undefined)
+    fileAndHandle.current = undefined
     dispatch(newFileAction())
     dispatch(clearHistoryAction())
   }, [dispatch])
@@ -190,6 +218,11 @@ function MenuElement(): JSX.Element {
       title: t`button-help__title`
     }
   ]
+
+  useEffect(() => {
+    window.addEventListener('focus', onFocus)
+    return () => window.removeEventListener('focus', onFocus)
+  }, [onFocus])
 
   return (
     <>

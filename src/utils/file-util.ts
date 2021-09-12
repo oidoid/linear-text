@@ -1,35 +1,51 @@
-import {
-  fileOpen,
-  fileSave,
-  FileSystemHandle,
-  FileWithHandle
-} from 'browser-fs-access'
+import {fileOpen, fileSave, FileSystemHandle} from 'browser-fs-access'
 import {t} from '@lingui/macro'
 
-export const defaultFileExtension: string = '.txt'
-export const defaultFilename: string = `linear-text${defaultFileExtension}`
+export type FileSystemFileHandle = {getFile(): Promise<File>} & FileSystemHandle
+export type FileAndHandle = [File, FileSystemFileHandle | undefined]
 
+export const defaultFileExtension: string = '.text'
+export const defaultFilename: string = `linear-text${defaultFileExtension}`
 export const defaultMimeType: string = 'text/plain'
 
-export function openFile(): Promise<FileWithHandle> {
-  return fileOpen({
+export async function openFile(): Promise<FileAndHandle> {
+  const fileWithHandle = await fileOpen({
     mimeTypes: [defaultMimeType],
     extensions: [defaultFileExtension],
     description: t`dropdown-file-type__description`
   })
+  return [
+    fileWithHandle,
+    fileWithHandle.handle as FileSystemFileHandle | undefined
+  ]
 }
 
-export function saveFile(
-  handle: Readonly<FileSystemHandle> | undefined,
+export async function reopenFile([, handle]: FileAndHandle): Promise<
+  FileAndHandle | undefined
+> {
+  return handle == null ? undefined : [await handle.getFile(), handle]
+}
+
+export function isFileModified(
+  [before]: Readonly<FileAndHandle>,
+  [after]: Readonly<FileAndHandle>
+): boolean {
+  return before.lastModified < after.lastModified
+}
+
+export async function saveFile(
+  fileAndHandle: FileAndHandle | undefined,
   doc: string
-): Promise<FileSystemHandle> {
-  return fileSave(
+): Promise<FileAndHandle | undefined> {
+  const newHandle = (await fileSave(
     new Blob([doc], {type: defaultMimeType}),
     {
-      fileName: handle?.name ?? defaultFilename,
+      fileName: fileAndHandle?.[0].name ?? defaultFilename,
       extensions: [defaultFileExtension]
     },
-    handle,
-    handle != null
-  )
+    fileAndHandle?.[1],
+    fileAndHandle?.[1] != null
+  )) as FileSystemFileHandle | undefined
+  if (newHandle == null) return fileAndHandle
+  return [await newHandle.getFile(), newHandle]
 }
