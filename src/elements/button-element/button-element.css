@@ -23,15 +23,6 @@
   /* Indicate button interactivity with a hand icon. */
   cursor: pointer;
 
-  /* Buttons slightly extrude with rounded corners. */
-  border-width: 0.5px;
-  border-style: outset;
-  border-color: var(--color-dark-grey);
-  border-radius: var(--border-radius-formal);
-
-  /* Specify the background. */
-  background-color: var(--color-grey);
-
   /* Inherit font. */
   font-family: inherit;
   font-size: inherit;
@@ -58,10 +49,23 @@
 
   /* Clear blue wash when interacting on mobile. */
   -webkit-tap-highlight-color: transparent;
+
+  /* Buttons have rounded corners, thin grey borders, and slightly extrude. */
+  border-width: 0.5px;
+  border-style: outset;
+  border-color: var(--color-dark-grey);
+  border-radius: var(--border-radius-formal);
+
+  background-color: var(--color-grey);
 }
 
-.buttonish:active,
+.buttonish[disabled] {
+  /* Fade disabled button. */
+  opacity: 0.5;
+}
+
+.buttonish:not([disabled]):active,
 /* --active state can be held too. */
-.buttonish--active {
+.buttonish--active:not([disabled]) {
   border-style: inset;
 }

@@ -7,6 +7,7 @@ import './icon-button-element.css'
 
 export type IconButtonProps = Readonly<{
   accessKey?: string | undefined
+  disabled?: boolean
   label: string
   onClick: MouseEventHandler<HTMLButtonElement>
   src: string
@@ -16,6 +17,7 @@ export type IconButtonProps = Readonly<{
 
 export function IconButtonElement({
   accessKey,
+  disabled,
   label,
   onClick,
   src,
@@ -24,7 +26,12 @@ export function IconButtonElement({
 }: IconButtonProps): JSX.Element {
   return (
     <div className='icon-button'>
-      <ButtonElement accessKey={accessKey} onClick={onClick} title={title}>
+      <ButtonElement
+        accessKey={accessKey}
+        disabled={disabled}
+        onClick={onClick}
+        title={title}
+      >
         <IconElement alt='' src={src} />
       </ButtonElement>
       <label
