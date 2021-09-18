@@ -29,7 +29,10 @@
 
 .line-text,
 .line-text__text {
-  padding: var(--text-line-padding-top, 8px) 8px 8px 8px;
+  padding-top: 12px;
+  padding-right: 8px;
+  padding-bottom: 12px;
+  padding-left: 8px;
 
   width: var(--line-text--width, 100%);
   height: var(--line-text--height, 100%);
