@@ -8,8 +8,8 @@ import {
   selectTableState
 } from '../../store/table-slice/table-slice'
 import {LineElement} from '../line-element/line-element'
-import {ListElement} from '../list-element/list-element'
 import React, {useCallback, useEffect, useMemo, useRef} from 'react'
+import {UnorderedListElement} from '../list-element/list-element'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 
 import './group-element.css'
@@ -75,13 +75,13 @@ export function GroupElement({group, x}: GroupProps): JSX.Element {
       ref={rootRef}
       tabIndex={group.lines.length === 0 ? 0 : undefined}
     >
-      <ListElement className='group__list' unordered>
+      <UnorderedListElement className='group__list'>
         {group.lines.map((line, y) => (
           <li className='group__list-item' key={line.id}>
             <LineElement line={line} xy={{x, y}} />
           </li>
         ))}
-      </ListElement>
+      </UnorderedListElement>
     </section>
   )
 }

@@ -20,9 +20,9 @@ import {
 } from '../../utils/file-util'
 import {HelpDialogCardElement} from '../help-element/help-element'
 import {IconButtonElement} from '../button-element/icon-button-element'
-import {ListElement} from '../list-element/list-element'
 import {serializeTable} from '../../table-parser/table-serializer'
 import {t} from '@lingui/macro'
+import {UnorderedListElement} from '../list-element/list-element'
 import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 import {useCallback, useEffect, useRef, useState} from 'react'
 
@@ -227,7 +227,7 @@ function MenuElement(): JSX.Element {
   return (
     <>
       <nav className='menu'>
-        <ListElement className='menu__list' unordered>
+        <UnorderedListElement className='menu__list'>
           {entries.map((entry, index) => (
             <li className='menu__list-item' key={index}>
               <IconButtonElement
@@ -239,7 +239,7 @@ function MenuElement(): JSX.Element {
               />
             </li>
           ))}
-        </ListElement>
+        </UnorderedListElement>
       </nav>
       {showHelp && <HelpDialogCardElement onDismissClick={toggleHelp} />}
     </>

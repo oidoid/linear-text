@@ -1,20 +1,34 @@
-import type {ReactElement} from 'react'
+import {ForwardedRef, forwardRef, ReactElement} from 'react'
 
 import './list-element.css'
 
-export type ListProps = Readonly<
-  {
-    children: readonly ReactElement<HTMLLIElement>[]
-    className?: string | undefined
-  } & ({ordered: true} | {unordered: true})
->
+export type ListProps = Readonly<{
+  children: readonly ReactElement<HTMLLIElement>[]
+  className?: string | undefined
+}>
 
-export function ListElement({
-  children,
-  className = '',
-  ...props
-}: ListProps): JSX.Element {
-  if ('ordered' in props)
-    return <ol className={`list ${className}`}>{children}</ol>
-  return <ul className={`list ${className}`}>{children}</ul>
-}
+export const OrderedListElement = forwardRef(
+  (
+    {children, className = ''}: ListProps,
+    ref: ForwardedRef<HTMLOListElement>
+  ): ReactElement<HTMLOListElement> => {
+    return (
+      <ol className={`list ${className}`} ref={ref}>
+        {children}
+      </ol>
+    )
+  }
+)
+
+export const UnorderedListElement = forwardRef(
+  (
+    {children, className = ''}: ListProps,
+    ref: ForwardedRef<HTMLUListElement>
+  ): ReactElement<HTMLUListElement> => {
+    return (
+      <ul className={`list ${className}`} ref={ref}>
+        {children}
+      </ul>
+    )
+  }
+)
