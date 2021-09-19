@@ -8,6 +8,7 @@ import {IDFactory} from '../../id/id-factory'
 import {Line} from '../../line/line'
 import {parseTable} from '../../table-parser/table-parser'
 import {Table} from '../../table/table'
+import type {XY} from '../../math/xy'
 
 export type TableState = Readonly<{
   /** The loaded / saved filename, if any. */
@@ -101,6 +102,21 @@ export const tableSlice = createSlice({
       {payload}: PayloadAction<LineIndex | GroupIndex | undefined>
     ) {
       state.focus = payload
+    },
+    moveGroupAction(
+      state,
+      {payload}: PayloadAction<{from: GroupIndex; to: number}>
+    ) {
+      const group = Table.removeGroup(state.table, payload.from.x)
+      Table.insertGroup(state.table, group, payload.to)
+      state.focus = {id: group.id, x: payload.to}
+      state.invalidated = true
+    },
+    moveLineAction(state, {payload}: PayloadAction<{from: LineIndex; to: XY}>) {
+      const line = Table.removeLine(state.table, payload.from)
+      Table.insertLine(state.table, line, payload.to, state.idFactory)
+      state.focus = {id: line.id, x: payload.to.x, y: payload.to.y}
+      state.invalidated = true
     },
     newFileAction(state) {
       state.filename = undefined
@@ -227,6 +243,8 @@ export const {
   clearHistoryAction,
   editLineAction,
   focusAction,
+  moveGroupAction,
+  moveLineAction,
   newFileAction,
   removeGroupAction,
   removeLineAction,

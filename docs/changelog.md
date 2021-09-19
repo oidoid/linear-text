@@ -3,6 +3,10 @@
 Versions and bullets are arranged chronologically from latest to oldest. Future
 releases are planned in [docs/to-do-\*.txt](.).
 
+## v0.4.0
+
+Line and group dragging.
+
 ## v0.3.0
 
 - Improved grouping. Dividers are replaced with groups and height is limited to

@@ -2,39 +2,48 @@
   /* Dimensions include border and padding. */
   box-sizing: border-box;
 
-  /* Groups are fill available space and scroll their contents, snapping to the
-     top of each line (+2 px so the user can see it's really the top). */
+  /* Groups fill available space to maximize the drop area. */
   height: 100%;
-  overflow-y: auto;
-  scroll-snap-type: y proximity;
-  scroll-padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 2px;
+  margin-right: 2px;
 
   /* Make space for empty group borders. */
   border-width: var(--border-width);
-  border-radius: var(--border-radius-formal);
-  border-style: dashed;
+  border-radius: var(--border-radius-friendly);
+  border-style: solid;
   border-color: transparent;
+}
+
+.group:focus-within {
+  border-color: var(--shade-dark-shadow);
+}
+
+.group__list {
+  /* Lists flex to full height with overflow scrolling. */
+  height: 100%;
+  overflow-y: auto;
+}
+
+.group__handle {
+  /* Handles fill the space even when empty so that the group doesn't disappear.
+     min-width instead of width so that scrollbar spacing is including. */
+  min-width: calc(var(--note-width) + var(--note-margin-horizontal) * 2);
+
+  height: 32px;
+
+  border-top-right-radius: var(--border-radius-friendly);
+  border-top-left-radius: var(--border-radius-friendly);
 
   /* No standard focus outline. This is covered below. */
   outline-width: 0;
 }
 
-.group--empty:hover,
-.group--empty:focus {
-  /* Show a dashed border on hover and focus. */
-  border-color: var(--color-dark-grey);
-}
-
-.group__list {
-  /* Fix width so that size doesn't change when empty. */
-  width: calc(var(--note-width) + var(--note-margin-horizontal) * 2);
-
-  /* Additional margin for scrollbar. */
-  margin-left: 2px;
-  margin-right: 2px;
-}
-
-.group__list-item {
-  /* Snap to the top of each line. */
-  scroll-snap-align: start;
+.group:not(.group--empty) > .group__list,
+.group:hover > .group__list,
+.group:not(.group--empty) > .group__handle,
+.group:hover > .group__handle {
+  background-color: var(--shade-light-shadow);
 }

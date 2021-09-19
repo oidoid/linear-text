@@ -11,7 +11,7 @@
   --shade-dark-shadow: rgba(0, 0, 0, 0.25);
   --shade-shadow: rgba(0, 0, 0, 0.125);
   --shade-light-shadow: rgba(0, 0, 0, 0.0625);
-  --shade-yellow: rgba(255, 255, 215, 0.95);
+  --shade-yellow: rgba(250, 250, 215, 0.95);
   --tint-light-white: #fff2;
   --tint-half-white: #fff6;
 
@@ -29,6 +29,7 @@
 
   --z-index-header: 100;
   --z-index-focused-line: 1000;
+  --z-index-line-handle: 1001;
   --z-index-dialog: 10000;
 
   /* Require interactive elements large enough to be easily pressed. */
@@ -41,7 +42,7 @@
   --breakpoint: 800px;
 
   --note-width: 75mm;
-  --note-margin-horizontal: 2px;
+  --note-margin-horizontal: 4px;
 }
 
 body {

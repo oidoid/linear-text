@@ -22,7 +22,12 @@ export function Group(
 }
 
 Group.hasLine = (group: Readonly<Group>, id: ID): boolean => {
-  return group.lines.some(line => line.id === id)
+  return Group.findLine(group, id) != null
+}
+
+Group.findLine = (group: Readonly<Group>, id: ID): number | undefined => {
+  const index = group.lines.findIndex(line => line.id === id)
+  return index === -1 ? undefined : index
 }
 
 Group.appendLine = (group: Readonly<Group>, line: Line): void => {

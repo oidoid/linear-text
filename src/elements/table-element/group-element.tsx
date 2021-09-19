@@ -1,25 +1,24 @@
 import type {Group} from '../../table/group'
-import type {ID} from '../../id/id'
 
 import {
   addDraftAction,
   focusAction,
-  removeGroupAction,
-  selectTableState
+  removeGroupAction
 } from '../../store/table-slice/table-slice'
+import {Draggable, Droppable} from 'react-beautiful-dnd'
 import {LineElement} from '../line-element/line-element'
-import React, {useCallback, useEffect, useMemo, useRef} from 'react'
+import React, {useCallback, useMemo} from 'react'
 import {UnorderedListElement} from '../list-element/list-element'
-import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
+import {useAppDispatch} from '../../hooks/use-store'
 
 import './group-element.css'
 
 export type GroupProps = Readonly<{group: Group; x: number}>
 
+/** A group of lines in columnar presentation. */
 export function GroupElement({group, x}: GroupProps): JSX.Element {
   const dispatch = useAppDispatch()
   const groupIndex = useMemo(() => ({id: group.id, x}), [group.id, x])
-  const tableState = useAppSelector(selectTableState)
 
   const onClick = useCallback((ev: React.MouseEvent) => {
     ev.stopPropagation()
@@ -58,30 +57,36 @@ export function GroupElement({group, x}: GroupProps): JSX.Element {
     [dispatch, emptyGroup, groupIndex]
   )
 
-  const rootRef = useRef<HTMLElementTagNameMap['section']>(null)
-  const idRef = useRef<ID>()
-  useEffect(() => {
-    if (rootRef.current == null || tableState.focus?.id === idRef.current)
-      return
-    idRef.current = tableState.focus?.id
-    if (tableState.focus?.id === group.id) rootRef.current.focus()
-  })
   return (
-    <section
-      className={`group ${group.lines.length === 0 ? 'group--empty' : ''}`}
-      onClick={onClick}
-      onFocus={onFocus}
-      onKeyDown={onKeyDown}
-      ref={rootRef}
-      tabIndex={group.lines.length === 0 ? 0 : undefined}
-    >
-      <UnorderedListElement className='group__list'>
-        {group.lines.map((line, y) => (
-          <li className='group__list-item' key={line.id}>
-            <LineElement line={line} xy={{x, y}} />
-          </li>
-        ))}
-      </UnorderedListElement>
-    </section>
+    <Draggable draggableId={group.id.toString()} index={x}>
+      {provided => (
+        <section
+          {...(provided.draggableProps as unknown)}
+          className={`group ${group.lines.length === 0 ? 'group--empty' : ''}`}
+          onClick={onClick}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          ref={provided.innerRef}
+        >
+          <div className='group__handle' {...provided.dragHandleProps} />
+          <Droppable droppableId={group.id.toString()} type='task'>
+            {provided => (
+              <UnorderedListElement
+                {...provided.droppableProps}
+                className='group__list'
+                ref={provided.innerRef}
+              >
+                {group.lines.map((line, y) => (
+                  <li className='group__list-item' key={line.id}>
+                    <LineElement line={line} xy={{x, y}} />
+                  </li>
+                ))}
+                {provided.placeholder as any}
+              </UnorderedListElement>
+            )}
+          </Droppable>
+        </section>
+      )}
+    </Draggable>
   )
 }

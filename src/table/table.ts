@@ -47,11 +47,20 @@ Table.getGroup = (table: Readonly<Table>, lineIndex: LineIndex): Group => {
 }
 
 Table.hasGroup = (table: Readonly<Table>, id: ID): boolean => {
-  return table.groups.some(group => group.id === id)
+  return Table.findGroup(table, id) != null
 }
 
 Table.hasLine = (table: Readonly<Table>, id: ID): boolean => {
   return table.groups.some(group => Group.hasLine(group, id))
+}
+
+Table.findLineX = (table: Readonly<Table>, id: ID): number | undefined => {
+  return table.groups.findIndex(group => Group.hasLine(group, id))
+}
+
+Table.findGroup = (table: Readonly<Table>, id: ID): number | undefined => {
+  const index = table.groups.findIndex(group => group.id === id)
+  return index === -1 ? undefined : index
 }
 
 Table.appendLine = (

@@ -51,6 +51,10 @@
     "translation": "",
     "extractedComments": []
   },
+  "button-grab-line__title": {
+    "translation": "",
+    "extractedComments": []
+  },
   "button-help__access-key": {
     "translation": "",
     "extractedComments": []
@@ -72,6 +76,10 @@
     "extractedComments": []
   },
   "button-load-file__title": {
+    "translation": "",
+    "extractedComments": []
+  },
+  "button-move-line__description": {
     "translation": "",
     "extractedComments": []
   },

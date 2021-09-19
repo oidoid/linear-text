@@ -7,7 +7,19 @@ Document outlining (just the first entry of every list + linking)
 List collapsing (horizontally)
 noref link
 Review commercial alternative UIs but keep it as simple as possible and line-based. Keyboard navigation is important but so is cursor/UI/non-text editing experience.
-Reload file button / poll file for changes? maybe electron can actually detect
-Plain text editor in-app experience
 Rename note-element to text-element?
-Make columns collapsible.
+Make groups collapsible (persist visual state to local storage).
+Add middle click fling / scroll.
+Improve the tab focus behavior for lines and groups.
+Always indicate focus.
+Add group actions for deleting, moving, and collapsing groups.
+Prompt to save unsaved work on new file, load file, or page departure.
+What to do about async loading and undo?
+  https://github.com/omnidan/redux-undo/issues/203
+  https://github.com/ForbesLindesay/redux-optimist
+Add auto-backup to LocalStorage.
+Add long click to drag, click to edit, longer click to change type?
+Better mid-group splitting
+Review drag-and-drop documentation for performance improvements
+  https://github.com/atlassian/react-beautiful-dnd
+  https://egghead.io/lessons/react-persist-list-reordering-with-react-beautiful-dnd-using-the-ondragend-callback

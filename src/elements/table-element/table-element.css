@@ -8,16 +8,10 @@
   /* Arrange groups horizontally. */
   display: flex;
 
-  /* Fill available space. */
+  /* Fill available space regardless of content needs. */
   width: 100%;
   height: 100%;
 
-  /* Contents scroll and snap to each group (list item). */
+  /* Content overflows horizontally. */
   overflow-x: auto;
-  scroll-snap-type: x proximity;
-}
-
-.table__list-item {
-  /* Snap to the left of each group. */
-  scroll-snap-align: start;
 }
