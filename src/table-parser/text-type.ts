@@ -10,7 +10,7 @@ export type TextType =
   /** Finite number. */
   | 'number'
   /** True or false. */
-  | 'bool'
+  | 'boolean'
   /** Whitespace-only string. */
   | 'blank'
   /** No value. */
@@ -21,9 +21,10 @@ export function parseTextType(text: string): TextType {
   if (text === '') return 'empty'
   if (/^\s+$/.test(text)) return 'blank'
   const trimmed = text.trim()
-  if (/^(true|false)$/i.test(trimmed)) return 'bool'
+  if (/^(true|false)$/i.test(trimmed)) return 'boolean'
   if (isNumeric(trimmed)) return 'number'
-  if (/^file:\/\//.test(text)) return 'uri-file'
-  if (/^https?:\/\//.test(text)) return 'uri-http'
+  if (/^file:\/\//.test(trimmed)) return 'uri-file'
+  if (/^https?:\/\//.test(trimmed)) return 'uri-http'
+  if (/^data:/.test(trimmed)) return 'uri-data'
   return 'text'
 }
