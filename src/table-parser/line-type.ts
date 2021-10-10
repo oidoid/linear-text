@@ -1,8 +1,14 @@
+import {
+  isDataImageURIStr,
+  isDataURIStr,
+  isFileURIStr,
+  isHTTPURIStr
+} from '../uri-parser/uri-parser'
 import {isNumeric} from '../utils/string-util'
 
 /** String-encoded data type of the text value. */
 export type LineType =
-  /** URL or URI. Not a known image. */
+  /** Data URI but not a known image media type. */
   | 'uri-data'
   | 'uri-http'
   | 'uri-file'
@@ -26,40 +32,40 @@ export function parseLineType(text: string): LineType {
   const trimmed = text.trim()
   if (/^(true|false)$/i.test(trimmed)) return 'boolean'
   if (isNumeric(trimmed)) return 'number'
-  if (endsWithImageExtension(trimmed) || startsWithDataImageMIME(trimmed))
+  if (isDataImageURIStr(trimmed) || endsWithImageExtension(trimmed))
     return 'image'
-  if (/^file:\/\//.test(trimmed)) return 'uri-file'
-  if (/^https?:\/\//.test(trimmed)) return 'uri-http'
-  if (/^data:/.test(trimmed)) return 'uri-data'
+  if (isFileURIStr(trimmed)) return 'uri-file'
+  if (isHTTPURIStr(trimmed)) return 'uri-http'
+  if (isDataURIStr(trimmed)) return 'uri-data'
   return 'text'
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
-const imageExtensions: readonly string[] = Object.freeze([
-  'apng',
-  'avif',
-  'gif',
-  'jpg',
-  'jpeg',
-  'jfif',
-  'pjpeg',
-  'pjp',
-  'png',
-  'svg',
-  'webp',
-  'bmp',
-  'ico',
-  'cur',
-  'tif',
-  'tiff'
+/**
+ * Extensions of image formats likely to be supported by the image element. See
+ * https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types.
+ */
+const imageExtensions = Object.freeze([
+  '.apng',
+  '.avif',
+  '.gif',
+  '.jpg',
+  '.jpeg',
+  '.jfif',
+  '.pjpeg',
+  '.pjp',
+  '.png',
+  '.svg',
+  '.webp',
+  '.bmp',
+  '.ico',
+  '.cur',
+  '.tif',
+  '.tiff'
 ])
 
 function endsWithImageExtension(text: string): boolean {
-  return imageExtensions.some(extension =>
-    new RegExp(`.\\.${extension}$`).test(text)
-  )
-}
-
-function startsWithDataImageMIME(text: string): boolean {
-  return text.startsWith('data:image/')
+  const extIndex = imageExtensions.find(ext => text.endsWith(ext))
+  if (extIndex == null) return false
+  // Require not just an extension but a filename stem too.
+  return text.length > extIndex.length
 }

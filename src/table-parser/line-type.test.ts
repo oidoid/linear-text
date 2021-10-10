@@ -17,10 +17,10 @@ test.each([
   ['text (no period in image extension)', 'abcgif', 'text'],
   ['text (no stem)', '.gif', 'text'],
   ['image', 'abc.gif', 'image'],
-  ['image (data)', 'data:image/gif;title=Title;base64,abc=', 'image'],
+  ['image (data)', 'data:image/gif;title=Title;base64,abc', 'image'],
   ['image (http)', 'https://example.com/abc.gif', 'image'],
   ['image (file)', 'file:///home/user/abc.gif', 'image'],
-  ['uri-data', 'data:', 'uri-data'],
+  ['uri-data', 'data:,', 'uri-data'],
   ['uri-http (HTTP)', 'http://lineartext.com', 'uri-http'],
   ['uri-http (HTTPS)', 'https://lineartext.com', 'uri-http'],
   ['uri-file', 'file://', 'uri-file']
