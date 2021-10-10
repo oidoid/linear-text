@@ -1,4 +1,4 @@
-import {parseTextType} from './text-type'
+import {parseLineType} from './line-type'
 
 test.each([
   ['empty', '', 'empty'],
@@ -25,5 +25,5 @@ test.each([
   ['uri-http (HTTPS)', 'https://lineartext.com', 'uri-http'],
   ['uri-file', 'file://', 'uri-file']
 ])('%s', (_, text, expected) =>
-  expect(parseTextType(text)).toStrictEqual(expected)
+  expect(parseLineType(text)).toStrictEqual(expected)
 )

@@ -1,7 +1,7 @@
 /**
  * Evaluate whether val is a string-encoded finite number.
  *
- * Tested indirectly via text-type.
+ * Tested indirectly via line-type.
  *
  * @see https://stackoverflow.com/a/1830844/970346
  */

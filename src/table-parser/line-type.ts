@@ -1,7 +1,7 @@
 import {isNumeric} from '../utils/string-util'
 
 /** String-encoded data type of the text value. */
-export type TextType =
+export type LineType =
   /** URL or URI. Not a known image. */
   | 'uri-data'
   | 'uri-http'
@@ -20,7 +20,7 @@ export type TextType =
   | 'empty'
 
 /** Infer the string-encoded data type of the text value. */
-export function parseTextType(text: string): TextType {
+export function parseLineType(text: string): LineType {
   if (text === '') return 'empty'
   if (/^\s+$/.test(text)) return 'blank'
   const trimmed = text.trim()
