@@ -4,14 +4,18 @@ import {t} from '@lingui/macro'
 export type FileSystemFileHandle = {getFile(): Promise<File>} & FileSystemHandle
 export type FileAndHandle = [File, FileSystemFileHandle | undefined]
 
-export const defaultFileExtension: string = '.text'
-export const defaultFilename: string = `linear-text${defaultFileExtension}`
+export const defaultTextFileExtension: string = '.txt'
+export const commonTextFileExtensions: readonly string[] = Object.freeze([
+  defaultTextFileExtension,
+  '.text'
+])
+export const defaultFilename: string = `linear-text${defaultTextFileExtension}`
 export const defaultMimeType: string = 'text/plain'
 
 export async function openFile(): Promise<FileAndHandle> {
   const fileWithHandle = await fileOpen({
     mimeTypes: [defaultMimeType],
-    extensions: [defaultFileExtension],
+    extensions: [defaultTextFileExtension, '.text'],
     description: t`dropdown-file-type__description`
   })
   return [
@@ -41,7 +45,7 @@ export async function saveFile(
     new Blob([doc], {type: defaultMimeType}),
     {
       fileName: fileAndHandle?.[0].name ?? defaultFilename,
-      extensions: [defaultFileExtension]
+      extensions: [defaultTextFileExtension]
     },
     fileAndHandle?.[1],
     fileAndHandle?.[1] != null
