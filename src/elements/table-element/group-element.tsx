@@ -6,6 +6,7 @@ import {
   removeGroupAction
 } from '../../store/table-slice/table-slice'
 import {Draggable, Droppable} from 'react-beautiful-dnd'
+import {HandlebarElement} from '../handlebar-element/handlebar-element'
 import {LineElement} from '../line-element/line-element'
 import React, {useCallback, useMemo} from 'react'
 import {UnorderedListElement} from '../list-element/list-element'
@@ -68,7 +69,9 @@ export function GroupElement({group, x}: GroupProps): JSX.Element {
           onKeyDown={onKeyDown}
           ref={provided.innerRef}
         >
-          <div className='group__handle' {...provided.dragHandleProps} />
+          <div className='group__handlebar-box'>
+            <HandlebarElement dragHandleProps={provided.dragHandleProps} />
+          </div>
           <Droppable droppableId={group.id.toString()} type='task'>
             {provided => (
               <UnorderedListElement

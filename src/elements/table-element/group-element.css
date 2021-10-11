@@ -27,23 +27,8 @@
   overflow-y: auto;
 }
 
-.group__handle {
-  /* Handles fill the space even when empty so that the group doesn't disappear.
-     min-width instead of width so that scrollbar spacing is including. */
-  min-width: calc(var(--note-width) + var(--note-margin-horizontal) * 2);
-
-  height: 32px;
-
-  border-top-right-radius: var(--border-radius-friendly);
-  border-top-left-radius: var(--border-radius-friendly);
-
-  /* No standard focus outline. This is covered below. */
-  outline-width: 0;
-}
-
-.group:not(.group--empty) > .group__list,
-.group:hover > .group__list,
-.group:not(.group--empty) > .group__handle,
-.group:hover > .group__handle {
-  background-color: var(--shade-light-shadow);
+.group__handlebar-box {
+  /* Align handle to line handles. */
+  padding-left: var(--note-margin-horizontal);
+  padding-right: var(--note-margin-horizontal);
 }

@@ -12,8 +12,6 @@
   --shade-shadow: rgba(0, 0, 0, 0.125);
   --shade-light-shadow: rgba(0, 0, 0, 0.0625);
   --shade-yellow: rgba(250, 250, 215, 0.95);
-  --tint-light-white: #fff2;
-  --tint-half-white: #fff6;
 
   --spacing: 4px;
   --card-border-width: 0.5px;
@@ -29,7 +27,7 @@
 
   --z-index-header: 100;
   --z-index-focused-line: 1000;
-  --z-index-line-handle: 1001;
+  --z-index-handlebar: 1001;
   --z-index-dialog: 10000;
 
   /* Require interactive elements large enough to be easily pressed. */

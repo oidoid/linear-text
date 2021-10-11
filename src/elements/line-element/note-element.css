@@ -41,38 +41,3 @@
   /* Outline the note like card UI and elevate dramatically. */
   box-shadow: var(--box-shadow-top), 2px 3px 3px 1px var(--shade-dark-shadow);
 }
-
-/* Grabble area. */
-.note__drag-handle {
-  /* Position in the top-right of the note. */
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  /* Center content. */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Push away from note edges. */
-  margin-top: 2px;
-  margin-right: 2px;
-
-  border-top-left-radius: var(--border-radius-friendly);
-  border-top-right-radius: var(--border-radius-friendly);
-  border-bottom-right-radius: var(--border-radius-friendly);
-  border-bottom-left-radius: var(--border-radius-friendly);
-
-  /* The handle is always on top of the text. */
-  z-index: var(--z-index-line-handle);
-
-  opacity: 0.25;
-
-  transition: opacity 100ms ease-in-out, background 100ms ease-in-out;
-}
-
-.note__drag-handle:hover,
-.note__drag-handle:focus {
-  background-color: rgba(0, 0, 0, 0.03);
-  opacity: 1;
-}

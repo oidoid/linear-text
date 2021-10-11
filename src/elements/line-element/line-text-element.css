@@ -29,7 +29,7 @@
 
 .line-text,
 .line-text__text {
-  padding-top: 12px;
+  /* padding-top is simulated with the handlebar. */
   padding-right: 8px;
   padding-bottom: 12px;
   padding-left: 8px;
@@ -71,9 +71,4 @@
 .line-text__text:focus {
   /* [to-do] This doesn't seem to be working. */
   user-select: contain;
-}
-
-.line-text:focus-within {
-  border-color: var(--tint-half-white);
-  background-color: var(--tint-light-white);
 }
