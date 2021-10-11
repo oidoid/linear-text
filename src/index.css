@@ -40,6 +40,8 @@
   --breakpoint: 800px;
 
   --note-width: 75mm;
+  --note-margin-top: 2px;
+  --note-margin-bottom: 4px;
   --note-margin-horizontal: 4px;
 }
 

@@ -1,0 +1,32 @@
+.line-image {
+  /* Add some spacing for distinction and the focus box-shadow. */
+  margin-top: var(--note-margin-top);
+  margin-right: var(--note-margin-horizontal);
+  margin-bottom: var(--note-margin-bottom);
+  margin-left: var(--note-margin-horizontal);
+
+  /* Broken images will display source URL wrapped. */
+  word-break: break-all;
+  overflow: hidden;
+  background-color: var(--shade-light-shadow);
+
+  width: var(--note-width);
+
+  /* The corners are rounded. */
+  border-top-right-radius: var(--border-radius-friendly);
+  border-bottom-right-radius: var(--border-radius-friendly);
+  border-bottom-left-radius: var(--border-radius-friendly);
+  border-top-left-radius: var(--border-radius-friendly);
+}
+
+.line-image__image {
+  /* actually size well. not text */
+  display: block;
+
+  width: var(--note-width);
+  min-height: var(--min-press-size);
+
+  /* The top corners are rounded. */
+  border-top-right-radius: var(--border-radius-friendly);
+  border-top-left-radius: var(--border-radius-friendly);
+}

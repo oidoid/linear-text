@@ -81,7 +81,10 @@ function HelpElement(): JSX.Element {
             lines. For example, a list of favorite video games.
           </li>
           <li>Outlining.</li>
-          <li>Local file editing.</li>
+          <li>
+            Local file editing. No data is uploaded. The editor itself is
+            offline-only but will fetch remote images when they're specified.
+          </li>
           <li>Lightweight project management.</li>
           <li>Small collections and lists.</li>
         </ul>

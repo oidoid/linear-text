@@ -1,6 +1,7 @@
 # Publish Linear Text v1.0.0: Everything
 
 
+Add link support for URLs.
 Expose locales.
 Revise menu.
 Add test for loadTableFileAsync.

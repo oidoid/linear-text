@@ -23,3 +23,4 @@ Better mid-group splitting
 Review drag-and-drop documentation for performance improvements
   https://github.com/atlassian/react-beautiful-dnd
   https://egghead.io/lessons/react-persist-list-reordering-with-react-beautiful-dnd-using-the-ondragend-callback
+Review my other NPM projects.
