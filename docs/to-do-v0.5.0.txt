@@ -1,6 +1,0 @@
-# Publish Linear Text v0.5.0: Images
-
-Add image line support for file scheme images. There are many nice ways to represent these statically sized.
-  Maybe 4px white border.
-  https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath
-  https://github.com/GoogleChromeLabs/browser-fs-access (open direcotries with webkitRelativePath) 

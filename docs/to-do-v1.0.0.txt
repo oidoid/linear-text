@@ -1,36 +1,5 @@
 # Publish Linear Text v1.0.0: Everything
 
-
-Add link support for URLs.
-Expose locales.
-Revise menu.
-Add test for loadTableFileAsync.
-Create lineartext.com with both embedded homepage and dedicated live editor.
-New logo, at least for site.
-  Revise oidoid.com to include Linear Text.
-Update NPM and index.html description and keywords.
-Document, add help, update readme, and update changelog. Note assumptions, Firefox support, readme, bug reporting, [tagging] and conventions, and roadmap.
-
-Add type tests:
-  Parser sets initial type as note or divider, never draft.
-  UI sets initial type as note or divider, never draft.
-  Backspace on note type deletes.
-  Backspace on divider type converts to note... Or deletes?
-  Note is considered draft when isEmpty and type is note.
-  Drafts are deleted on focus loss.
-  Drafts become plain notes on content add.
-  Enter on draft becomes divider.
-Shortcut and button tests, integration tests.
-
-Press escape to dismiss overflow menu, double tap empty space to create there, and keyboard shortcuts.
-Add lasso group select by clicking an empty space and dragging.
-
-Rename store slice thingy.
-Add return types.
-Add arrange support for grid and sorting/arrangement/line-up columnar support.
-Copy lessons and notes from other projects and references; oidoid; revise button styles to my old UI styles.
-Validate HTML.
-Middle click to drag workspace.
-Polish and test. Also test mobile support.
-Review HTML structure with references and semnatics with MDN. If this is really about lists, should notes be list items?
+Publish the Electron packages for each OS.
+  https://www.electron.build/configuration/publish
 Publish v1.0.0.
