@@ -9,13 +9,13 @@ export const commonTextFileExtensions: readonly string[] = Object.freeze([
   defaultTextFileExtension,
   '.text'
 ])
-export const defaultFilename: string = `linear-text${defaultTextFileExtension}`
+export const defaultSaveAsFilename: string = `linear-text${defaultTextFileExtension}`
 export const defaultMimeType: string = 'text/plain'
 
 export async function openFile(): Promise<FileAndHandle> {
   const fileWithHandle = await fileOpen({
     mimeTypes: [defaultMimeType],
-    extensions: [defaultTextFileExtension, '.text'],
+    extensions: [...commonTextFileExtensions],
     description: t`dropdown-file-type__description`
   })
   return [
@@ -44,7 +44,7 @@ export async function saveFile(
   const newHandle = (await fileSave(
     new Blob([doc], {type: defaultMimeType}),
     {
-      fileName: fileAndHandle?.[0].name ?? defaultFilename,
+      fileName: fileAndHandle?.[0].name ?? defaultSaveAsFilename,
       extensions: [defaultTextFileExtension]
     },
     fileAndHandle?.[1],
