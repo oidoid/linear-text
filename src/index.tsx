@@ -1,16 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
 import {AppElement} from './elements/app-element/app-element'
-import {reportWebVitals} from './web-vitals-reporter'
-import {version} from '../package.json'
+import * as serviceWorker from './serviceWorker'
 import {i18n} from '@lingui/core'
-import {t} from '@lingui/macro'
 import {I18nProvider} from '@lingui/react'
 import {loadLocales} from './locale-loader'
-import {store} from './store/store'
 import {Provider as StoreProvider} from 'react-redux'
-import * as serviceWorker from './serviceWorker'
+import ReactDOM from 'react-dom'
+import React from 'react'
+import {reportWebVitals} from './web-vitals-reporter'
+import {store} from './store/store'
+import {t} from '@lingui/macro'
+import {version} from '../package.json'
+
+import './index.css'
 
 loadLocales()
 
