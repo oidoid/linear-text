@@ -5,7 +5,8 @@ releases are planned in [docs/to-do-\*.txt](.).
 
 ## v0.5.0 (unreleased)
 
-Basic remote image support. Editing images in-app is not yet supported.
+Basic remote and file:// image support. Editing images in-app is not yet
+supported.
 
 ## v0.4.0
 

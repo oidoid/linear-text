@@ -46,7 +46,7 @@ Translations for each locale are extracted and compiled to
   lives in repo. [lineartext.com](https://github.com/oidoid/lineartext.com) is
   only for brief introduction and demonstration.
 
-## License
+## Copyright and License
 
 © oidoid.
 

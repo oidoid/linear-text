@@ -1,0 +1,26 @@
+{
+  // [i18n]
+  "appId": "com.oidoid.lineartext",
+  "productName": "Linear Text",
+  "artifactName": "linear-text-${version}.${ext}",
+  "extraMetadata": {
+    // This overrides the package.json name which unfortunately is used in the
+    // GNOME top panel and app switcher, but not the title bar. Unfortunately,
+    // this means artifact name has to be overridden the ${name} template isn't
+    // aligned with package.json.
+    // https://github.com/electron-userland/electron-builder/issues/4727
+    "name": "Linear Text",
+    "main": "src/electron/main.cjs"
+  },
+  "icon": "src/electron/linear-text.png",
+  "files": ["src/electron/**/*"],
+  "directories": {"output": "build/electron"},
+  "linux": {
+    // Set the Electron executable name under build/electron/linux-unpacked and
+    // also referenced in the desktop file.
+    "executableName": "linear-text",
+    "target": ["appImage"],
+    "category": "TextEditor"
+  },
+  "copyright": "© oidoid"
+}
