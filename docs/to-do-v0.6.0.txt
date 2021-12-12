@@ -1,5 +1,6 @@
 # Publish Linear Text v0.6.0: Better Local Images
 
+Fix save.
 Abstract all the file handling interfaces to support browser-fs-access and Node.js implementations.
 Implement a Node.js-based file reader that can report the absolute text file path and get the file contents so that relative path images can be loaded.
   https://stackoverflow.com/questions/43722450/electron-function-to-read-a-local-file-fs-not-reading
