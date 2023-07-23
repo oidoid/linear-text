@@ -12,10 +12,6 @@
   flex-direction: column;
 
   background: var(--color-light-grey);
-
-  /* Electron window rounded border.*/
-  border-radius: var(--border-radius-friendly);
-  overflow: hidden;
 }
 
 .app__main {

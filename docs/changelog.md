@@ -3,6 +3,10 @@
 Versions and bullets are arranged chronologically from latest to oldest. Future
 releases are planned in [docs/to-do-\*.txt](.).
 
+## v0.6.0
+
+- Remove Electron and file:// image support.
+
 ## v0.5.0
 
 Basic remote and file:// image support. Editing images in-app is not yet
