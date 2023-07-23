@@ -1,5 +1,4 @@
 import {fileOpen, fileSave, FileSystemHandle} from 'browser-fs-access'
-import {t} from '@lingui/macro'
 
 export type FileSystemFileHandle = {getFile(): Promise<File>} & FileSystemHandle
 export type FileAndHandle = [File, FileSystemFileHandle | undefined]
@@ -16,7 +15,7 @@ export async function openFile(): Promise<FileAndHandle> {
   const fileWithHandle = await fileOpen({
     mimeTypes: [defaultMimeType],
     extensions: [...commonTextFileExtensions],
-    description: t`dropdown-file-type__description`
+    description: 'Plain text files'
   })
   return [
     fileWithHandle,

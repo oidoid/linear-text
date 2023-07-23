@@ -2,10 +2,9 @@ import type {Line} from '../../line/line'
 import type {XY} from '../../math/xy'
 
 import {Draggable, DraggableProvidedDragHandleProps} from 'react-beautiful-dnd'
-import {LineImageElement} from './line-image-element'
+import {LineType, parseLineType} from '../../table-parser/line-type'
 import {NoteElement} from '../line-element/note-element'
-import {parseLineType, LineType} from '../../table-parser/line-type'
-import {t} from '@lingui/macro'
+import {LineImageElement} from './line-image-element'
 
 export type LineProps = Readonly<{line: Readonly<Line>; xy: Readonly<XY>}>
 
@@ -16,9 +15,9 @@ export function LineElement({line, xy}: LineProps): JSX.Element {
     <Draggable draggableId={line.id.toString()} index={xy.y}>
       {provided => (
         <div
-          aria-roledescription={t`button-move-line__description`}
+          aria-roledescription='Press spacebar to move the line.'
           ref={provided.innerRef}
-          {...(provided.draggableProps as unknown)}
+          {...(provided.draggableProps as any)}
         >
           <LineTypeElement
             dragHandleProps={provided.dragHandleProps}

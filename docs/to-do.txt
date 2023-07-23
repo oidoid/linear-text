@@ -1,5 +1,4 @@
 Add link support for URLs.
-Expose locales.
 Revise menu.
 Add test for loadTableFileAsync.
 Create lineartext.com with both embedded homepage and dedicated live editor.
@@ -60,7 +59,6 @@ Consider CSS Modules.
 Consider structuring by feature more. E.g., feature/counter/* instead of components/counter and reducers/counter.
 Rename CSS colors to be like `--color-gray20` and maybe `--card__border-width`.
 Probably shouldn't show save for Firefox?
-Add locale picker.
 Combine new line with line type selector widget.
   Change thing type when a thing is selected and picker changes.
 Add mini-Markdown support: unordered list items, h1, h2, ...?

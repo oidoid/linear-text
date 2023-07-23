@@ -1,16 +1,18 @@
+import {useCallback, useEffect, useRef, useState} from 'react'
 import {ActionCreators} from 'redux-undo'
+import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
 import {
-  addGroupAction,
   addDraftAction,
+  addGroupAction,
   clearHistoryAction,
   loadTableFileAsync,
   newFileAction,
-  removeLineAction,
   removeGroupAction,
+  removeLineAction,
   saveFileAction,
   selectTableState
 } from '../../store/table-slice/table-slice'
-import {CardElement} from '../card-element/card-element'
+import {serializeTable} from '../../table-parser/table-serializer'
 import {
   FileAndHandle,
   isFileModified,
@@ -18,13 +20,10 @@ import {
   reopenFile,
   saveFile
 } from '../../utils/file-util'
-import {HelpDialogCardElement} from '../help-element/help-element'
 import {IconButtonElement} from '../button-element/icon-button-element'
-import {serializeTable} from '../../table-parser/table-serializer'
-import {t} from '@lingui/macro'
+import {CardElement} from '../card-element/card-element'
+import {HelpDialogCardElement} from '../help-element/help-element'
 import {UnorderedListElement} from '../list-element/list-element'
-import {useAppDispatch, useAppSelector} from '../../hooks/use-store'
-import {useCallback, useEffect, useRef, useState} from 'react'
 
 import addGroupIcon from '../../icons/add-group-icon.svg'
 import addLineIcon from '../../icons/add-line-icon.svg'
@@ -33,8 +32,8 @@ import loadFileIcon from '../../icons/load-file-icon.svg'
 import newFileIcon from '../../icons/new-file-icon.svg'
 import redoIcon from '../../icons/redo-icon.svg'
 import removeLineIcon from '../../icons/remove-line-icon.svg'
-import saveFileIcon from '../../icons/save-file-icon.svg'
 import saveFileAsIcon from '../../icons/save-file-as-icon.svg'
+import saveFileIcon from '../../icons/save-file-icon.svg'
 import undoIcon from '../../icons/undo-icon.svg'
 
 import './menu-element.css'
@@ -148,74 +147,74 @@ function MenuElement(): JSX.Element {
 
   const entries = [
     {
-      accessKey: t`button-add-line__access-key`,
-      label: t`button-add-line__label`,
+      accessKey: '+',
+      label: 'Add',
       onClick: onAddLineClick,
       src: addLineIcon,
-      title: t`button-add-line__title`
+      title: 'Add new line [alt–+].'
     },
     {
-      accessKey: t`button-add-group__access-key`,
-      label: t`button-add-group__label`,
+      accessKey: '|',
+      label: 'Group',
       onClick: onAddGroupClick,
       src: addGroupIcon,
-      title: t`button-add-group__title`
+      title: 'Add group [alt–|].'
     },
     {
-      // [to-do]: This handles lines and groups. Fix or update i18n.
-      accessKey: t`button-remove-line__access-key`,
-      label: t`button-remove-line__label`,
+      // [to-do]: This handles lines and groups.
+      accessKey: '-',
+      label: 'Discard',
       onClick: onRemoveClick,
       src: removeLineIcon,
-      title: t`button-remove-line__title`
+      title: 'Remove selected line(s) [alt–-].'
     },
     {
-      accessKey: t`button-undo__access-key`,
-      label: t`button-undo__label`,
+      accessKey: 'z',
+      label: 'Undo',
       onClick: onUndoClick,
       src: undoIcon,
-      title: t`button-undo__title`
+      title: 'Restore the previous state [alt–z].'
     },
     {
-      accessKey: t`button-redo__access-key`,
-      label: t`button-redo__label`,
+      accessKey: 'y',
+      label: 'Redo',
       onClick: onRedoClick,
       src: redoIcon,
-      title: t`button-redo__title`
+      title: 'Reverse an undo [alt–y].'
     },
     {
-      accessKey: t`button-load-file__access-key`,
-      label: t`button-load-file__label`,
+      accessKey: 'o',
+      label: 'Open…',
       onClick: onLoadClick,
       src: loadFileIcon,
-      title: t`button-load-file__title`
+      title: 'Load an existing file [alt–o].'
     },
     {
-      accessKey: t`button-save-file__access-key`,
-      label: t`button-save-file__label`,
+      accessKey: 's',
+      label: 'Save',
       onClick: onSaveClick,
       src: saveFileIcon,
-      title: t`button-save-file__title`
+      title: 'Download file [alt–s].'
     },
     {
-      label: t`button-save-file-as__label`,
+      label: 'Save As…',
       onClick: onSaveAs,
       src: saveFileAsIcon,
-      title: t`button-save-file-as__title`
+      title: 'Open save dialog.'
     },
     {
-      accessKey: t`button-new-file__access-key`,
-      label: t`button-new-file__label`,
+      accessKey: 'n',
+      label: 'New',
       onClick: onNewClick,
       src: newFileIcon,
-      title: t`button-new-file__title`
+      title: 'Create an empty file [alt–n].'
     },
     {
-      accessKey: t`button-help__access-key`,
-      label: t`button-help__label`,
+      accessKey: '?',
+      label: 'Help…',
       onClick: toggleHelp,
       src: helpIcon,
-      title: t`button-help__title`
+      title: 'Open documentation [alt–?].'
     }
   ]
 

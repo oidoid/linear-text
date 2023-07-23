@@ -1,9 +1,8 @@
-import {TableElement} from '../table-element/table-element'
-import {MenuCardElement} from '../menu-element/menu-element'
-import {selectTableState} from '../../store/table-slice/table-slice'
-import {t} from '@lingui/macro'
-import {useAppSelector} from '../../hooks/use-store'
 import {useEffect} from 'react'
+import {useAppSelector} from '../../hooks/use-store'
+import {selectTableState} from '../../store/table-slice/table-slice'
+import {MenuCardElement} from '../menu-element/menu-element'
+import {TableElement} from '../table-element/table-element'
 
 import './app-element.css'
 
@@ -30,11 +29,11 @@ export function AppElement({'data-testid': testID}: AppProps): JSX.Element {
 function setTitle(filename: string | undefined, invalidated: boolean): void {
   document.title = invalidated
     ? filename == null
-      ? t`app-title-with-unsaved`
-      : t`app-title-with-unsaved-${filename}`
+      ? '• (Unsaved) – Linear Text'
+      : `• ${filename} (Unsaved) – Linear Text`
     : filename == null
-    ? t`app-title-with-saved`
-    : t`app-title-with-saved-${filename}`
+    ? 'Linear Text'
+    : `${filename} – Linear Text`
 }
 
 function setFavicon(invalidated: boolean): void {

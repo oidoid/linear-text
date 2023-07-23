@@ -3,7 +3,6 @@
   "author": "oidoid",
   "version": "0.5.0",
   "license": "AGPL-3.0-only",
-  "//": "[i18n]",
   "description": "📝 Graphical line-oriented text editor.",
   "keywords": [
     "editor",
@@ -36,10 +35,6 @@
     "npm": "8.0.0"
   },
   "devDependencies": {
-    "@lingui/cli": "3.12.1",
-    "@lingui/detect-locale": "3.12.1",
-    "@lingui/macro": "3.12.1",
-    "@lingui/react": "3.12.1",
     "@reduxjs/toolkit": "1.6.2",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.1.2",

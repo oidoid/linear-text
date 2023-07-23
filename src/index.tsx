@@ -1,26 +1,18 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Provider as StoreProvider} from 'react-redux'
+import {version} from '../package.json'
 import {AppElement} from './elements/app-element/app-element'
 import * as serviceWorker from './serviceWorker'
-import {i18n} from '@lingui/core'
-import {I18nProvider} from '@lingui/react'
-import {loadLocales} from './locale-loader'
-import {Provider as StoreProvider} from 'react-redux'
-import ReactDOM from 'react-dom'
-import React from 'react'
-import {reportWebVitals} from './web-vitals-reporter'
 import {store} from './store/store'
-import {t} from '@lingui/macro'
-import {version} from '../package.json'
+import {reportWebVitals} from './web-vitals-reporter'
 
 import './index.css'
-
-loadLocales()
 
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
-      <I18nProvider i18n={i18n}>
-        <AppElement />
-      </I18nProvider>
+      <AppElement />
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
@@ -36,7 +28,7 @@ serviceWorker.unregister()
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
 
-console.log(`${t`app-title-with-${version}`}
+console.log(`Linear Text v${version}
 by ┌>°┐
    │  │idoid
    └──┘`)

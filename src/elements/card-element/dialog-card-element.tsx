@@ -1,7 +1,6 @@
-import {CardElement} from './card-element'
-import {IconButtonElement} from '../button-element/icon-button-element'
 import React, {ReactNode, useCallback, useEffect} from 'react'
-import {t} from '@lingui/macro'
+import {IconButtonElement} from '../button-element/icon-button-element'
+import {CardElement} from './card-element'
 
 import dismissIcon from '../../icons/dismiss-icon.svg'
 
@@ -34,10 +33,10 @@ export function DialogCardElement({
   )
   const dismissButton = (
     <IconButtonElement
-      label={t`button-dismiss-dialog__label`}
+      label='Dismiss'
       onClick={onDismissClick}
       src={dismissIcon}
-      title={t`button-dismiss-dialog__title`}
+      title='Dismiss dialog.'
     />
   )
   useEffect(() => {

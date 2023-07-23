@@ -1,7 +1,6 @@
+import {version} from '../../../package.json'
 import {DialogCardElement} from '../card-element/dialog-card-element'
 import {HeaderElement} from '../header-element/header-element'
-import {t} from '@lingui/macro'
-import {version} from '../../../package.json'
 
 export type HelpDialogCardProps = Readonly<{onDismissClick(): void}>
 
@@ -11,7 +10,7 @@ export function HelpDialogCardElement({
   return (
     <DialogCardElement
       id='help'
-      label={t`app-title-with-${version}`}
+      label={`Linear Text v${version}`}
       onDismissClick={onDismissClick}
     >
       <HelpElement />

@@ -32,13 +32,6 @@ The following NPM scripts are provided:
 - `run build`: Build the editor.
 - `version`: Increment the editor package version.
 
-### Internationalization
-
-Translations for each locale are extracted and compiled to
-[src/locales](src/locales) by executing
-`npx lingui extract && npx lingui compile`. See `npx lingui --help`,
-[Lingui](https://lingui.js.org), and [the config](.linguirc.json).
-
 ### Conventions
 
 - [BEM](http://getbem.com) CSS naming conventions are used.
