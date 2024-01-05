@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-deno@v1
+      - uses: denoland/setup-deno@v1
       - run: deno task test:types
       - run: deno task test:unit
       - run: deno lint
