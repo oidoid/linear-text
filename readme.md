@@ -1,43 +1,30 @@
-# 📝 Linear Text
+# ![Linear Text](src/favicon/favicon.png) Linear Text
 
 Linear Text is a graphical line-oriented text editor. See
-[lineartext.com](https://lineartext.com) and in-editor help for user-facing
-documentation.
+[lineartext.com](https://lineartext.com) or open
+[tutorial.text](docs/tutorial.text) in Linear Text.
 
 | ⚠️ Linear Text is in early development, may lose data, and is not ready for evaluation. |
-| --------------------------------------------------------------------------------------- |
+| -------------------------------------------------------------------------------------- |
 
-## Release Notes and Roadmap
+See the [changelog](docs/changelog.text) for release notes. Future work is
+loosely planned in [to-do.text](docs/to-do.text).
 
-See the [changelog](docs/changelog.md) for past releases. Future work is loosely
-planned under [docs/to-do-\*.txt](docs).
+## Download
+
+Download
+**[the latest release from GitHub](https://github.com/oidoid/linear-text/releases/latest)**.
+It's a single file of HTML and runs offline. Double click to open.
 
 ## Development
 
 ### Quick Start
 
 ```bash
-npm i && npm start
+deno task start
 ```
 
-### Scripts
-
-The following NPM scripts are provided:
-
-- `install` / `i`: Install package dependencies.
-- `start`: Execute the editor in development mode.
-- `test` / `t`: Build the editor and execute all tests.
-- `run test:unit`: Execute unit tests. Pass `-u` to update all Jest snapshots.
-- `run format`: Apply lint fixes automatically where available.
-- `run build`: Build the editor.
-- `version`: Increment the editor package version.
-
-### Conventions
-
-- [BEM](http://getbem.com) CSS naming conventions are used.
-- User documentation lives in-editor for offline access. Developer documentation
-  lives in repo. [lineartext.com](https://github.com/oidoid/lineartext.com) is
-  only for brief introduction and demonstration.
+Visit **[http://localhost:1234](http://localhost:1234)** in your web browser.
 
 ## Copyright and License
 

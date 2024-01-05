@@ -1,4 +1,4 @@
-import type {DataURI} from './data-uri'
+import type { DataURI } from './data-uri.ts'
 
 export function isDataURIStr(str: string): boolean {
   return str.startsWith('data:')
@@ -22,21 +22,23 @@ export function isHTTPURIStr(str: string): boolean {
  */
 export function parseObjectURL(uri: string): string {
   const blob = parseDataURIBlob(uri)
-  return blob == null ? uri : URL.createObjectURL(blob)
+  return blob ? URL.createObjectURL(blob) : uri
 }
 
 export function parseDataURIBlob(str: string): Blob | undefined {
-  const {data, encoding, mediaType} = parseDataURI(str) ?? {}
+  const { data, encoding, mediaType } = parseDataURI(str) ?? {}
   if (data == null) return
-  const buffer = Buffer.from(data, encoding)
-  return new Blob([buffer], mediaType == null ? undefined : {type: mediaType})
+  if (encoding !== 'base64') return
+  const encoder = new TextEncoder()
+  const buffer = encoder.encode(data)
+  return new Blob([buffer], mediaType == null ? undefined : { type: mediaType })
 }
 
 const dataURIRegex =
   /^(?<scheme>data):(?<mediaType>(?<mimeType>[^,;]+)(?<params>(;[^=,;]+=[^=,;]+)*))?(;(?<encoding>base64))?,(?<data>.*)$/i
 
 export function parseDataURI(str: string): DataURI | undefined {
-  const {groups} = dataURIRegex.exec(str) ?? {}
+  const { groups } = dataURIRegex.exec(str) ?? {}
   if (groups == null) return
   if (groups.scheme !== 'data') return
   if (groups.encoding != null && groups.encoding !== 'base64') return
@@ -48,9 +50,9 @@ export function parseDataURI(str: string): DataURI | undefined {
       groups.params
         ?.split(';')
         .slice(1) // Params start with `';'`. Skip the leading empty division.
-        .map(param => param.split('=')) ?? []
+        .map((param) => param.split('=')) ?? [],
     ),
     encoding: groups.encoding,
-    data: groups.data ?? ''
+    data: groups.data ?? '',
   }
 }

@@ -1,0 +1,11 @@
+Produce
+[] Cucumber
+
+Snacks
+[x] Pretzels
+
+Frozen
+[x] Ice Cream
+[x] Pizza
+[ ] Cake
+[ ] Pizza

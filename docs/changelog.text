@@ -1,0 +1,30 @@
+Changelog
+
+v0.5.1
+  *There are many new bugs and missing features. Do not use this release for important data.*
+  Temporarily remove group drag, image, backspace-delete, and card-level un/redo support.
+  Add sub-grouping.
+  Replace Electron with HTML single-file double-click distributable.
+  Improve information density / compactness.
+  Replace columnar scrolling with grid.
+  Revise icons and add grid background.
+  linear-text NPM package succeeded by Deno linear_text package.
+  Move changelog.md to changelog.text.
+  Total rewrite; replace React with Lit web components and NPM with Deno.
+
+v0.5.0
+  Basic remote and file:// image support. Editing images in-app is not yet supported.
+
+v0.4.0
+  Line and group dragging.
+
+v0.3.0
+  Improved grouping. Dividers are replaced with groups and height is limited to space available.
+  Tabular functionality removed.
+  In-editor help.
+
+v0.2.1
+  Initial release. Primitive support for tabular notes.
+
+v0.1.0 (unreleased)
+  Initial version set by Create React App project wizard.

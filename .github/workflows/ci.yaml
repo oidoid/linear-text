@@ -1,0 +1,21 @@
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-deno@v1
+      - run: deno task test:types
+      - run: deno task test:unit
+      - run: deno lint
+      - run: deno fmt --check
+      - run: deno task test:ui
+      - run: deno task build

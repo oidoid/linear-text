@@ -1,5 +1,0 @@
-# Publish Linear Text v1.0.0: Everything
-
-Publish the Electron packages for each OS.
-  https://www.electron.build/configuration/publish
-Publish v1.0.0.

@@ -1,0 +1,45 @@
+Linear Text is a graphical line-oriented text editor that runs in your browser.
+Text files are split into lines.
+Every line of text is a card.
+
+Empty lines separate groups.
+A group may have multiple lines.
+Lines appear top-to-bottom. Groups are arranged from left-to-right.
+
+Lines may nest other lines by indenting. Expand or collapse indented lines by clicking the … button.
+  This is the first level.
+    The second.
+      And so on!
+      Each level may have multiple lines at the same indent.
+  This is another line at the first level.
+
+Editing
+  You can edit a line by clicking on the text. Look for the I-beam cursor.
+  Most editing requires typing.
+  Delete a line by clearing the text and clicking outside of it or pressing escape.
+  Press enter within a line to create a new line.
+  Tab changes line focus. Shift-tab steps backwards.
+Moving Lines
+  Lines can be dragged.
+File I/O
+  Unsaved changes are indicated in the browser page title and icon.
+  When a file is loaded, it's rechecked for changes whenever Linear Text is focused. If the file is edited externally, the file will be reloaded on focus so long as there are no unsaved changes.
+  Linear Text will attempt to preserve the last viewed text file to temporary offline browser storage. Do not rely on this ephemeral backup. It's for emergency use only. Save data you wish to keep to disk.
+  Linear Text executes locally in your browser, never uploads data, and can execute entirely offline. There is no server or "mothership".
+Text Editor Panel
+  Open the text editor panel by sliding on the lower resize icon in the bottom-left.
+  The editor always shows the current text state of the board. Whenever you save, the text editor is exactly what you'll get.
+  Changes made to the editor, update the board. The board and the editor are always in sync.
+Tips
+  Write for yourself in plaintext so you never get locked in. Don't take notes that wouldn't make sense in text. When Linear Text vanishes, your data will remain unmarred.
+  Switch between the GUI and a plaintext editor regularlly--whatever motivates you and helps you see your notes under a new lens.
+  There's no wrong way to write a text file. Linear Text will parse any text into lines. There's not much additional formatting to get "wrong."
+  There is no online functionality in Linear Text. All changes are local to your file system.
+  There is no tracking or crash report code. Please save often and report bugs to https://github.com/oidoid/linear-text/issues.
+  There's more to life than text.
+  Have fun!
+Alternatives and similar tools
+  [Trello](https://trello.com)
+  [ed](https://en.wikipedia.org/wiki/Ed_(text_editor)) (Standard UNIX Line Editor with a Command Line Interface)
+  [Line Editor Wikipedia Entry](https://wikipedia.org/wiki/Line_editor)
+  [todo.txt Format](https://github.com/todotxt/todo.txt)

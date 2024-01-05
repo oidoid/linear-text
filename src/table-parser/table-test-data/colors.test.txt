@@ -1,4 +1,0 @@
-cyan
-magenta
-yellow
-key

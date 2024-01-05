@@ -1,10 +1,5 @@
-/**
- * Evaluate whether val is a string-encoded finite number.
- *
- * Tested indirectly via line-type.
- *
- * @see https://stackoverflow.com/a/1830844/970346
- */
-export function isNumeric(val: string): boolean {
-  return !isNaN(global.parseFloat(val)) && isFinite(val as any)
+/** Evaluate whether str is a finite number. */
+export function isNumeric(str: string): boolean {
+  // https://stackoverflow.com/a/1830844/970346
+  return !isNaN(parseFloat(str)) && isFinite(<number> (<unknown> str))
 }

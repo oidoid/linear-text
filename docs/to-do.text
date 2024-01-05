@@ -1,0 +1,172 @@
+Bugs
+  When I open a second file, LT reopens the first sometimes?
+  When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click.
+  An empty line has no cursor.
+  Editing a file externally or in the text pane clears the expand state. No idea how preserving expand state will work in the current design without intelligent editor-TextTree diffing.
+  When a file starts with empty lines, an empty initial group is created.
+  The only way to delete an empty group is the text editor.
+  Mobile scrolling is completely broken.
+  Test save in Firefox. Shouldn't show it if can't be supported.
+  Autosave doesn't support multiple windows. Maybe try to distinguish by filename and error if already present?
+  Dragging a line from scrolled location loses the scroll on drop.
+File Deno bugs.
+  html and css template strings aren't formatted.
+  Some imports are pulled in from the Deno cache and never should be.
+  `npm:<package>/path` imports aren't suggested and the error message is confusing when these aren't aliased correctly in the import path.
+  Really need declare module support for representing bundling assets without hacks.
+  tools/build import auto-removal is erroneous.
+  Saving doesn't automatically add or remove imports like normal TypeScript.
+  Closest deno.json isn't used for import map or anything. These are available with quickfix though.
+  Deno doesn't auto-enable when deno.json is found. Prettier plugin does and it works great.
+  tools/build shebang ignored and read as JavaScript.
+  Markdown table in readme isn't the correct width.
+
+Design
+  Fix large pixelated favicons.
+  Expand/collapse button should support a toggle state visually.
+  Fix colors to be a consistent scheme. Everything is black and white except what you have created. Fix manifest.json themes too.
+  Text editor slideout could be a lot nicer with a friendly knob.
+  Reconsider columnar scrolling. The grid scrolling has me in deep space.
+  Toolbar buttons should look a bit nicer. Not distracting like FigJam but maybe square.
+  Fix button title hover styles.
+  Try to tighten things up so the app feels special.
+    Ask me questions about the design.
+  Explore custom hand grip cursor like miro https://css-tricks.com/using-css-cursors/#aa-using-a-custom-cursor-to-enhance-an-element
+  Add screenshots to manifest.
+  What to do about loading prior file but not actually reading it from disk? User could replace the latest with some old copy by mistake.
+Dragging
+  Clean up drag-line and add interfaces for card interactions.
+  Study how drag parenting works in VS Code.
+  Allow child to reparent siblings (drag b to a)?
+    a
+      b
+      c
+    Missing this feature really sucks for single-child parents.
+  Very lightly transition column widths so they don't appear to jitter.
+  Support group dragging.
+  When I press escape during a drag, it cancels the drag.
+Prompt to save unsaved work on new file, load file, or page departure.
+Improve note editing input.
+  Join on backspace? What to do about children? I guess they reparent like in file.
+  New group on enter in an empty line.
+  back/space: un/indent. Tab is used for focus and spaces indent in a real file.
+    Space at the start of a line indents, backspace at the start of a line unindents.
+  alt-down to toggle expand / collapse.
+  Enter in an empty line creates a new group.
+Plan text editor.
+  It feels like this should be a first-class part of Linear Text, not a developer mode.
+  Do I want a more featureful editor like CodeMirror? I think so.
+    See if they offer a multi-file example.
+  What would implementing a minimal editor look like?
+    I could explore contenteditable with text nodes on the newline.
+    I could change a single line instead of the replacing the entire contents.
+    I could reuse my tree structure.
+    I could focus the active line in both the editor and the board.
+  Consider wrapping. When arrowing left, the cursor is nearly cut off.
+  alt-up/down to move lines.
+  Shortcuts
+    ctrl-c: copy focused but deselected line.
+    crtl-x: cut focused but deselected line.
+    alt-up/down: move focused line.
+    shift-/tab: un/indent selection / line.
+  Highlight focused line.
+  Show whitespace.
+  Any edits you make anywhere can be undone from the editor.
+  Bugs
+    Pressing enter changes scroll position.
+    Weird whitespace injection. Also, pressing backspace seems to unindent.
+    Undo doesn't work after deleting a line.
+      Can undo-redo be implemented on the editor using document actions like exec and I just wire a button to that?
+Support multiple files.
+  Workflow wanted: plan.text and schedule.text are open. I copy and paste the day's group into plan.text.
+  Think about how the editor works with multiple files.
+Keyboard shortcuts
+  Keys currently use alt-style access keys for buttons. They also steal focus. This is confusing.
+  Shortcuts should be OS-localized.
+  Toggle editor.
+  Double-clicking an empty group also creates a newline.
+  Alt-shift-left to move a group.
+  ctrl-tab / ctrl-shift-tab jumps by group.
+Autosave on throttled input.
+Session backup.
+  I think this will require a separate dialog where you can view the past sessions, delete them, open them in recovery read-only mode (doesn't itself modify session data).
+  The format needs to be text in case something is broken. You should be able to click a button to copy the entire session too.
+How should groups and nested lines support deletes through UI?
+  The current approach to delete a line is to clear all the text.
+Improve performance.
+Docs
+  Verify line / card terminolgy is used consistently and not confusing in tutorial.text.
+  Link on oidoid.com.
+  Update lineartext.com with new version and docs.
+    It's hard to express the value of plaintext well.
+    Big features list.
+      Single-file distributable. It's so important. Double-click to open in a browser. 100% offline.
+      Another lens: Gives an alternative perspective on the plaintext you love. Same text, different view.
+      Text is structured already. Show a treeular view of notes. "pretty mode" for text.
+      Outliner for lists of text and lists of lists. Good for collectors, journalers and journal keepers.
+      Speedy.
+      Human centric, text is sacred and not list when edited manually
+      Preview cards. Good for bookmarks and URL heuristics.
+    Principles
+      No lock-in. Just another text editor but diff presentation
+      No spyware.
+      Open-source.
+    Really liked docs for cb. It was an intriguing argument for some.
+    Review Twitter share cards.
+  Document non-/technical decisions.
+    Custom drag-and-drop over native.
+      native is like 30 lines and does a lot well: ~/work/web/linear-text-protos/linear-text-proto-ui-drag-2023-11-13/index.js
+      native drag needed weird drag "wings" in one of my protos with nested scrolling to work
+      Ability to customize the drag image is limited to an actual image. I had weird issues with the edges being a couple pixels too small, horribly clipped when part of the card was off the screen, and I think sometimes issues with transluency.
+      Native implementation is tiny, supports auto-scrolling, supports off-screen movements.
+    EBNF for line parsing, lines
+
+Review ~/work/notes/linear-text.
+Support linear Markdown. Anything that has a good single-line representation.
+  Headings, italics, bold, code, bullets, ...?
+  Docs
+    Beside what's covered by previews, linear markdown is supported. For example, _italics_, `code`, *bold*, [links](https://oidoid.com), and bullets.
+    You can add a one-line JavaScript program by starting a line with `js```.
+      js`alert('hello world!')`
+    Any markdown that renders as something beside plaintext is editable on hover only (or in the advanced text editor).
+    Linear Text encourages a lighter (and more limited) text format than Markdown. Indenting creates a list so you don't need to use bullets for lists unless you like to.
+Support images.
+  Template strings like CSS: polaroid`file://blah.png`.
+  Support file://, http://, and https:// protocol at least.
+Support context menu.
+  Copy or cut group, card, or card + all children.
+  Paste as children or new group. I want to right click on the grid and be able to paste an entire text file in somewhere.
+Support URL previews.
+  URLs show as previews. For example, https://oidoid.com.
+  URLs to images are shown as instant film. Loading lines of URLs is a nice way to show a gallery.
+  Images can also be shown as data URIs like data:
+  Previews can be explicitly selected like film`https://oidoid.com/logo.png`. The text before and after a preview decorate the header and footer.
+  file: protocol is understood as well. Absolute paths are understood and paths relative a loaded file are understood for loaded files only.
+Link URLs.
+  Support ctrl-click.
+  Note sure how to implement this in plaintext contenteditable.
+  Add 'noopener,noreferrer'.
+  Heuristics for URLs ending in .jpeg, .gif, .png, .webp, .mp4, etc.
+Support linking to other files.
+  It'd be neat to link to other docs, like a table-of-contents, or open a folder.
+Reconsider plain web components
+  A template parser like https://github.com/dchester/yhtml/blob/main/example.html.
+  ~/work/web/linear-text-protos/linear-text-proto-lit-html-web-components-2023-12-08/src/index.ts
+  I don't even make use of the shadow DOM. It just adds complexity.
+Explore competitors and technical docs.
+  Trello
+  Kinopio
+    When I click an image, the source becomes editable.
+  FigJam
+  Nullboard
+    Review the tutorial text too.
+  Dragula
+  tldraw
+  https://www.sketch.com/apps
+  Review Lit docs.
+Built-in search that auto-expands cards.
+Support shareable URLs (load by query fragment)?
+Toggle expand/collapse-all button.
+Explore more card types.
+  /home/user/work/web/linear-text-prototypes/perfect-notes-last-proto/docs/oid-ideas.csv
+
