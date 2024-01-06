@@ -1,6 +1,9 @@
 Bugs
+When a sub-line has to great an indent, it eats up adjacent lines.
+    Looks like this.
+Followed by this.
   When I open a second file, LT reopens the first sometimes?
-  When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click.
+  When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click. This really stinks for each line because it's jagged with no visual cue.
   An empty line has no cursor.
   Editing a file externally or in the text pane clears the expand state. No idea how preserving expand state will work in the current design without intelligent editor-TextTree diffing.
   When a file starts with empty lines, an empty initial group is created.
@@ -20,6 +23,9 @@ File Deno bugs.
   Deno doesn't auto-enable when deno.json is found. Prettier plugin does and it works great.
   tools/build shebang ignored and read as JavaScript.
   Markdown table in readme isn't the correct width.
+  unsaved favicon doesn't align perfectly to saved because SVG is used. Just use old png.
+Fix CI.
+I want a way to delete or add cards by clicking, including deleting groups and sub-lines.
 
 Design
   Fix large pixelated favicons.
@@ -99,11 +105,12 @@ Docs
   Link on oidoid.com.
   Update lineartext.com with new version and docs.
     It's hard to express the value of plaintext well.
+    Notes take up more of a physical, two-dimensional space and I think that makes them easier to work with.
     Big features list.
       Single-file distributable. It's so important. Double-click to open in a browser. 100% offline.
       Another lens: Gives an alternative perspective on the plaintext you love. Same text, different view.
       Text is structured already. Show a treeular view of notes. "pretty mode" for text.
-      Outliner for lists of text and lists of lists. Good for collectors, journalers and journal keepers.
+      Outliner for lists of text and lists of lists. Good for collectors, journalers and journal keepers. It's kind of like a mix between Trello, an outliner, and a line editor.
       Speedy.
       Human centric, text is sacred and not list when edited manually
       Preview cards. Good for bookmarks and URL heuristics.
