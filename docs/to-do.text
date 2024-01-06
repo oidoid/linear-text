@@ -24,7 +24,7 @@ File Deno bugs.
   tools/build shebang ignored and read as JavaScript.
   Markdown table in readme isn't the correct width.
   unsaved favicon doesn't align perfectly to saved because SVG is used. Just use old png.
-Fix CI.
+Fix CI builds and generate a next release.
 I want a way to delete or add cards by clicking, including deleting groups and sub-lines.
 
 Design
