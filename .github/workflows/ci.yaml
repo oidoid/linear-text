@@ -17,7 +17,7 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - name Type-check
+      - name: Type-check
         run: deno task test:types
       - name: Unit Test
         run: deno task test:unit
