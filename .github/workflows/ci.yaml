@@ -3,19 +3,29 @@ name: CI
 
 on:
   push:
-    branches: ['main']
+    branches: [$default-branch]
   pull_request:
-    branches: ['main']
+    branches: [$default-branch]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-      - run: deno task test:types
-      - run: deno task test:unit
-      - run: deno lint
-      - run: deno fmt --check
-      - run: deno task test:ui
-      - run: deno task build
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name Type-check
+        run: deno task test:types
+      - name: Unit Test
+        run: deno task test:unit
+      - name: Lint
+        run: deno lint
+      - name: Format Test
+        run: deno fmt --check
+      - name: UI Test
+        run: deno task test:ui
+      - name: Build
+        run: deno task build
