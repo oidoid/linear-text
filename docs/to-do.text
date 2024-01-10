@@ -10,9 +10,15 @@ Followed by this.
   The only way to delete an empty group is the text editor.
   Mobile scrolling is completely broken.
   Test save in Firefox. Shouldn't show it if can't be supported.
+  Re-explore columnar scrolling. I think I like this better but it does add a ton of visual noise. Maybe use hover scrollbars.
+  When I type, the note should stay on screen and not allow the cursor to scroll offscreen as I type.
   Autosave doesn't support multiple windows. Maybe try to distinguish by filename and error if already present?
   Dragging a line from scrolled location loses the scroll on drop.
+  When I reopen Linear Text and attempt to save the last opened file, it doesn't suggest the prior filename.
+  Enter at the start of a line does nothing.
+  When I highlight text and alt-tab to another window, my highlight is lost.
 File Deno bugs.
+  I can't do an exhaustive switch in the default case. `props.page.type satisfies never`
   html and css template strings aren't formatted.
   Some imports are pulled in from the Deno cache and never should be.
   `npm:<package>/path` imports aren't suggested and the error message is confusing when these aren't aliased correctly in the import path.
@@ -42,7 +48,7 @@ Design
   What to do about loading prior file but not actually reading it from disk? User could replace the latest with some old copy by mistake.
 Dragging
   Clean up drag-line and add interfaces for card interactions.
-  Study how drag parenting works in VS Code.
+  Study how drag parenting works in VS Code. I think you have to have a parent and the root is just "insert below me".
   Allow child to reparent siblings (drag b to a)?
     a
       b
@@ -105,6 +111,7 @@ Docs
   Link on oidoid.com.
   Update lineartext.com with new version and docs.
     It's hard to express the value of plaintext well.
+    Electronic notes.
     Notes take up more of a physical, two-dimensional space and I think that makes them easier to work with.
     Big features list.
       Single-file distributable. It's so important. Double-click to open in a browser. 100% offline.
@@ -176,4 +183,6 @@ Support shareable URLs (load by query fragment)?
 Toggle expand/collapse-all button.
 Explore more card types.
   /home/user/work/web/linear-text-prototypes/perfect-notes-last-proto/docs/oid-ideas.csv
-
+ctrl / shift-click select cards for dragging / delete.
+Idea: add @2020-01-02-snooze/reveal to hide a card until a date. Might be some other date-based actions like @2020-01-02-highlight. Or maybe `// hide me` makes more sense for plain text. Not sure how this doesn't get super out of sync though when dragging around.
+  I love the idea of timer cards like @2024-01-02 or @12p that ding and light up. The UI has a ton of flex to represent these differently but essentially you get pomodoro cards.
