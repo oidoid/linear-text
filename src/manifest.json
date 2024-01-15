@@ -24,7 +24,7 @@
   "name": "Linear Text",
   "orientation": "any",
   "short_name": "T̲e̲x̲t̲",
-  "start_url": "/",
+  "start_url": "https://lineartext.com",
   "theme_color": "#f2f5f5",
   "version": "0.0.0"
 }
