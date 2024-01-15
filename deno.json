@@ -31,5 +31,5 @@
     "test:ui": "deno run --allow-read --allow-sys npm:lit-analyzer --maxWarnings=0 --rules.no-missing-element-type-definition --rules.no-unknown-event --strict",
     "test:unit": "deno test --allow-read=. --reporter=dot"
   },
-  "version": "0.5.3"
+  "version": "0.5.4"
 }
