@@ -1,5 +1,8 @@
 Changelog
 
+v0.5.2-3
+  Fix app installations.
+
 v0.5.1
   *There are many new bugs and missing features. Do not use this release for important data.*
   Temporarily remove group drag, image, backspace-delete, and card-level un/redo support.
