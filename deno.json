@@ -11,8 +11,8 @@
   "exclude": ["dist"],
   "fmt": { "semiColons": false, "singleQuote": true },
   "imports": {
-    "deno_dom": "https://deno.land/x/deno_dom@0.1.43/deno-dom-wasm.ts",
-    "esbuild": "https://deno.land/x/esbuild@0.19.11/mod.js",
+    "deno_dom": "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts",
+    "esbuild": "https://deno.land/x/esbuild@v0.19.11/mod.js",
     "esbuild_deno_loader": "https://deno.land/x/esbuild_deno_loader@0.8.2/mod.ts",
     "npm:browser-fs-access": "npm:browser-fs-access@0.35.0",
     "npm:lit": "npm:lit@3.1.0",
