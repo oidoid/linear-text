@@ -174,9 +174,9 @@ l
   ))
 
 Deno.test('bad indent at start of file', async (test) =>
-  await assertSnapshot(test, TextTree(`  a`, 2, IDFactory()), { dir: '.' }))
+  await assertSnapshot(test, TextTree('  a', 2, IDFactory()), { dir: '.' }))
 Deno.test('bad indent after EOL', async (test) =>
-  await assertSnapshot(test, TextTree(`\n  a`, 2, IDFactory()), { dir: '.' }))
+  await assertSnapshot(test, TextTree('\n  a', 2, IDFactory()), { dir: '.' }))
 Deno.test('bad indent continuation', async (test) =>
   await assertSnapshot(
     test,
@@ -214,6 +214,22 @@ s
   t
 u
 `.trim(),
+      2,
+      IDFactory(),
+    ),
+    { dir: '.' },
+  ))
+Deno.test('bad double indent continuation', async (test) =>
+  await assertSnapshot(
+    test,
+    TextTree(
+      `
+a
+b
+c
+    d
+e
+  `.trim(),
       2,
       IDFactory(),
     ),

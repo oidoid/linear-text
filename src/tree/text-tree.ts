@@ -150,8 +150,10 @@ export function TextTree(
       indent--
     }
 
-    if (lineIndent === indent) {
-      // Indent matches a previous depth. Peer of line.
+    if (lineIndent <= indent) {
+      // Indent matches a previous depth or previous depth was too deep. Peer of
+      // line.
+      indent = lineIndent
       line = treeAdd<Line>(
         { end, expand: false, id: id(), indent, text, type: 'Line' },
         line!.up,

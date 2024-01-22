@@ -1,7 +1,4 @@
 Bugs
-When a sub-line has to great an indent, it eats up adjacent lines.
-    Looks like this.
-Followed by this.
   When I open a second file, LT reopens the first sometimes?
   When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click. This really stinks for each line because it's jagged with no visual cue.
   An empty line has no cursor.

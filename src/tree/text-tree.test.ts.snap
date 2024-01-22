@@ -1920,6 +1920,74 @@ snapshot[`bad indent continuation 1`] = `
 }
 `;
 
+snapshot[`bad double indent continuation 1`] = `
+<ref *1> {
+  down: [
+    <ref *2> {
+      down: [
+        {
+          down: [],
+          end: "LF",
+          expand: false,
+          id: 2,
+          indent: 0,
+          text: "a",
+          type: "Line",
+          up: [Circular *2],
+        },
+        {
+          down: [],
+          end: "LF",
+          expand: false,
+          id: 3,
+          indent: 0,
+          text: "b",
+          type: "Line",
+          up: [Circular *2],
+        },
+        <ref *3> {
+          down: [
+            {
+              down: [],
+              end: "LF",
+              expand: false,
+              id: 5,
+              indent: 2,
+              text: "d",
+              type: "Line",
+              up: [Circular *3],
+            },
+          ],
+          end: "LF",
+          expand: false,
+          id: 4,
+          indent: 0,
+          text: "c",
+          type: "Line",
+          up: [Circular *2],
+        },
+        {
+          down: [],
+          end: "",
+          expand: false,
+          id: 6,
+          indent: 0,
+          text: "e",
+          type: "Line",
+          up: [Circular *2],
+        },
+      ],
+      id: 1,
+      type: "Group",
+      up: [Circular *1],
+    },
+  ],
+  id: 0,
+  indentW: 2,
+  type: "TextTree",
+}
+`;
+
 snapshot[`Windows carriage return and linefeed 1`] = `
 <ref *1> {
   down: [
