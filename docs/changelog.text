@@ -1,5 +1,8 @@
 Changelog
 
+v0.5.5
+  Fix parsing bug where text has wrong indentation.
+
 v0.5.2-4
   Fix app installations.
 
