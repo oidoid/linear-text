@@ -1,19 +1,28 @@
 Bugs
   When I open a second file, LT reopens the first sometimes?
+  Opening as a web app doesn't allow the icon to be updated.
+  The tutorial page has the wrong favicon.
+  The favicon has a null type. data:null for favicon is wrong.
   When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click. This really stinks for each line because it's jagged with no visual cue.
   An empty line has no cursor.
+  Prompt for changelog edits in publish script and maybe move publish script to ~/bin so I can version it.
   Editing a file externally or in the text pane clears the expand state. No idea how preserving expand state will work in the current design without intelligent editor-TextTree diffing.
   When a file starts with empty lines, an empty initial group is created.
   The only way to delete an empty group is the text editor.
   Mobile scrolling is completely broken.
   Test save in Firefox. Shouldn't show it if can't be supported.
   Re-explore columnar scrolling. I think I like this better but it does add a ton of visual noise. Maybe use hover scrollbars.
+  Don't include Linear Text in the page title? This repeats for installed web app.
   When I type, the note should stay on screen and not allow the cursor to scroll offscreen as I type.
+  There's no way to insert a card at the top of a column easily.
+  When I press enter on selected text, delete the selection and split--need unit tests for all this craziness.
   Autosave doesn't support multiple windows. Maybe try to distinguish by filename and error if already present?
   Dragging a line from scrolled location loses the scroll on drop.
   When I reopen Linear Text and attempt to save the last opened file, it doesn't suggest the prior filename.
+  When I reopen Linear Text, the local storage contents can be stale even if the last editor was Linear Text because the file handle isn't re-read into local storage.
   Enter at the start of a line does nothing.
   When I highlight text and alt-tab to another window, my highlight is lost.
+  When I delete a child's text, and shift-tab to focus the parent, I lose the focus.
 File Deno bugs.
   I can't do an exhaustive switch in the default case. `props.page.type satisfies never`
   html and css template strings aren't formatted.
@@ -32,8 +41,11 @@ I want a way to delete or add cards by clicking, including deleting groups and s
 
 Design
   Fix large pixelated favicons.
+  Take another pass at (small) realistic notes?
   Expand/collapse button should support a toggle state visually.
   Fix colors to be a consistent scheme. Everything is black and white except what you have created. Fix manifest.json themes too.
+  Experiment with white noise background.
+  I think for deleting, resurrecting the recycle bin would be nice.
   Text editor slideout could be a lot nicer with a friendly knob.
   Reconsider columnar scrolling. The grid scrolling has me in deep space.
   Toolbar buttons should look a bit nicer. Not distracting like FigJam but maybe square.
@@ -41,6 +53,8 @@ Design
   Try to tighten things up so the app feels special.
     Ask me questions about the design.
   Explore custom hand grip cursor like miro https://css-tricks.com/using-css-cursors/#aa-using-a-custom-cursor-to-enhance-an-element
+    https://ux.stackexchange.com/questions/52503/who-created-the-mac-mickey-pointer-cursor
+    https://ux.stackexchange.com/questions/52336/why-is-the-mouse-cursor-slightly-tilted-and-not-straight#52338
   Add screenshots to manifest.
   What to do about loading prior file but not actually reading it from disk? User could replace the latest with some old copy by mistake.
 Dragging
@@ -62,6 +76,8 @@ Improve note editing input.
     Space at the start of a line indents, backspace at the start of a line unindents.
   alt-down to toggle expand / collapse.
   Enter in an empty line creates a new group.
+Add ?tutorial query param mode.
+How can I unit test the UI effectively? I think the line-input especially needs to be tested for correct effect dispatching.
 Plan text editor.
   It feels like this should be a first-class part of Linear Text, not a developer mode.
   Do I want a more featureful editor like CodeMirror? I think so.
@@ -104,26 +120,9 @@ How should groups and nested lines support deletes through UI?
   The current approach to delete a line is to clear all the text.
 Improve performance.
 Docs
+  Add bug report link.
+  Embed a playground on docs page to fool around with. This wouldn't replace the one at https://lineartext.com.
   Verify line / card terminolgy is used consistently and not confusing in tutorial.text.
-  Link on oidoid.com.
-  Update lineartext.com with new version and docs.
-    It's hard to express the value of plaintext well.
-    Electronic notes.
-    Notes take up more of a physical, two-dimensional space and I think that makes them easier to work with.
-    Big features list.
-      Single-file distributable. It's so important. Double-click to open in a browser. 100% offline.
-      Another lens: Gives an alternative perspective on the plaintext you love. Same text, different view.
-      Text is structured already. Show a treeular view of notes. "pretty mode" for text.
-      Outliner for lists of text and lists of lists. Good for collectors, journalers and journal keepers. It's kind of like a mix between Trello, an outliner, and a line editor.
-      Speedy.
-      Human centric, text is sacred and not list when edited manually
-      Preview cards. Good for bookmarks and URL heuristics.
-    Principles
-      No lock-in. Just another text editor but diff presentation
-      No spyware.
-      Open-source.
-    Really liked docs for cb. It was an intriguing argument for some.
-    Review Twitter share cards.
   Document non-/technical decisions.
     Custom drag-and-drop over native.
       native is like 30 lines and does a lot well: ~/work/web/linear-text-protos/linear-text-proto-ui-drag-2023-11-13/index.js
@@ -183,3 +182,10 @@ Explore more card types.
 ctrl / shift-click select cards for dragging / delete.
 Idea: add @2020-01-02-snooze/reveal to hide a card until a date. Might be some other date-based actions like @2020-01-02-highlight. Or maybe `// hide me` makes more sense for plain text. Not sure how this doesn't get super out of sync though when dragging around.
   I love the idea of timer cards like @2024-01-02 or @12p that ding and light up. The UI has a ton of flex to represent these differently but essentially you get pomodoro cards.
+When I copy-and-paste multiple lines, these should appear across multiple cards instead of concatenating on one.
+When I divide a card with children, the new card should get the children (just insert above) unless it's collapsed.
+Need a lot more unit tests for line parsing, particularly on indentation parenting and moving / reparenting.
+Persist file handle and permissions.
+  https://developer.chrome.com/blog/persistent-permissions-for-the-file-system-access-api
+  https://web.dev/articles/origin-private-file-system
+i don't do a lot between columns in linear at least for planning. should thye be wider?
