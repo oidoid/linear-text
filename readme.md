@@ -1,6 +1,6 @@
 # ![Linear Text](src/favicon/favicon.png) Linear Text
 
-Linear Text is a graphical line-oriented text editor. See
+Linear Text is a graphical line-oriented plaintext editor. See
 [lineartext.com](https://lineartext.com) or open
 [tutorial.text](docs/tutorial.text) in Linear Text.
 

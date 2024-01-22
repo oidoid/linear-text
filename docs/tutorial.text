@@ -1,4 +1,4 @@
-Linear Text is a graphical line-oriented text editor that runs in your browser.
+Linear Text is a graphical line-oriented plaintext editor.
 Text files are split into lines.
 Every line of text is a card.
 
@@ -26,7 +26,7 @@ File I/O
   When a file is loaded, it's rechecked for changes whenever Linear Text is focused. If the file is edited externally, the file will be reloaded on focus so long as there are no unsaved changes.
   Linear Text will attempt to preserve the last viewed text file to temporary offline browser storage. Do not rely on this ephemeral backup. It's for emergency use only. Save data you wish to keep to disk.
   Linear Text executes locally in your browser, never uploads data, and can execute entirely offline. There is no server or "mothership".
-Text Editor Panel
+Integrated Text Editor
   Open the text editor panel by sliding on the lower resize icon in the bottom-left.
   The editor always shows the current text state of the board. Whenever you save, the text editor is exactly what you'll get.
   Changes made to the editor, update the board. The board and the editor are always in sync.
