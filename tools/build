@@ -8,7 +8,7 @@ import * as esbuild from 'esbuild'
 import { denoPlugins } from 'esbuild_deno_loader'
 import { encodeBase64 } from 'std/encoding/base64.ts'
 import * as path from 'std/path/mod.ts'
-import deno from '../deno.json' assert { type: 'json' }
+import deno from '../deno.json' with { type: 'json' }
 
 const watch = Deno.args.includes('--watch')
 const inFilename = 'src/linear-text.html'
