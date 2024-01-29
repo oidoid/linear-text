@@ -1,5 +1,8 @@
 Changelog
 
+v0.5.6
+  Fix another parsing bug where subline has wrong indentation.
+
 v0.5.5
   Fix parsing bug where text has wrong indentation.
 
