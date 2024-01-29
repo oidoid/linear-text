@@ -1920,7 +1920,7 @@ snapshot[`bad indent continuation 1`] = `
 }
 `;
 
-snapshot[`bad double indent continuation 1`] = `
+snapshot[`bad double indent continuation at group root 1`] = `
 <ref *1> {
   down: [
     <ref *2> {
@@ -1973,6 +1973,65 @@ snapshot[`bad double indent continuation 1`] = `
           id: 6,
           indent: 0,
           text: "e",
+          type: "Line",
+          up: [Circular *2],
+        },
+      ],
+      id: 1,
+      type: "Group",
+      up: [Circular *1],
+    },
+  ],
+  id: 0,
+  indentW: 2,
+  type: "TextTree",
+}
+`;
+
+snapshot[`bad double indent continuation at line root 1`] = `
+<ref *1> {
+  down: [
+    <ref *2> {
+      down: [
+        <ref *3> {
+          down: [
+            <ref *4> {
+              down: [
+                {
+                  down: [],
+                  end: "LF",
+                  expand: false,
+                  id: 4,
+                  indent: 3,
+                  text: "1",
+                  type: "Line",
+                  up: [Circular *4],
+                },
+              ],
+              end: "LF",
+              expand: false,
+              id: 3,
+              indent: 1,
+              text: "a",
+              type: "Line",
+              up: [Circular *3],
+            },
+            {
+              down: [],
+              end: "",
+              expand: false,
+              id: 5,
+              indent: 1,
+              text: "b",
+              type: "Line",
+              up: [Circular *3],
+            },
+          ],
+          end: "LF",
+          expand: false,
+          id: 2,
+          indent: 0,
+          text: "line",
           type: "Line",
           up: [Circular *2],
         },

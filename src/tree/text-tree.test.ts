@@ -219,7 +219,7 @@ u
     ),
     { dir: '.' },
   ))
-Deno.test('bad double indent continuation', async (test) =>
+Deno.test('bad double indent continuation at group root', async (test) =>
   await assertSnapshot(
     test,
     TextTree(
@@ -230,6 +230,22 @@ c
     d
 e
   `.trim(),
+      2,
+      IDFactory(),
+    ),
+    { dir: '.' },
+  ))
+
+Deno.test('bad double indent continuation at line root', async (test) =>
+  await assertSnapshot(
+    test,
+    TextTree(
+      `
+line
+  a
+      1
+  b
+      `.trim(),
       2,
       IDFactory(),
     ),
