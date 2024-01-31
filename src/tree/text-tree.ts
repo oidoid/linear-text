@@ -91,7 +91,7 @@ export function TextTree(
   id: IDFactory = factory,
 ): TextTree {
   const tree: TextTree = { down: [], id: id(), indentW, type: 'TextTree' }
-  let line: Line | undefined
+  let prev: Line | undefined
 
   for (const { start, text, end } of split(str)) {
     if (!text && !start) {
@@ -110,16 +110,16 @@ export function TextTree(
       // Unexpected continuation (indent after EOL). Replace EOL with line as a
       // child of any previous line or group.
       const eol = treeRemove(tree.down.at(-1)!.down.at(-1)!)
-      line = treeAdd<Line>(
+      prev = treeAdd<Line>(
         {
           end: eol.end,
           expand: false,
           id: eol.id,
-          indent: line ? (line.indent + 1) : 0,
+          indent: prev ? (prev.indent + 1) : 0,
           text: '',
           type: 'Line',
         },
-        line ?? eol.up,
+        prev ?? eol.up,
         -1,
       )
     }
@@ -130,7 +130,7 @@ export function TextTree(
     ) {
       // No group or last line was EOL.
       const group = treeAdd<Group>({ id: id(), type: 'Group' }, tree, -1)
-      line = treeAdd<Line>(
+      prev = treeAdd<Line>(
         { end, expand: false, id: id(), indent: 0, text, type: 'Line' },
         group,
         -1,
@@ -141,40 +141,25 @@ export function TextTree(
     // Parent is existing group / line.
 
     // Walk up tree by indent.
-    while (line!.up.type === 'Line' && lineIndent < line!.indent) {
-      line = line!.up
+    while (prev!.up.type === 'Line' && lineIndent < prev!.indent) {
+      prev = prev!.up
     }
 
-    if (lineIndent <= line!.indent) {
-      // Indent matches a previous depth or previous depth was too deep. Peer of
-      // line.
-      line = treeAdd<Line>(
-        {
-          end,
-          expand: false,
-          id: id(),
-          indent: lineIndent,
-          text,
-          type: 'Line',
-        },
-        line!.up,
-        -1,
-      )
-    } else {
-      // Child of line. Don't care if indent mismatch.
-      line = treeAdd<Line>(
-        {
-          end,
-          expand: false,
-          id: id(),
-          indent: lineIndent,
-          text,
-          type: 'Line',
-        },
-        line!,
-        -1,
-      )
-    }
+    prev = treeAdd<Line>(
+      {
+        end,
+        expand: false,
+        id: id(),
+        indent: lineIndent,
+        text,
+        type: 'Line',
+      },
+      // Indent matches a previous depth or previous depth was too deep?
+      lineIndent <= prev!.indent
+        ? prev!.up // Peer of line.
+        : prev!, // Child of line.
+      -1,
+    )
   }
 
   return tree
