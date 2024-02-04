@@ -4,6 +4,7 @@
   "description": "🗒 Graphical line-oriented text editor.",
   "devDependencies": {
     "@types/jsdom": "21.1.6",
+    "@types/node": "18.19.8",
     "browser-fs-access": "0.35.0",
     "esbuild": "0.20.0",
     "jsdom": "24.0.0",
