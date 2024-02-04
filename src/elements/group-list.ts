@@ -54,7 +54,7 @@ export class GroupList extends LitElement {
 
       background-color: #f2f5f5;
       background-image: url('${unsafeCSS(gridURI)}');
-      background-size: 8px 8px;
+      background-size: 8px;
     }
 
     li {
