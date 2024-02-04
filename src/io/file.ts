@@ -1,4 +1,4 @@
-import { fileOpen, fileSave } from 'browser-fs-access'
+import {fileOpen, fileSave} from 'browser-fs-access'
 
 export type FileAndHandle = {
   file: File
@@ -15,45 +15,45 @@ export async function openFile(): Promise<FileAndHandle | undefined> {
     file = await fileOpen({
       mimeTypes: [defaultMimeType],
       extensions: [...defaultExtensions],
-      description: 'Plain Text Files',
+      description: 'Plain Text Files'
     })
   } catch (err) {
     if (isCanceledByUser(err)) return
     throw err
   }
-  return { file, handle: file.handle }
+  return {file, handle: file.handle}
 }
 
 export async function reopenFile(
-  fileAndHandle: FileAndHandle,
+  fileAndHandle: FileAndHandle
 ): Promise<FileAndHandle> {
   if (!fileAndHandle.handle) return fileAndHandle
   return {
     file: await fileAndHandle.handle.getFile(),
-    handle: fileAndHandle.handle,
+    handle: fileAndHandle.handle
   }
 }
 
 export function isFileModified(
   before: Readonly<FileAndHandle>,
-  after: Readonly<FileAndHandle>,
+  after: Readonly<FileAndHandle>
 ): boolean {
   return before.file.lastModified < after.file.lastModified
 }
 
 export async function saveFile(
   fileAndHandle: FileAndHandle | undefined,
-  text: string,
+  text: string
 ): Promise<FileAndHandle | undefined> {
   let handle
   try {
     handle = await fileSave(
-      new Blob([text], { type: defaultMimeType }),
+      new Blob([text], {type: defaultMimeType}),
       {
         fileName: fileAndHandle?.file.name ?? `untitled${defaultExtension}`,
-        extensions: [...defaultExtensions],
+        extensions: [...defaultExtensions]
       },
-      fileAndHandle?.handle,
+      fileAndHandle?.handle
     )
   } catch (err) {
     if (isCanceledByUser(err)) {
@@ -63,7 +63,7 @@ export async function saveFile(
     throw err
   }
   if (!handle) return fileAndHandle
-  return { file: await handle.getFile(), handle }
+  return {file: await handle.getFile(), handle}
 }
 
 function isCanceledByUser(err: unknown): boolean {

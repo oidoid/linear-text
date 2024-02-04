@@ -14,7 +14,7 @@ export function composedAncestorElement(el: Element): Element | undefined {
 /** Composed Element.closest(). */
 export function composedClosest(
   selector: string,
-  el: Element,
+  el: Element
 ): Element | undefined {
   const closest = el.closest(selector)
   if (closest) return closest
@@ -31,7 +31,7 @@ export function composedClosestScrollable(el: Element): Element | undefined {
 
 /** Composed Document.elementFromPoint(). */
 export function composedElementFromPoint(x: number, y: number): Element | null {
-  for (let el = document.elementFromPoint(x, y);;) {
+  for (let el = document.elementFromPoint(x, y); ; ) {
     const next = el?.shadowRoot?.elementFromPoint(x, y)
     if (!next || el === next) return el
     el = next
@@ -41,9 +41,9 @@ export function composedElementFromPoint(x: number, y: number): Element | null {
 /** @arg xy Target in viewport client coordinates. */
 export function scrollTowardsEdge(
   el: Element,
-  xy: Readonly<{ x: number; y: number }>,
+  xy: Readonly<{x: number; y: number}>,
   threshold: number,
-  by: number,
+  by: number
 ): void {
   const sx = xy.x < threshold ? -1 : xy.x > el.clientWidth - threshold ? 1 : 0
   const sy = xy.y < threshold ? -1 : xy.y > el.clientHeight - threshold ? 1 : 0

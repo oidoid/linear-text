@@ -4,21 +4,13 @@
   "display": "standalone",
   "homepage_url": "https://lineartext.com",
   "icons": [
-    { "src": "favicon/favicon.png", "sizes": "16x16", "type": "image/png" },
-    { "src": "favicon/favicon32.png", "sizes": "32x32", "type": "image/png" },
-    { "src": "favicon/favicon48.png", "sizes": "48x48", "type": "image/png" },
-    { "src": "favicon/favicon64.png", "sizes": "64x64", "type": "image/png" },
-    {
-      "src": "favicon/favicon192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "favicon/favicon512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    { "src": "favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {"src": "favicon/favicon.png", "sizes": "16x16", "type": "image/png"},
+    {"src": "favicon/favicon32.png", "sizes": "32x32", "type": "image/png"},
+    {"src": "favicon/favicon48.png", "sizes": "48x48", "type": "image/png"},
+    {"src": "favicon/favicon64.png", "sizes": "64x64", "type": "image/png"},
+    {"src": "favicon/favicon192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "favicon/favicon512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml"}
   ],
   "manifest_version": 3,
   "name": "Linear Text",

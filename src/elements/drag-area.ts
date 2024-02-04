@@ -1,7 +1,7 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'lit'
-import { customElement } from 'lit/decorators.js'
-import { cssReset } from '../utils/css-reset.js'
-import { DragLine } from './drag-line.js'
+import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
+import {customElement} from 'lit/decorators.js'
+import {cssReset} from '../utils/css-reset.js'
+import {DragLine} from './drag-line.js'
 
 declare global {
   interface HTMLElementEventMap {
@@ -39,17 +39,17 @@ export class DragArea extends LitElement {
 
   #gesture:
     | {
-      /** Set on significant duration or movement. */
-      drag?: true
-      /** Most recent event intercepted. */
-      ev: PointerEvent
-      /** Origin of the opening pointer down event. */
-      readonly start: Readonly<{ x: number; y: number }>
-      /** Re-target all drag events in the gesture. */
-      readonly target: HTMLElement
-      /** Synthetic drag event interval timer. */
-      readonly timer: ReturnType<typeof setInterval>
-    }
+        /** Set on significant duration or movement. */
+        drag?: true
+        /** Most recent event intercepted. */
+        ev: PointerEvent
+        /** Origin of the opening pointer down event. */
+        readonly start: Readonly<{x: number; y: number}>
+        /** Re-target all drag events in the gesture. */
+        readonly target: HTMLElement
+        /** Synthetic drag event interval timer. */
+        readonly timer: ReturnType<typeof setInterval>
+      }
     | undefined
 
   // to-do:  Disable mobile long press?
@@ -74,7 +74,7 @@ export class DragArea extends LitElement {
   #onPointerDown = (ev: PointerEvent): void => {
     if (ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) return
     if (!ev.isPrimary || ev.buttons !== 1) return
-    if (!ev.composedPath().some((target) => target instanceof DragLine)) return
+    if (!ev.composedPath().some(target => target instanceof DragLine)) return
     const target = ev.composedPath()[0]
     if (!(target instanceof HTMLElement)) return
     if (target.isContentEditable && target.matches(':focus')) return // Editing text.
@@ -82,9 +82,9 @@ export class DragArea extends LitElement {
     ev.preventDefault()
     this.#gesture = {
       ev,
-      start: { x: ev.clientX, y: ev.clientY },
+      start: {x: ev.clientX, y: ev.clientY},
       target,
-      timer: setInterval(() => this.#onPointerMove(this.#gesture!.ev), 10),
+      timer: setInterval(() => this.#onPointerMove(this.#gesture!.ev), 10)
     }
   }
 

@@ -15,7 +15,6 @@ test('touch root', () => {
   // 4   5
   // |
   // 6
-  // deno-fmt-ignore
   const i: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   i[0]!.down = [i[1]!, i[2]!, i[3]!]
@@ -55,7 +54,6 @@ test('touch mid', () => {
   // 4   5
   // |
   // 6
-  // deno-fmt-ignore
   const i: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   i[0]!.down = [i[1]!, i[2]!, i[3]!]
@@ -96,7 +94,6 @@ test('touch leaf', () => {
   // 4   5
   // |
   // 6
-  // deno-fmt-ignore
   const i: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   i[0]!.down = [i[1]!, i[2]!, i[3]!]
@@ -139,7 +136,6 @@ test('remove', () => {
   // 4   5
   // |
   // 6
-  // deno-fmt-ignore
   const i: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   i[0]!.down = [i[1]!, i[2]!, i[3]!]
@@ -161,7 +157,6 @@ test('remove', () => {
   // 1 2 3
   //   |
   //   5
-  // deno-fmt-ignore
   const e: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   e[0]!.down = [e[1]!, e[2]!, e[3]!]
@@ -186,7 +181,6 @@ test('add', () => {
   //   5 4
   //     |
   //     6
-  // deno-fmt-ignore
   const i: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   i[0]!.down = [i[1]!, i[2]!, i[3]!]
@@ -208,7 +202,6 @@ test('add', () => {
   //   5 4
   //     |
   //     6
-  // deno-fmt-ignore
   const e: NumTree[] = [{n: 0}, {n: 1}, {n: 2}, {n: 3}, {n: 4}, {n: 5}, {n: 6}]
 
   e[0]!.down = [e[1]!, e[2]!, e[3]!]

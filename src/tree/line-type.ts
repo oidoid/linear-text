@@ -2,9 +2,9 @@ import {
   isDataImageURIStr,
   isDataURIStr,
   isFileURIStr,
-  isHTTPURIStr,
+  isHTTPURIStr
 } from '../uri-parser/uri-parser.js'
-import { isNumeric } from '../utils/string-util.js'
+import {isNumeric} from '../utils/string-util.js'
 
 /** String-encoded data type of the text value. */
 export type LineType =
@@ -61,11 +61,11 @@ const imageExtensions = Object.freeze([
   '.ico',
   '.cur',
   '.tif',
-  '.tiff',
+  '.tiff'
 ])
 
 function endsWithImageExtension(text: string): boolean {
-  const extIndex = imageExtensions.find((ext) => text.endsWith(ext))
+  const extIndex = imageExtensions.find(ext => text.endsWith(ext))
   if (extIndex == null) return false
   // Require not just an extension but a filename stem too.
   return text.length > extIndex.length

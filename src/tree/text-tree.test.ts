@@ -479,9 +479,8 @@ test('multi-line group (2)', () =>
     }
   `))
 test('multi-line groups (3)', () =>
-  expect(
-    TextTree('a\nb\nc\n\nd\ne\nf\n\ng\nh\ni', 2, IDFactory())
-  ).toMatchInlineSnapshot(`
+  expect(TextTree('a\nb\nc\n\nd\ne\nf\n\ng\nh\ni', 2, IDFactory()))
+    .toMatchInlineSnapshot(`
     {
       "down": [
         {
@@ -1085,9 +1084,7 @@ test('an empty line before a group is added to the preceding group (2)', () =>
     }
   `))
 test('an empty line before a group is added to the preceding group (3)', () =>
-  expect(
-    TextTree('a\n\n\n\n\n\nb\n\n', 2, IDFactory())
-  ).toMatchInlineSnapshot(`
+  expect(TextTree('a\n\n\n\n\n\nb\n\n', 2, IDFactory())).toMatchInlineSnapshot(`
     {
       "down": [
         {

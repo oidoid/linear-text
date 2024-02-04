@@ -1,4 +1,4 @@
-import { TextTree } from '../tree/text-tree.js'
+import {TextTree} from '../tree/text-tree.js'
 
 export type Autosave = {
   /** Filename last saved as. */
@@ -18,13 +18,13 @@ const autosave: string = 'linearText'
 export function saveStorage(
   filename: string | undefined,
   saved: boolean,
-  tree: Readonly<TextTree>,
+  tree: Readonly<TextTree>
 ): void {
   const save: Autosave = {
     filename,
     saved,
     text: TextTree.toString(tree),
-    version: 1,
+    version: 1
   }
   localStorage.setItem(autosave, JSON.stringify(save))
 }

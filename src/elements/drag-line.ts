@@ -1,18 +1,18 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'lit'
-import { customElement } from 'lit/decorators.js'
-import type { Group, Line, PositionLine } from '../tree/text-tree.js'
-import { Bubble } from '../utils/bubble.js'
-import { cssReset } from '../utils/css-reset.js'
+import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
+import {customElement} from 'lit/decorators.js'
+import type {Group, Line, PositionLine} from '../tree/text-tree.js'
+import {Bubble} from '../utils/bubble.js'
+import {cssReset} from '../utils/css-reset.js'
 import {
   blurActiveElement,
   composedAncestorElement,
   composedClosest,
   composedClosestScrollable,
   composedElementFromPoint,
-  scrollTowardsEdge,
+  scrollTowardsEdge
 } from '../utils/element-util.js'
-import type { LineElement } from './line-element.js'
-import { LineList } from './line-list.js'
+import type {LineElement} from './line-element.js'
+import {LineList} from './line-list.js'
 
 export type DragEnd = {
   readonly from: Readonly<Line>
@@ -53,14 +53,14 @@ export class DragLine extends LitElement {
 
   #drag:
     | {
-      /** Cursor position relative this. */
-      readonly cursor: Readonly<{ x: number; y: number }>
-      /** A clone of this modified to follow the cursor. */
-      readonly ghost: DragLine
-      readonly line: Readonly<Line>
-      over?: { at: PositionLine; line: Readonly<Line> }
-      parent: Element
-    }
+        /** Cursor position relative this. */
+        readonly cursor: Readonly<{x: number; y: number}>
+        /** A clone of this modified to follow the cursor. */
+        readonly ghost: DragLine
+        readonly line: Readonly<Line>
+        over?: {at: PositionLine; line: Readonly<Line>}
+        parent: Element
+      }
     | undefined
 
   constructor() {
@@ -87,8 +87,8 @@ export class DragLine extends LitElement {
         Bubble<DragEnd>('drag-line-end', {
           from: this.#drag.line,
           to: this.#drag.over.line,
-          at: this.#drag.over.at,
-        }),
+          at: this.#drag.over.at
+        })
       )
       // Lit components track children rendered from the model. Manually adding
       // or removing a child may cause a duplicate or missing child on model
@@ -96,11 +96,9 @@ export class DragLine extends LitElement {
       // parent lists it was associated with.
 
       this.#drag.parent.dispatchEvent(
-        Bubble<undefined>('drag-line-invalidate', undefined),
+        Bubble<undefined>('drag-line-invalidate', undefined)
       )
-      this.dispatchEvent(
-        Bubble<undefined>('drag-line-invalidate', undefined),
-      )
+      this.dispatchEvent(Bubble<undefined>('drag-line-invalidate', undefined))
       this.remove()
       this.#drag = undefined
     }
@@ -116,19 +114,18 @@ export class DragLine extends LitElement {
     this.#moveGhostToCursor(scrollable, ev)
 
     if (scrollable) {
-      scrollTowardsEdge(scrollable, { x: ev.clientX, y: ev.clientY }, 32, 4)
+      scrollTowardsEdge(scrollable, {x: ev.clientX, y: ev.clientY}, 32, 4)
     }
 
     const el = composedElementFromPoint(ev.pageX, ev.pageY)
     if (!el) return
 
-    const over = <DragLine | LineList | undefined> (
+    const over = <DragLine | LineList | undefined>(
       composedClosest('drag-line, line-list', el)
     )
     if (!over) return
-    const overLine = over instanceof DragLine
-      ? queryLineElement(over)?.line
-      : undefined // to-do: fix for list
+    const overLine =
+      over instanceof DragLine ? queryLineElement(over)?.line : undefined // to-do: fix for list
     if (!overLine) return
 
     let op = computeDragOp(ev, this, over)
@@ -157,7 +154,7 @@ export class DragLine extends LitElement {
         op satisfies 'none'
         return
     }
-    this.#drag.over = { at, line: overLine }
+    this.#drag.over = {at, line: overLine}
   }
 
   #onDragStart = (ev: DragEvent): void => {
@@ -172,18 +169,17 @@ export class DragLine extends LitElement {
     if (!parent) throw Error('missing parent')
 
     this.#drag = {
-      cursor: { x: ev.offsetX, y: ev.offsetY },
-      ghost: <DragLine> this.cloneNode(true), // Before add('picked') and follow.
+      cursor: {x: ev.offsetX, y: ev.offsetY},
+      ghost: <DragLine>this.cloneNode(true), // Before add('picked') and follow.
       line: lineEl.line,
-      parent: parent,
+      parent: parent
     }
 
     this.classList.add('picked')
     lineEl.classList.add('picked')
 
     if (this.#drag.ghost.children[0]) {
-      ;(<Element & { line: Line }> this.#drag.ghost.children[0]).line =
-        lineEl.line
+      ;(<Element & {line: Line}>this.#drag.ghost.children[0]).line = lineEl.line
       this.#drag.ghost.children[0].classList.add('ghost')
       // setTimeout(() => this.#drag.ghost.children[0].classList.add('ghost'), 10)
     }
@@ -202,15 +198,15 @@ export class DragLine extends LitElement {
       0,
       Math.min(
         scrollable.scrollLeft + ev.pageX - this.#drag.cursor.x,
-        scrollable.scrollWidth - rect.width - 1,
-      ),
+        scrollable.scrollWidth - rect.width - 1
+      )
     )
     const y = Math.max(
       0,
       Math.min(
         scrollable.scrollTop + ev.pageY - this.#drag.cursor.y,
-        scrollable.scrollHeight - rect.height - 1,
-      ),
+        scrollable.scrollHeight - rect.height - 1
+      )
     )
     this.#drag.ghost.style.translate = `${x}px ${y}px`
   }
@@ -223,7 +219,7 @@ export class DragLine extends LitElement {
 function computeDragOp(
   ev: DragEvent,
   picked: DragLine,
-  over: DragLine | LineList,
+  over: DragLine | LineList
 ): 'none' | 'after' | 'append' | 'before' | 'prepend' {
   if (over.contains(picked)) return 'none' // Pivoting over picked may oscillate.
   if (over instanceof LineList) return 'append'
@@ -232,7 +228,7 @@ function computeDragOp(
   if (!lineEl) return 'none'
 
   const rect = lineEl.rect
-  const offset = { x: ev.pageX - rect.x, y: ev.pageY - rect.y }
+  const offset = {x: ev.pageX - rect.x, y: ev.pageY - rect.y}
 
   const above = offset.y / rect.height < 0.5
   const inside = offset.x / rect.width >= 0.5
@@ -246,6 +242,5 @@ function computeDragOp(
 }
 
 function queryLineElement(el: LitElement): LineElement | undefined {
-  return <LineElement> el.renderRoot.querySelector('slot')!
-    .assignedElements()[0]
+  return <LineElement>el.renderRoot.querySelector('slot')!.assignedElements()[0]
 }

@@ -1,4 +1,4 @@
-import { treeAdd, treeRemove, treeRoot, treeTouch } from './tree.js'
+import {treeAdd, treeRemove, treeRoot, treeTouch} from './tree.js'
 
 /**
  * End of line; an empty line ("\n" or "\r\n"). These voids are tracked to allow
@@ -88,17 +88,17 @@ const factory: IDFactory = IDFactory()
 export function TextTree(
   str: string,
   indentW: IndentW,
-  id: IDFactory = factory,
+  id: IDFactory = factory
 ): TextTree {
-  const tree: TextTree = { down: [], id: id(), indentW, type: 'TextTree' }
+  const tree: TextTree = {down: [], id: id(), indentW, type: 'TextTree'}
   let prev: Line | undefined
 
-  for (const { start, text, end } of split(str)) {
+  for (const {start, text, end} of split(str)) {
     if (!text && !start) {
       // EOL. Create group if none exists.
-      const group = tree.down.at(-1) ??
-        treeAdd<Group>({ id: id(), type: 'Group' }, tree, -1)
-      treeAdd<EOL>({ id: id(), end, type: 'EOL' }, group, -1)
+      const group =
+        tree.down.at(-1) ?? treeAdd<Group>({id: id(), type: 'Group'}, tree, -1)
+      treeAdd<EOL>({id: id(), end, type: 'EOL'}, group, -1)
       continue
     }
 
@@ -115,12 +115,12 @@ export function TextTree(
           end: eol.end,
           expand: false,
           id: eol.id,
-          indent: prev ? (prev.indent + 1) : 0,
+          indent: prev ? prev.indent + 1 : 0,
           text: '',
-          type: 'Line',
+          type: 'Line'
         },
         prev ?? eol.up,
-        -1,
+        -1
       )
     }
 
@@ -129,11 +129,11 @@ export function TextTree(
       tree.down.at(-1)!.down.at(-1)?.type === 'EOL'
     ) {
       // No group or last line was EOL.
-      const group = treeAdd<Group>({ id: id(), type: 'Group' }, tree, -1)
+      const group = treeAdd<Group>({id: id(), type: 'Group'}, tree, -1)
       prev = treeAdd<Line>(
-        { end, expand: false, id: id(), indent: 0, text, type: 'Line' },
+        {end, expand: false, id: id(), indent: 0, text, type: 'Line'},
         group,
-        -1,
+        -1
       )
       continue
     }
@@ -152,13 +152,13 @@ export function TextTree(
         id: id(),
         indent: lineIndent,
         text,
-        type: 'Line',
+        type: 'Line'
       },
       // Indent matches a previous depth or previous depth was too deep?
       lineIndent <= prev!.indent
         ? prev!.up // Peer of line.
         : prev!, // Child of line.
-      -1,
+      -1
     )
   }
 
@@ -169,7 +169,7 @@ TextTree.addLine = (
   to: Line | Group,
   at: PositionLine,
   end: LineEnding,
-  id: IDFactory = factory,
+  id: IDFactory = factory
 ): TextTree => {
   let i
   let indent
@@ -187,9 +187,9 @@ TextTree.addLine = (
   }
 
   const line = treeAdd<Line>(
-    { end, expand: false, id: id(), indent, text: '', type: 'Line' },
+    {end, expand: false, id: id(), indent, text: '', type: 'Line'},
     up,
-    i,
+    i
   )
 
   return treeRoot(treeTouch(line))
@@ -199,10 +199,10 @@ TextTree.breakLine = (
   line: Line,
   at: number,
   end: LineEnding,
-  id: IDFactory = factory,
-): { root: TextTree; new: Line } => {
+  id: IDFactory = factory
+): {root: TextTree; new: Line} => {
   if (at < 0 || at > line.text.length) {
-    return { root: treeRoot(line), new: line }
+    return {root: treeRoot(line), new: line}
   }
   const lhs = line.text.slice(0, at)
   const rhs = line.text.slice(at)
@@ -217,18 +217,18 @@ TextTree.breakLine = (
       id: id(),
       indent: line.indent,
       text: rhs,
-      type: 'Line',
+      type: 'Line'
     },
     line.up,
-    line.up.down.indexOf(line) + 1,
+    line.up.down.indexOf(line) + 1
   )
-  return { root: treeRoot(next), new: next }
+  return {root: treeRoot(next), new: next}
 }
 
 TextTree.moveLine = (
   from: Line,
   to: Line | Group,
-  at: PositionLine,
+  at: PositionLine
 ): TextTree => {
   if (from === to) return treeRoot(from)
 
@@ -298,7 +298,7 @@ function measureIndent(str: string, indentW: IndentW): number {
 
 function nodesToString(
   nodes: readonly Readonly<TextTree | EOL | Group | Line>[],
-  indentW: IndentW,
+  indentW: IndentW
 ): string {
   let str = ''
   for (const node of nodes) {
@@ -307,14 +307,12 @@ function nodesToString(
     else if (node.type === 'Group') str += nodesToString(node.down, indentW)
     else if (node.type === 'Line') {
       const indent = (indentW === 'Tab' ? '\t' : ' '.repeat(indentW)).repeat(
-        node.indent,
+        node.indent
       )
-      str += `${indent}${node.text}${endToString(node.end)}${
-        nodesToString(
-          node.down,
-          indentW,
-        )
-      }`
+      str += `${indent}${node.text}${endToString(node.end)}${nodesToString(
+        node.down,
+        indentW
+      )}`
     } else node satisfies never
   }
   return str
@@ -326,8 +324,8 @@ function setIndent(line: Line, indent: number): void {
 }
 
 function* split(
-  str: string,
-): Generator<{ start: string; text: string; end: LineEnding | '' }> {
+  str: string
+): Generator<{start: string; text: string; end: LineEnding | ''}> {
   let start = ''
   let text = ''
   let end: LineEnding | '' = ''
@@ -338,17 +336,17 @@ function* split(
           end = 'CRLF'
           text = text.slice(0, -1)
         } else end = 'LF'
-        yield { start, text, end }
+        yield {start, text, end}
         start = text = end = ''
       } else text += char
     } else {
       if (char === ' ' || char === '\t') start += char
       else if (char === '\n') {
         end = 'LF'
-        yield { start, text, end }
+        yield {start, text, end}
         start = text = end = ''
       } else text += char
     }
   }
-  if (start || text || end) yield { start, text, end }
+  if (start || text || end) yield {start, text, end}
 }

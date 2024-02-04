@@ -1,4 +1,4 @@
-import { css, type CSSResult } from 'lit'
+import {css, type CSSResult} from 'lit'
 
 export const linearTextVars: CSSResult = css`
   :host {
