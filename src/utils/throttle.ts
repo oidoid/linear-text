@@ -1,9 +1,9 @@
 /** Limit function execution frequency. */
 export function throttle<T extends unknown[]>(
   fn: (...args: T) => void,
-  period: number,
+  period: number
 ): (...args: T) => void {
-  let timeout: number | undefined
+  let timeout: ReturnType<typeof setTimeout> | undefined
   let prev = 0
   let nextArgs: T | undefined
   return function (this: unknown, ...args: T): () => void {
@@ -16,7 +16,7 @@ export function throttle<T extends unknown[]>(
         nextArgs = undefined
         fn.apply(this, args)
       },
-      Math.max(0, period - (Date.now() - prev)),
+      Math.max(0, period - (Date.now() - prev))
     )
     return () => {
       if (timeout != null) clearTimeout(timeout)

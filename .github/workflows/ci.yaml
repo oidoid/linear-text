@@ -12,23 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Type-check
-        run: deno task test:types
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+      - name: Install Dependencies
+        run: npm ci --no-fund
       - name: Unit Test
-        run: deno task test:unit
-      - name: Lint
-        run: deno lint
-      - name: Format Test
-        run: deno fmt --check
-      - name: UI Test
-        run: deno task test:ui
-      # to-do: fix
-      # `Error: R] Directory not empty (os error 39): rename '/tmp/a3748ae3' -> '/home/runner/.cache/deno/deno_esbuild/@lit/reactive-element@2.0.2/node_modules/@lit/reactive-element' [plugin deno-loader]`
-      # error. https://github.com/oidoid/linear-text/actions/runs/7430168447/job/20219563902
-      # - name: Build
-      #   run: deno task build
+        run: npm run test:unit
+      - name: Test Format
+        run: npm run test:format
+      - name: Type-check UI
+        run: npm run test:types:ui
+      - name: Build
+        run: npm run build

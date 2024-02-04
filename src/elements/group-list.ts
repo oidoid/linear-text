@@ -1,19 +1,19 @@
 import {
-  css,
   CSSResult,
-  html,
   LitElement,
-  type TemplateResult,
+  css,
+  html,
   unsafeCSS,
-} from 'npm:lit'
-import { customElement, property } from 'npm:lit/decorators.js'
-import { repeat } from 'npm:lit/directives/repeat.js'
-import type { TextTree } from '../tree/text-tree.ts'
-import { cssReset } from '../utils/css-reset.ts'
-import { Context } from './context.ts'
-import './drag-area.ts'
-import './line-list.ts'
-const gridURI = (<{ default: string }> await import('./grid.svg')).default
+  type TemplateResult
+} from 'lit'
+import {customElement, property} from 'lit/decorators.js'
+import {repeat} from 'lit/directives/repeat.js'
+import type {TextTree} from '../tree/text-tree.js'
+import {cssReset} from '../utils/css-reset.js'
+import type {Context} from './context.js'
+import './drag-area.js'
+import gridURI from './grid.svg'
+import './line-list.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -91,22 +91,19 @@ export class GroupList extends LitElement {
     }
   `
 
-  @property({ attribute: false })
-  context: Readonly<Context> = {}
-  @property({ attribute: false })
-  tree?: Readonly<TextTree>
+  @property({attribute: false}) context: Readonly<Context> = {}
+  @property({attribute: false}) tree?: Readonly<TextTree>
 
   protected override render(): TemplateResult {
     const groups = repeat(
       this.tree?.down ?? [],
-      (group) => group.id,
-      (group) =>
-        html`
+      group => group.id,
+      group => html`
         <li>
           <div class="group-header"></div>
           <line-list .context=${this.context} .list=${group}></line-list>
         </li>
-      `,
+      `
     )
     return html`
       <drag-area>

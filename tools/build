@@ -1,163 +1,106 @@
-#!/usr/bin/env -S deno --quiet run --allow-env --allow-net --allow-read --allow-run --allow-write --ext ts
+#!/usr/bin/env -S node --no-warnings
 // Bundles sources into a single HTML file for distribution and development.
 //
 // --watch  Run development server. Serve on http://localhost:1234 and reload on
 //          code change.
-import { DOMParser } from 'deno_dom'
-import * as esbuild from 'esbuild'
-import { denoPlugins } from 'esbuild_deno_loader'
-import { encodeBase64 } from 'std/encoding/base64.ts'
-import * as path from 'std/path/mod.ts'
-import deno from '../deno.json' with { type: 'json' }
+//
+// --no-warnings shebang works around JSON import warnings. See
+// https://github.com/nodejs/node/issues/27355 and
+// https://github.com/nodejs/node/issues/40940.
+import esbuild from 'esbuild'
+import {JSDOM} from 'jsdom'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import pkg from '../package.json' assert {type: 'json'}
 
-const watch = Deno.args.includes('--watch')
+const watch = process.argv.includes('--watch')
 const inFilename = 'src/linear-text.html'
-const doc = new DOMParser().parseFromString(
-  await Deno.readTextFile(inFilename),
-  'text/html',
-)
-if (!doc) throw Error('unable to parse document')
-let srcFilename = (
+const doc = new JSDOM(await fs.readFile(inFilename, 'utf8')).window.document
+let srcFilename = /** @type {HTMLScriptElement|null} */ (
   doc.querySelector('script[type="module"][src]')
-)?.getAttribute('src')
+)?.src
 if (!srcFilename) throw Error('missing script source')
 srcFilename = `${path.dirname(inFilename)}/${srcFilename}`
 
-async function pluginOnEnd(result: esbuild.BuildResult): Promise<void> {
-  const copy = <Document> <unknown> doc!.cloneNode(true)
-  const manifestEl = copy.querySelector<HTMLLinkElement>('link[rel="manifest"]')
-  const manifestURI = manifestEl?.getAttribute('href')
-  if (manifestURI) {
-    const manifestFilename = `${path.dirname(inFilename)}/${manifestURI}`
-    const manifest = JSON.parse(await Deno.readTextFile(manifestFilename))
+/** @type {Parameters<esbuild.PluginBuild['onEnd']>[0]} */
+async function pluginOnEnd(result) {
+  const copy = /** @type {Document} */ (doc.cloneNode(true))
+  const manifestEl = /** @type {HTMLLinkElement|null} */ (
+    copy.querySelector('link[href][rel="manifest"]')
+  )
+  if (manifestEl) {
+    const manifestFilename = `${path.dirname(inFilename)}/${manifestEl.href}`
+    const manifest = JSON.parse(await fs.readFile(manifestFilename, 'utf8'))
     for (const icon of manifest.icons) {
       if (!icon.src) throw Error('missing manifest icon src')
       if (!icon.type) throw Error('missing manifest icon type')
-      const file = await Deno.readFile(
-        `${path.dirname(manifestFilename)}/${icon.src}`,
+      const file = await fs.readFile(
+        `${path.dirname(manifestFilename)}/${icon.src}`
       )
-      icon.src = `data:${icon.type};base64,${encodeBase64(file)}`
+      icon.src = `data:${icon.type};base64,${file.toString('base64')}`
     }
     if (watch) manifest.start_url = 'http://localhost:1234' // Suppress warning.
-    manifest.version = deno.version
-    manifestEl!.setAttribute(
-      'href',
-      `data:application/json,${encodeURIComponent(JSON.stringify(manifest))}`,
-    )
+    manifest.version = pkg.version
+    manifestEl.href = `data:application/json,${encodeURIComponent(
+      JSON.stringify(manifest)
+    )}`
   }
-  const icon = copy.querySelector<HTMLLinkElement>('link[rel="icon"]')
-  const iconURI = icon?.getAttribute('href')
-  if (iconURI) {
-    const file = await Deno.readFile(`${path.dirname(inFilename)}/${iconURI}`)
-    icon!.setAttribute(
-      'href',
-      `data:${icon!.getAttribute('type')};base64,${encodeBase64(file)}`,
-    )
+  const iconEl = /** @type {HTMLLinkElement|null} */ (
+    copy.querySelector('link[href][rel="icon"][type]')
+  )
+  if (iconEl) {
+    const file = await fs.readFile(`${path.dirname(inFilename)}/${iconEl.href}`)
+    iconEl.href = `data:${iconEl.type};base64,${file.toString('base64')}`
   }
 
-  let js = result.outputFiles
-    ?.filter((file) => file.path.endsWith('.js'))
-    .map((file) => file.text)
-    .join('') ?? ''
-  if (watch) {
+  let js =
+    result.outputFiles
+      ?.filter(file => file.path.endsWith('.js'))
+      .map(file => file.text)
+      .join('') ?? ''
+  if (watch)
     js +=
       "new EventSource('/esbuild').addEventListener('change', () => location.reload());"
-  }
 
-  const script = copy.querySelector<HTMLScriptElement>(
-    'script[type="module"][src]',
+  const scriptEl = /** @type {HTMLScriptElement|null} */ (
+    copy.querySelector('script[type="module"][src]')
   )
-  if (script) {
-    script.removeAttribute('src')
-    script.textContent = js
-  }
+  if (!scriptEl) throw Error('missing script')
+  scriptEl.removeAttribute('src')
+  scriptEl.textContent = js
   const outFilename = `dist/${
-    watch ? 'index.html' : `linear-text-v${deno.version}.html`
-  }`
-  await Deno.mkdir(path.dirname(outFilename), { recursive: true })
-  await Deno.writeTextFile(
+    watch ? 'index' : `${path.basename(inFilename, '.html')}-v${pkg.version}`
+  }.html`
+  await fs.mkdir(path.dirname(outFilename), {recursive: true})
+  await fs.writeFile(
     outFilename,
-    `<!doctype html>${copy.documentElement.outerHTML}`,
+    `<!doctype html>${copy.documentElement.outerHTML}`
   )
 }
 
-// esbuild_deno_loader uses the default file namespace which causes any standard
-// loaders like `loader: {'.svg': 'dataurl'}` to fail. Intercept and lock to new
-// namespaces. See https://github.com/lucacasonato/esbuild_deno_loader/issues/77.
-const svgLoader: esbuild.Plugin = {
-  name: 'SVGLoader',
-  setup(build) {
-    build.onResolve({ filter: /\.svg$/ }, (args) => ({
-      path: path.join(args.resolveDir, args.path),
-      namespace: svgLoader.name,
-    }))
-
-    build.onLoad(
-      { filter: /\.svg$/, namespace: svgLoader.name },
-      async (args) => ({
-        contents: `data:image/svg+xml;utf8,${
-          encodeURIComponent(await Deno.readTextFile(args.path))
-        }`,
-        loader: 'text',
-      }),
-    )
-  },
-}
-const pngLoader: esbuild.Plugin = {
-  name: 'PNGLoader',
-  setup(build) {
-    build.onResolve({ filter: /\.png$/ }, (args) => ({
-      path: path.join(args.resolveDir, args.path),
-      namespace: pngLoader.name,
-    }))
-
-    build.onLoad(
-      { filter: /\.png$/, namespace: pngLoader.name },
-      async (args) => ({
-        contents: `data:image/png;base64,${
-          encodeBase64(await Deno.readFile(args.path))
-        }`,
-        loader: 'text',
-      }),
-    )
-  },
-}
-
-const opts: esbuild.BuildOptions = {
+/** @type {esbuild.BuildOptions} */
+const opts = {
   bundle: true,
   conditions: watch ? ['development'] : [], // Lit
-  define: { 'linearTextVersion': `'${deno.version}'` }, // See defines.d.ts.
+  define: {linearTextVersion: `'${pkg.version}'`}, // See defines.d.ts.
   entryPoints: [srcFilename],
   format: 'esm',
+  // See loaders.d.ts.
+  loader: {
+    '.png': 'dataurl',
+    '.svg': 'dataurl',
+    '.text': 'text',
+    '.webp': 'dataurl'
+  },
   logLevel: `info`, // Print the port and build demarcations.
   minify: !watch,
   outdir: 'dist',
-  plugins: [
-    pngLoader,
-    svgLoader,
-    ...denoPlugins() as unknown as esbuild.Plugin[],
-    { name: 'HTML', setup: (build) => build.onEnd(pluginOnEnd) },
-  ],
+  plugins: [{name: 'LinearText', setup: build => build.onEnd(pluginOnEnd)}],
   sourcemap: 'linked',
   target: 'es2022', // https://esbuild.github.io/content-types/#tsconfig-json
-  tsconfigRaw: `{
-    "compilerOptions": {
-      // https://lit.dev/docs/v3/components/decorators/#decorators-typescript
-      "experimentalDecorators": true,
-      "useDefineForClassFields": false,
-
-      "target": "ES2022",
-
-      // Don't transform type-only imports.
-      "verbatimModuleSyntax": true
-    }
-  }`,
-  write: false, // Written by plugin.
+  write: false // Written by plugin.
 }
 if (watch) {
   const ctx = await esbuild.context(opts)
-  await Promise.race([ctx.watch(), ctx.serve({ port: 1234, servedir: 'dist' })])
-} else {
-  await esbuild.build(opts)
-  esbuild.stop()
-}
+  await Promise.race([ctx.watch(), ctx.serve({port: 1234, servedir: 'dist'})])
+} else await esbuild.build(opts)

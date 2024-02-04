@@ -4,10 +4,10 @@ import {
   html,
   LitElement,
   nothing,
-  type TemplateResult,
-} from 'npm:lit'
-import { customElement, property } from 'npm:lit/decorators.js'
-import { cssReset } from '../utils/css-reset.ts'
+  type TemplateResult
+} from 'lit'
+import {customElement, property} from 'lit/decorators.js'
+import {cssReset} from '../utils/css-reset.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -96,10 +96,8 @@ export class ButtonEl extends LitElement {
     }
   `
 
-  @property({ type: Boolean })
-  disabled: boolean = false
-  @property()
-  icon: string = ''
+  @property({type: Boolean}) disabled: boolean = false
+  @property() icon: string = ''
 
   protected override render(): TemplateResult {
     const icon = this.icon

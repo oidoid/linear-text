@@ -1,6 +1,6 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'npm:lit'
-import { customElement, query } from 'npm:lit/decorators.js'
-import { cssReset } from '../utils/css-reset.ts'
+import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
+import {customElement, query} from 'lit/decorators.js'
+import {cssReset} from '../utils/css-reset.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -73,8 +73,7 @@ export class SplitBlock extends LitElement {
     }
   `
 
-  @query('slot[name="lhs"]')
-  private _lhs!: HTMLSlotElement
+  @query('slot[name="lhs"]') private _lhs!: HTMLSlotElement
 
   // to-do: make handle friendly
   protected override render(): TemplateResult {
@@ -85,7 +84,7 @@ export class SplitBlock extends LitElement {
     `
   }
 
-  #onEndResize(ev: PointerEvent & { currentTarget: HTMLElement }): void {
+  #onEndResize(ev: PointerEvent & {currentTarget: HTMLElement}): void {
     ev.currentTarget.onpointercancel = null
     ev.currentTarget.onpointerup = null
     ev.currentTarget.onpointermove = null
@@ -98,11 +97,11 @@ export class SplitBlock extends LitElement {
     else this._lhs.style.width = `${ev.clientX}px`
   }
 
-  #onStartResize(ev: PointerEvent & { currentTarget: HTMLElement }): void {
+  #onStartResize(ev: PointerEvent & {currentTarget: HTMLElement}): void {
     // to-do: what am I doing here? why do i think it's ok to change on* props?
     ev.currentTarget.setPointerCapture(ev.pointerId)
-    ev.currentTarget.onpointermove = (ev) => this.#onResize(ev)
-    ev.currentTarget.onpointercancel = ev.currentTarget.onpointerup = (ev) =>
-      this.#onEndResize(<PointerEvent & { currentTarget: HTMLElement }> ev)
+    ev.currentTarget.onpointermove = ev => this.#onResize(ev)
+    ev.currentTarget.onpointercancel = ev.currentTarget.onpointerup = ev =>
+      this.#onEndResize(<PointerEvent & {currentTarget: HTMLElement}>ev)
   }
 }

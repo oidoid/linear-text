@@ -4,13 +4,13 @@ import {
   html,
   LitElement,
   type PropertyValues,
-  type TemplateResult,
-} from 'npm:lit'
-import { customElement, property, query, state } from 'npm:lit/decorators.js'
-import { Line } from '../tree/text-tree.ts'
-import { Bubble } from '../utils/bubble.ts'
-import { cssReset } from '../utils/css-reset.ts'
-import { Context } from './context.ts'
+  type TemplateResult
+} from 'lit'
+import {customElement, property, query, state} from 'lit/decorators.js'
+import type {Line} from '../tree/text-tree.js'
+import {Bubble} from '../utils/bubble.js'
+import {cssReset} from '../utils/css-reset.js'
+import type {Context} from './context.js'
 
 export type BlurLine = Readonly<Line>
 export type FocusLine = Readonly<Line>
@@ -67,17 +67,12 @@ export class LineInput extends LitElement {
     }
   `
 
-  @property({ attribute: false })
-  context: Readonly<Context> = {}
-  @property({ attribute: false })
-  line?: Readonly<Line>
-  @property()
-  text: string = ''
+  @property({attribute: false}) context: Readonly<Context> = {}
+  @property({attribute: false}) line?: Readonly<Line>
+  @property() text: string = ''
 
-  @query('p')
-  private _p!: HTMLParagraphElement
-  @state()
-  private _spellcheck: boolean = false
+  @query('p') private _p!: HTMLParagraphElement
+  @state() private _spellcheck: boolean = false
   /**
    * Text render state. Undefined allows initial update since text is always a
    * string.
@@ -117,7 +112,7 @@ export class LineInput extends LitElement {
   }
 
   protected override shouldUpdate(
-    props: PropertyValues<this & { _spellcheck: boolean }>,
+    props: PropertyValues<this & {_spellcheck: boolean}>
   ): boolean {
     const update = super.shouldUpdate(props)
     if (this.text === this.#text && !props.has('_spellcheck')) return false
@@ -127,9 +122,11 @@ export class LineInput extends LitElement {
 
   #getSelection(): Selection | null {
     // globalThis fallback for Firefox which pierces shadow DOM.
-    return (<{ getSelection?: () => Selection | null }> (
-      this.renderRoot
-    )).getSelection?.() ?? getSelection()
+    return (
+      (<{getSelection?: () => Selection | null}>(
+        this.renderRoot
+      )).getSelection?.() ?? getSelection()
+    )
   }
 
   #getCursorPosition(): number {
@@ -147,7 +144,7 @@ export class LineInput extends LitElement {
 
     if (/insert(?:LineBreak|Paragraph)/.test(ev.inputType)) {
       this.dispatchEvent(
-        Bubble<number>('break-text', this.#getCursorPosition()),
+        Bubble<number>('break-text', this.#getCursorPosition())
       )
       return
     }

@@ -1,4 +1,4 @@
-import { treeAdd, treeRemove, treeRoot, treeTouch } from './tree.ts'
+import { treeAdd, treeRemove, treeRoot, treeTouch } from './tree.js'
 
 /**
  * End of line; an empty line ("\n" or "\r\n"). These voids are tracked to allow

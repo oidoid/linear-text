@@ -1,0 +1,62 @@
+{
+  "author": "Stephen Niedzielski <stephen@oidoid.com> (https://oidoid.com)",
+  "bugs": "https://github.com/oidoid/linear-text/issues",
+  "description": "🗒 Graphical line-oriented text editor.",
+  "devDependencies": {
+    "@types/jsdom": "21.1.6",
+    "browser-fs-access": "0.35.0",
+    "esbuild": "0.20.0",
+    "jsdom": "24.0.0",
+    "lit": "3.1.2",
+    "lit-analyzer": "2.0.3",
+    "prettier": "3.2.5",
+    "typescript": "5.3.3",
+    "vitest": "1.2.2"
+  },
+  "engines": {
+    "node": ">=18.19.0"
+  },
+  "files": [
+    "dist",
+    "!dist/tsconfig.tsbuildinfo"
+  ],
+  "homepage": "https://lineartext.com",
+  "keywords": [
+    "editor",
+    "text",
+    "kanban",
+    "notes",
+    "to-do",
+    "line-editor",
+    "outliner",
+    "gui"
+  ],
+  "license": "AGPL-3.0-only",
+  "name": "linear-text",
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": false,
+    "jsxSingleQuote": true,
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "repository": "github:oidoid/linear-text",
+  "scripts": {
+    "build": "tools/build && tsc --build",
+    "clean": "rm -rf dist",
+    "format": "npm run formatter -- --write",
+    "formatter": "prettier --cache --log-level warn './**/*.{css,html,js,json,md,ts}'",
+    "preversion": "[ -z \"$(git status -z)\" ]",
+    "prepublishOnly": "! git symbolic-ref --quiet HEAD || git push --follow-tags origin \"$(git branch --show-current)\"",
+    "start": "tools/build --watch",
+    "test:format": "npm run formatter -- --check",
+    "test:types:ui": "lit-analyzer --maxWarnings=0 --rules.no-missing-element-type-definition --rules.no-unknown-event --strict",
+    "test:unit": "vitest run",
+    "test": "npm run test:format && npm run test:unit && npm run build && npm run test:types:ui",
+    "version": "npm test"
+  },
+  "type": "module",
+  "version": "0.5.7"
+}

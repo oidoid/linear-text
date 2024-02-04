@@ -1,29 +1,26 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'npm:lit'
-import { customElement, property } from 'npm:lit/decorators.js'
+import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
+import {customElement, property} from 'lit/decorators.js'
+import faviconUnsavedURI from '../../favicon/favicon-unsaved.svg'
+import faviconURI from '../../favicon/favicon.svg'
 import {
-  type FileAndHandle,
   isFileModified,
   openFile,
   reopenFile,
   saveFile,
-} from '../../io/file.ts'
-import { loadStorage, saveStorage } from '../../io/storage.ts'
-import { type Line, TextTree } from '../../tree/text-tree.ts'
-import { cssReset } from '../../utils/css-reset.ts'
-import '../app-menu/app-menu.ts'
-import { Context } from '../context.ts'
-import type { DragEnd } from '../drag-line.ts'
-import '../group-list.ts'
-import { BlurLine, FocusLine } from '../line-input.ts'
-import type { BreakLine, EditLine, ExpandLine } from '../note-card.ts'
-import '../split-block.ts'
-import '../text-editor.ts'
-import { linearTextVars } from './linear-text-vars.ts'
-const faviconURI =
-  (<{ default: string }> await import('../../favicon/favicon.svg')).default
-const faviconUnsavedURI =
-  (<{ default: string }> await import('../../favicon/favicon-unsaved.svg'))
-    .default
+  type FileAndHandle
+} from '../../io/file.js'
+import {loadStorage, saveStorage} from '../../io/storage.js'
+import {TextTree, type Line} from '../../tree/text-tree.js'
+import {cssReset} from '../../utils/css-reset.js'
+import '../app-menu/app-menu.js'
+import type {Context} from '../context.js'
+import type {DragEnd} from '../drag-line.js'
+import '../group-list.js'
+import type {BlurLine, FocusLine} from '../line-input.js'
+import type {BreakLine, EditLine, ExpandLine} from '../note-card.js'
+import '../split-block.js'
+import '../text-editor.js'
+import {linearTextVars} from './linear-text-vars.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -80,15 +77,14 @@ export class LinearText extends LitElement {
     }
   `
 
-  @property({ attribute: false })
-  tree: TextTree
+  @property({attribute: false}) tree: TextTree
 
   readonly #ctx: Context = {}
   #fileAndHandle: FileAndHandle | undefined
   #filename: string | undefined
   /** True if no unsaved changes. */
   #saved: boolean = false
-  #timer?: number
+  #timer?: ReturnType<typeof setInterval>
 
   constructor() {
     super()
@@ -139,7 +135,7 @@ export class LinearText extends LitElement {
   #onBreakLine(ev: CustomEvent<BreakLine>): void {
     // to-do: always return the relevant node and let caller walk up tree
     const next = TextTree.breakLine(ev.detail.line, ev.detail.at, 'LF') // to-do: pass line ending
-    this.#ctx.focus = { line: next.new, startOfLine: true }
+    this.#ctx.focus = {line: next.new, startOfLine: true}
     this.#updateTreeWithUnsavedChanges(next.root)
   }
 
@@ -164,7 +160,7 @@ export class LinearText extends LitElement {
 
   #onDragLineEnd(ev: CustomEvent<DragEnd>): void {
     this.#updateTreeWithUnsavedChanges(
-      TextTree.moveLine(ev.detail.from, ev.detail.to, ev.detail.at),
+      TextTree.moveLine(ev.detail.from, ev.detail.to, ev.detail.at)
     )
   }
 
@@ -178,7 +174,7 @@ export class LinearText extends LitElement {
 
   #onEditLine(ev: CustomEvent<EditLine>): void {
     this.#updateTreeWithUnsavedChanges(
-      TextTree.setLineText(ev.detail.line, ev.detail.text),
+      TextTree.setLineText(ev.detail.line, ev.detail.text)
     )
   }
 
@@ -189,9 +185,10 @@ export class LinearText extends LitElement {
   #onFocusLine(ev: CustomEvent<FocusLine>): void {
     this.#ctx.focus = {
       line: ev.detail,
-      startOfLine: this.#ctx.focus?.line === ev.detail
-        ? this.#ctx.focus.startOfLine
-        : false,
+      startOfLine:
+        this.#ctx.focus?.line === ev.detail
+          ? this.#ctx.focus.startOfLine
+          : false
     }
   }
 
@@ -202,7 +199,7 @@ export class LinearText extends LitElement {
       // to-do: only save unsaved? Saving every time possibly blows away failed
       // to parse data but not saving everytime allows stale files.
       () => saveStorage(this.#filename, this.#saved, this.tree),
-      30_000,
+      30_000
     )
   }
 
@@ -226,7 +223,7 @@ export class LinearText extends LitElement {
     if (str !== textStr) this.tree = TextTree(str, 2) // this invalidates the entire board--all IDs are lost // to-do: accept indentw
   }
 
-  #onRemoveLine(ev: CustomEvent<{ el: LitElement; line: Line }>): void {
+  #onRemoveLine(ev: CustomEvent<{el: LitElement; line: Line}>): void {
     this.#updateTreeWithUnsavedChanges(TextTree.removeLine(ev.detail.line))
   }
 
@@ -267,12 +264,12 @@ export class LinearText extends LitElement {
 
 function setTitle(filename: string | undefined, saved: boolean): void {
   document.title = saved
-    ? filename == null ? 'Linear Text' : `${filename} – Linear Text`
+    ? filename == null
+      ? 'Linear Text'
+      : `${filename} – Linear Text`
     : filename == null
-    ? '• (Unsaved) – Linear Text'
-    : `• ${filename} (Unsaved) – Linear Text`
-  const favicon = document.querySelector<HTMLLinkElement>(
-    'link[rel="icon"]',
-  )
+      ? '• (Unsaved) – Linear Text'
+      : `• ${filename} (Unsaved) – Linear Text`
+  const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
   if (favicon) favicon.href = saved ? faviconURI : faviconUnsavedURI
 }

@@ -1,20 +1,20 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'npm:lit'
-import { customElement, property, query } from 'npm:lit/decorators.js'
-import { classMap } from 'npm:lit/directives/class-map.js'
-import { ifDefined } from 'npm:lit/directives/if-defined.js'
-import type { Line } from '../tree/text-tree.ts'
-import { Bubble } from '../utils/bubble.ts'
-import { cssReset } from '../utils/css-reset.ts'
-import { Context } from './context.ts'
-import type { LineElement } from './line-element.ts'
-import './line-input.ts'
-import { LineInput } from './line-input.ts'
-import './line-list.ts'
+import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
+import {customElement, property, query} from 'lit/decorators.js'
+import {classMap} from 'lit/directives/class-map.js'
+import {ifDefined} from 'lit/directives/if-defined.js'
+import type {Line} from '../tree/text-tree.js'
+import {Bubble} from '../utils/bubble.js'
+import {cssReset} from '../utils/css-reset.js'
+import type {Context} from './context.js'
+import type {LineElement} from './line-element.js'
+import './line-input.js'
+import {LineInput} from './line-input.js'
+import './line-list.js'
 
-export type BreakLine = { line: Readonly<Line>; at: number }
-export type EditLine = { line: Readonly<Line>; text: string }
-export type ExpandLine = { line: Readonly<Line>; expand: boolean }
-export type RemoveLine = { line: Readonly<Line> }
+export type BreakLine = {line: Readonly<Line>; at: number}
+export type EditLine = {line: Readonly<Line>; text: string}
+export type ExpandLine = {line: Readonly<Line>; expand: boolean}
+export type RemoveLine = {line: Readonly<Line>}
 
 declare global {
   interface HTMLElementEventMap {
@@ -57,8 +57,7 @@ export class NoteCard extends LitElement implements LineElement {
 
       min-height: 24px;
       width: var(--note-card-width);
-      
-		}
+    }
 
     .input-wrapper {
       cursor: pointer;
@@ -103,7 +102,7 @@ export class NoteCard extends LitElement implements LineElement {
     }
 
     .hidden {
-      display:none;
+      display: none;
     }
 
     button:hover {
@@ -117,10 +116,9 @@ export class NoteCard extends LitElement implements LineElement {
 
     .input-wrapper::after {
       content: '';
-      display:block;
+      display: block;
       clear: both;
     }
-
 
     line-list:not([data-expand]) {
       /* Hide collapsed children. */
@@ -128,12 +126,9 @@ export class NoteCard extends LitElement implements LineElement {
     }
   `
 
-  @property({ attribute: false })
-  context: Readonly<Context> = {}
-  @property({ attribute: false })
-  line?: Readonly<Line>
-  @query('line-input')
-  private _input!: LineInput
+  @property({attribute: false}) context: Readonly<Context> = {}
+  @property({attribute: false}) line?: Readonly<Line>
+  @query('line-input') private _input!: LineInput
 
   protected override render(): TemplateResult {
     return html`
@@ -148,14 +143,16 @@ export class NoteCard extends LitElement implements LineElement {
             @edit-text=${this.#onEditText}
           ></line-input
           ><button
-            class=${classMap({ hidden: !this.line?.down.length })}
+            class=${classMap({hidden: !this.line?.down.length})}
             @click=${this.#onToggleExpand}
             title="Toggle sub-lines."
-          >…</button>
+          >
+            …
+          </button>
         </div>
       </div>
       <line-list
-      .context=${this.context}
+        .context=${this.context}
         ?data-expand=${!this.line?.down.length || this.line?.expand}
         .list=${this.line}
       ></line-list>
@@ -176,29 +173,29 @@ export class NoteCard extends LitElement implements LineElement {
     this.dispatchEvent(
       Bubble<ExpandLine>('expand-line', {
         line: this.line,
-        expand: !this.line?.expand,
-      }),
+        expand: !this.line?.expand
+      })
     )
   }
 
   // to-do: this should be on the line-input i think
   #onBlur(): void {
     if (!this.line || this.line.text || this.line.down.length) return
-    this.dispatchEvent(Bubble<RemoveLine>('remove-line', { line: this.line }))
+    this.dispatchEvent(Bubble<RemoveLine>('remove-line', {line: this.line}))
   }
 
   // to-do: pass line to lint-input and move this logic there?
   #onBreakText(ev: CustomEvent<number>): void {
     if (!this.line) return
     this.dispatchEvent(
-      Bubble<BreakLine>('break-line', { line: this.line, at: ev.detail }),
+      Bubble<BreakLine>('break-line', {line: this.line, at: ev.detail})
     )
   }
 
   #onEditText(ev: CustomEvent<string>): void {
     if (!this.line) return
     this.dispatchEvent(
-      Bubble<EditLine>('edit-line', { line: this.line, text: ev.detail }),
+      Bubble<EditLine>('edit-line', {line: this.line, text: ev.detail})
     )
   }
 }

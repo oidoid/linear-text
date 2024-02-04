@@ -5,7 +5,7 @@ Linear Text is a graphical line-oriented plaintext editor. See
 [tutorial.text](docs/tutorial.text) in Linear Text.
 
 | ⚠️ Linear Text is in early development, may lose data, and is not ready for evaluation. |
-| -------------------------------------------------------------------------------------- |
+| --------------------------------------------------------------------------------------- |
 
 See the [changelog](docs/changelog.text) for release notes. Future work is
 loosely planned in [to-do.text](docs/to-do.text).
@@ -20,8 +20,9 @@ It's a single file of HTML and runs offline. Double click to open.
 
 ### Quick Start
 
-```bash
-deno task start
+```
+$ npm install
+$ npm start
 ```
 
 Visit **[http://localhost:1234](http://localhost:1234)** in your web browser.

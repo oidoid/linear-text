@@ -1,9 +1,5 @@
-import {
-  assertEquals,
-  assertNotStrictEquals,
-  assertStrictEquals,
-} from 'std/assert/mod.ts'
-import { treeAdd, treeRemove, treeRoot, treeTouch } from './tree.ts'
+import {expect, test} from 'vitest'
+import {treeAdd, treeRemove, treeRoot, treeTouch} from './tree.js'
 
 type NumTree = {
   down?: undefined | NumTree[]
@@ -11,7 +7,7 @@ type NumTree = {
   up?: NumTree | undefined
 }
 
-Deno.test('touch root', () => {
+test('touch root', () => {
   //     0
   //    /|\
   //   1 2 3
@@ -37,21 +33,21 @@ Deno.test('touch root', () => {
   i[6]!.up = i[4]
 
   const node = treeTouch<NumTree>(i[0]!)
-  assertStrictEquals(node.n, 0)
+  expect(node.n).toBe(0)
   const root = treeRoot<NumTree>(node)
 
-  assertNotStrictEquals(root, i[0])
-  assertStrictEquals(root.n, 0)
+  expect(root).not.toBe(i[0])
+  expect(root.n).toBe(0)
 
-  assertStrictEquals(root.down![0], i[1])
-  assertStrictEquals(root.down![1], i[2])
-  assertStrictEquals(root.down![2], i[3])
-  assertStrictEquals(root.down![0]!.down![0], i[4])
-  assertStrictEquals(root.down![1]!.down![0], i[5])
-  assertStrictEquals(root.down![0]!.down![0]!.down![0], i[6])
+  expect(root.down![0]).toBe(i[1])
+  expect(root.down![1]).toBe(i[2])
+  expect(root.down![2]).toBe(i[3])
+  expect(root.down![0]!.down![0]).toBe(i[4])
+  expect(root.down![1]!.down![0]).toBe(i[5])
+  expect(root.down![0]!.down![0]!.down![0]).toBe(i[6])
 })
 
-Deno.test('touch mid', () => {
+test('touch mid', () => {
   //     0
   //    /|\
   //   1 2 3
@@ -77,22 +73,22 @@ Deno.test('touch mid', () => {
   i[6]!.up = i[4]
 
   const node = treeTouch<NumTree>(i[2]!)
-  assertStrictEquals(node.n, 2)
+  expect(node.n).toBe(2)
   const root = treeRoot<NumTree>(node)
 
-  assertNotStrictEquals(root, i[0])
-  assertStrictEquals(root.n, 0)
-  assertNotStrictEquals(root.down![1], i[2])
-  assertStrictEquals(root.down![1]!.n, 2)
+  expect(root).not.toBe(i[0])
+  expect(root.n).toBe(0)
+  expect(root.down![1]).not.toBe(i[2])
+  expect(root.down![1]!.n).toBe(2)
 
-  assertStrictEquals(root.down![0], i[1])
-  assertStrictEquals(root.down![2], i[3])
-  assertStrictEquals(root.down![0]!.down![0], i[4])
-  assertStrictEquals(root.down![1]!.down![0], i[5])
-  assertStrictEquals(root.down![0]!.down![0]!.down![0], i[6])
+  expect(root.down![0]).toBe(i[1])
+  expect(root.down![2]).toBe(i[3])
+  expect(root.down![0]!.down![0]).toBe(i[4])
+  expect(root.down![1]!.down![0]).toBe(i[5])
+  expect(root.down![0]!.down![0]!.down![0]).toBe(i[6])
 })
 
-Deno.test('touch leaf', () => {
+test('touch leaf', () => {
   //     0
   //    /|\
   //   1 2 3
@@ -118,24 +114,24 @@ Deno.test('touch leaf', () => {
   i[6]!.up = i[4]
 
   const node = treeTouch<NumTree>(i[6]!)
-  assertStrictEquals(node.n, 6)
+  expect(node.n).toBe(6)
   const root = treeRoot<NumTree>(node)
 
-  assertNotStrictEquals(root, i[0])
-  assertStrictEquals(root.n, 0)
-  assertNotStrictEquals(root.down![0], i[1])
-  assertStrictEquals(root.down![0]!.n, 1)
-  assertNotStrictEquals(root.down![0]!.down![0], i[4])
-  assertStrictEquals(root.down![0]!.down![0]!.n, 4)
-  assertNotStrictEquals(root.down![0]!.down![0]!.down![0], i[6])
-  assertStrictEquals(root.down![0]!.down![0]!.down![0]!.n, 6)
+  expect(root).not.toBe(i[0])
+  expect(root.n).toBe(0)
+  expect(root.down![0]).not.toBe(i[1])
+  expect(root.down![0]!.n).toBe(1)
+  expect(root.down![0]!.down![0]).not.toBe(i[4])
+  expect(root.down![0]!.down![0]!.n).toBe(4)
+  expect(root.down![0]!.down![0]!.down![0]).not.toBe(i[6])
+  expect(root.down![0]!.down![0]!.down![0]!.n).toBe(6)
 
-  assertStrictEquals(root.down![1], i[2])
-  assertStrictEquals(root.down![2], i[3])
-  assertStrictEquals(root.down![1]!.down![0], i[5])
+  expect(root.down![1]).toBe(i[2])
+  expect(root.down![2]).toBe(i[3])
+  expect(root.down![1]!.down![0]).toBe(i[5])
 })
 
-Deno.test('remove', () => {
+test('remove', () => {
   //     0
   //    /|\
   //   1 2 3
@@ -179,10 +175,10 @@ Deno.test('remove', () => {
   e[5]!.up = e[2]
 
   treeRemove(i[4]!)
-  assertEquals(i[0], e[0])
+  expect(i[0]).toStrictEqual(e[0])
 })
 
-Deno.test('add', () => {
+test('add', () => {
   //   0
   //  /|\
   // 1 2 3
@@ -230,5 +226,5 @@ Deno.test('add', () => {
   e[6]!.up = e[4]
 
   treeAdd(i[4]!, i[3], 0)
-  assertEquals(i[0], e[0])
+  expect(i[0]).toStrictEqual(e[0])
 })

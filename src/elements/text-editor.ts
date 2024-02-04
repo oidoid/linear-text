@@ -4,12 +4,12 @@ import {
   html,
   LitElement,
   type PropertyValues,
-  type TemplateResult,
-} from 'npm:lit'
-import { customElement, property, query } from 'npm:lit/decorators.js'
-import { Bubble } from '../utils/bubble.ts'
-import { cssReset } from '../utils/css-reset.ts'
-import { throttle } from '../utils/throttle.ts'
+  type TemplateResult
+} from 'lit'
+import {customElement, property, query} from 'lit/decorators.js'
+import {Bubble} from '../utils/bubble.js'
+import {cssReset} from '../utils/css-reset.js'
+import {throttle} from '../utils/throttle.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -47,14 +47,12 @@ export class TextEditor extends LitElement {
     }
   `
 
-  @property()
-  text: string = ''
+  @property() text: string = ''
 
   #selectionStart: number = 0
   #selectionEnd: number = 0
   #scrollTopy: number = 0
-  @query('textarea')
-  private _textArea!: HTMLTextAreaElement
+  @query('textarea') private _textArea!: HTMLTextAreaElement
 
   protected override willUpdate(props: PropertyValues<this>): void {
     super.willUpdate(props) // super?

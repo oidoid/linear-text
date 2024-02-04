@@ -1,4 +1,4 @@
-import type { DataURI } from './data-uri.ts'
+import type { DataURI } from './data-uri.js'
 
 export function isDataURIStr(str: string): boolean {
   return str.startsWith('data:')

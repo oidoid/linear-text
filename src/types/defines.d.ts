@@ -1,4 +1,3 @@
-// Constants populated by tools/build.ts.
+// Constants populated by tools/build.
 
-// deno-lint-ignore no-var
 declare var linearTextVersion: string

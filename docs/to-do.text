@@ -24,19 +24,6 @@ Bugs
   Enter at the start of a line does nothing.
   When I highlight text and alt-tab to another window, my highlight is lost.
   When I delete a child's text, and shift-tab to focus the parent, I lose the focus.
-File Deno bugs.
-  I can't do an exhaustive switch in the default case. `props.page.type satisfies never`
-  html and css template strings aren't formatted.
-  Some imports are pulled in from the Deno cache and never should be.
-  `npm:<package>/path` imports aren't suggested and the error message is confusing when these aren't aliased correctly in the import path.
-  Really need declare module support for representing bundling assets without hacks.
-  tools/build import auto-removal is erroneous.
-  Saving doesn't automatically add or remove imports like normal TypeScript.
-  Closest deno.json isn't used for import map or anything. These are available with quickfix though.
-    Possibly related https://github.com/denoland/vscode_deno/issues/1048
-  Deno doesn't auto-enable when deno.json is found. Prettier plugin does and it works great.
-  tools/build shebang ignored and read as JavaScript.
-  Markdown table in readme isn't the correct width.
   unsaved favicon doesn't align perfectly to saved because SVG is used. Just use old png.
 Fix CI builds and generate a next release.
 I want a way to delete or add cards by clicking, including deleting groups and sub-lines.

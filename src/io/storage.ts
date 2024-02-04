@@ -1,4 +1,4 @@
-import { TextTree } from '../tree/text-tree.ts'
+import { TextTree } from '../tree/text-tree.js'
 
 export type Autosave = {
   /** Filename last saved as. */

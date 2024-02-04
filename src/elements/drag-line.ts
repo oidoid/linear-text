@@ -1,8 +1,8 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'npm:lit'
-import { customElement } from 'npm:lit/decorators.js'
-import type { Group, Line, PositionLine } from '../tree/text-tree.ts'
-import { Bubble } from '../utils/bubble.ts'
-import { cssReset } from '../utils/css-reset.ts'
+import { css, CSSResult, html, LitElement, type TemplateResult } from 'lit'
+import { customElement } from 'lit/decorators.js'
+import type { Group, Line, PositionLine } from '../tree/text-tree.js'
+import { Bubble } from '../utils/bubble.js'
+import { cssReset } from '../utils/css-reset.js'
 import {
   blurActiveElement,
   composedAncestorElement,
@@ -10,9 +10,9 @@ import {
   composedClosestScrollable,
   composedElementFromPoint,
   scrollTowardsEdge,
-} from '../utils/element-util.ts'
-import type { LineElement } from './line-element.ts'
-import { LineList } from './line-list.ts'
+} from '../utils/element-util.js'
+import type { LineElement } from './line-element.js'
+import { LineList } from './line-list.js'
 
 export type DragEnd = {
   readonly from: Readonly<Line>

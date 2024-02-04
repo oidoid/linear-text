@@ -1,0 +1,14 @@
+// TypeScript config for test code under src/**/*.test.ts and src/test/**/*.
+{
+  "extends": "../../tools/base-tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+
+    // tsc is only used for type-checking.
+    "noEmit": true,
+
+    "rootDir": ".."
+  },
+  "include": ["**/*", "../**/*.test.ts"],
+  "references": [{"path": ".."}]
+}

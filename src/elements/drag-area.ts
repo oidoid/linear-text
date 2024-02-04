@@ -1,7 +1,7 @@
-import { css, CSSResult, html, LitElement, type TemplateResult } from 'npm:lit'
-import { customElement } from 'npm:lit/decorators.js'
-import { cssReset } from '../utils/css-reset.ts'
-import { DragLine } from './drag-line.ts'
+import { css, CSSResult, html, LitElement, type TemplateResult } from 'lit'
+import { customElement } from 'lit/decorators.js'
+import { cssReset } from '../utils/css-reset.js'
+import { DragLine } from './drag-line.js'
 
 declare global {
   interface HTMLElementEventMap {

@@ -1,6 +1,1 @@
-{
-  "deno.enable": true,
-  "deno.lint": true,
-  "deno.unstable": true,
-  "editor.defaultFormatter": "denoland.vscode-deno"
-}
+{"typescript.tsdk": "node_modules/typescript/lib"}

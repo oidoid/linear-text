@@ -3,8 +3,8 @@ import {
   isDataURIStr,
   isFileURIStr,
   isHTTPURIStr,
-} from '../uri-parser/uri-parser.ts'
-import { isNumeric } from '../utils/string-util.ts'
+} from '../uri-parser/uri-parser.js'
+import { isNumeric } from '../utils/string-util.js'
 
 /** String-encoded data type of the text value. */
 export type LineType =

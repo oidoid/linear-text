@@ -1,4 +1,4 @@
-import { fileOpen, fileSave } from 'npm:browser-fs-access'
+import { fileOpen, fileSave } from 'browser-fs-access'
 
 export type FileAndHandle = {
   file: File

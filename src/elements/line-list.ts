@@ -4,16 +4,16 @@ import {
   html,
   LitElement,
   nothing,
-  type TemplateResult,
-} from 'npm:lit'
-import { customElement, property, state } from 'npm:lit/decorators.js'
-import { keyed } from 'npm:lit/directives/keyed.js'
-import { repeat } from 'npm:lit/directives/repeat.js'
-import type { Group, Line } from '../tree/text-tree.ts'
-import { cssReset } from '../utils/css-reset.ts'
-import './drag-line.ts'
-import './note-card.ts'
-import { Context } from './context.ts'
+  type TemplateResult
+} from 'lit'
+import {customElement, property, state} from 'lit/decorators.js'
+import {keyed} from 'lit/directives/keyed.js'
+import {repeat} from 'lit/directives/repeat.js'
+import type {Group, Line} from '../tree/text-tree.js'
+import {cssReset} from '../utils/css-reset.js'
+import type {Context} from './context.js'
+import './drag-line.js'
+import './note-card.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -44,17 +44,14 @@ export class LineList extends LitElement {
     }
   `
 
-  @property({ attribute: false })
-  context: Readonly<Context> = {}
-  @property({ attribute: false })
-  list?: Readonly<Group | Line>
+  @property({attribute: false}) context: Readonly<Context> = {}
+  @property({attribute: false}) list?: Readonly<Group | Line>
 
-  @state()
-  private _invalidate: symbol = Symbol()
+  @state() private _invalidate: symbol = Symbol()
 
   constructor() {
     super()
-    this.addEventListener('drag-line-invalidate', (ev) => {
+    this.addEventListener('drag-line-invalidate', ev => {
       this._invalidate = Symbol()
       ev.stopPropagation()
     })
@@ -63,12 +60,14 @@ export class LineList extends LitElement {
   protected override render(): TemplateResult {
     const lines = repeat(
       this.list?.down ?? [],
-      (line) => line.id,
-      (line) =>
+      line => line.id,
+      line =>
         line.type === 'EOL'
           ? nothing
-          // to-do: shouldn't assume note-card here.
-          : html`<drag-line><note-card .context=${this.context} .line=${line}></note-card></drag-line>`,
+          : // to-do: shouldn't assume note-card here.
+            html`<drag-line
+              ><note-card .context=${this.context} .line=${line}></note-card
+            ></drag-line>`
     )
     return html`${keyed(this._invalidate, lines)}`
   }

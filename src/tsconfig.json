@@ -1,0 +1,16 @@
+// TypeScript config for all production code.
+{
+  "extends": "../tools/base-tsconfig.json",
+  "compilerOptions": {
+    // https://lit.dev/docs/v3/components/decorators/#decorators-typescript
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    "lib": ["DOM", "ES2023"],
+
+    "outDir": "../dist"
+  },
+  // https://github.com/Microsoft/TypeScript/issues/25636
+  "include": ["**/*", "**/*.json"],
+  "exclude": ["**/*.test.ts"]
+}
