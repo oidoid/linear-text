@@ -415,3 +415,213 @@ H
   )
   await assertSnapshot(test, TextTree.toString(tree), { dir: '.' })
 })
+
+Deno.test('move root line with sublines above an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    <Line> tree.down[1]!.down[0],
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'Start',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+
+A
+  B
+    a
+      b
+        c
+    C
+`,
+  )
+})
+
+Deno.test('move root line with sublines in an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    <Line> tree.down[1]!.down[0],
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'In',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+
+A
+  B
+    C
+      a
+        b
+          c
+`,
+  )
+})
+
+Deno.test('move root line with sublines below an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    <Line> tree.down[1]!.down[0],
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'End',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+
+A
+  B
+    C
+    a
+      b
+        c
+`,
+  )
+})
+
+Deno.test('move subline with sublines above an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+      d
+        e
+          f
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    (<Line> tree.down[1]!.down[0]).down[0]!.down[0]!,
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'Start',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+a
+  b
+
+A
+  B
+    c
+      d
+        e
+          f
+    C
+`,
+  )
+})
+
+Deno.test('move subline with sublines in an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+      d
+        e
+          f
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    (<Line> tree.down[1]!.down[0]).down[0]!.down[0]!,
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'In',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+a
+  b
+
+A
+  B
+    C
+      c
+        d
+          e
+            f
+`,
+  )
+})
+
+Deno.test('move subline with sublines below an indent line', () => {
+  const tree = TextTree(
+    `
+a
+  b
+    c
+      d
+        e
+          f
+
+A
+  B
+    C
+`,
+    2,
+  )
+  TextTree.moveLine(
+    (<Line> tree.down[1]!.down[0]).down[0]!.down[0]!,
+    (<Line> tree.down[2]!.down[0]).down[0]!.down[0]!,
+    'End',
+  )
+  assertStrictEquals(
+    TextTree.toString(tree),
+    `
+a
+  b
+
+A
+  B
+    C
+    c
+      d
+        e
+          f
+`,
+  )
+})

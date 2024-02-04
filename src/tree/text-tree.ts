@@ -252,8 +252,9 @@ TextTree.moveLine = (
   const old = from.up
   treeRemove(from)
   treeAdd(from, up, i)
-  from.indent = indent
+  setIndent(from, indent)
   if (to.type === 'Line' && at === 'In') to.expand = true
+  if (to.type === 'Line') to.end = 'LF' // to-do: ask for line ending
 
   // Update old ancestors. old is not under node so node is current.
   treeTouch(old)
@@ -317,6 +318,11 @@ function nodesToString(
     } else node satisfies never
   }
   return str
+}
+
+function setIndent(line: Line, indent: number): void {
+  line.indent = indent
+  for (const sub of line.down) setIndent(sub, indent + 1)
 }
 
 function* split(
