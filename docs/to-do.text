@@ -1,4 +1,6 @@
+Update to-do's from linear-text.text.
 Bugs
+  When I cancel a save, even if no changes, it causes doc to be unsaved
   When I open a second file, LT reopens the first sometimes?
   Opening as a web app doesn't allow the icon to be updated.
   The tutorial page has the wrong favicon.
@@ -7,7 +9,6 @@ Bugs
   An empty line has no cursor.
   Prompt for changelog edits in publish script and maybe move publish script to ~/bin so I can version it.
   Editing a file externally or in the text pane clears the expand state. No idea how preserving expand state will work in the current design without intelligent editor-TextTree diffing.
-  When a file starts with empty lines, an empty initial group is created.
   The only way to delete an empty group is the text editor.
   Mobile scrolling is completely broken.
   Test save in Firefox. Shouldn't show it if can't be supported.
@@ -32,6 +33,7 @@ File Deno bugs.
   tools/build import auto-removal is erroneous.
   Saving doesn't automatically add or remove imports like normal TypeScript.
   Closest deno.json isn't used for import map or anything. These are available with quickfix though.
+    Possibly related https://github.com/denoland/vscode_deno/issues/1048
   Deno doesn't auto-enable when deno.json is found. Prettier plugin does and it works great.
   tools/build shebang ignored and read as JavaScript.
   Markdown table in readme isn't the correct width.
@@ -189,3 +191,6 @@ Persist file handle and permissions.
   https://developer.chrome.com/blog/persistent-permissions-for-the-file-system-access-api
   https://web.dev/articles/origin-private-file-system
 i don't do a lot between columns in linear at least for planning. should thye be wider?
+Customize the PWA title bar.
+  https://blogs.windows.com/msedgedev/2022/09/27/closing-pixel-gap-native-web-window-controls-overlay/
+  https://devtoolstips.org/tips/en/simulate-pwa-wco/
