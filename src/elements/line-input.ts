@@ -159,7 +159,10 @@ export class LineInput extends LitElement {
     const input = data?.replaceAll(/\r?\n/g, '')
 
     // Trigger #onInput().
-    if (input) document.execCommand('insertText', false, input)
+    if (input) {
+      this._p.focus()
+      document.execCommand('insertText', false, input)
+    }
   }
 
   #onBlur(): void {

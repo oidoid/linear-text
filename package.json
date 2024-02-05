@@ -3,8 +3,12 @@
   "bugs": "https://github.com/oidoid/linear-text/issues",
   "description": "🗒 Graphical line-oriented text editor.",
   "devDependencies": {
+    "@open-wc/testing": "4.0.0",
     "@types/jsdom": "21.1.6",
+    "@types/mocha": "10.0.6",
     "@types/node": "18.19.8",
+    "@web/dev-server-esbuild": "1.0.1",
+    "@web/test-runner": "0.18.0",
     "browser-fs-access": "0.35.0",
     "esbuild": "0.20.0",
     "jsdom": "24.0.0",
@@ -55,7 +59,8 @@
     "test:format": "npm run formatter -- --check",
     "test:types:ui": "lit-analyzer --maxWarnings=0 --rules.no-missing-element-type-definition --rules.no-unknown-event --strict",
     "test:unit": "vitest run",
-    "test": "npm run test:format && npm run test:unit && npm run build && npm run test:types:ui",
+    "test:ui": "wtr",
+    "test": "npm run test:format && npm run test:unit && npm run build && npm run test:types:ui && npm run test:ui",
     "version": "npm test"
   },
   "type": "module",

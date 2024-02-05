@@ -1,0 +1,25 @@
+// TypeScript config for test code under src/elements/**/*.test.ts and
+// src/elements/test/**/*.
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // tsc is only used for type-checking.
+    "noEmit": true,
+
+    // https://github.com/modernweb-dev/dev-server-esbuild/issues/20
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    // Hack around Chai tsc errors.
+    "allowSyntheticDefaultImports": true,
+    "module": "ES2022",
+    "moduleResolution": "Node10",
+
+    "rootDir": "..",
+
+    "types": ["mocha"]
+  },
+  "include": ["**/*", "../**/*.test.ts"],
+  "exclude": [],
+  "references": [{"path": "../.."}]
+}

@@ -1,4 +1,5 @@
-// TypeScript config for test code under src/**/*.test.ts and src/test/**/*.
+// TypeScript config for test code under src/**/*.test.ts and src/test/**/*
+// except elements.
 {
   "extends": "../../tools/base-tsconfig.json",
   "compilerOptions": {
@@ -7,8 +8,12 @@
     // tsc is only used for type-checking.
     "noEmit": true,
 
-    "rootDir": ".."
+    "rootDir": "..",
+
+    // Hack around Chai typing.
+    "skipLibCheck": true
   },
   "include": ["**/*", "../**/*.test.ts"],
+  "exclude": ["../elements/**/*.test.ts"],
   "references": [{"path": ".."}]
 }
