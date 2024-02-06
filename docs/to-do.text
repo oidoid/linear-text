@@ -5,7 +5,6 @@ Bugs
   Opening as a web app doesn't allow the icon to be updated.
   The tutorial page has the wrong favicon.
   The favicon has a null type. data:null for favicon is wrong.
-  When a line is focused, clicking and dragging the button / input wrapper should be a selection change not a drag. Note's wrapper around input and button doesn't extend up-to button (?) so you miss the edit click. This really stinks for each line because it's jagged with no visual cue.
   An empty line has no cursor.
   Prompt for changelog edits in publish script and maybe move publish script to ~/bin so I can version it.
   Editing a file externally or in the text pane clears the expand state. No idea how preserving expand state will work in the current design without intelligent editor-TextTree diffing.

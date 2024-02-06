@@ -42,6 +42,8 @@ export class LineInput extends LitElement {
     }
 
     p {
+      margin-block: 0;
+      /* Stagger bounding box to allow slotted button to float. */
       display: inline;
       /* break words if needed*/
       overflow-wrap: break-word;
@@ -108,6 +110,7 @@ export class LineInput extends LitElement {
         @focus=${this.#onFocus}
         @input=${this.#onInput}
       ></p>
+      <slot></slot>
     `
   }
 
@@ -184,9 +187,8 @@ export class LineInput extends LitElement {
 
   #onFocus(): void {
     this._spellcheck = true
-    if (this.line) {
+    if (this.line)
       this.dispatchEvent(Bubble<FocusLine>('focus-line', this.line))
-    }
     if (this.context.focus?.startOfLine) return
 
     const sel = getSelection()
@@ -206,7 +208,7 @@ export class LineInput extends LitElement {
   }
 
   #onInput(): void {
-    this.#text = this._p.textContent?.replaceAll('\n', '') ?? ''
+    this.#text = this._p.textContent ?? ''
     this.dispatchEvent(Bubble<string>('edit-text', this.#text))
   }
 }

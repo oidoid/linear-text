@@ -111,7 +111,7 @@ export class NoteCard extends LitElement implements LineElement {
     }
 
     button {
-      float: right;
+      float: inline-end;
     }
 
     .input-wrapper::after {
@@ -141,14 +141,14 @@ export class NoteCard extends LitElement implements LineElement {
             @blur=${this.#onBlur}
             @break-text=${this.#onBreakText}
             @edit-text=${this.#onEditText}
-          ></line-input
-          ><button
-            class=${classMap({hidden: !this.line?.down.length})}
-            @click=${this.#onToggleExpand}
-            title="Toggle sub-lines."
+            ><button
+              class=${classMap({hidden: !this.line?.down.length})}
+              @click=${this.#onToggleExpand}
+              title="Toggle sub-lines."
+            >
+              …
+            </button></line-input
           >
-            …
-          </button>
         </div>
       </div>
       <line-list
