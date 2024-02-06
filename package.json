@@ -7,7 +7,7 @@
     "@types/jsdom": "21.1.6",
     "@types/mocha": "10.0.6",
     "@types/node": "18.19.8",
-    "@web/dev-server-esbuild": "1.0.1",
+    "@web/dev-server-esbuild": "1.0.2",
     "@web/test-runner": "0.18.0",
     "browser-fs-access": "0.35.0",
     "esbuild": "0.20.0",

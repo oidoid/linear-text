@@ -6,10 +6,6 @@
     // tsc is only used for type-checking.
     "noEmit": true,
 
-    // https://github.com/modernweb-dev/dev-server-esbuild/issues/20
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-
     // Hack around Chai tsc errors.
     "allowSyntheticDefaultImports": true,
     "module": "ES2022",
