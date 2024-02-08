@@ -71,7 +71,6 @@ export class LineInput extends LitElement {
 
   @property({attribute: false}) context: Readonly<Context> = {}
   @property({attribute: false}) line?: Readonly<Line>
-  @property() text: string = ''
 
   @query('p') private _p!: HTMLParagraphElement
   @state() private _spellcheck: boolean = false
@@ -79,19 +78,19 @@ export class LineInput extends LitElement {
    * Text render state. Undefined allows initial update since text is always a
    * string.
    */
-  #text?: string
+  #text?: string | undefined
 
   constructor() {
     super()
-    this.addEventListener('click', () => this._p.focus())
+    this.addEventListener('click', this.#onClick)
   }
 
   protected override render(): TemplateResult {
-    if (this.context.focus?.line === this.line) {
+    if (this.line && this.context.focus?.line === this.line) {
       requestAnimationFrame(() => {
         this._p.focus()
         if (this.context.focus?.startOfLine) {
-          this.#getSelection()?.setPosition(this._p, 0)
+          this.getSelection()?.setPosition(this._p, 0)
         }
       })
     }
@@ -106,8 +105,8 @@ export class LineInput extends LitElement {
         @blur=${this.#onBlur}
         @click=${this.#onClick}
         @dragstart=${this.#onDragStart}
-        @keyup=${this.#onKeyUp}
         @focus=${this.#onFocus}
+        @keyup=${this.#onKeyUp}
         @input=${this.#onInput}
       ></p>
       <slot></slot>
@@ -118,12 +117,13 @@ export class LineInput extends LitElement {
     props: PropertyValues<this & {_spellcheck: boolean}>
   ): boolean {
     const update = super.shouldUpdate(props)
-    if (this.text === this.#text && !props.has('_spellcheck')) return false
-    this.#text = this.text
+    if (this.line?.text === this.#text && !props.has('_spellcheck'))
+      return false
+    this.#text = this.line?.text
     return update
   }
 
-  #getSelection(): Selection | null {
+  getSelection(): Selection | null {
     // globalThis fallback for Firefox which pierces shadow DOM.
     return (
       (<{getSelection?: () => Selection | null}>(
@@ -133,11 +133,11 @@ export class LineInput extends LitElement {
   }
 
   #getCursorPosition(): number {
-    return this.#getSelection()?.getRangeAt(0).startOffset ?? 0
+    return this.getSelection()?.getRangeAt(0).startOffset ?? 0
   }
 
   #onBeforeInput(ev: InputEvent): void {
-    // https://rawgit.com/w3c/input-events/v1/index.html#interface-InputEvent-Attributes
+    // https://w3c.github.io/input-events/#interface-InputEvent-Attributes
 
     // Removals (remove content) and un/redo (valid content) are allowed.
     if (/^(delete|history)/.test(ev.inputType)) return
@@ -151,14 +151,18 @@ export class LineInput extends LitElement {
       )
       return
     }
-    //   const remove =
-    //   (ev.key === 'Backspace' || ev.key === 'Delete') && emptyGroup
-    // if (ev.key !== 'Enter' && !remove) return
 
     // Ignore if not an insertion (add content).
     if (!/^insert/.test(ev.inputType)) return
 
-    const data = ev.data ?? ev.dataTransfer?.getData('text')
+    // to-do: map insertOrderedList and insertUnorderedList to multiple lines?
+
+    //   const remove =
+    //   (ev.key === 'Backspace' || ev.key === 'Delete') && emptyGroup
+    // if (ev.key !== 'Enter' && !remove) return
+
+    const data = ev.data ?? ev.dataTransfer?.getData('text/plain')
+
     const input = data?.replaceAll(/\r?\n/g, '')
 
     // Trigger #onInput().
@@ -169,12 +173,13 @@ export class LineInput extends LitElement {
   }
 
   #onBlur(): void {
+    // to-do: should this be this.getSelection()?
     getSelection()?.empty() // Clear any selected text
     this._spellcheck = false
     if (this.line) this.dispatchEvent(Bubble<BlurLine>('blur-line', this.line))
   }
 
-  #onClick(): void {
+  #onClick = (): void => {
     // pointerdown default is prevented by event-translator.
     this._p.focus()
   }

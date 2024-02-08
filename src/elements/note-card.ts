@@ -1,7 +1,6 @@
 import {css, CSSResult, html, LitElement, type TemplateResult} from 'lit'
 import {customElement, property, query} from 'lit/decorators.js'
 import {classMap} from 'lit/directives/class-map.js'
-import {ifDefined} from 'lit/directives/if-defined.js'
 import type {Line} from '../tree/text-tree.js'
 import {Bubble} from '../utils/bubble.js'
 import {cssReset} from '../utils/css-reset.js'
@@ -137,7 +136,6 @@ export class NoteCard extends LitElement implements LineElement {
           <line-input
             .context=${this.context}
             .line=${this.line}
-            text=${ifDefined(this.line?.text)}
             @blur=${this.#onBlur}
             @break-text=${this.#onBreakText}
             @edit-text=${this.#onEditText}
