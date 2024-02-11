@@ -17,6 +17,8 @@ export type FocusLine = Readonly<Line>
 
 declare global {
   interface HTMLElementEventMap {
+    /** Hack: internal event. Defined to workaround lit-plugin lint. */
+    beforeinput: InputEvent
     /** Break text requested at cursor. */
     'blur-line': CustomEvent<BlurLine>
     'break-text': CustomEvent<number>
