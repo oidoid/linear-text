@@ -1,5 +1,11 @@
 Changelog
 
+v0.5.8
+  Increase scale.
+  Fix text mode / drag bug.
+  Add some line-input UI tests.
+  Publish to NPM instead of Deno again.
+
 v0.5.7
   Adjust indent of sublines when moving line.
 
