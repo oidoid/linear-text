@@ -24,7 +24,6 @@ Bugs
   When I highlight text and alt-tab to another window, my highlight is lost.
   When I delete a child's text, and shift-tab to focus the parent, I lose the focus.
   unsaved favicon doesn't align perfectly to saved because SVG is used. Just use old png.
-Fix CI builds and generate a next release.
 I want a way to delete or add cards by clicking, including deleting groups and sub-lines.
 Publish single file build script and publish script util. Update publish for NPM. Publish should prompt for changelog too. I don't want to have to have docs for the process. I have a nice example of exec() in oidoid.com. maybe call build html-pack or something like that. needs a good dev experience.
 Scale up the UI.
@@ -182,3 +181,5 @@ i don't do a lot between columns in linear at least for planning. should thye be
 Customize the PWA title bar.
   https://blogs.windows.com/msedgedev/2022/09/27/closing-pixel-gap-native-web-window-controls-overlay/
   https://devtoolstips.org/tips/en/simulate-pwa-wco/
+Move children to parent button.
+Scroll to line on focus.

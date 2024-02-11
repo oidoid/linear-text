@@ -46,7 +46,7 @@ export class LinearText extends LitElement {
       user-select: none;
 
       font-family: sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.1;
 
       background: #006400;
