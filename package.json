@@ -47,7 +47,10 @@
     "singleQuote": true,
     "trailingComma": "none"
   },
-  "repository": "github:oidoid/linear-text",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oidoid/linear-text.git"
+  },
   "scripts": {
     "build": "tools/build && tsc --build",
     "clean": "rm -rf dist",
