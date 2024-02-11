@@ -17,13 +17,11 @@ export type FocusLine = Readonly<Line>
 
 declare global {
   interface HTMLElementEventMap {
-    /** Hack: internal event. Defined to workaround lit-plugin lint. */
-    beforeinput: InputEvent
     /** Break text requested at cursor. */
     'blur-line': CustomEvent<BlurLine>
     'break-text': CustomEvent<number>
     /** Text changed to. */
-    'edit-text': CustomEvent<string>
+    'edit-text': CustomEvent<string> // to-do: replace with edit-line and break-line
     'focus-line': CustomEvent<FocusLine>
   }
   interface HTMLElementTagNameMap {

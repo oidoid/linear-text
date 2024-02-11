@@ -1,4 +1,5 @@
 import {assert, expect, fixture, html} from '@open-wc/testing'
+import type {PropertyValues} from 'lit'
 import {TextTree, type Line} from '../tree/text-tree.js'
 import {LineInput} from './line-input.js'
 import {pressKeys} from './test/element-test-util.js'
@@ -25,19 +26,21 @@ it('a new line is rendered', async () => {
 
 it('text input dispatches an edit', async () => {
   const {el, p} = await lineInputFixture()
-  const edit = await new Promise<CustomEvent<string>>(resolve => {
+  p.focus()
+  const edit = await new Promise<CustomEvent<string>>(async resolve => {
     el.addEventListener('edit-text', resolve)
-    p.dispatchEvent(TextEvent('abc'))
+    await pressKeys('a')
   })
-  expect(edit.detail).equal('abc')
+  expect(edit.detail).equal('a')
 })
 
 it('a newline dispatches a break', async () => {
   const {el, p} = await lineInputFixture()
-  p.dispatchEvent(TextEvent('abc'))
-  const edit = await new Promise<CustomEvent<number>>(resolve => {
+  p.focus()
+  await pressKeys(...'abc')
+  const edit = await new Promise<CustomEvent<number>>(async resolve => {
     el.addEventListener('break-text', resolve)
-    p.dispatchEvent(TextEvent('', 'insertLineBreak'))
+    await pressKeys('\n')
   })
   expect(edit.detail).equal(3)
 })
@@ -45,39 +48,40 @@ it('a newline dispatches a break', async () => {
 it('a newline dispatches a break at the cursor position', async () => {
   const {el, p} = await lineInputFixture()
   p.focus()
-  p.dispatchEvent(TextEvent('abc'))
+  await pressKeys(...'abc')
   await pressKeys('ArrowLeft', 'ArrowLeft')
-  const edit = await new Promise<CustomEvent<number>>(resolve => {
+  const edit = await new Promise<CustomEvent<number>>(async resolve => {
     el.addEventListener('break-text', resolve)
-    p.dispatchEvent(TextEvent('', 'insertLineBreak'))
+    await pressKeys('\n')
   })
   expect(edit.detail).equal(1)
 })
 
 it('text input renders', async () => {
   const {p} = await lineInputFixture()
-  p.dispatchEvent(TextEvent('abc'))
-  expect(p.textContent).equal('abc')
+  p.focus()
+  await pressKeys('a')
+  expect(p.textContent).equal('a')
 })
 
 it('updated text input renders', async () => {
   const {p} = await lineInputFixture()
-  p.dispatchEvent(TextEvent('abc'))
-  p.dispatchEvent(TextEvent('def'))
-  expect(p.textContent).equal('abcdef')
+  p.focus()
+  await pressKeys(...'abc')
+  expect(p.textContent).equal('abc')
 })
 
 it('backspace removes backwards', async () => {
   const {p} = await lineInputFixture()
-  p.dispatchEvent(TextEvent('abc'))
-  await pressKeys('Backspace')
+  p.focus()
+  await pressKeys(...'abc', 'Backspace')
   expect(p.textContent).equal('ab')
 })
 
 it('delete removes forwards', async () => {
   const {p} = await lineInputFixture()
-  p.dispatchEvent(TextEvent('abc'))
-  await pressKeys('Home', 'Delete')
+  p.focus()
+  await pressKeys(...'abc', 'Home', 'Delete')
   expect(p.textContent).equal('bc')
 })
 
@@ -157,7 +161,35 @@ it('blur clears selection', async () => {
   expect(sel.focusNode).equal(null)
 })
 
-// to-do: entering text does not trigger re-render.
+it('providing text that matches input does not re-render', async () => {
+  const line = <Line>TextTree('abc', 2).down[0]!.down[0]
+  const {el, p} = await lineInputFixture(line)
+  const updatable = el as unknown as {
+    shouldUpdate(props: PropertyValues): boolean
+  }
+
+  el.line = line
+  expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)
+  p.focus()
+  await pressKeys(...'def')
+  el.line = {...line, text: 'abcdef'}
+  expect(updatable.shouldUpdate(new Map([['line', el.line]]))).equal(false)
+})
+
+it("providing text that doesn't match input re-renders", async () => {
+  const line = <Line>TextTree('abc', 2).down[0]!.down[0]
+  const {el, p} = await lineInputFixture(line)
+  const updatable = el as unknown as {
+    shouldUpdate(props: PropertyValues): boolean
+  }
+
+  el.line = line
+  expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)
+  p.focus()
+  await pressKeys(...'def')
+  expect(updatable.shouldUpdate(new Map([['line', el.line]]))).equal(true)
+})
+
 // to-do: test focus when line is context.focus and start / end of line
 // to-do: test for insertText of abc\n\def\nghi
 // to-do: test for insertFromPaste
@@ -176,11 +208,4 @@ async function lineInputFixture(line?: Readonly<Line>): Promise<{
   )
   const p = el.renderRoot!.querySelector('p')!
   return {el, p}
-}
-
-function TextEvent(
-  text: string,
-  inputType: 'insertText' | 'insertLineBreak' = 'insertText'
-): InputEvent {
-  return new InputEvent('beforeinput', {data: text, inputType})
 }
