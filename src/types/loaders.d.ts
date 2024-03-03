@@ -14,8 +14,3 @@ declare module '*.text' {
   const text: string
   export default text
 }
-
-declare module '*.webp' {
-  const uri: string
-  export default uri
-}

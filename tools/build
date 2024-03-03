@@ -89,8 +89,7 @@ const opts = {
   loader: {
     '.png': 'dataurl',
     '.svg': 'dataurl',
-    '.text': 'text',
-    '.webp': 'dataurl'
+    '.text': 'text'
   },
   logLevel: `info`, // Print the port and build demarcations.
   minify: !watch,
