@@ -11,7 +11,7 @@ import {
   composedElementFromPoint,
   scrollTowardsEdge
 } from '../utils/element-util.js'
-import type {LineElement} from './line-element.js'
+import type {LineEl} from './line-el.js'
 import {LineList} from './line-list.js'
 
 export type DragEnd = {
@@ -241,6 +241,6 @@ function computeDragOp(
   return over.nextElementSibling === picked ? 'none' : 'after'
 }
 
-function queryLineElement(el: LitElement): LineElement | undefined {
-  return <LineElement>el.renderRoot.querySelector('slot')!.assignedElements()[0]
+function queryLineElement(el: LitElement): LineEl | undefined {
+  return <LineEl>el.renderRoot.querySelector('slot')!.assignedElements()[0]
 }

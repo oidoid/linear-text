@@ -5,7 +5,7 @@ import type {Line} from '../tree/text-tree.js'
 import {Bubble} from '../utils/bubble.js'
 import {cssReset} from '../utils/css-reset.js'
 import type {Context} from './context.js'
-import type {LineElement} from './line-element.js'
+import type {LineEl} from './line-el.js'
 import './line-input.js'
 import {LineInput} from './line-input.js'
 import './line-list.js'
@@ -28,7 +28,7 @@ declare global {
 }
 
 @customElement('note-card')
-export class NoteCard extends LitElement implements LineElement {
+export class NoteCard extends LitElement implements LineEl {
   static override styles: CSSResult = css`
     ${cssReset}
 
