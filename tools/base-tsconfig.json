@@ -28,6 +28,10 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
 
+    // Assume library types are checked and compatible.
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
     "sourceMap": true,
 
     "target": "ES2022",

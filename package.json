@@ -3,27 +3,26 @@
   "bugs": "https://github.com/oidoid/linear-text/issues",
   "description": "🗒 Graphical line-oriented text editor.",
   "devDependencies": {
-    "@open-wc/testing": "4.0.0",
+    "@esm-bundle/chai": "4.3.4-fix.0",
     "@types/jsdom": "21.1.6",
     "@types/mocha": "10.0.6",
-    "@types/node": "18.19.8",
     "@web/dev-server-esbuild": "1.0.2",
-    "@web/test-runner": "0.18.0",
+    "@web/test-runner": "0.18.1",
     "browser-fs-access": "0.35.0",
-    "esbuild": "0.20.0",
+    "esbuild": "0.20.1",
     "jsdom": "24.0.0",
     "lit": "3.1.2",
     "lit-analyzer": "2.0.3",
     "prettier": "3.2.5",
-    "typescript": "5.3.3",
-    "vitest": "1.2.2"
+    "typescript": "5.4.2",
+    "vitest": "1.3.1"
   },
   "engines": {
-    "node": ">=18.19.0"
+    "node": ">=18"
   },
   "files": [
     "dist",
-    "!dist/tsconfig.tsbuildinfo"
+    "!dist/**/tsconfig.tsbuildinfo"
   ],
   "homepage": "https://lineartext.com",
   "keywords": [
@@ -55,14 +54,14 @@
     "build": "tools/build && tsc --build",
     "clean": "rm -rf dist",
     "format": "npm run formatter -- --write",
-    "formatter": "prettier --cache --log-level warn './**/*.{css,html,js,json,md,ts}'",
+    "formatter": "prettier --cache --log-level warn './**/*.{css,html,js,json,md,ts,yaml}'",
     "preversion": "[ -z \"$(git status -z)\" ]",
     "prepublishOnly": "! git symbolic-ref --quiet HEAD || git push --follow-tags origin \"$(git branch --show-current)\"",
     "start": "tools/build --watch",
     "test:format": "npm run formatter -- --check",
     "test:types:ui": "lit-analyzer --maxWarnings=0 --rules.no-missing-element-type-definition --rules.no-unknown-event --strict",
-    "test:unit": "vitest run",
-    "test:ui": "wtr",
+    "test:ui": "wtr --config=tools/web-test-runner.config.js",
+    "test:unit": "vitest --config=tools/vitest.config.ts run",
     "test": "npm run test:format && npm run test:unit && npm run build && npm run test:types:ui && npm run test:ui",
     "version": "npm test"
   },

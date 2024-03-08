@@ -12,6 +12,7 @@ import {JSDOM} from 'jsdom'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import pkg from '../package.json' assert {type: 'json'}
+import {esbuildConfig} from './esbuild-config.js'
 
 const watch = process.argv.includes('--watch')
 const inFilename = 'src/linear-text.html'
@@ -80,17 +81,11 @@ async function pluginOnEnd(result) {
 
 /** @type {esbuild.BuildOptions} */
 const opts = {
+  ...esbuildConfig(pkg.version),
   bundle: true,
   conditions: watch ? ['development'] : [], // Lit
-  define: {linearTextVersion: `'${pkg.version}'`}, // See defines.d.ts.
   entryPoints: [srcFilename],
   format: 'esm',
-  // See loaders.d.ts.
-  loader: {
-    '.png': 'dataurl',
-    '.svg': 'dataurl',
-    '.text': 'text'
-  },
   logLevel: `info`, // Print the port and build demarcations.
   minify: !watch,
   outdir: 'dist',

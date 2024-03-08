@@ -114,7 +114,7 @@ export class LineInput extends LitElement {
   }
 
   protected override shouldUpdate(
-    props: PropertyValues<this & {_spellcheck: boolean}>
+    props: PropertyValues<this> & PropertyValues<{_spellcheck: boolean}>
   ): boolean {
     const update = super.shouldUpdate(props)
     if (this.line?.text === this.#text && !props.has('_spellcheck'))

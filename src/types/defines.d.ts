@@ -1,3 +1,3 @@
-// Constants populated by tools/build.
+// Constants constants set by tools/build.
 
 declare var linearTextVersion: string

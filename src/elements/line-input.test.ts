@@ -1,193 +1,192 @@
-import {assert, expect, fixture, html} from '@open-wc/testing'
-import type {PropertyValues} from 'lit'
+import {assert, expect} from '@esm-bundle/chai'
+import {html, render, type PropertyValues} from 'lit'
 import {TextTree, type Line} from '../tree/text-tree.js'
 import {LineInput} from './line-input.js'
-import {pressKeys} from './test/element-test-util.js'
+import {pressKey} from './test/element-test-util.js'
 
-it('tag is defined', () => {
+test('tag is defined', () => {
   const el = document.createElement('line-input')
   assert.instanceOf(el, LineInput)
 })
 
-it('a line is rendered', async () => {
+test('a line is rendered', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  expect(el.line).equal(line)
-  expect(p.textContent).equal('abc')
+  using fix = await lineInputFixture(line)
+  expect(fix.el.line).equal(line)
+  expect(fix.p.textContent).equal('abc')
 })
 
-it('a new line is rendered', async () => {
+test('a new line is rendered', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  el.line = {...line, text: 'def'}
-  await el.updateComplete
-  expect(p.textContent).equal('def')
+  using fix = await lineInputFixture(line)
+  fix.el.line = {...line, text: 'def'}
+  await fix.el.updateComplete
+  expect(fix.p.textContent).equal('def')
 })
 
-it('text input dispatches an edit', async () => {
-  const {el, p} = await lineInputFixture()
-  p.focus()
+test('text input dispatches an edit', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
   const edit = await new Promise<CustomEvent<string>>(async resolve => {
-    el.addEventListener('edit-text', resolve)
-    await pressKeys('a')
+    fix.el.addEventListener('edit-text', resolve)
+    await pressKey('a')
   })
   expect(edit.detail).equal('a')
 })
 
-it('a newline dispatches a break', async () => {
-  const {el, p} = await lineInputFixture()
-  p.focus()
-  await pressKeys(...'abc')
+test('a newline dispatches a break', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey(...'abc')
   const edit = await new Promise<CustomEvent<number>>(async resolve => {
-    el.addEventListener('break-text', resolve)
-    await pressKeys('\n')
+    fix.el.addEventListener('break-text', resolve)
+    await pressKey('\n')
   })
   expect(edit.detail).equal(3)
 })
 
-it('a newline dispatches a break at the cursor position', async () => {
-  const {el, p} = await lineInputFixture()
-  p.focus()
-  await pressKeys(...'abc')
-  await pressKeys('ArrowLeft', 'ArrowLeft')
+test('a newline dispatches a break at the cursor position', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey(...'abc', 'ArrowLeft', 'ArrowLeft')
   const edit = await new Promise<CustomEvent<number>>(async resolve => {
-    el.addEventListener('break-text', resolve)
-    await pressKeys('\n')
+    fix.el.addEventListener('break-text', resolve)
+    await pressKey('\n')
   })
   expect(edit.detail).equal(1)
 })
 
-it('text input renders', async () => {
-  const {p} = await lineInputFixture()
-  p.focus()
-  await pressKeys('a')
-  expect(p.textContent).equal('a')
+test('text input renders', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey('a')
+  expect(fix.p.textContent).equal('a')
 })
 
-it('updated text input renders', async () => {
-  const {p} = await lineInputFixture()
-  p.focus()
-  await pressKeys(...'abc')
-  expect(p.textContent).equal('abc')
+test('updated text input renders', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey(...'abc')
+  expect(fix.p.textContent).equal('abc')
 })
 
-it('backspace removes backwards', async () => {
-  const {p} = await lineInputFixture()
-  p.focus()
-  await pressKeys(...'abc', 'Backspace')
-  expect(p.textContent).equal('ab')
+test('backspace removes backwards', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey(...'abc', 'Backspace')
+  expect(fix.p.textContent).equal('ab')
 })
 
-it('delete removes forwards', async () => {
-  const {p} = await lineInputFixture()
-  p.focus()
-  await pressKeys(...'abc', 'Home', 'Delete')
-  expect(p.textContent).equal('bc')
+test('delete removes forwards', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  await pressKey(...'abc', 'Home', 'Delete')
+  expect(fix.p.textContent).equal('bc')
 })
 
-it('escape blurs', async () => {
-  const {el, p} = await lineInputFixture()
-  p.focus()
-  expect(document.activeElement).equal(el)
-  await pressKeys('Escape')
-  expect(document.activeElement).not.equal(el)
+test('escape blurs', async () => {
+  using fix = await lineInputFixture()
+  fix.p.focus()
+  expect(document.activeElement).equal(fix.el)
+  await pressKey('Escape')
+  expect(document.activeElement).not.equal(fix.el)
 })
 
-it('click focuses', async () => {
-  const {el} = await lineInputFixture()
-  el.click()
-  expect(document.activeElement).equal(el)
+test('click focuses', async () => {
+  using fix = await lineInputFixture()
+  fix.el.click()
+  expect(document.activeElement).equal(fix.el)
 })
 
-it('spellcheck is initially disabled', async () => {
-  const {p} = await lineInputFixture()
-  expect(p.spellcheck).equal(false)
+test('spellcheck is initially disabled', async () => {
+  using fix = await lineInputFixture()
+  expect(fix.p.spellcheck).equal(false)
 })
 
-it('focus dispatches', async () => {
+test('focus dispatches', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
+  using fix = await lineInputFixture(line)
   const focus = await new Promise<CustomEvent<Line>>(resolve => {
-    el.addEventListener('focus-line', resolve)
-    p.focus()
+    fix.el.addEventListener('focus-line', resolve)
+    fix.p.focus()
   })
-  await el.updateComplete
+  await fix.el.updateComplete
   expect(focus.detail).equal(line)
 })
 
-it('focus enables spellcheck', async () => {
+test('focus enables spellcheck', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  expect(p.spellcheck).equal(false)
-  p.focus()
-  await el.updateComplete
-  expect(p.spellcheck).equal(true)
+  using fix = await lineInputFixture(line)
+  expect(fix.p.spellcheck).equal(false)
+  fix.p.focus()
+  await fix.el.updateComplete
+  expect(fix.p.spellcheck).equal(true)
 })
 
-it('blur dispatches', async () => {
+test('blur dispatches', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  p.focus()
-  await el.updateComplete
+  using fix = await lineInputFixture(line)
+  fix.p.focus()
+  await fix.el.updateComplete
   const blur = await new Promise<CustomEvent<Line>>(resolve => {
-    el.addEventListener('blur-line', resolve)
-    p.blur()
+    fix.el.addEventListener('blur-line', resolve)
+    fix.p.blur()
   })
-  await el.updateComplete
+  await fix.el.updateComplete
   expect(blur.detail).equal(line)
 })
 
-it('blur disables spellcheck', async () => {
+test('blur disables spellcheck', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  p.focus()
-  await el.updateComplete
-  expect(p.spellcheck).equal(true)
-  p.blur()
-  await el.updateComplete
-  expect(p.spellcheck).equal(false)
+  using fix = await lineInputFixture(line)
+  fix.p.focus()
+  await fix.el.updateComplete
+  expect(fix.p.spellcheck).equal(true)
+  fix.p.blur()
+  await fix.el.updateComplete
+  expect(fix.p.spellcheck).equal(false)
 })
 
-it('blur clears selection', async () => {
+test('blur clears selection', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  p.focus()
-  await el.updateComplete
-  const sel = el.getSelection()!
-  sel.selectAllChildren(p)
+  using fix = await lineInputFixture(line)
+  fix.p.focus()
+  await fix.el.updateComplete
+  const sel = fix.el.getSelection()!
+  sel.selectAllChildren(fix.p)
   expect(sel.focusNode!.textContent).equal('abc')
-  p.blur()
-  await el.updateComplete
+  fix.p.blur()
+  await fix.el.updateComplete
   expect(sel.focusNode).equal(null)
 })
 
-it('providing text that matches input does not re-render', async () => {
+test('providing text that matches input does not re-render', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  const updatable = el as unknown as {
+  using fix = await lineInputFixture(line)
+  const updatable = fix.el as unknown as {
     shouldUpdate(props: PropertyValues): boolean
   }
 
-  el.line = line
+  fix.el.line = line
   expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)
-  p.focus()
-  await pressKeys(...'def')
-  el.line = {...line, text: 'abcdef'}
-  expect(updatable.shouldUpdate(new Map([['line', el.line]]))).equal(false)
+  fix.p.focus()
+  await pressKey(...'def')
+  fix.el.line = {...line, text: 'abcdef'}
+  expect(updatable.shouldUpdate(new Map([['line', fix.el.line]]))).equal(false)
 })
 
-it("providing text that doesn't match input re-renders", async () => {
+test("providing text that doesn't match input re-renders", async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
-  const {el, p} = await lineInputFixture(line)
-  const updatable = el as unknown as {
+  using fix = await lineInputFixture(line)
+  const updatable = fix.el as unknown as {
     shouldUpdate(props: PropertyValues): boolean
   }
 
-  el.line = line
+  fix.el.line = line
   expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)
-  p.focus()
-  await pressKeys(...'def')
-  expect(updatable.shouldUpdate(new Map([['line', el.line]]))).equal(true)
+  fix.p.focus()
+  await pressKey(...'def')
+  expect(updatable.shouldUpdate(new Map([['line', fix.el.line]]))).equal(true)
 })
 
 // to-do: test focus when line is context.focus and start / end of line
@@ -199,13 +198,14 @@ it("providing text that doesn't match input re-renders", async () => {
 // to-do: look at implementation again less for logic and more for important
 //        behavior that shouldn't regress.
 
-async function lineInputFixture(line?: Readonly<Line>): Promise<{
-  el: LineInput
-  p: HTMLParagraphElement
-}> {
-  const el = await fixture<LineInput>(
-    html`<line-input .line=${line}></line-input>`
-  )
+async function lineInputFixture(
+  line?: Readonly<Line>
+): Promise<{el: LineInput; p: HTMLParagraphElement} & Disposable> {
+  const root = document.createElement('div')
+  document.body.append(root)
+  render(html`<line-input .line=${line}></line-input>`, root)
+  const el = document.querySelector<LineInput>('line-input')!
+  await el.updateComplete
   const p = el.renderRoot!.querySelector('p')!
-  return {el, p}
+  return {el, p, [Symbol.dispose]: () => root.remove()}
 }

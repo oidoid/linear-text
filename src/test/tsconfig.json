@@ -8,10 +8,7 @@
     // tsc is only used for type-checking.
     "noEmit": true,
 
-    "rootDir": "..",
-
-    // Hack around Chai typing.
-    "skipLibCheck": true
+    "rootDir": ".."
   },
   "include": ["**/*", "../**/*.test.ts"],
   "exclude": ["../elements/**/*.test.ts"],

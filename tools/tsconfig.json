@@ -9,7 +9,9 @@
 
     "lib": ["ES2023"],
 
-    "rootDir": ".."
+    "rootDir": "..",
+
+    "types": ["node"]
   },
   "include": ["**/*", "../package.json"]
 }
