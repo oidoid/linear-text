@@ -3,10 +3,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "lib": ["DOM", "ESNext"],
+
     // tsc is only used for type-checking.
     "noEmit": true,
-
-    // https://github.com/vitejs/vite/issues/15714 is node.js typing
 
     "rootDir": "..",
 

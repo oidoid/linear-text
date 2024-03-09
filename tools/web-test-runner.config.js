@@ -9,16 +9,18 @@ const config = {
   nodeResolve: true,
   plugins: [
     esbuildPlugin({
-      define: /** @type {{ [key: string]: string }} */ (base.define),
-      loaders: /** @type {{[ext: string]: import('esbuild').Loader}} */ (
-        base.loader
-      ),
-      target: 'es2022',
-      ts: true,
       banner: `
         Symbol.dispose ??= Symbol('Symbol.dispose');
         Symbol.asyncDispose ??= Symbol('Symbol.asyncDispose');
       `,
+      define: /** @type {{ [key: string]: string }} */ (base.define),
+      loaders: /** @type {{[ext: string]: import('esbuild').Loader}} */ (
+        base.loader
+      ),
+      js: true,
+      json: true,
+      target: 'es2022',
+      ts: true,
       tsconfig: 'src/elements/test/tsconfig.json'
     })
   ],

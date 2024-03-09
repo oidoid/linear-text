@@ -2,7 +2,7 @@
 {
   "extends": "../tools/base-tsconfig.json",
   "compilerOptions": {
-    // https://lit.dev/docs/v3/components/decorators/#decorators-typescript
+    // https://lit.dev/docs/components/decorators/#decorators-typescript
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
 
