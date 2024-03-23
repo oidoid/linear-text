@@ -9,7 +9,7 @@ export type DataURI = {
   /** Media mime type. E.g., `'image/gif'`. */
   mimeType: string | undefined
   /** Media type parameters. E.g., `{abc: 'def'}`. */
-  params: Record<string, string>
+  params: {[key: string]: string}
   encoding: 'base64' | undefined
   /** Data string, possibly empty. E.g., in `'abc'` in `'data:,abc'`. */
   data: string

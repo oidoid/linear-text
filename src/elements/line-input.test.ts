@@ -163,9 +163,11 @@ test('blur clears selection', async () => {
 test('providing text that matches input does not re-render', async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
   using fix = await fixture(line)
-  const updatable = fix.el as unknown as {
-    shouldUpdate(props: PropertyValues): boolean
-  }
+  const updatable = <
+    {
+      shouldUpdate(props: PropertyValues): boolean
+    }
+  >fix.el
 
   fix.el.line = line
   expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)
@@ -178,9 +180,11 @@ test('providing text that matches input does not re-render', async () => {
 test("providing text that doesn't match input re-renders", async () => {
   const line = <Line>TextTree('abc', 2).down[0]!.down[0]
   using fix = await fixture(line)
-  const updatable = fix.el as unknown as {
-    shouldUpdate(props: PropertyValues): boolean
-  }
+  const updatable = <
+    {
+      shouldUpdate(props: PropertyValues): boolean
+    }
+  >fix.el
 
   fix.el.line = line
   expect(updatable.shouldUpdate(new Map([['line', line]]))).equal(false)

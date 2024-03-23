@@ -8,7 +8,7 @@ export type Autosave = {
   readonly text: string
   /**
    * Autosave version recorded at save time. Used for unpacking old data if
-   * structural changes have been made. Independent of deno.json version.
+   * structural changes have been made. Independent of package.json version.
    */
   readonly version: 1
 }

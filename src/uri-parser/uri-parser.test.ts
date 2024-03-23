@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {parseDataURI} from './uri-parser.js'
 
-for (const [name, uri, expected] of [
+for (const [name, uri, expected] of <const>[
   [
     'empty data URI',
     'data:,',
@@ -64,5 +64,5 @@ for (const [name, uri, expected] of [
   ],
   ['missing protocol', ',', undefined],
   ['missing separator', 'data:', undefined]
-] as const)
+])
   test(name, () => expect(parseDataURI(uri)).toStrictEqual(expected))

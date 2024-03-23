@@ -41,7 +41,7 @@ export function composedElementFromPoint(x: number, y: number): Element | null {
 /** @arg xy Target in viewport client coordinates. */
 export function scrollTowardsEdge(
   el: Element,
-  xy: Readonly<{x: number; y: number}>,
+  xy: {readonly x: number; readonly y: number},
   threshold: number,
   by: number
 ): void {

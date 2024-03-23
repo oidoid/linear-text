@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {parseLineType} from './line-type.js'
 
-for (const [name, text, expected] of [
+for (const [name, text, expected] of <const>[
   ['empty', '', 'empty'],
   ['blank (space)', ' ', 'blank'],
   ['blank (tab)', '\t', 'blank'],
@@ -25,5 +25,5 @@ for (const [name, text, expected] of [
   ['uri-http (HTTP)', 'http://lineartext.com', 'uri-http'],
   ['uri-http (HTTPS)', 'https://lineartext.com', 'uri-http'],
   ['uri-file', 'file://', 'uri-file']
-] as const)
+])
   test(name, () => expect(parseLineType(text)).toBe(expected))

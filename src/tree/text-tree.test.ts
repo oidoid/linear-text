@@ -2225,7 +2225,7 @@ test('Windows carriage return and linefeed', () =>
     }
   `))
 
-for (const [name, text] of [
+for (const [name, text] of <const>[
   ['an empty tree is an empty string', ''],
 
   ['a tree can end without a newline', 'a'],
@@ -2267,7 +2267,7 @@ for (const [name, text] of [
   ],
 
   ['windows line break', 'a\r\nb']
-] as const) {
+]) {
   test(name, () => expect(TextTree.toString(TextTree(text, 2))).toBe(text))
 }
 
