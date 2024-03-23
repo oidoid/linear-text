@@ -1,5 +1,8 @@
 Update to-do's from linear-text.text.
+logo should not have such a thick border. it should have a penciled look. this isn't pixel graphics
 Bugs
+  when cursor position is changed by mouse, pressing enter to divide a line does divide the line but doesn't delete the text from the original note. eg, "foobar", click between foo and bar and press enter. doesn't have a 100% repro. maybe some interaction with shift-tab
+  the staggered text area is hard to work with. when i click past a word it just ignores the click
   When I cancel a save, even if no changes, it causes doc to be unsaved
   When I open a second file, LT reopens the first sometimes?
   Opening as a web app doesn't allow the icon to be updated.
