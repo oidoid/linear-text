@@ -54,14 +54,18 @@ async function pluginOnEnd(result) {
     iconEl.href = `data:${iconEl.type};base64,${file.toString('base64')}`
   }
 
-  let js =
-    result.outputFiles
-      ?.filter(file => file.path.endsWith('.js'))
-      .map(file => file.text)
-      .join('') ?? ''
+  let js = ''
   if (watch)
     js +=
-      "new EventSource('/esbuild').addEventListener('change', () => location.reload());"
+      // Use globalThis to avoid conflict with EventSource in protos which are
+      // dumped in module scope because esbuild doesn't know the standard
+      // EventSource is used.
+      "new globalThis.EventSource('/esbuild').addEventListener('change', () => globalThis.location.reload());"
+
+  const outFiles =
+    result.outputFiles?.filter(file => file.path.endsWith('.js')) ?? []
+  if (outFiles.length > 1) throw Error('cannot concatenate JavaScript files')
+  if (outFiles[0]) js += outFiles[0].text
 
   const scriptEl = /** @type {HTMLScriptElement|null} */ (
     copy.querySelector('script[type="module"][src]')
@@ -87,6 +91,7 @@ const opts = {
   entryPoints: [srcFilename],
   format: 'esm',
   logLevel: `info`, // Print the port and build demarcations.
+  metafile: true,
   minify: !watch,
   outdir: 'dist',
   plugins: [{name: 'LinearText', setup: build => build.onEnd(pluginOnEnd)}],
@@ -97,4 +102,7 @@ const opts = {
 if (watch) {
   const ctx = await esbuild.context(opts)
   await Promise.race([ctx.watch(), ctx.serve({port: 1234, servedir: 'dist'})])
-} else await esbuild.build(opts)
+} else {
+  const build = await esbuild.build(opts)
+  await fs.writeFile('dist/linear-text-html.meta.json', JSON.stringify(build.metafile))
+}
