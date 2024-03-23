@@ -11,6 +11,8 @@
 
     "rootDir": "..",
 
+    "tsBuildInfoFile": "../dist/tools/tsconfig.tsbuildinfo",
+
     "types": ["node"]
   },
   "include": ["**/*", "../package.json"]

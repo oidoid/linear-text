@@ -10,9 +10,10 @@
 
     "rootDir": "..",
 
+    "tsBuildInfoFile": "../../../dist/elements/test/tsconfig.tsbuildinfo",
+
     "types": ["mocha"]
   },
   "include": ["**/*", "../**/*.test.ts"],
-  "exclude": [],
   "references": [{"path": "../.."}]
 }

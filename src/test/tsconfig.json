@@ -8,7 +8,9 @@
     // tsc is only used for type-checking.
     "noEmit": true,
 
-    "rootDir": ".."
+    "rootDir": "..",
+
+    "tsBuildInfoFile": "../../dist/test/tsconfig.tsbuildinfo"
   },
   "include": ["**/*", "../**/*.test.ts"],
   "exclude": ["../elements/**/*.test.ts"],
