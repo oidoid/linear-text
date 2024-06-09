@@ -5,18 +5,18 @@
   "devDependencies": {
     "@ampproject/filesize": "4.3.0",
     "@esm-bundle/chai": "4.3.4-fix.0",
-    "@types/jsdom": "21.1.6",
+    "@types/jsdom": "21.1.7",
     "@types/mocha": "10.0.6",
     "@web/dev-server-esbuild": "1.0.2",
-    "@web/test-runner": "0.18.1",
+    "@web/test-runner": "0.18.2",
     "browser-fs-access": "0.35.0",
-    "esbuild": "0.20.2",
-    "jsdom": "24.0.0",
-    "lit": "3.1.2",
+    "esbuild": "0.21.4",
+    "jsdom": "24.1.0",
+    "lit": "3.1.4",
     "lit-analyzer": "2.0.3",
-    "prettier": "3.2.5",
-    "typescript": "5.4.3",
-    "vitest": "1.4.0"
+    "prettier": "3.3.1",
+    "typescript": "5.4.5",
+    "vitest": "1.6.0"
   },
   "engines": {
     "node": ">=18"
