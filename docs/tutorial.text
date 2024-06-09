@@ -27,7 +27,7 @@ File I/O
   Linear Text will attempt to preserve the last viewed text file to temporary offline browser storage. Do not rely on this ephemeral backup. It's for emergency use only. Save data you wish to keep to disk.
   Linear Text executes locally in your browser, never uploads data, and can execute entirely offline. There is no server or "mothership".
 Integrated Text Editor
-  Open the text editor panel by sliding on the lower resize icon in the bottom-left.
+  Open the text editor panel by sliding on the lower resize icon in the bottom-right.
   The editor always shows the current text state of the board. Whenever you save, the text editor is exactly what you'll get.
   Changes made to the editor, update the board. The board and the editor are always in sync.
 Tips
