@@ -34,7 +34,7 @@ export class NoteCard extends LitElement implements LineEl {
 
     :host {
       contain: content;
-      --indent: 8px;
+      --indent: 16px;
     }
 
     .note {

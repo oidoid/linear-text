@@ -48,13 +48,13 @@ export class GroupList extends LitElement {
       /* fill parent*/
       min-width: 100%;
 
-      column-gap: var(--half-space);
+      column-gap: 8px;
 
       min-height: 100%; /* Fill vertical space for dragging in column. */
 
       background-color: #f2f5f5;
       background-image: url('${unsafeCSS(gridURI)}');
-      background-size: 8px;
+      background-size: 16px;
     }
 
     li {
